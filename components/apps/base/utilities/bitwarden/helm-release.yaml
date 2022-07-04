@@ -3,6 +3,7 @@ kind: HelmRelease
 metadata:
   name: vaultwarden
   namespace: utilities
+
 spec:
   releaseName: vaultwarden
   chart:
