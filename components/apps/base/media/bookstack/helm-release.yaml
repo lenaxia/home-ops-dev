@@ -1,0 +1,83 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: bookstack
+  namespace: media
+spec:
+  releaseName: bookstack
+  chart:
+    spec:
+      chart: bookstack
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+  interval: 5m
+  values:
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "mdiPlayNetwork"
+          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: "w.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "w.${SECRET_DEV_DOMAIN}"
+            secretName: "bookstack-devdomain-tls-staging"
+
+    image:
+      repository: ghcr.io/linuxserver/bookstack
+      tag: version-v21.12
+      pullPolicy: IfNotPresent
+    
+    # -- environment variables.
+    # @default -- See below
+    env:
+      # -- Set the container timezone
+      TZ: "${TIMEZONE}"
+      APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
+      DB_HOST: 192.168.0.125
+      DB_USER: bookstack
+      DB_PASS: "e-zJMqKoe!9Sj/nG"
+      DB_DATABASE: bookstack
+    
+    # -- Configures service settings for the chart.
+    # @default -- See values.yaml
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+        type: ClusterIP
+    
+    persistence:
+      volconfig:
+        enabled: true
+        existingClaim: "bookstack-config-volume"
+          #config:
+          #  enabled: true
+          #  type: configMap 
+          #  name: bookstack-config 
+          #  mountPath: /config/www
+    
+    # -- Enable and configure mariadb database subchart under this key.
+    #    For more options see [mariadb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mariadb).
+    # @default -- See values.yaml
+    mariadb:
+      enabled: false
+      architecture: standalone
+      auth:
+        database: bookstack
+        username: bookstack
+        password: bookstack
+      primary:
+        persistence:
+          enabled: false

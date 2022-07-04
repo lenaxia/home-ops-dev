@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nodered
+  namespace: homeautomation
+spec:
+  releaseName: nodered
+  chart:
+    spec:
+      chart: nodered
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+  interval: 5m
+  values:
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "mdiPlayNetwork"
+          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: "nodered.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "nodered.${SECRET_DEV_DOMAIN}"
+            secretName: "nodered-devdomain-tls-staging"
+
+    image:
+      repository: node-red/node-red-docker
+      tag: v2.2.2
+      pullPolicy: IfNotPresent
+    
+    # -- environment variables.
+    # @default -- See below
+    env:
+      # -- Set the container timezone
+      TZ: "${TIMEZONE}"
+      # -- Node.js runtime arguments
+      NODE_OPTIONS:
+      # -- Setting to `true` starts Node-RED with the projects feature enabled
+      NODE_RED_ENABLE_PROJECTS:
+      # -- Setting to `true` starts Node-RED in safe (not running) mode
+      NODE_RED_ENABLE_SAFE_MODE:
+      # -- Location of the flows configuration file.
+      # If you set `FLOWS: ""` then the flow file can be set via the `flowFile` property in the `settings.js` file.
+      FLOWS: flows.json
+    
+    # -- Configures service settings for the chart.
+    # @default -- See values.yaml
+    service:
+      main:
+        ports:
+          http:
+            port: 1880
+        type: ClusterIP
+    
+    persistence:
+      data:
+        enabled: true
+        existingClaim: "nodered-config-volume"
