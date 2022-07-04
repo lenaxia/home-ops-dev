@@ -61,6 +61,9 @@ spec:
     # -- environment variables.
     env:
       TZ: "America/Los_Angeles"
+      SIGNUPS_ALLOWED : false
+      WEBSOCKET_ENABLED : true
+      ADMIN_TOKEN: NMfH7jATM4tP9xbMucSzCz53DGmQvC50CWnGU5hyJu5kUc3CVChUIpv4kdgwIAuP
     
     # -- Configures service settings for the chart.
     # @default -- See values.yaml
