@@ -18,6 +18,8 @@ resources:
 
   - ../base/iot/mosquitto
 
+  - ../base/utilities/bitwarden
+
     #  - ../base/homeautomation/nodered
 patchesStrategicMerge:
   - podinfo-values.yaml

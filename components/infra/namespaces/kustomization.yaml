@@ -12,3 +12,4 @@ resources:
   - iot.yaml
   - monitoring.yaml
   - homeautomation.yaml
+  - utilities.yaml
