@@ -30,6 +30,9 @@ spec:
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/address-pool: dev-infra
+        ports:
+          http:
+            port: 1883
     auth:
       enabled: false
     podAnnotations:
