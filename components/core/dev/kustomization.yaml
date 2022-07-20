@@ -8,6 +8,6 @@ resources:
   - ../base/networking/metallb
   - ../base/networking/traefik
 patchesStrategicMerge:
-  - metallb-values.yaml
+  #  - metallb-values.yaml
   - longhorn-values.yaml
   - mariadb-values.yaml
