@@ -24,7 +24,7 @@
 #  name: l2Advertiser
 #  namespace: networking
 ---
-apiVersion: metallb.io/v2beta1
+apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: default
@@ -33,7 +33,7 @@ spec:
   addresses:
   - ${METALLB_POOL_DEFUALT}
 ---
-apiVersion: metallb.io/v2beta1
+apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: dev-infra
