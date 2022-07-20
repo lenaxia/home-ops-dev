@@ -109,7 +109,7 @@ resource "proxmox_vm_qemu" "k3-server-lafiel" {
   sockets = 1
   cpu = "host"
   memory = 4096
-  balloon = 512
+  balloon = 2048
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
