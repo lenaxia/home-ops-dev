@@ -25,7 +25,7 @@
 #  namespace: networking
 ---
 apiVersion: metallb.io/v1beta1
-kind: IPAddressPools
+kind: IPAddressPool
 metadata:
   name: default
   namespace: networking
@@ -34,7 +34,7 @@ spec:
   - ${METALLB_POOL_DEFUALT}
 ---
 apiVersion: metallb.io/v1beta1
-kind: IPAddressPools
+kind: IPAddressPool
 metadata:
   name: dev-infra
   namespace: networking
