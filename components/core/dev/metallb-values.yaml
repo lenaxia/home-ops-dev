@@ -23,22 +23,22 @@
 #metadata:
 #  name: l2Advertiser
 #  namespace: networking
----
-apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
-metadata:
-  name: default
-  namespace: networking
-spec:
-  addresses:
-  - ${METALLB_POOL_DEFUALT}
----
-apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
-metadata:
-  name: dev-infra
-  namespace: networking
-spec:
-  addresses:
-  - ${METALLB_POOL_DEVINFRA}
----
+#---
+#apiVersion: metallb.io/v1beta1
+#kind: IPAddressPool
+#metadata:
+#  name: default
+#  namespace: networking
+#spec:
+#  addresses:
+#  - ${METALLB_POOL_DEFUALT}
+#---
+#apiVersion: metallb.io/v1beta1
+#kind: IPAddressPool
+#metadata:
+#  name: dev-infra
+#  namespace: networking
+#spec:
+#  addresses:
+#  - ${METALLB_POOL_DEVINFRA}
+#---
