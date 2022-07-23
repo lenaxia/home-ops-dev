@@ -31,8 +31,7 @@ metadata:
   namespace: networking
 spec:
   addresses:
-    #- ${METALLB_POOL_DEFUALT}
-  - 192.168.5.120-192.168.5.255
+  - ${METALLB_POOL_DEFUALT}
 ---
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
@@ -41,6 +40,5 @@ metadata:
   namespace: networking
 spec:
   addresses:
-    #- ${METALLB_POOL_DEVINFRA}
-  - 192.168.5.5-192.168.5.63
+  - ${METALLB_POOL_DEVINFRA}
 ---
