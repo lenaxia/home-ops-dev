@@ -6,7 +6,7 @@ resources:
   - ../base/nginx
   - ../base/mariadb
   - ../base/networking/metallb
-    #  - ../base/networking/traefik
+  - ../base/networking/traefik
 patchesStrategicMerge:
   #  - metallb-values.yaml
   - longhorn-values.yaml
