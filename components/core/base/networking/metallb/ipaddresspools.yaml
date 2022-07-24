@@ -1,22 +1,3 @@
-#apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#kind: HelmRelease
-#metadata:
-#  name: metallb
-#  namespace: networking
-#spec:
-#  values:
-#    configInline:
-#      address-pools:
-#      - name: default
-#        protocol: layer2
-#        addresses:
-#        - ${METALLB_POOL_DEFUALT}
-#        #- 192.168.5.120-192.168.5.255
-#      - name: dev-infra
-#        protocol: layer2
-#        addresses:
-#        - ${METALLB_POOL_DEVINFRA}
-#        #- 192.168.5.5-192.168.5.63
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
