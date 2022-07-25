@@ -15,6 +15,24 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
+   
+    # -- Configures service settings for the chart.
+    # @default -- See values.yaml
+    service:
+      main:
+        primary: true
+        annotations:
+          metallb.universe.tf/address-pool: dev-infra
+        ports:
+          http:
+            port: 80
+          websocket:
+            enabled: true
+            port: 3012
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+
+
     ingress:
       main:
         enabled: true
@@ -59,22 +77,6 @@ spec:
       SIGNUPS_ALLOWED : false
       WEBSOCKET_ENABLED : true
       ADMIN_TOKEN: NMfH7jATM4tP9xbMucSzCz53DGmQvC50CWnGU5hyJu5kUc3CVChUIpv4kdgwIAuP
-    
-    # -- Configures service settings for the chart.
-    # @default -- See values.yaml
-    service:
-      main:
-        primary: true
-        annotations:
-          metallb.universe.tf/address-pool: dev-infra
-        ports:
-          http:
-            port: 80
-          websocket:
-            enabled: true
-            port: 3012
-        type: LoadBalancer
-        externalTrafficPolicy: Local
     
     # -- Configure persistence settings for the chart under this key.
     # @default -- See values.yaml
