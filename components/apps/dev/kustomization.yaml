@@ -4,9 +4,9 @@ resources:
   - ../base/diagnostics/podinfo
     #  - ../base/diagnostics/echo-server
 
-    #  - ../base/monitoring/prometheus-stack
-    #  - ../base/monitoring/grafana
-    #  - ../base/monitoring/loki
+  - ../base/monitoring/prometheus-stack
+  - ../base/monitoring/grafana
+  - ../base/monitoring/loki
 
   - ../base/dashboards/hajimari
 
