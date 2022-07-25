@@ -18,7 +18,7 @@ resources:
 
   - ../base/iot/mosquitto
 
-    #  - ../base/utilities/bitwarden
+  - ../base/utilities/bitwarden
 
     #  - ../base/homeautomation/nodered
 patchesStrategicMerge:
