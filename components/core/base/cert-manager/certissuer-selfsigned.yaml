@@ -12,7 +12,7 @@ metadata:
   name: kaodev-cert
   namespace: cert-manager
 spec:
-  secretName: kaodev-cert-secret
+  secretName: kaodev-cert
   dnsNames:
   - "*.cluster.local"
   issuerRef:
