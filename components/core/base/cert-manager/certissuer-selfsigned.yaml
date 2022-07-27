@@ -17,3 +17,4 @@ spec:
   - "*.cluster.local"
   issuerRef:
     name: selfsigned-issuer
+    kind: ClusterIssuer
