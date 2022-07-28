@@ -29,3 +29,4 @@ patchesStrategicMerge:
   - nzbget-values.yaml
   - hajimari-values.yaml
   - bitwarden-values.yaml
+  - prometheus-stack.yaml
