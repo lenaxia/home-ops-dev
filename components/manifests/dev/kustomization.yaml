@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   #  - ./kube-prometheus-stack
  - ./monitoring-config
+ - ./certificates
 
 #patchesStrategicMerge:
 #  - prometheus-op-values.yaml
