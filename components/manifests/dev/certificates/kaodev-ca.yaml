@@ -23,9 +23,10 @@ spec:
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: ca-issuer
+  namespace: default
 spec:
   ca:
     secretName: root-ca-secret
