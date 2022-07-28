@@ -23,7 +23,7 @@ resources:
     #  - ../base/homeautomation/nodered
 patchesStrategicMerge:
   - podinfo-values.yaml
-  - mosquitto-values.yaml
+    #  - mosquitto-values.yaml
   - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
