@@ -5,4 +5,4 @@ resources:
   - helm-release.yaml
   - letsencrypt-staging.yaml
   #  - letsencrypt-production.yaml
-  - certissuer-selfsigned.yaml
+  #  - certissuer-selfsigned.yaml
