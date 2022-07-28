@@ -10,6 +10,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: kaodev-cert
+  namespace: default
 spec:
   secretName: kaodev-cert
   dnsNames:
