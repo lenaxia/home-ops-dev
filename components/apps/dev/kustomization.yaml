@@ -16,7 +16,7 @@ resources:
   - ../base/media/bookstack
     #  - ../base/media/metube
 
-  - ../base/iot/mosquitto
+    #  - ../base/iot/mosquitto
 
   - ../base/utilities/bitwarden
 

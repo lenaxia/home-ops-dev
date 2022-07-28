@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 10m0s
   dependsOn:
-    - name: apps
     - name: infrastructure
     - name: core
     - name: crds
