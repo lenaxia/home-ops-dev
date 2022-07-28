@@ -130,22 +130,17 @@ spec:
       - grafana-clock-panel
     serviceMonitor:
       enabled: true
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-staging"
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - &host "grafana.${SECRET_DEV_DOMAIN}"
-          #hosts:
-          #  - host: "grafana.${SECRET_DEV_DOMAIN}"
-          #paths:
-          #  - path: /
-          #    pathType: Prefix
-      tls:
-        - hosts:
-            - "grafana.${SECRET_DEV_DOMAIN}"
-          secretName: "grafana-devdomain-tls-staging"
+        #    ingress:
+        #      enabled: true
+        #      ingressClassName: "traefik"
+        #      annotations:
+        #        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        #        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        #      hosts:
+        #        - &host "grafana.${SECRET_DEV_DOMAIN}"
+        #      tls:
+        #        - hosts:
+        #            - "grafana.${SECRET_DEV_DOMAIN}"
+        #          secretName: "grafana-devdomain-tls-staging"
     persistence:
       enabled: false

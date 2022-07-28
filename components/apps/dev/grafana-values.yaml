@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  chart:
+    spec:
+      version: "6.31.10"
+  values:
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        hajimari.io/enable: "true"
+        hajimari.io/icon: "mdiPlayNetwork"
+        #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        cert-manager.io/cluster-issuer: "ca-issuer"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      hosts:
+        - &host "grafana.${SECRET_DEV_DOMAIN}"
+      tls:
+        - hosts:
+            - "grafana.${SECRET_DEV_DOMAIN}"
+          secretName: "grafana-devdomain-tls-staging"

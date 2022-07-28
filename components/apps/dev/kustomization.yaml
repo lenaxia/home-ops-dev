@@ -28,3 +28,4 @@ patchesStrategicMerge:
   - radarr-values.yaml
   - nzbget-values.yaml
   - hajimari-values.yaml
+  - bitwarden-values.yaml
