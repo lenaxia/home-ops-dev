@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: kaodev-ca-secret
+    namespace: default
+data:
+    tls.crt: ENC[AES256_GCM,data:jJFrQMhXg+8JDRB5QK5bSF1gyEDj4//d/Yo3Ah1aY4lBtVaQRZMNRZ63mOU+OrdpKwax/t27KOXLd4NI4NPS1WNFB/nmdt7uhjJgfDccOS+5jn0chdF29qZcvSDmQ6e+Gw8KqTHVZ2ty3DZfaH3HgNPVRNR+LV6G78QUV/qdMcHnZqEthSvKsWJA6fmOZNMtyFrQn4N2RuI9L/z94M/RNYdMLVV+JbfmXppRIFB36ymUVm0+zvAz8n04rOeuQB+q+lQQXEebrd2NS8wKVJuBcT4lWpy1oiQs9J1ivQSXqB9MkmRti3JI1d5Za4QWZwGtCnEZQp485y7Gcv/Nt48I4JwvK9c9r5FfOmA1GdQZ0XV9KIsnyzZqRGWBkzwsE7hvK+bQcPNoX2fTfxYfJDcwi4bg9HtOfF2DL88jjObDaRB5MMCRSVsLKkqW9b9lkTBwGM3p9i9NLd26xPkr5M/L+LBQfkWL/Az1aj6i5ZyN/WCcxAYKpPSk22cdgH0CrdJvIpxtbh81IIOZY9cgshlSrgws06EWlXrN3dX3E65XlKJQD/LP1ngMskyWq5QscWEPfLXzrGQNJ/iHX6Yl5ZVR3Xx9lVcJSfMqiWH72k/HkYWJi4zJ5eL0j00K3xCPzulIUgvS1H1Lr37T2/c6XUlCHVJXdmbzMcbdg5cWhjUkN7zHQaW/unCHwh1d8WdokIeTO1TiRRNoiBaZUUmPTSwKX2wVUsdin+4CITeK1Rf2hczzDZG6RJOwTib8qOmjvz/nRwoijCrUtKOMJREOzF+xU1wOw8krm1STedio9ErUpoi4S72ZM2QPc1MySpTvXpbmKS0gD+AMsQza0FYt2P3Xzrt4ndDswsyt95PUWCBi11oLwRRsZ2OihC/UDTPBePs3w0g2/RZyH3E+rRuvrBaGuMAttO7BUzdXWVmFzq9PXbak21EoiFAoAtGQ7gjt6dDhGG1koEhVtak96uEJCGGR0o3wyElcTbvc,iv:maQ5ily7Qz3Cj2cEu76U38juJd+0NB51wCgkg/WMezs=,tag:05OwBiWjRaQkENpMHmMC5g==,type:str]
+    tls.key: ENC[AES256_GCM,data:AEXKs2dV5vEAzdm0UoV6Xv2+FY74Pas+b+hMl4G8dvPuPqE8zIH/EH3YrJmOLc6r294LCjpkv6F90eiWFhJbYax3BGzDSJR5w3wE/g6AE15rabBGbj8qD+T5u98gtMEuE11Tz8tbu9r/cS29+el768iMuTmRYzthT2cuKbexYESiVP5B2pEd5FfQP1/vIZyXkBWqQ2dJD1D6FMuQRxGbS9D7/USrHvfNzCEs7fa7xxhWraOwzrfbn01ibLRKX6O9wxhxDrvnTSCxJfwFhW5SfYqpBHIZkHD4LlzsltbjfydlMXVydL9pFJmrINj/0EOOZXD2t2846YaATd0FcQitezWtzzu4bi83xmV5LQhcP9Fgo7a8pfuHOcygkUAjyegD0fz0UOwL43Q8OMcp+kBZNQ==,iv:RBgeOZuWW2aiyRbvX/2D7nCMhkwfvMqZoENRuS2/J4Y=,tag:jmWR8aSGh+2gGjv6OhmrvA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1rr569v9jm7ck70q4wpnspfhdvt4y5m6s604tx0ygs0a65qkt7g4qdszk6k
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2QmVwT1owSHd6dlU5UlhD
+            RVBxS0JjN2VQZDR5ZVBlMEZGclpvTm5hQlJzCld5WFQ3TDZTdEtobys1bmh6QUxt
+            ZGROK2ZJTDZidWZoUE00d0NhV1gxdWcKLS0tIEZUdUxnMDRRTGpVYU1RTGtTR1NS
+            eEcxNUd4NTFYK29CMmJYbDd6QmdSbEEKXdCrg1s5RAWZhwHKH/Fot9YdfJEU6g5Q
+            KVLjHhsCCv/AYUcxcYbdvrwi2cXUoy6KSNyAs54bpnWEtrtxwJqdrw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-07-28T05:24:06Z"
+    mac: ENC[AES256_GCM,data:8qu9LtyH2w8sOJCq9wVxpM3urcVtoRR6dYSHlCn4ofrfy4DsCyU/Mj/Kuemci7xqw9KEvMh2Ra5HYPxxaqZcxvLE/lGzPClA9XTnJYemNwCLzb6xMQ6jsUkvgWVRUqtjAl7sVQjrd3q8jEPn+4CUqvTT8MIrH8OGVU8A2wna/6w=,iv:p6uLLKPd+dE+MvY4FJjDzk3Z5jFRrMAjsITJJzIjQ20=,tag:VbT2lokQXPsxqBBCrtXpOQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+    name: ca-issuer
+spec:
+    ca:
+        secretName: kaodev-ca-secret
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1rr569v9jm7ck70q4wpnspfhdvt4y5m6s604tx0ygs0a65qkt7g4qdszk6k
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2QmVwT1owSHd6dlU5UlhD
+            RVBxS0JjN2VQZDR5ZVBlMEZGclpvTm5hQlJzCld5WFQ3TDZTdEtobys1bmh6QUxt
+            ZGROK2ZJTDZidWZoUE00d0NhV1gxdWcKLS0tIEZUdUxnMDRRTGpVYU1RTGtTR1NS
+            eEcxNUd4NTFYK29CMmJYbDd6QmdSbEEKXdCrg1s5RAWZhwHKH/Fot9YdfJEU6g5Q
+            KVLjHhsCCv/AYUcxcYbdvrwi2cXUoy6KSNyAs54bpnWEtrtxwJqdrw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-07-28T05:24:06Z"
+    mac: ENC[AES256_GCM,data:8qu9LtyH2w8sOJCq9wVxpM3urcVtoRR6dYSHlCn4ofrfy4DsCyU/Mj/Kuemci7xqw9KEvMh2Ra5HYPxxaqZcxvLE/lGzPClA9XTnJYemNwCLzb6xMQ6jsUkvgWVRUqtjAl7sVQjrd3q8jEPn+4CUqvTT8MIrH8OGVU8A2wna/6w=,iv:p6uLLKPd+dE+MvY4FJjDzk3Z5jFRrMAjsITJJzIjQ20=,tag:VbT2lokQXPsxqBBCrtXpOQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
