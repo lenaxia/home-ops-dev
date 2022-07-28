@@ -13,7 +13,7 @@ metadata:
 spec:
   isCA: true
   commonName: selfsigned-ca
-  secretName: root-secret
+  secretName: root-ca-secret
   privateKey:
     algorithm: ECDSA
     size: 256
