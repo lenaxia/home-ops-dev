@@ -30,3 +30,4 @@ patchesStrategicMerge:
   - hajimari-values.yaml
   - bitwarden-values.yaml
   - prometheus-stack.yaml
+  - grafana-values.yaml
