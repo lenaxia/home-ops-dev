@@ -1,0 +1,47 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: uptimekuma
+  namespace: utilities
+
+spec:
+  releaseName: uptimekuma
+  chart:
+    spec:
+      chart: uptimekuma
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+  interval: 5m
+  values:
+    # -- Configures service settings for the chart.
+    # @default -- See values.yaml
+    service:
+      main:
+        primary: true
+        annotations:
+          metallb.universe.tf/address-pool: dev-infra
+        ports:
+          http:
+            port: 3001
+
+    strategy:
+      type: Recreate
+    
+    image:
+      repository: louislam/uptime-kuma
+      tag: 
+      pullPolicy: IfNotPresent
+    
+    # -- environment variables.
+    env:
+      TZ: "America/Los_Angeles"
+      UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN: 0
+    
+    # -- Configure persistence settings for the chart under this key.
+    # @default -- See values.yaml
+    persistence:
+      data:
+        enabled: true
+        existingClaim: "uptimekuma-config-volume"
