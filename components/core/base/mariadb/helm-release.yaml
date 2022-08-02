@@ -21,13 +21,6 @@ spec:
     remediation:
       retries: 3
   values:
-    image:
-      registry: docker.io
-      repository: bitnami/mariadb
-      tag: 10.5.15-debian-10-r11
-      pullPolicy: IfNotPresent
-      pullSecrets: []
-      debug: false
     architecture: standalone
     auth:
       rootPassword: "${SECRET_MARIADB_PASSWORD}"
