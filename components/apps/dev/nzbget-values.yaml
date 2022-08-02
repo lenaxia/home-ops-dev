@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: ">=1.0.0"
+      version: "12.4.0"
 
   values:
     ingress:

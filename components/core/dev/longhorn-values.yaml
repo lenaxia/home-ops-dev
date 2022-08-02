@@ -4,6 +4,9 @@ metadata:
   name: longhorn
   namespace: longhorn-system
 spec:
+  chart:
+    spec:
+      version: "1.3.0"
   values:
     service:
       ui:
