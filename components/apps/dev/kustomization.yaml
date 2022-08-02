@@ -32,3 +32,4 @@ patchesStrategicMerge:
   - bitwarden-values.yaml
   - prometheus-stack.yaml
   - grafana-values.yaml
+  - uptimekuma-values.yaml
