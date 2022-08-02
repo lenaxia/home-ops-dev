@@ -19,6 +19,7 @@ resources:
   - ../base/iot/mosquitto
 
   - ../base/utilities/bitwarden
+  - ../base/utilities/uptimekuma
 
     #  - ../base/homeautomation/nodered
 patchesStrategicMerge:
