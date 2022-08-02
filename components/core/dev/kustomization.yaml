@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ../base/longhorn
   - ../base/cert-manager
-    #  - ../base/mariadb
+  - ../base/mariadb
   - ../base/networking/metallb
   - ../base/networking/traefik
 patchesStrategicMerge:
@@ -11,5 +11,5 @@ patchesStrategicMerge:
   - traefik-values.yaml
   - longhorn-values.yaml
   - cert-manager-values.yaml
-    #  - mariadb-values.yaml
+  - mariadb-values.yaml
  
