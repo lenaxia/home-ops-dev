@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
   - ../base/longhorn
   - ../base/cert-manager
-  - ../base/nginx
-  - ../base/mariadb
+    #  - ../base/nginx
+    #  - ../base/mariadb
   - ../base/networking/metallb
   - ../base/networking/traefik
 patchesStrategicMerge:
   #  - metallb-values.yaml
   - longhorn-values.yaml
-  - mariadb-values.yaml
+    #  - mariadb-values.yaml
