@@ -8,7 +8,7 @@ spec:
   releaseName: uptimekuma
   chart:
     spec:
-      chart: uptimekuma
+      chart: uptime-kuma
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
