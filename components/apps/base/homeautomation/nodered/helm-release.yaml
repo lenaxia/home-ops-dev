@@ -7,7 +7,7 @@ spec:
   releaseName: nodered
   chart:
     spec:
-      chart: nodered
+      chart: node-red
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
