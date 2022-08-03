@@ -21,7 +21,7 @@ resources:
   - ../base/utilities/bitwarden
   - ../base/utilities/uptimekuma
 
-    #  - ../base/homeautomation/nodered
+  - ../base/homeautomation/nodered
 patchesStrategicMerge:
   - podinfo-values.yaml
   - mosquitto-values.yaml
@@ -33,3 +33,4 @@ patchesStrategicMerge:
   - prometheus-stack.yaml
   - grafana-values.yaml
   - uptimekuma-values.yaml
+  - nodered-values.yaml
