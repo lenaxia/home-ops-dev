@@ -4,6 +4,7 @@ resources:
   #  - ./kube-prometheus-stack
  - ./monitoring-config
  - ./certificates
+ - ./serviceaccounts
 
 #patchesStrategicMerge:
 #  - prometheus-op-values.yaml
