@@ -3,4 +3,5 @@ kind: Kustomization
 namespace: iot
 resources:
   - config-pvc.yaml
+  - configMap-pvc.yaml
   - helm-release.yaml
