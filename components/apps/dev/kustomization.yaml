@@ -16,7 +16,7 @@ resources:
   - ../base/media/bookstack
     #  - ../base/media/metube
 
-    #  - ../base/iot/mosquitto
+  - ../base/iot/mosquitto
 
   - ../base/utilities/bitwarden
   - ../base/utilities/uptimekuma
@@ -24,7 +24,7 @@ resources:
   - ../base/homeautomation/nodered
 patchesStrategicMerge:
   - podinfo-values.yaml
-    #  - mosquitto-values.yaml
+  - mosquitto-values.yaml
   - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
