@@ -1,12 +1,29 @@
 apiVersion: 1
-kind: ConfigMap
+kind: Secret
+type: Opaque
 metadata:
-  name: mosquitto-configMap
-  namespace: iot
+    name: mosquitto-configMap
+    namespace: iot
 data:
-  mosquitto.conf: |
-    listener 1883
-    allow_anonymous false
-    password_file password.conf
-  password.conf: |
-    sensor:$6$7lJwpILpcEkCLu8J$f1eI1UGbEuGkzsxlNBlF5Q/pZx37tjWOGLxqXzH97MgIiqh+3SMYKp5wEtxRNJ0CyG8CfGQov7e7UjF7c0sahw==
+    mosquitto.conf: ENC[AES256_GCM,data:EfROLgtYF9ovqSDGnH5vATO78RgWMjpeKi1rDtHqH4nyTBUeECO+Fsec/TTabDXzfi5YOwqNFmTPU4Ga+VADLDM=,iv:pQldcEEB7NrXdIzR1rAG/uSPyk8EE/GxEY3NuVoSN9U=,tag:hueem/ffUjzcg5lRNBAA5g==,type:str]
+    mqtt_password: ENC[AES256_GCM,data:kBTVxd5QCP3ihW5YsZodE0ieTjXl/PkgQGrXeSmu8kpE2jj4OSASekrovqN60lOG0yzUIXUHZPV0NeePhevm9KvLst8gNSgAsjsHj4vaFSx1OCJsHrbgGIjRinIvujB5dG+cM6lXfPA4elEH6+vfrYHF2y0=,iv:uF6cONhX5BEtTwHhn+VfDj0zccs3dfjiYnAwrBp+Y0Q=,tag:nzUZc68ECs9vCbHcoX8Fcw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1rr569v9jm7ck70q4wpnspfhdvt4y5m6s604tx0ygs0a65qkt7g4qdszk6k
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1bTR3WmRQUXM5RGFtY0VC
+            OGNSNHhCSEFQd1VNcHA5eEdxTEdnb0Q2c1VFCnMzRUFrUjRtNmY0WWt3bERRaFBi
+            NE9vekU0bHloUXlvck91ZU5uSnh3dEkKLS0tIHVCa291WFVmV0R1amE2S01KM1V2
+            Y3ZrS01YVjlud01OTFIyNnF3cTlvMncKidxZxu3J6Ghmh54uLbaCWN3fJtC1/z3O
+            j3s4gi4EN46GDptNCXBUf4QjHX30PVU/NhZg3oVrlY2mdeowNyDczw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-08-04T08:08:36Z"
+    mac: ENC[AES256_GCM,data:uR5Eq8k862P7FgNJdFn6xiSuPDdhsoqXRivew75tLZ8J6VZQ9H5ecEtGi/B79YDmajO5w7fJShV9VDTLrvprkXy1XP4ZIWTKx4C8UcwGznqnm1v0zxG0cGD/WMql62gc5eFiP/3zODf/2NWx6rvOBKyN8STR/i9/vXdMQGvQZ74=,iv:y9gcaXwhaHs6R2VNXzDsh+Q0Vzv/xIX61qCDfBjRZhM=,tag:XAy12ksn0vfRdTpc1NY3nA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
