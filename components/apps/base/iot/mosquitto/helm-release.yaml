@@ -46,4 +46,4 @@ spec:
         type: custom
         volumeSpec:
           secret:
-            secretName: mosquitto-configMap
+            secretName: mosquitto-configmap
