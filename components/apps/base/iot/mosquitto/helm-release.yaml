@@ -41,9 +41,9 @@ spec:
       data:
         enabled: true
         existingClaim: mosquitto-config-volume
-          #configinc:
-          #  enabled: true
-          #  type: custom
-          #  volumeSpec:
-          #    secret:
-          #      secretName: mosquitto
+      configinc:
+        enabled: true
+          # type: custom
+          # volumeSpec:
+          #   secret:
+          #     secretName: mosquitto

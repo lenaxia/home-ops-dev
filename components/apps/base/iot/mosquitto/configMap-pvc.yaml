@@ -6,4 +6,7 @@ metadata:
 data:
   mosquitto.conf: |
     listener 1883
-    allow_anonymous true
+    allow_anonymous false
+    password_file password.conf
+  password.conf: |
+    sensor:$6$7lJwpILpcEkCLu8J$f1eI1UGbEuGkzsxlNBlF5Q/pZx37tjWOGLxqXzH97MgIiqh+3SMYKp5wEtxRNJ0CyG8CfGQov7e7UjF7c0sahw==
