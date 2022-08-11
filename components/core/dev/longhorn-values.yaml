@@ -7,6 +7,12 @@ spec:
   chart:
     spec:
       version: "1.3.0"
+  valuesFrom: 
+    - kind: Secret
+      targetPath: defaultSettings.backupTarget
+      name: longhorn-minio-secret
+      valuesKey: AWS_ENDPOINTS
+      optional: false
   values:
     service:
       ui:
@@ -36,10 +42,4 @@ spec:
             secretName: "longhorn-dev-domain-tls-staging"
               
     defaultSettings:
-      - backupTargetCredentialSecret: longhorn-minio-secret
-      - name: backupTarget
-        valueFrom:
-          secretKeyRef:
-            name: longhorn-minio-secret
-            key: AWS_ENDPOINTS
-
+      backupTargetCredentialSecret: longhorn-minio-secret
