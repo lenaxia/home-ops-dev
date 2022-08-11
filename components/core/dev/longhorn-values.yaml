@@ -34,3 +34,6 @@ spec:
           - hosts:
               - "longhorn.${SECRET_DEV_DOMAIN}"
             secretName: "longhorn-dev-domain-tls-staging"
+              
+    defaultSettings:
+      backupTargetCredentialSecret: longhorn-minio-secret
