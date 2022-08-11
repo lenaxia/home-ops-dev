@@ -8,7 +8,7 @@ resources:
     #  - ../base/monitoring/grafana
     #  - ../base/monitoring/loki
 
-  - ../base/dashboards/hajimari
+    #  - ../base/dashboards/hajimari
 
   - ../base/media/sonarr
   - ../base/media/radarr
@@ -28,7 +28,7 @@ patchesStrategicMerge:
   - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
-  - hajimari-values.yaml
+    #  - hajimari-values.yaml
   - bitwarden-values.yaml
     #  - prometheus-stack.yaml
     #  - grafana-values.yaml
