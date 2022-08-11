@@ -36,9 +36,10 @@ spec:
             secretName: "longhorn-dev-domain-tls-staging"
               
     defaultSettings:
-      backupTargetCredentialSecret: longhorn-minio-secret
-      name: backupTarget
-        secretKeyRef:
-          name: longhorn-minio-secret
-          key: AWS_ENDPOINTS
+      - backupTargetCredentialSecret: longhorn-minio-secret
+      - name: backupTarget
+        valueFrom:
+          secretKeyRef:
+            name: longhorn-minio-secret
+            key: AWS_ENDPOINTS
 
