@@ -37,3 +37,8 @@ spec:
               
     defaultSettings:
       backupTargetCredentialSecret: longhorn-minio-secret
+      name: backupTarget
+        secretKeyRef:
+          name: longhorn-minio-secret
+          key: AWS_ENDPOINTS
+
