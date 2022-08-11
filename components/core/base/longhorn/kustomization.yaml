@@ -7,4 +7,4 @@ resources:
   - helm-release.yaml
     #  - patch-local-path.yaml
   - backup-secret.sops.yaml
-  - recurring-jobs.yaml
+    #  - recurring-jobs.yaml
