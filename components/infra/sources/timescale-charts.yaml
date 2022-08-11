@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: truecharts
+  name: timescale-charts
   namespace: flux-system
 spec:
   interval: 30m
-  url: https://library-charts.truecharts.org/
+  url: https://charts.timescale.com/
   timeout: 3m

@@ -17,4 +17,4 @@ resources:
   - jetstack-charts.yaml
   - node-feature-discovery-charts.yaml
   - fission-charts.yaml
-  - truecharts.yaml
+  - timescale-charts.yaml

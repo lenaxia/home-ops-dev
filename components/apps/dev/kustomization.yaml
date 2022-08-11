@@ -4,9 +4,9 @@ resources:
   - ../base/diagnostics/podinfo
     #  - ../base/diagnostics/echo-server
 
-  - ../base/monitoring/prometheus-stack
-  - ../base/monitoring/grafana
-  - ../base/monitoring/loki
+    #  - ../base/monitoring/prometheus-stack
+    #  - ../base/monitoring/grafana
+    #  - ../base/monitoring/loki
 
   - ../base/dashboards/hajimari
 
@@ -30,7 +30,7 @@ patchesStrategicMerge:
   - nzbget-values.yaml
   - hajimari-values.yaml
   - bitwarden-values.yaml
-  - prometheus-stack.yaml
-  - grafana-values.yaml
+    #  - prometheus-stack.yaml
+    #  - grafana-values.yaml
   - uptimekuma-values.yaml
   - nodered-values.yaml
