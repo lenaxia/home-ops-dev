@@ -60,20 +60,10 @@ spec:
         type: ClusterIP
     
     persistence:
-      volconfig:
-        enabled: true
-        existingClaim: "bookstack-config-volume"
       config:
         enabled: true
-        type: configMap 
-        name: bookstack-config 
-        mountPath: /config/www
-      config2:
-        enabled: true
-        type: configMap 
-        name: bookstack-testfile
-        mountPath: /config/www
-    
+        existingClaim: "bookstack-config-volume"
+
     # -- Enable and configure mariadb database subchart under this key.
     #    For more options see [mariadb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mariadb).
     # @default -- See values.yaml
