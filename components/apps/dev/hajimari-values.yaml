@@ -23,5 +23,5 @@ spec:
                 pathType: Prefix
         tls:
           - hosts:
-            - "hajimari.${SECRET_DEV_DOMAIN}"
+              - "hajimari.${SECRET_DEV_DOMAIN}"
             secretName: "devdomain-hajimari-tls"
