@@ -56,7 +56,7 @@ spec:
       LDAP_SERVER: 192.168.0.120:389
       # If using LDAP over SSL you should also define the protocol:
       # LDAP_SERVER=ldaps://example.com:636
-      LDAP_DUMP_USER_DETAILS=true
+      LDAP_DUMP_USER_DETAILS: true
 
       # The base DN from where users will be searched within
       LDAP_BASE_DN: "cn=users,dc=kao,dc=family"
