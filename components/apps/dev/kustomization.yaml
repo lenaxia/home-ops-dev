@@ -11,7 +11,7 @@ resources:
 
   - ../base/dashboards/hajimari
 
-    #  - ../base/media/sonarr
+  - ../base/media/sonarr
   - ../base/media/radarr
   - ../base/media/nzbget
   - ../base/media/bookstack
@@ -26,7 +26,7 @@ resources:
 patchesStrategicMerge:
   - podinfo-values.yaml
   - mosquitto-values.yaml
-    #  - sonarr-values.yaml
+  - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
   - hajimari-values.yaml
