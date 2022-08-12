@@ -42,7 +42,7 @@ spec:
     # -- environment variables.
     # @default -- See below
     # LDAP bookstack tutorial: https://www.youtube.com/watch?v=50qw_LkhwoM
-    env:
+    #    env:
       # -- Set the container timezone
       #      TZ: "${TIMEZONE}"
         #      APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
