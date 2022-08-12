@@ -44,7 +44,7 @@ spec:
     env:
       # -- Set the container timezone
       TZ: "${TIMEZONE}"
-      APP_DEBUG: "true"
+      APP_DEBUG: True
       APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
       DB_HOST: 192.168.0.125
       DB_USER: bookstack
