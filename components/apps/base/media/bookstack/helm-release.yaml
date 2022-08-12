@@ -50,6 +50,8 @@ spec:
       DB_USER: bookstack
       DB_PASS: "e-zJMqKoe!9Sj/nG"
       DB_DATABASE: bookstack
+
+      # LDAP bookstack tutorial: https://www.youtube.com/watch?v=50qw_LkhwoM
       AUTH_METHOD: ldap
       LDAP_SERVER: 192.168.0.120:389
       # If using LDAP over SSL you should also define the protocol:
@@ -66,7 +68,7 @@ spec:
       # If you're setting this option via other means, such as within a docker-compose.yml,
       # you may need escape the $, often using $$ or \$ instead.
       # Note: This option cannot be used with the docker-compose.yml `env_file` option.
-      LDAP_USER_FILTER: (&(uid=${user})
+      LDAP_USER_FILTER: "(&(uid=${user})"
 
       # Set the property to use as a unique identifier for this user.
       # Stored and used to match LDAP users with existing BookStack users.
