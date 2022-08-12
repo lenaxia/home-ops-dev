@@ -42,14 +42,14 @@ spec:
     # -- environment variables.
     # @default -- See below
     # LDAP bookstack tutorial: https://www.youtube.com/watch?v=50qw_LkhwoM
-    #    env:
+    env:
       # -- Set the container timezone
-      #      TZ: "${TIMEZONE}"
-        #      APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
-        #      DB_HOST: 192.168.0.125
-        #      DB_USER: bookstack
-        #      DB_PASS: "e-zJMqKoe!9Sj/nG"
-        #      DB_DATABASE: bookstack
+      TZ: "${TIMEZONE}"
+      APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
+      DB_HOST: 192.168.0.125
+      DB_USER: bookstack
+      DB_PASS: "e-zJMqKoe!9Sj/nG"
+      DB_DATABASE: bookstack
         #      AUTH_METHOD: ldap
         #      LDAP_SERVER: 192.168.0.120:389
         #      LDAP_DUMP_USER_DETAILS: true
