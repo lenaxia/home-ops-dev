@@ -56,6 +56,7 @@ spec:
       LDAP_SERVER: 192.168.0.120:389
       # If using LDAP over SSL you should also define the protocol:
       # LDAP_SERVER=ldaps://example.com:636
+      LDAP_DUMP_USER_DETAILS=true
 
       # The base DN from where users will be searched within
       LDAP_BASE_DN: "cn=users,dc=kao,dc=family"
@@ -68,7 +69,7 @@ spec:
       # If you're setting this option via other means, such as within a docker-compose.yml,
       # you may need escape the $, often using $$ or \$ instead.
       # Note: This option cannot be used with the docker-compose.yml `env_file` option.
-      LDAP_USER_FILTER: "(&(uid=${user})"
+      LDAP_USER_FILTER: (&(uid=${user})
 
       # Set the property to use as a unique identifier for this user.
       # Stored and used to match LDAP users with existing BookStack users.
