@@ -63,6 +63,11 @@ spec:
       config:
         enabled: true
         existingClaim: "bookstack-config-volume"
+      envconfig:
+        enabled: true
+        type: configMap
+        name: bookstack-config
+        mountPath: /test123
 
     # -- Enable and configure mariadb database subchart under this key.
     #    For more options see [mariadb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mariadb).
