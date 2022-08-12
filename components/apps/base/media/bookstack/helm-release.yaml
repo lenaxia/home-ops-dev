@@ -66,7 +66,7 @@ spec:
       # If you're setting this option via other means, such as within a docker-compose.yml,
       # you may need escape the $, often using $$ or \$ instead.
       # Note: This option cannot be used with the docker-compose.yml `env_file` option.
-      LDAP_USER_FILTER: (&(uid=${user})(objectClass=inetOrgPerson))
+      LDAP_USER_FILTER: (&(uid=${user})
 
       # Set the property to use as a unique identifier for this user.
       # Stored and used to match LDAP users with existing BookStack users.
