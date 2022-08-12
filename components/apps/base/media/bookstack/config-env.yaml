@@ -11,6 +11,8 @@ data:
     # Run `php artisan key:generate` to generate a valid key.
     APP_KEY=base64:/DIiIXtTNWH2Qc5vtVSxC7HQ7zOwyGHEAvQvzS1mPGo=
 
+    APP_DEBUG=true
+
     # Application URL
     # This must be the root URL that you want to host BookStack on.
     # All URLs in BookStack will be generated using this value
