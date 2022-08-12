@@ -5,7 +5,7 @@ metadata:
   name: bookstack-config
   namespace: media
 data:
-  testfile: |
+  .env: |
     # Application key
     # Used for encryption where needed.
     # Run `php artisan key:generate` to generate a valid key.
