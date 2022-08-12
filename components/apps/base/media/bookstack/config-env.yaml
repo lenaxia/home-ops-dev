@@ -82,11 +82,11 @@ data:
     # If you need to allow untrusted LDAPS certificates, add the below and uncomment (remove the #)
     # Only set this option if debugging or you're absolutely sure it's required for your setup.
     # If using php-fpm, you may want to restart it after changing this option to avoid instability.
-    #LDAP_TLS_INSECURE=true
+    LDAP_TLS_INSECURE=true
     
     # If you need to debug the details coming from your LDAP server, add the below and uncomment (remove the #)
     # Only set this option if debugging since it will block logins and potentially show private details.
-    #LDAP_DUMP_USER_DETAILS=true
+    LDAP_DUMP_USER_DETAILS=true
     
     # Mail system to use
     # Can be 'smtp' or 'sendmail'
