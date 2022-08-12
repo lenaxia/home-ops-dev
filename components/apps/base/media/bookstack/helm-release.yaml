@@ -44,12 +44,41 @@ spec:
     env:
       # -- Set the container timezone
       TZ: "${TIMEZONE}"
+      APP_DEBUG: true
       APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
       DB_HOST: 192.168.0.125
       DB_USER: bookstack
       DB_PASS: "e-zJMqKoe!9Sj/nG"
       DB_DATABASE: bookstack
-    
+      AUTH_METHOD: ldap
+      LDAP_SERVER: 192.168.0.120:389
+      # If using LDAP over SSL you should also define the protocol:
+      # LDAP_SERVER=ldaps://example.com:636
+
+      # The base DN from where users will be searched within
+      LDAP_BASE_DN: "cn=users,dc=kao,dc=family"
+
+      LDAP_DN: "uid=autheliauser,cn=users,dc=kao,dc=family"
+      LDAP_PASS: "RjN8GK92Wija7j"
+
+      # A filter to use when searching for users
+      # The user-provided user-name used to replace any occurrences of '${user}'
+      # If you're setting this option via other means, such as within a docker-compose.yml,
+      # you may need escape the $, often using $$ or \$ instead.
+      # Note: This option cannot be used with the docker-compose.yml `env_file` option.
+      LDAP_USER_FILTER: (&(uid=${user})(objectClass=inetOrgPerson))
+
+      # Set the property to use as a unique identifier for this user.
+      # Stored and used to match LDAP users with existing BookStack users.
+      # Prefixing the value with 'BIN;' will assume the LDAP service provides the attribute value as
+      # binary data and BookStack will convert the value to a hexidecimal representation.
+      # Defaults to 'uid'.
+      LDAP_ID_ATTRIBUTE: uid
+
+      # Set the property to use for a user's display name. Defaults to 'cn'
+      LDAP_DISPLAY_NAME_ATTRIBUTE: cn
+
+
     # -- Configures service settings for the chart.
     # @default -- See values.yaml
     service:
@@ -63,11 +92,11 @@ spec:
       config:
         enabled: true
         existingClaim: "bookstack-config-volume"
-      envconfig:
-        enabled: true
-        type: configMap
-        name: bookstack-config
-        mountPath: /test123
+          #envconfig:
+          #  enabled: true
+          #  type: configMap
+          #  name: bookstack-config
+          #  mountPath: /test123
 
     # -- Enable and configure mariadb database subchart under this key.
     #    For more options see [mariadb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mariadb).
