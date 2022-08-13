@@ -3,6 +3,6 @@ kind: Kustomization
 metadata:
   namespace: databases
 resources:
-  - config-pvc.yaml
+  #  - config-pvc.yaml
   - helm-release.yaml
   - minio-secret.sops.yaml
