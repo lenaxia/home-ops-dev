@@ -13,3 +13,4 @@ resources:
   - monitoring.yaml
   - homeautomation.yaml
   - utilities.yaml
+  - velero.yaml
