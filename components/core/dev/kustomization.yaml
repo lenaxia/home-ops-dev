@@ -6,6 +6,7 @@ resources:
   - ../base/mariadb
   - ../base/networking/metallb
   - ../base/networking/traefik
+  - ../base/storage/velero
 patchesStrategicMerge:
   - metallb-values.yaml
   - traefik-values.yaml
