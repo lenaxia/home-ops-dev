@@ -16,10 +16,12 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
-    labels:
+    podLabels:
       app: nzbget
     ingress:
       main:
+        labels:
+          app: nzbget
         enabled: true
         ingressClassName: "traefik"
         annotations:
@@ -52,6 +54,8 @@ spec:
     # @default -- See values.yaml
     service:
       main:
+        labels:
+          app: nzbget
         ports:
           http:
             port: 6789

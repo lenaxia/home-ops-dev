@@ -16,10 +16,12 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
-    labels:
+    podLabels:
       app: bookstack
     ingress:
       main:
+        labels:
+          app: bookstack
         enabled: true
         ingressClassName: "traefik"
         annotations:
@@ -69,6 +71,8 @@ spec:
     # @default -- See values.yaml
     service:
       main:
+        labels:
+          app: bookstack
         ports:
           http:
             port: 80
