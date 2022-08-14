@@ -5,7 +5,6 @@ metadata:
   namespace: media
   labels:
     app: nzbget
-    type: service
 spec:
   releaseName: nzbget
   chart:
@@ -17,6 +16,8 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
+    labels:
+      app: nzbget
     ingress:
       main:
         enabled: true

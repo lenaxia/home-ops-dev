@@ -5,7 +5,6 @@ metadata:
   namespace: media
   label:
     app: metube
-    label: service
 spec:
   releaseName: metube
   chart:
@@ -17,6 +16,8 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
+    labels:
+      app: metube
     ingress:
       main:
         enabled: true
