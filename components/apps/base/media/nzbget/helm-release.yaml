@@ -5,7 +5,7 @@ metadata:
   namespace: media
   labels:
     app: nzbget
-    type: serviceZVl5NndvUW5aSjd1SnlUU3NxRDhWYQ==
+    type: service
 spec:
   releaseName: nzbget
   chart:
