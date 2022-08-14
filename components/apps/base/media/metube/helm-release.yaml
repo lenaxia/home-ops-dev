@@ -20,8 +20,6 @@ spec:
       app: metube
     ingress:
       main:
-        labels:
-          app: metube
         enabled: true
         ingressClassName: "traefik"
         annotations:
@@ -50,8 +48,6 @@ spec:
     
     service:
       main:
-        labels:
-          app: metube
         ports:
           main:
             port: 8081
