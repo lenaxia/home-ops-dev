@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: bookstack
   namespace: media
+  labels:
+    app: bookstack
+    type: service
 spec:
   releaseName: bookstack
   chart:

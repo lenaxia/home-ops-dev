@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: metube
   namespace: media
+  label:
+    app: metube
+    label: service
 spec:
   releaseName: metube
   chart:

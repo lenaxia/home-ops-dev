@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: nzbget
   namespace: media
+  labels:
+    app: nzbget
+    type: serviceZVl5NndvUW5aSjd1SnlUU3NxRDhWYQ==
 spec:
   releaseName: nzbget
   chart:
