@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../base/longhorn
+  - ../base/storage/longhorn
+  - ../base/storage/velero
   - ../base/cert-manager
   - ../base/mariadb
   - ../base/networking/metallb
   - ../base/networking/traefik
-  - ../base/storage/velero
 patchesStrategicMerge:
   - metallb-values.yaml
   - traefik-values.yaml
