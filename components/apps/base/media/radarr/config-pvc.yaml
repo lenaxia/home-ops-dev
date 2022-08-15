@@ -2,6 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
     name: radarr-config-volume
+    podLabels:
+      app: radarr
 spec:
     accessModes:
         - ReadWriteMany

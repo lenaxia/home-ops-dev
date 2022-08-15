@@ -14,6 +14,8 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
+    podLabels:
+      app: nzbhydra
     ingress:
       main:
         enabled: true
