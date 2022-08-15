@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
     name: nzbhydra2-config-volume
-    podLabels:
+    labels:
       app: nzbhydra
 spec:
     accessModes:

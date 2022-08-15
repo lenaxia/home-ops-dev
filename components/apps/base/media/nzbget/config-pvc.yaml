@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
     name: nzbget-config-volume
-    podLabels:
+    labels:
       app: nzbget
 spec:
     accessModes:
