@@ -15,9 +15,9 @@ resources:
   - ../base/dashboards/hajimari
 
   # Media Namespace
-  #  - ../base/media/sonarr
-  #  - ../base/media/radarr
-  #  - ../base/media/nzbget
+  - ../base/media/sonarr
+  - ../base/media/radarr
+  - ../base/media/nzbget
   - ../base/media/bookstack
     #  - ../base/media/metube
 
@@ -35,9 +35,9 @@ patchesStrategicMerge:
   - mosquitto-values.yaml
 
   # Media Namespace
-  #  - sonarr-values.yaml
-  #  - radarr-values.yaml
-  #  - nzbget-values.yaml
+  - sonarr-values.yaml
+  - radarr-values.yaml
+  - nzbget-values.yaml
 
   # Default Namespace
   - hajimari-values.yaml
