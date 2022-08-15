@@ -1,38 +1,55 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  # Utilities Namespace
   - ../base/diagnostics/podinfo
   - ../base/diagnostics/echo-server
 
+  # Monitoring Namespace
   - ../base/monitoring/prometheus-stack
   - ../base/monitoring/grafana
   - ../base/monitoring/loki
     #  - ../base/monitoring/tobs
 
+  # Default Namespace
   - ../base/dashboards/hajimari
 
-  - ../base/media/sonarr
-  - ../base/media/radarr
-  - ../base/media/nzbget
+  # Media Namespace
+  #  - ../base/media/sonarr
+  #  - ../base/media/radarr
+  #  - ../base/media/nzbget
   - ../base/media/bookstack
     #  - ../base/media/metube
 
+  # IOT Namespace
   - ../base/iot/mosquitto
 
+  # Utilities Namespace
   - ../base/utilities/bitwarden
   - ../base/utilities/uptimekuma
 
+  # Homeautomation Namespace
   - ../base/homeautomation/nodered
 patchesStrategicMerge:
   - podinfo-values.yaml
   - mosquitto-values.yaml
-  - sonarr-values.yaml
-  - radarr-values.yaml
-  - nzbget-values.yaml
+
+  # Media Namespace
+  #  - sonarr-values.yaml
+  #  - radarr-values.yaml
+  #  - nzbget-values.yaml
+
+  # Default Namespace
   - hajimari-values.yaml
   - bitwarden-values.yaml
+
+  # Monitoring Namespace
   - prometheus-stack.yaml
   - grafana-values.yaml
-  - uptimekuma-values.yaml
-  - nodered-values.yaml
     #  - tobs-values.yaml
+
+  # Utilities Namespace
+  - uptimekuma-values.yaml
+
+  # Home Automation Namespace
+  - nodered-values.yaml
