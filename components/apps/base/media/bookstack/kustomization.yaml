@@ -5,3 +5,4 @@ resources:
   - config-pvc.yaml
   - config-env.yaml
   - helm-release.yaml
+  - patch-deployment.yaml

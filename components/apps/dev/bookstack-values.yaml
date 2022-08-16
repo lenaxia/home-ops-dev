@@ -1,32 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: bookstack
   namespace: media
 spec:
-  #  selector:
-  #    matchLabels:
-  #      app.kubernetes.io/instance: bookstack
-  #      app.kubernetes.io/name: bookstack
-  template:
-    #    metadata:
-    #      labels:
-    #        app.kubernetes.io/instance: bookstack
-    #        app.kubernetes.io/name: bookstack
-    spec:
-      containers:
-        - name: bookstack
-          image: ghcr.io/linuxserver/bookstack
-          lifecycle: 
-          postStart:
-            exec:
-              command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
-        #        volumeMounts:
-        #        - name: bookstack-env
-        #          mountPath: /config/www
-        #      volumes:
-        #      - name: bookstack-env
-        #        projected:
-        #          sources:
-        #          - configMap:
-        #              name: bookstack-config
+  containers:
+  - name: bookstack
+    image: ghcr.io/linuxserver/bookstack
+    lifecycle:
+      postStart:
+        exec:
+          command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
