@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: bookstack
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: bookstack
+  #  selector:
+  #    matchLabels:
+  #      app.kubernetes.io/instance: bookstack
   template:
     spec:
       containers:
