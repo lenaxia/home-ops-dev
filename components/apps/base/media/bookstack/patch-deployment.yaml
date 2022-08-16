@@ -22,3 +22,7 @@ spec:
           postStart:
             exec:
               command: ["/bin/sh", "-c", "mv /backup/.env /config/www && echo config move done > /config/www/config.log"] 
+        labels:
+          app: bookstack
+          app.kubernetes.io/instance: bookstack
+          app.kubernetes.io/name: bookstack
