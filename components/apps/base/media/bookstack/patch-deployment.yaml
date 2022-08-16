@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: bookstack
   namespace: media
+  annotations:
+    kustomize.toolkit.fluxcd.io/ssa: merge
 spec:
   #  selector:
   #    matchLabels:
