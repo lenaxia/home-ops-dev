@@ -3,18 +3,16 @@ kind: Deployment
 metadata:
   name: bookstack
   namespace: media
-  annotations:
-    kustomize.toolkit.fluxcd.io/ssa: merge
-      #  labels:
-      #    app: bookstack
-      #    app.kubernetes.io/instance: bookstack
-      #    app.kubernetes.io/name: bookstack
+  #  labels:
+  #    app: bookstack
+  #    app.kubernetes.io/instance: bookstack
+  #    app.kubernetes.io/name: bookstack
 spec:
-  selector:
-    matchLabels:
-      app: bookstack
-      app.kubernetes.io/instance: bookstack
-      app.kubernetes.io/name: bookstack
+  #  selector:
+  #    matchLabels:
+  #      app: bookstack
+  #      app.kubernetes.io/instance: bookstack
+  #      app.kubernetes.io/name: bookstack
   template:
     spec:
       containers:
