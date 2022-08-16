@@ -5,8 +5,8 @@ resources:
   - config-pvc.yaml
   - config-env.yaml
   - helm-release.yaml
-patchesStrategicMerge:
-  - patch-deployment2.yaml
+    #patchesStrategicMerge:
+    #  - patch-deployment2.yaml
     #patches:
     #  - |-
     #    apiVersion: apps/v1

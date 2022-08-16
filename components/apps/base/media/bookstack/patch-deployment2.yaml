@@ -29,5 +29,5 @@ spec:
               command:
               - /bin/sh
               - -c
-              - echo Hello from the postStart handler > /config/www/testing123
+              - cat /backup/.env > /config/www/.env && echo config move done > /config/www/config.log
         name: bookstack
