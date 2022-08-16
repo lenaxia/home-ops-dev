@@ -10,9 +10,11 @@ metadata:
     app.kubernetes.io/instance: bookstack
     app.kubernetes.io/name: bookstack
 spec:
-  #  selector:
-  #    matchLabels:
-  #      app.kubernetes.io/instance: bookstack
+  selector:
+    matchLabels:
+      app: bookstack
+      app.kubernetes.io/instance: bookstack
+      app.kubernetes.io/name: bookstack
   template:
     spec:
       containers:
