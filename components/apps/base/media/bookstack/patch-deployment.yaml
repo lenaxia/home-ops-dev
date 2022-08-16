@@ -5,6 +5,10 @@ metadata:
   namespace: media
   annotations:
     kustomize.toolkit.fluxcd.io/ssa: merge
+  labels:
+    app: bookstack
+    app.kubernetes.io/instance: bookstack
+    app.kubernetes.io/name: bookstack
 spec:
   #  selector:
   #    matchLabels:
