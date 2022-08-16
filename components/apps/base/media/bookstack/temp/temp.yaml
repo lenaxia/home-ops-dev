@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: bookstack
+  template:
+    spec:
+      containers:
+      - name: bookstack
+        command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"] 

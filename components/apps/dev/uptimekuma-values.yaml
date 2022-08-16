@@ -8,10 +8,8 @@ spec:
     spec:
       version: "1.4.0"
   values:
-
     image:
       tag: 1.17.1
-
     ingress:
       main:
         enabled: true

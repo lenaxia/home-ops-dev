@@ -15,12 +15,17 @@ spec:
         app.kubernetes.io/name: bookstack
     spec:
       containers:
-        volumeMounts:
-        - name: bookstack-env
-          mountPath: /config/www
-      volumes:
-      - name: bookstack-env
-        projected:
-          sources:
-          - configMap:
-              name: bookstack-config
+        - name: bookstack
+          lifecycle: 
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+        #        volumeMounts:
+        #        - name: bookstack-env
+        #          mountPath: /config/www
+        #      volumes:
+        #      - name: bookstack-env
+        #        projected:
+        #          sources:
+        #          - configMap:
+        #              name: bookstack-config

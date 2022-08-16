@@ -54,16 +54,6 @@ spec:
       DB_USER: bookstack
       DB_PASS: "e-zJMqKoe!9Sj/nG"
       DB_DATABASE: bookstack
-        #      AUTH_METHOD: ldap
-        #      LDAP_SERVER: 192.168.0.120:389
-        #      LDAP_DUMP_USER_DETAILS: true
-        #      LDAP_BASE_DN: "cn=users,dc=kao,dc=family"
-        #      LDAP_DN: "uid=autheliauser,cn=users,dc=kao,dc=family"
-        #      LDAP_PASS: "RjN8GK92Wija7j"
-        #      LDAP_USER_FILTER: (&(uid=${user})
-        #      LDAP_ID_ATTRIBUTE: uid
-        #      LDAP_DISPLAY_NAME_ATTRIBUTE: cn
-
 
     # -- Configures service settings for the chart.
     # @default -- See values.yaml

@@ -35,6 +35,7 @@ patchesStrategicMerge:
   - mosquitto-values.yaml
 
   # Media Namespace
+  - bookstack-values.yaml
   - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
