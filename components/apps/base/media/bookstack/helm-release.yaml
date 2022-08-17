@@ -87,22 +87,22 @@ spec:
       primary:
         persistence:
           enabled: false
-  postRenderers:
-    # Instruct helm-controller to use built-in "kustomize" post renderer.
-    - kustomize:
-        # Array of inline strategic merge patch definitions as YAML object.
-        # Note, this is a YAML object and not a string, to avoid syntax
-        # indention errors.
-        patchesStrategicMerge:
-          - kind: Deployment
-            apiVersion: apps/v1
-            metadata:
-              name: bookstack
-            spec:
-              template:
-                spec:
-                  tolerations:
-                    - key: "workload-type"
-                      operator: "Equal"
-                      value: "cluster-services"
-                      effect: "NoSchedule"
+            #  postRenderers:
+            #    # Instruct helm-controller to use built-in "kustomize" post renderer.
+            #    - kustomize:
+            #        # Array of inline strategic merge patch definitions as YAML object.
+            #        # Note, this is a YAML object and not a string, to avoid syntax
+            #        # indention errors.
+            #        patchesStrategicMerge:
+            #          - kind: Deployment
+            #            apiVersion: apps/v1
+            #            metadata:
+            #              name: bookstack
+            #            spec:
+            #              template:
+            #                spec:
+            #                  tolerations:
+            #                    - key: "workload-type"
+            #                      operator: "Equal"
+            #                      value: "cluster-services"
+            #                      effect: "NoSchedule"
