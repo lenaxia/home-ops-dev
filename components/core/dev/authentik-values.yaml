@@ -21,7 +21,6 @@ spec:
             #        password: ""
       postgresql:
         enabled: true
-        postgresqlPassword: "FgAyH6m8ga"
         host: "${HOSHINORURI_ADDR}"
         user: authentik
         password: FgAyH6m8ga
@@ -31,7 +30,6 @@ spec:
           access_key: authentik-sfZkjR9
           secret_key: mMHKwbdG3XpbsBu
           bucket: authentik-i5rgd92
-          region: minio
           insecure_skip_verify: true
     ingress:
         enabled: true
