@@ -90,6 +90,8 @@ spec:
         persistence:
           enabled: true
           existingClaim: "bookstack-mariadb-config-volume"
+        service:
+          type: LoadBalancer
             #  postRenderers:
             #    # Instruct helm-controller to use built-in "kustomize" post renderer.
             #    - kustomize:
