@@ -7,11 +7,11 @@ resources:
   - ../base/mariadb
   - ../base/networking/metallb
   - ../base/networking/traefik
-    #- ../base/networking/authentik
+  - ../base/networking/authentik
 patchesStrategicMerge:
   - metallb-values.yaml
   - traefik-values.yaml
-    #- authentik-values.yaml
+  - authentik-values.yaml
   - longhorn-values.yaml
   - cert-manager-values.yaml
   - mariadb-values.yaml
