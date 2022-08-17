@@ -7,7 +7,7 @@ metadata:
     hajimari.io/icon: mdiPlayNetwork
     cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-basic-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: networking-middlewares-secure-headers@kubernetescrd
   labels:
   name: sonarr2
   namespace: media
@@ -19,7 +19,6 @@ spec:
       - backend:
           service:
             name: sonarr
-            namespace: media
             port:
               number: 8989
         path: /
