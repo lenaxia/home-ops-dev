@@ -17,7 +17,7 @@ spec:
       error_reporting:
           enabled: true
       redis:
-        host: "${SVC_REDIS_ADDR}:6379" 
+        host: "${SVC_REDIS_ADDR}" 
         password: ""
       postgresql:
         enabled: true
