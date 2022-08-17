@@ -30,3 +30,31 @@ spec:
               - "sonarr.${SECRET_DEV_DOMAIN}"
             secretName: "sonarr-devdomain-tls-staging"
 ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/icon: mdiPlayNetwork
+    cert-manager.io/cluster-issuer: ca-issuer
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-basic-auth@kubernetescrd
+  labels:
+  name: sonarr2
+  namespace: media
+spec:
+  rules:
+  - host: sonarr2.${SECRET_DEV_DOMAIN}
+    http:
+      paths:
+      - backend:
+          service:
+            name: sonarr
+            port:
+              number: 8989
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - sonarr.${SECRET_DEV_DOMAIN}
+    secretName: sonarr-devdomain-tls-staging
