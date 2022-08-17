@@ -1,19 +1,29 @@
 ---
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: traefik-dashboard
-  namespace: networking
+  annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/icon: mdiPlayNetwork
+    cert-manager.io/cluster-issuer: ca-issuer
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-basic-auth@kubernetescrd
+  labels:
+  name: sonarr2
+  namespace: media
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`traefik.${SECRET_DEV_DOMAIN}`)
-      kind: Rule
-      middlewares:
-        - name: middlewares-basic-auth
-          namespace: networking
-      services:
-        - name: api@internal
-          kind: TraefikService
----
+  rules:
+  - host: sonarr2.${SECRET_DEV_DOMAIN}
+    http:
+      paths:
+      - backend:
+          service:
+            name: sonarr
+            port:
+              number: 8989
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - sonarr.${SECRET_DEV_DOMAIN}
+    secretName: sonarr-devdomain-tls-staging
