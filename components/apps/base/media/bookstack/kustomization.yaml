@@ -6,7 +6,7 @@ resources:
   - config-env.yaml
   - helm-release.yaml
     #patchesStrategicMerge:
-  - patch-deployment.yaml
+    #  - patch-deployment.yaml
     #patches:
     #  - |-
     #    apiVersion: apps/v1
