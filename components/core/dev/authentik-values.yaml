@@ -48,7 +48,7 @@ spec:
         tls:
           - hosts:
               - "authentik.${SECRET_DEV_DOMAIN}"
-            secretName: "authentik-devdomain-tls-staging"
+            secretName: "authentik2-devdomain-tls-staging"
     
     postgresql:
       enabled: false 
