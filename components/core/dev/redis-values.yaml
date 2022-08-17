@@ -26,6 +26,7 @@ spec:
         existingClaim: redis-data-volume
 
       service:
+        type: LoadBalancer
         loadBalancerIP: "${SVC_REDIS_ADDR}"
         annotations: 
           metallb.universe.tf/address-pool: dev-infra
