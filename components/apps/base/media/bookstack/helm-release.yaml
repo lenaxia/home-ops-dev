@@ -63,7 +63,7 @@ spec:
         ports:
           http:
             port: 80
-        type: LoadBalancer
+        type: ClusterIP
     
     persistence:
       config:
