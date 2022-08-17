@@ -14,11 +14,15 @@ spec:
             storage: 2Gi
 ---
 apiVersion: v1
-kind: ConfigMap
+kind: PersistentVolumeClaim
 metadata:
-  name: bookstack-testfile
-  namespace: media
-data:
-  testfile: |
-    # Application key
-    testtest123
+    name: bookstack-mariadb-config-volume
+    labels:
+      app: bookstack
+spec:
+    accessModes:
+        - ReadWriteMany
+    storageClassName: longhorn
+    resources:
+        requests:
+            storage: 2Gi

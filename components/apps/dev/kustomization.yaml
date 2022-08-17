@@ -15,10 +15,10 @@ resources:
   - ../base/dashboards/hajimari
 
   # Media Namespace
-  #- ../base/media/sonarr
-  #- ../base/media/radarr
-  #- ../base/media/nzbget
-    #- ../base/media/bookstack
+  - ../base/media/sonarr
+  - ../base/media/radarr
+  - ../base/media/nzbget
+  - ../base/media/bookstack
     #  - ../base/media/metube
 
   # IOT Namespace
@@ -36,9 +36,9 @@ patchesStrategicMerge:
 
   # Media Namespace
   #- bookstack-values.yaml
-  #- sonarr-values.yaml
-  #- radarr-values.yaml
-  #- nzbget-values.yaml
+  - sonarr-values.yaml
+  - radarr-values.yaml
+  - nzbget-values.yaml
 
   # Default Namespace
   - hajimari-values.yaml
