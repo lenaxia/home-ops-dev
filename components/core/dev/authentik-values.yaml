@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      version: 2022.7.3
+  values:
+    image:
+      tag: 2022.7.3
+    authentik:
+      secret_key: "EAYEESah3DWkS8eGngfS2C6ny3M2afMQdyTtbuDTbmJ3dXDCUJ"
+      error_reporting:
+          enabled: true
+      redis:
+        host: "${HOSHINORURI_ADDR}:6379" 
+        password: ""
+      postgresql:
+        enabled: true
+        postgresqlPassword: "FgAyH6m8ga"
+        host: "${HOSHINORURI_ADDR}"
+        user: authentik
+        password: FgAyH6m8ga
+        port: 5432
+        s3_backup:
+          host: "http://${NAS_ADDR}:9000"
+          access_key: authentik-sfZkjR9
+          secret_key: mMHKwbdG3XpbsBu
+          bucket: authentik-i5rgd92
+          region: minio
+          insecure_skip_verify: true
+    ingress:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "ca-issuer"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: "authentik.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "sonarr.${SECRET_DEV_DOMAIN}"
+            secretName: "sonarr-devdomain-tls-staging"
+    
+    postgresql:
+      enabled: false 
+
+    redis:
+      enabled: false
+      host:
+      password:
+

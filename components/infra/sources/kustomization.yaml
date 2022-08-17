@@ -19,3 +19,4 @@ resources:
   - fission-charts.yaml
   - timescale-charts.yaml
   - vmware-tanzu-charts.yaml
+  - authentik-charts.yaml
