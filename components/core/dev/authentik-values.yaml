@@ -54,7 +54,5 @@ spec:
       enabled: false 
 
     redis:
-      enabled: false
-      host:
-      password:
+      enabled: true
 
