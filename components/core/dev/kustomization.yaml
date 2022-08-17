@@ -5,6 +5,7 @@ resources:
   - ../base/storage/velero
   - ../base/cert-manager
   - ../base/databases/mariadb
+  - ../base/databases/redis
   - ../base/networking/metallb
   - ../base/networking/traefik
     #- ../base/networking/authentik
@@ -15,4 +16,5 @@ patchesStrategicMerge:
   - longhorn-values.yaml
   - cert-manager-values.yaml
   - mariadb-values.yaml
+  - redis-values.yaml
  
