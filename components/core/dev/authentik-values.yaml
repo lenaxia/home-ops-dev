@@ -47,8 +47,8 @@ spec:
                 pathType: Prefix
         tls:
           - hosts:
-              - "sonarr.${SECRET_DEV_DOMAIN}"
-            secretName: "sonarr-devdomain-tls-staging"
+              - "authentik.${SECRET_DEV_DOMAIN}"
+            secretName: "authentik-devdomain-tls-staging"
     
     postgresql:
       enabled: false 
