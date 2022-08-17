@@ -16,9 +16,9 @@ spec:
       secret_key: "EAYEESah3DWkS8eGngfS2C6ny3M2afMQdyTtbuDTbmJ3dXDCUJ"
       error_reporting:
           enabled: true
-      redis:
-        host: "${HOSHINORURI_ADDR}:6379" 
-        password: ""
+            #      redis:
+            #        host: "${HOSHINORURI_ADDR}:6379" 
+            #        password: ""
       postgresql:
         enabled: true
         postgresqlPassword: "FgAyH6m8ga"
