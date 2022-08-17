@@ -1,20 +1,34 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  # Storage
   - ../base/storage/longhorn
   - ../base/storage/velero
+
+  # Networking
   - ../base/cert-manager
-  - ../base/databases/mariadb
-  - ../base/databases/redis
   - ../base/networking/metallb
+
+  # Security
   - ../base/networking/traefik
     #- ../base/networking/authentik
+
+  # Databases
+  - ../base/databases/mariadb
+  - ../base/databases/redis
 patchesStrategicMerge:
+  # Networking
   - metallb-values.yaml
+  - cert-manager-values.yaml
+
+  # Security
   - traefik-values.yaml
     #- authentik-values.yaml
+
+  # Storage
   - longhorn-values.yaml
-  - cert-manager-values.yaml
+
+  # Databases
   - mariadb-values.yaml
   - redis-values.yaml
  
