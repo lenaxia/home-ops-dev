@@ -52,7 +52,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: middlewares-bitwarden-stripPrefix
+  name: middlewares-bitwarden-strip-prefix
   namespace: networking
 spec:
   stripPrefix:
