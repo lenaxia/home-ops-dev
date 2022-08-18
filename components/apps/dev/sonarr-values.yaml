@@ -9,24 +9,24 @@ spec:
     spec:
       version: "16.3.0"
 
-  values:
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "mdiPlayNetwork"
-          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          cert-manager.io/cluster-issuer: "ca-issuer"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - host: "sonarr.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - "sonarr.${SECRET_DEV_DOMAIN}"
-            secretName: "sonarr-devdomain-tls-staging"
----
+    #  values:
+    #    ingress:
+    #      main:
+    #        enabled: true
+    #        ingressClassName: "traefik"
+    #        annotations:
+    #          hajimari.io/enable: "true"
+    #          hajimari.io/icon: "mdiPlayNetwork"
+    #          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    #          cert-manager.io/cluster-issuer: "ca-issuer"
+    #          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    #        hosts:
+    #          - host: "sonarr.${SECRET_DEV_DOMAIN}"
+    #            paths:
+    #              - path: /
+    #                pathType: Prefix
+    #        tls:
+    #          - hosts:
+    #              - "sonarr.${SECRET_DEV_DOMAIN}"
+    #            secretName: "sonarr-devdomain-tls-staging"
+    #---

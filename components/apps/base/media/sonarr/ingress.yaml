@@ -9,11 +9,11 @@ metadata:
     cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authentik@kubernetescrd
-  name: sonarr2
+  name: sonarr
   namespace: media
 spec:
   rules:
-  - host: sonarr2.${SECRET_DEV_DOMAIN}
+  - host: sonarr.${SECRET_DEV_DOMAIN}
     http:
       paths:
       - path: /
@@ -21,9 +21,9 @@ spec:
         backend:
           service:
             name: sonarr
-            port:
-              number: 8989
+#            port:
+#              number: 8989
   tls:
   - hosts:
-    - sonarr2.${SECRET_DEV_DOMAIN}
-    secretName: sonarr2-devdomain-tls-staging
+    - sonarr.${SECRET_DEV_DOMAIN}
+    secretName: sonarr-devdomain-tls-staging
