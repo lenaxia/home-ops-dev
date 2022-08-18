@@ -1,23 +1,34 @@
 ---
-#apiVersion: traefik.containo.us/v1alpha1
-#kind: Middleware
-#metadata:
-#  name: chain-no-auth-local
-#  namespace: networking
-#spec:
-#  chain:
-#    middlewares:
-#      - middlewares-rate-limit
-#---
-#apiVersion: traefik.containo.us/v1alpha1
-#kind: Middleware
-#metadata:
-#  name: chain-basic-auth
-#  namespace: networking
-#spec:
-#  chain:
-#    middlewares:
-#      - middlewares-rate-limit
-#      - middlewares-secure-headers
-#      - middlewares-basic-auth
-#---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-no-auth-local
+  namespace: networking
+spec:
+  chain:
+    middlewares:
+      - name: middlewares-rate-limit
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-basic-auth
+  namespace: networking
+spec:
+  chain:
+    middlewares:
+      - name: middlewares-rate-limit
+      - name: middlewares-secure-headers
+      - name: middlewares-basic-auth
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-secure-headers
+  namespace: networking
+spec:
+  chain:
+    middlewares:
+      - name: middlewares-rate-limit
+      - name: middlewares-secure-headers
+---
