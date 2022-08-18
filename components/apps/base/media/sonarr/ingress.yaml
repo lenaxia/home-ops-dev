@@ -5,7 +5,8 @@ metadata:
   annotations:
     hajimari.io/enable: "true"
     hajimari.io/icon: mdiPlayNetwork
-    cert-manager.io/cluster-issuer: ca-issuer
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+      #cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authentik@kubernetescrd
   name: sonarr2
