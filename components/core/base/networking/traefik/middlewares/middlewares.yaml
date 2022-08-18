@@ -69,7 +69,7 @@ metadata:
   name: middlewares-authentik
   namespace: networking
 spec:
-  forwardauth:
+  forwardAuth:
     address: http://authentik.${SECRET_DEV_DOMAIN}:9000/outpost.goauthentik.io/auth/traefik
     trustForwardHeader: true
     authResponseHeaders:
