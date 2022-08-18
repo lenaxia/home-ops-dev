@@ -1,0 +1,29 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/icon: mdiPlayNetwork
+      #cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: ca-issuer
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authentik@kubernetescrd
+  name: radarr
+  namespace: media
+spec:
+  rules:
+  - host: radarr.${SECRET_DEV_DOMAIN}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: radarr
+            port:
+              number: 7878
+  tls:
+  - hosts:
+    - radarr.${SECRET_DEV_DOMAIN}
+    secretName: radarr-devdomain-tls-staging
