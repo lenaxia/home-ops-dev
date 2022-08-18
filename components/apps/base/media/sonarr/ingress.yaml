@@ -16,13 +16,20 @@ spec:
   - host: sonarr2.${SECRET_DEV_DOMAIN}
     http:
       paths:
-      - backend:
+      - path: /
+        pathType: Prefix
+        backend:
           service:
             name: sonarr
             port:
               number: 8989
-        path: /
+      - path: /outpost.goauthentik.io/
         pathType: Prefix
+        backend:
+          service:
+            name: authentik
+            port:
+              number: 80
   tls:
   - hosts:
     - sonarr2.${SECRET_DEV_DOMAIN}
