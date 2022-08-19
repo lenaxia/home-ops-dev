@@ -21,7 +21,7 @@ spec:
         password: ""
       postgresql:
         enabled: true
-        host: "${HOSHINORURI_ADDR}"
+        host: "${RURI_ADDR}"
         user: authentik
         password: FgAyH6m8ga
         port: 5432

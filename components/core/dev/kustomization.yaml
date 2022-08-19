@@ -12,6 +12,7 @@ resources:
   # Security
   - ../base/networking/traefik
   - ../base/networking/authentik
+  - ../base/networking/authelia
 
   # Databases
   - ../base/databases/mariadb

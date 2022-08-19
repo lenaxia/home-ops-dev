@@ -82,3 +82,18 @@ spec:
       - X-authentik-meta-app
       - X-authentik-meta-version
 ---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: middlewares-authelia
+  namespace: networking
+spec:
+  forwardAuth:
+    address: http://authelia:9091/api/verify?rd=https://authelia
+    trustForwardHeader: true
+    authResponseHeaders:
+        - Remote-User
+        - Remote-Name
+        - Remote-Email
+        - Remote-Groups
+---

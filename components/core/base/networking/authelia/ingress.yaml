@@ -8,32 +8,22 @@ metadata:
     cert-manager.io/cluster-issuer: ca-issuer
       #cert-manager.io/cluster-issuer: letsencrypt-staging
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      #    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authentik@kubernetescrd
-  name: authentik
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+  name: &appname authelia
   namespace: networking
 spec:
   rules:
-  - host: "authentik.${SECRET_DEV_DOMAIN}"
+  - host: "authelia.${SECRET_DEV_DOMAIN}"
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: authentik
-            port:
-              number: 80
-  - host: "*.${SECRET_DEV_DOMAIN}"
-    http:
-      paths:
-      - path: /outpost.goauthentik.io/
-        pathType: Prefix
-        backend:
-          service:
-            name: authentik
+            name: *appname
             port:
               number: 80
   tls:
   - hosts:
-    - authentik.${SECRET_DEV_DOMAIN}
-    secretName: authentik-devdomain-tls-staging
+    - authelia.${SECRET_DEV_DOMAIN}
+    secretName: authelia-devdomain-tls-staging
