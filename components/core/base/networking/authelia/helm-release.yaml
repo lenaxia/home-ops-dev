@@ -52,8 +52,8 @@ spec:
 
     pod:
       # Must be Deployment, DaemonSet, or StatefulSet.
-      kind: StatefulSet
-      replicas: 1
+      kind: Deployment
+      replicas: 3
     
     ##
     ## Authelia Config Map Generator
