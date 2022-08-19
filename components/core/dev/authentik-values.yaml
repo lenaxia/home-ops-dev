@@ -31,22 +31,6 @@ spec:
           secret_key: mMHKwbdG3XpbsBu
           bucket: authentik-i5rgd92
           insecure_skip_verify: true
-#    ingress:
-#        enabled: true
-#        ingressClassName: "traefik"
-#        annotations:
-#          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-#          cert-manager.io/cluster-issuer: "ca-issuer"
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#        hosts:
-#          - host: "authentik.${SECRET_DEV_DOMAIN}"
-#            paths:
-#              - path: /
-#                pathType: Prefix
-#        tls:
-#          - hosts:
-#              - "authentik.${SECRET_DEV_DOMAIN}"
-#            secretName: "authentik2-devdomain-tls-staging"
     
     postgresql:
       enabled: false 
