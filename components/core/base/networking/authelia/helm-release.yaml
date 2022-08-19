@@ -502,7 +502,8 @@ spec:
       session:
         key: SESSION_SECRET
       duo:
-        key: DUO_SECRET_KEY
+        #key: DUO_SECRET_KEY
+        value: eV6WY3i0md0rb0D1RWsngJ0xHlTqsu2DLUlMBFe8
       redis:
         key: REDIS_PASSWORD
       redisSentinel:
