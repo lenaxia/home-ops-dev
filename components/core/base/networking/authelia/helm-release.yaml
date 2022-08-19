@@ -28,7 +28,7 @@ spec:
   values:
     image:
       registry: ghcr.io
-      repository: ghcr.io/authelia/authelia
+      repository: authelia/authelia
       tag: 4.36.1
       pullPolicy: IfNotPresent
     deployment:
