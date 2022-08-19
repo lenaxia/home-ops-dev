@@ -236,7 +236,7 @@ spec:
           key: configuration.acl.yaml
           existingSecret: ""
     
-        default_policy: two_factor
+        default_policy: one_factor
     
         networks:
         - name: private
@@ -250,7 +250,7 @@ spec:
           policy: bypass
         - domain:
             - "dsm.${SECRET_DEV_DOMAIN}"
-          policy: two_factor
+          policy: one_factor
             #- domain: "*.${SECRET_DEV_DOMAIN}"
             #  policy: bypass
             #  networks:
@@ -262,7 +262,7 @@ spec:
         - domain:
             - "${SECRET_DEV_DOMAIN}"
             - "*.${SECRET_DEV_DOMAIN}"
-          policy: two_factor
+          policy: one_factor
           subject:
             - "group:administrators"
         # rules:
