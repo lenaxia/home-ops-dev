@@ -486,12 +486,12 @@ spec:
     ## install. It is recommended that you use something like sealed-secrets (https://github.com/bitnami-labs/sealed-secrets)
     ## and use the existingSecrets. All secrets can be stored in a single k8s secret if desired using the key option.
     ##
-    #secret:
-    #  existingSecret: *appname
-    #
-    #  annotations: {}
-    #  labels: {}
-    #
+    secret:
+      existingSecret: *appname
+    
+      annotations: {}
+      labels: {}
+    
     #  mountPath: /secrets
     #
     #  ## Secrets.
@@ -505,8 +505,9 @@ spec:
     #    key: STORAGE_ENCRYPTION_KEY
     #  session:
     #    key: SESSION_SECRET
-    #  duo:
-    #    key: DUO_SECRET_KEY
+      duo:
+        #key: DUO_SECRET_KEY
+        value: eV6WY3i0md0rb0D1RWsngJ0xHlTqsu2DLUlMBFe8
     #  redis:
     #    key: REDIS_PASSWORD
     #  redisSentinel:
