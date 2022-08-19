@@ -137,7 +137,7 @@ spec:
         enabled: true
         hostname: api-b68b8774.duosecurity.com
         integration_key: DI2IGENLJKFDHSKGWT1L
-        enable_self_enrollment: false
+        enable_self_enrollment: true
     
       ##
       ## Authentication Backend Provider Configuration
