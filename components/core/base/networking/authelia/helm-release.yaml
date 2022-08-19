@@ -351,11 +351,12 @@ spec:
         ##
         mysql:
           enabled: true
-          host: ${RURI_ADDR}
+          host: 192.168.0.125
           port: 3306
           database: authelia-k3s
           username: authelia-k3s
-          timeout: 5s
+          password: authelia
+          timeout: 10s
     
       ##
       ## Notification Provider
