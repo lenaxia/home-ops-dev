@@ -50,6 +50,12 @@ spec:
     ## This affects the ingress (partially sets the domain used) and configMap.
     ## Authelia must be served from the domain or a subdomain under it.
     domain: ${SECRET_DEV_DOMAIN}
+
+    pod:
+      # Must be Deployment, DaemonSet, or StatefulSet.
+      kind: Deployment
+      replicas: 1
+      strategy: RollingUpdate
     
     ##
     ## Authelia Config Map Generator
