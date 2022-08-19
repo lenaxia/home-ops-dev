@@ -357,6 +357,9 @@ spec:
           username: authelia-k3s
           password: authelia
           timeout: 10s
+
+        postgres:
+          enabled: false
     
       ##
       ## Notification Provider
