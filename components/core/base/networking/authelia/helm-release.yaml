@@ -53,8 +53,8 @@ spec:
 
     pod:
       # Must be Deployment, DaemonSet, or StatefulSet.
-      kind: Deployment
-      replicas: 1
+      kind: StatefulSet
+      replicas: 2
       strategy: RollingUpdate
     
     ##
