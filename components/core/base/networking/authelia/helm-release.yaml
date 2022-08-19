@@ -262,7 +262,7 @@ spec:
         - domain:
             - "${SECRET_DEV_DOMAIN}"
             - "*.${SECRET_DEV_DOMAIN}"
-          policy: one_factor
+          policy: two_factor
           subject:
             - "group:administrators"
         # rules:
