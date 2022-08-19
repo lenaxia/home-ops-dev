@@ -377,7 +377,7 @@ spec:
         ##
         smtp:
           enabled: true
-          enabledSecret: false
+          enabledSecret: true
           host: email-smtp.us-west-2.amazonaws.com
           port: 587
           timeout: 5s
