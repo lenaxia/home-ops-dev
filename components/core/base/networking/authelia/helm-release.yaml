@@ -256,15 +256,15 @@ spec:
             #  networks:
             #    - private
         - domain:
-            - "*.${SECRET_DEV_DOMAIN}"
-            - "${SECRET_DEV_DOMAIN}"
-          policy: one_factor
-        - domain:
             - "${SECRET_DEV_DOMAIN}"
             - "*.${SECRET_DEV_DOMAIN}"
           policy: two_factor
           subject:
             - "group:administrators"
+        - domain:
+            - "*.${SECRET_DEV_DOMAIN}"
+            - "${SECRET_DEV_DOMAIN}"
+          policy: one_factor
         # rules:
         # - domain_regex: '^.*\.example.com$'
         #   policy: bypass
