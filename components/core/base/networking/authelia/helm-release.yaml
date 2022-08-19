@@ -484,7 +484,7 @@ spec:
     
       ## Secrets.
       jwt:
-        key: JWT_TOKEN
+        key: JWT_SECRET
       ldap:
         key: LDAP_PASSWORD
       storage:
@@ -492,9 +492,9 @@ spec:
       storageEncryptionKey:
         key: STORAGE_ENCRYPTION_KEY
       session:
-        key: SESSION_ENCRYPTION_KEY
+        key: SESSION_SECRET
       duo:
-        key: DUO_API_KEY
+        key: DUO_SECRET_KEY
       redis:
         key: REDIS_PASSWORD
       redisSentinel:
@@ -502,7 +502,7 @@ spec:
       smtp:
         key: SMTP_PASSWORD
       oidcPrivateKey:
-        key: OIDC_PRIVATE_KEY
+        key: OIDC_ISSUER_PRIVATE_KEY
       oidcHMACSecret:
         key: OIDC_HMAC_SECRET
     
