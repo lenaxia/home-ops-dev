@@ -43,6 +43,10 @@ spec:
       annotations:
         metallb.universe.tf/address-pool: dev-infra
 
+    envFrom:
+      - secretRef:
+          name: *appname
+
     ## Authelia Domain
     ## Should be the root domain you want to protect.
     ## For example if you have apps app1.example.com and app2.example.com it should be example.com
@@ -482,37 +486,37 @@ spec:
     ## install. It is recommended that you use something like sealed-secrets (https://github.com/bitnami-labs/sealed-secrets)
     ## and use the existingSecrets. All secrets can be stored in a single k8s secret if desired using the key option.
     ##
-    secret:
-      existingSecret: *appname
-    
-      annotations: {}
-      labels: {}
-    
-      mountPath: /secrets
-    
-      ## Secrets.
-      jwt:
-        key: JWT_SECRET
-      ldap:
-        key: LDAP_PASSWORD
-      storage:
-        key: STORAGE_PASSWORD
-      storageEncryptionKey:
-        key: STORAGE_ENCRYPTION_KEY
-      session:
-        key: SESSION_SECRET
-      duo:
-        key: DUO_SECRET_KEY
-      redis:
-        key: REDIS_PASSWORD
-      redisSentinel:
-        key: REDIS_SENTINEL_PASSWORD
-      smtp:
-        key: SMTP_PASSWORD
-      oidcPrivateKey:
-        key: OIDC_ISSUER_PRIVATE_KEY
-      oidcHMACSecret:
-        key: OIDC_HMAC_SECRET
+    #secret:
+    #  existingSecret: *appname
+    #
+    #  annotations: {}
+    #  labels: {}
+    #
+    #  mountPath: /secrets
+    #
+    #  ## Secrets.
+    #  jwt:
+    #    key: JWT_SECRET
+    #  ldap:
+    #    key: LDAP_PASSWORD
+    #  storage:
+    #    key: STORAGE_PASSWORD
+    #  storageEncryptionKey:
+    #    key: STORAGE_ENCRYPTION_KEY
+    #  session:
+    #    key: SESSION_SECRET
+    #  duo:
+    #    key: DUO_SECRET_KEY
+    #  redis:
+    #    key: REDIS_PASSWORD
+    #  redisSentinel:
+    #    key: REDIS_SENTINEL_PASSWORD
+    #  smtp:
+    #    key: SMTP_PASSWORD
+    #  oidcPrivateKey:
+    #    key: OIDC_ISSUER_PRIVATE_KEY
+    #  oidcHMACSecret:
+    #    key: OIDC_HMAC_SECRET
     
     ##
     ## Authelia Persistence Configuration.
