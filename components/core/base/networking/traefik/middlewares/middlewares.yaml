@@ -89,7 +89,7 @@ metadata:
   namespace: networking
 spec:
   forwardAuth:
-    address: http://authelia:9091/api/verify?rd=https://authelia
+    address: http://authelia/api/verify?rd=https://authelia
     trustForwardHeader: true
     authResponseHeaders:
         - Remote-User
