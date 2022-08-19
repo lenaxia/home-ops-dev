@@ -350,8 +350,8 @@ spec:
         ## MySQL (Storage Provider)
         ##
         mysql:
-          enabled: false
-          host: 192.168.0.125
+          enabled: true
+          host: ${RURI_ADDR}
           port: 3306
           database: authelia-k3s
           username: authelia-k3s
