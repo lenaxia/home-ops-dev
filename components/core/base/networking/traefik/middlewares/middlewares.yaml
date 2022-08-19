@@ -96,4 +96,7 @@ spec:
         - Remote-Name
         - Remote-Email
         - Remote-Groups
+        - X-Forwarded-Host
+        - X-Authenticated-User
+        - X-WebAuth-User
 ---
