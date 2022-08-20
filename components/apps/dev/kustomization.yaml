@@ -32,16 +32,17 @@ resources:
   - ../base/homeautomation/nodered
 patchesStrategicMerge:
   - podinfo-values.yaml
+  - echoserver-values.yaml
   - mosquitto-values.yaml
 
   # Media Namespace
-  #- bookstack-values.yaml
-  #- sonarr-values.yaml
-  #- radarr-values.yaml
-  #- nzbget-values.yaml
+  - bookstack-values.yaml
+  - sonarr-values.yaml
+  - radarr-values.yaml
+  - nzbget-values.yaml
 
   # Default Namespace
-  #- hajimari-values.yaml
+  - hajimari-values.yaml
   - bitwarden-values.yaml
 
   # Monitoring Namespace
