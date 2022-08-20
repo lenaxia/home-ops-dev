@@ -8,3 +8,4 @@ resources:
     #  - patch-local-path.yaml
   - backup-secret.sops.yaml
     #  - recurring-jobs.yaml
+  - ingress.yaml
