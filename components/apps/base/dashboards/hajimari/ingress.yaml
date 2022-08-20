@@ -21,8 +21,8 @@ spec:
         backend:
           service:
             name: *appname
-              port:
-                number: 80
+            port:
+              number: 80
   tls:
   - hosts:
     #- hajimari.${SECRET_DEV_DOMAIN}
