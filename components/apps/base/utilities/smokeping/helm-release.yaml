@@ -18,6 +18,7 @@ spec:
     # -- Configures service settings for the chart.
     # @default -- See values.yaml
     service:
+      type: LoadBalancer
       annotations:
         metallb.universe.tf/address-pool: dev-infra
       port:
