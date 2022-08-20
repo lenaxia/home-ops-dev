@@ -13,7 +13,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: *appname.${SECRET_DEV_DOMAIN}
+  - host: hajimari.${SECRET_DEV_DOMAIN}
     http:
       paths:
       - path: /
