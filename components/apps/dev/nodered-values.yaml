@@ -2,14 +2,14 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &appname nodered
-  namespace: homeautomation
+  namespace: iot
 spec:
   chart:
     spec:
       version: "10.3.2"
   values:
-    #image:
-    #  tag: 3.0.2 
+    image:
+      tag: v3.0.2 
     ingress:
       main:
         enabled: true
