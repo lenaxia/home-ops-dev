@@ -34,6 +34,8 @@ spec:
           - networking
           - media
           - utilities
+          - homeautomation
+          - monitoring
       name: "Mike"
       customApps:
         - name: Some External Cluster Service
