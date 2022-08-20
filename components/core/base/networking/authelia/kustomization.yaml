@@ -4,6 +4,3 @@ resources:
   - helm-release.yaml
   - ingress.yaml
   - secret.sops.yaml
-patchesStrategicMerge:
-  - values-configmap.yaml
-  - acl.yaml
