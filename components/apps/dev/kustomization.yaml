@@ -29,7 +29,7 @@ resources:
   - ../base/utilities/uptimekuma
 
   # Homeautomation Namespace
-  - ../base/homeautomation/nodered
+  - ../base/iot/nodered
 patchesStrategicMerge:
   #- podinfo-values.yaml
   #- echoserver-values.yaml

@@ -4,9 +4,9 @@ metadata:
   name: crds
   namespace: flux-system
 spec:
-  interval: 10m0s
-    #  dependsOn:
-    #    - name: infrastructure
+  interval: 30s
+  dependsOn:
+    - name: infrastructure
   sourceRef:
     kind: GitRepository
     name: flux-system
