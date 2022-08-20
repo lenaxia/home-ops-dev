@@ -15,7 +15,7 @@ spec:
   interval: 5m
   values:
     image:
-      repository: nodered/node-red-docker
+      repository: nodered/node-red
       #tag: v2.2.2
       pullPolicy: IfNotPresent
     
