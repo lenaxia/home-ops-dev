@@ -69,7 +69,7 @@ spec:
     
       key: configuration.yaml
     
-      existingConfigMap: *appname
+      existingConfigMap: ""
     
       log:
         level: info
@@ -118,7 +118,7 @@ spec:
         secret:
           enabled: true
           key: configuration.acl.yaml
-          existingSecret: authelia-acl
+          existingSecret: ""
     
       ##
       ## Session Provider Configuration
