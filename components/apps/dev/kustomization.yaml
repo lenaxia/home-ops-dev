@@ -18,6 +18,7 @@ resources:
   - ../base/media/sonarr
   - ../base/media/radarr
   - ../base/media/nzbget
+  - ../base/media/nzbhydra
   - ../base/media/bookstack
     #  - ../base/media/metube
 
@@ -41,6 +42,7 @@ patchesStrategicMerge:
   - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
+  - nzbhydra-values.yaml
 
   # Default Namespace
   - hajimari-values.yaml
