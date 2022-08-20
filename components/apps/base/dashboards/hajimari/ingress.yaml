@@ -13,7 +13,7 @@ metadata:
   name: &appname hajimari
 spec:
   rules:
-  - host: &uri hajimari.${SECRET_DEV_DOMAIN}
+  - host: hajimari.${SECRET_DEV_DOMAIN}
     http:
       paths:
       - path: /
@@ -25,6 +25,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    #- hajimari.${SECRET_DEV_DOMAIN}
-    - *uri
+    - hajimari.${SECRET_DEV_DOMAIN}
     secretName: *appname
