@@ -4,26 +4,26 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: mdiPlayNetwork
+    hajimari.io/icon: "weather-sunset"
       #cert-manager.io/cluster-issuer: letsencrypt-staging
     cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-  name: sonarr
   namespace: media
+  name: &appname sonarr
 spec:
   rules:
-  - host: sonarr.${SECRET_DEV_DOMAIN}
+  - host: &uri sonarr.${SECRET_DEV_DOMAIN}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: sonarr
+            name: *appname
             port:
               number: 8989
   tls:
   - hosts:
-    - sonarr.${SECRET_DEV_DOMAIN}
-    secretName: sonarr-devdomain-tls-staging
+    - *uri
+    secretName: *appname
