@@ -348,7 +348,7 @@ spec:
         ##
         mysql:
           enabled: true
-          host: 192.168.0.125
+          host: ${RURI_ADDR}
           port: 3306
           database: authelia-k3s
           username: authelia-k3s

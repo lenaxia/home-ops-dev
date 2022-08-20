@@ -110,25 +110,6 @@ spec:
             port: 3000
         type: LoadBalancer
 
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          #cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "weather-sunset"
-            #traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.entrypoints: "web"
-        #hosts:
-        #  - host: "hajimari.staging"
-        #    paths:
-        #      - path: /
-        #        pathType: Prefix
-        #tls:
-        #  - hosts:
-        #      - "hajimari.${SECRET_DOMAIN}"
-        #    secretName: "hajimari-tls"
     persistence:
       data:
         enabled: true

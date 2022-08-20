@@ -72,7 +72,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`whoami.kao.foundation`)
+    - match: Host(`whoami.${SECRET_DEV_DOMAIN}`)
       kind: Rule
       middlewares:
         - name: headers-default@file

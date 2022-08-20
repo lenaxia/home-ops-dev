@@ -45,13 +45,13 @@ spec:
           cert-manager.io/cluster-issuer: "letsencrypt-staging"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - host: "cloud.kao.foundation"
+          - host: "cloud.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "cloud.kao.foundation"
+              - "cloud.${SECRET_DEV_DOMAIN}"
             secretName: "nextcloud-kaofoundation-tls-staging"
     
     # Allow configuration of lifecycle hooks
@@ -65,7 +65,7 @@ spec:
       protocol: https
     
     nextcloud:
-      host: cloud.kao.foundation
+      host: cloud.${SECRET_DEV_DOMAIN}
       username: admin
       password: faith6510
       ## Use an existing secret

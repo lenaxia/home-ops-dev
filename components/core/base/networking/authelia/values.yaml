@@ -135,7 +135,7 @@ configMap:
     ldap:
       enabled: true
       implementation: custom
-      url: ldap://192.168.0.125
+      url: ldap://${RURI_ADDR}
       timeout: 5s
       start_tls: false
 
@@ -307,7 +307,7 @@ configMap:
     redis:
       enabled: true
       enabledSecret: false
-      host: 192.168.0.125
+      host: ${RURI_ADDR}
       port: 6379
       username: ""
       database_index: 0
@@ -336,7 +336,7 @@ configMap:
     ##
     mysql:
       enabled: false
-      host: 192.168.0.125
+      host: ${RURI_ADDR}
       port: 3306
       database: authelia
       username: authelia
