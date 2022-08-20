@@ -34,7 +34,6 @@ spec:
           - networking
           - media
           - utilities
-          - homeautomation
           - monitoring
       name: "Mike"
       customApps:

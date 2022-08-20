@@ -23,7 +23,7 @@ resources:
 
   # IOT Namespace
   - ../base/iot/mosquitto
-    #- ../base/iot/nodered
+  - ../base/iot/nodered
 
   # Utilities Namespace
   - ../base/utilities/vaultwarden
@@ -34,6 +34,7 @@ patchesStrategicMerge:
   #- podinfo-values.yaml
   #- echoserver-values.yaml
   - mosquitto-values.yaml
+  - nodered-values.yaml
 
   # Media Namespace
   #- bookstack-values.yaml
@@ -53,5 +54,3 @@ patchesStrategicMerge:
   # Utilities Namespace
   - uptimekuma-values.yaml
 
-  # Home Automation Namespace
-  #- nodered-values.yaml
