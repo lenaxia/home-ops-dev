@@ -25,7 +25,7 @@ resources:
   - ../base/iot/mosquitto
 
   # Utilities Namespace
-  - ../base/utilities/bitwarden
+  - ../base/utilities/vaultwarden
   - ../base/utilities/uptimekuma
 
   # Homeautomation Namespace
@@ -43,7 +43,7 @@ patchesStrategicMerge:
 
   # Default Namespace
   - hajimari-values.yaml
-  - bitwarden-values.yaml
+  - vaultwarden-values.yaml
 
   # Monitoring Namespace
   #- prometheus-stack.yaml
