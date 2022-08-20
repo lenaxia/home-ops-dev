@@ -13,22 +13,21 @@ spec:
     #image:
     #  tag: v21.1
     ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-p-box-outline"
-          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          cert-manager.io/cluster-issuer: "ca-issuer"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-        hosts:
-          - host: &uri "podinfo.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-            - *uri
-            secretName: *uri
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        hajimari.io/enable: "true"
+        hajimari.io/icon: "alpha-p-box"
+        #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        cert-manager.io/cluster-issuer: "ca-issuer"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+      hosts:
+        - host: &uri "podinfo.${SECRET_DEV_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+          - *uri
+          secretName: *uri

@@ -14,7 +14,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "book-open-page-variant"
+          hajimari.io/icon: "weather-sunset"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"

@@ -33,7 +33,7 @@ resources:
 
 patchesStrategicMerge:
   #- podinfo-values.yaml
-  #- echoserver-values.yaml
+  - echoserver-values.yaml
   - mosquitto-values.yaml
   - nodered-values.yaml
 
