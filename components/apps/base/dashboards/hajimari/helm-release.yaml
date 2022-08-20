@@ -33,6 +33,7 @@ spec:
           - default
           - networking
           - media
+          - utilities
       name: "Mike"
       customApps:
         - name: Some External Cluster Service
