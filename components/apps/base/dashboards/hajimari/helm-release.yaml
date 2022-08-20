@@ -35,6 +35,7 @@ spec:
           - media
           - utilities
           - monitoring
+          - iot
       name: "Mike"
       customApps:
         - name: Plex
