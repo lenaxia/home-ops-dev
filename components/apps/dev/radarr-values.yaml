@@ -1,30 +1,30 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: &appname radarr
   namespace: media
 spec:
   chart:
     spec:
-      version: "16.3.0"
+      version: "16.3.2"
 
-#  values:
-#    ingress:
-#      main:
-#        enabled: true
-#        ingressClassName: "traefik"
-#        annotations:
-#          hajimari.io/enable: "true"
-#          hajimari.io/icon: "mdiPlayNetwork"
-#          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-#          cert-manager.io/cluster-issuer: "ca-issuer"
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#        hosts:
-#          - host: "radarr.${SECRET_DEV_DOMAIN}"
-#            paths:
-#              - path: /
-#                pathType: Prefix
-#        tls:
-#          - hosts:
-#              - "radarr.${SECRET_DEV_DOMAIN}"
-#            secretName: "radarr-devdomain-tls-staging"
+  values:
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "alpha-r-box-outline"
+          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "ca-issuer"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: &uri "radarr.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri
