@@ -11,9 +11,12 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
   name: &appname hajimari
   namespace: default
+  labels:
+    uri: &uri hajimari.${SECRET_DEV_DOMAIN}
 spec:
   rules:
-  - host: hajimari.${SECRET_DEV_DOMAIN}
+    #- host: hajimari.${SECRET_DEV_DOMAIN}
+  - host: *uri
     http:
       paths:
       - path: /
@@ -25,5 +28,5 @@ spec:
               number: 8989
   tls:
   - hosts:
-    - *appname.${SECRET_DEV_DOMAIN}
+    - *uri
     secretName: *appaname
