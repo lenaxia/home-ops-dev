@@ -21,3 +21,4 @@ resources:
   - vmware-tanzu-charts.yaml
   - authentik-charts.yaml
   - authelia-charts.yaml
+  - nicholaswilde-charts.yaml

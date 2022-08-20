@@ -29,6 +29,7 @@ resources:
   # Utilities Namespace
   - ../base/utilities/vaultwarden
   - ../base/utilities/uptimekuma
+  - ../base/utilities/smokeping
 
 
 patchesStrategicMerge:
@@ -55,4 +56,6 @@ patchesStrategicMerge:
 
   # Utilities Namespace
   - uptimekuma-values.yaml
+  - smokeping-values.yaml
+
 

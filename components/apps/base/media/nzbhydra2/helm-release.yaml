@@ -39,7 +39,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: "nzbhydra2-config-volume"
+          #        existingClaim: "nzbhydra2-config-volume"
     
       media:
         enabled: true
