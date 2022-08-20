@@ -30,22 +30,22 @@ spec:
       pullPolicy: IfNotPresent
     
     env:
-      - TZ: ${TIMEZONE}
-      - PUID: "1001"
-      - PGID: "1001"
-      - PASSWORD: thekaocloud
-      - CUSTOM_RESULTS: false
-      - DB_TYPE: mysql
-      - DB_NAME: librespeed
-      - DB_HOSTNAME: ${RURI_ADDR}
-      - DB_USERNAME: librespeed
-      #- DB_PASSWORD: 
-      - DB_PORT: 3306
-      - name: DB_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: *appname
-            key: MYSQL_PASSWORD
+      TZ: ${TIMEZONE}
+      PUID: "1001"
+      PGID: "1001"
+      PASSWORD: thekaocloud
+      CUSTOM_RESULTS: false
+      DB_TYPE: mysql
+      DB_NAME: librespeed
+      DB_HOSTNAME: ${RURI_ADDR}
+      DB_USERNAME: librespeed
+      DB_PASSWORD: oSly2RVpgtB3S0ET
+      DB_PORT: 3306
+        #name: DB_PASSWORD
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: *appname
+        #      key: MYSQL_PASSWORD
     
     ingress:
       main:
