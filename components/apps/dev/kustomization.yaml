@@ -30,6 +30,7 @@ resources:
   - ../base/utilities/vaultwarden
   - ../base/utilities/uptimekuma
   - ../base/utilities/smokeping
+  - ../base/utilities/changedetection
 
 
 patchesStrategicMerge:
@@ -56,6 +57,7 @@ patchesStrategicMerge:
   # Utilities Namespace
   - uptimekuma-values.yaml
   - smokeping-values.yaml
+  - changedetection-values.yaml
   #- podinfo-values.yaml
   #- echoserver-values.yaml
 
