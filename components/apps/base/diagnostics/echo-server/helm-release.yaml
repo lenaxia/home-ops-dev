@@ -27,20 +27,7 @@ spec:
       repository: docker.io/ealen/echo-server
       tag: 0.5.1
     ingress:
-      enabled: true
-      annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "video-input-antenna"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - host: "echo-server.${SECRET_DEV_DOMAIN}"
-          paths:
-            - "/"
-      tls:
-        - secretName: echo-server-devdomain-tls-staging
-          hosts:
-            - "echo-server.${SECRET_DEV_DOMAIN}"
+      enabled: false
     resources:
       requests:
         cpu: 50m
