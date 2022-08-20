@@ -29,7 +29,7 @@ metadata:
       ##
       ## - 'resources' is a list of regular expressions that matches a set of resources to apply the policy to. This parameter
       ##   is optional and matches any resource if not provided.
-data: |-
+data:
 
   default_policy: one_factor
 
