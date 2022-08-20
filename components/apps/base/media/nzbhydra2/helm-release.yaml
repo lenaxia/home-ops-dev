@@ -52,7 +52,7 @@ spec:
       main:
         ports:
           http:
-            port: 6789
+            port: 5076
         type: ClusterIP
     
     persistence:

@@ -4,3 +4,4 @@ namespace: media
 resources:
   - config-pvc.yaml
   - helm-release.yaml
+  - ingress.yaml

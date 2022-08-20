@@ -4,16 +4,16 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: "alpha-r-box-outline"
+    hajimari.io/icon: "book-open-page-variant"
       #cert-manager.io/cluster-issuer: letsencrypt-staging
     cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
   namespace: media
-  name: &appname radarr
+  name: &appname bookstack
 spec:
   rules:
-  - host: &uri radarr.${SECRET_DEV_DOMAIN}
+  - host: &uri bookstack.${SECRET_DEV_DOMAIN}
     http:
       paths:
       - path: /
@@ -22,8 +22,8 @@ spec:
           service:
             name: *appname
             port:
-              number: 7878
+              number: 80
   tls:
   - hosts:
     - *uri
-    secretName: *appname
+    secretName: *uri

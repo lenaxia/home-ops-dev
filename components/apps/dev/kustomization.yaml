@@ -36,9 +36,9 @@ patchesStrategicMerge:
 
   # Media Namespace
   #- bookstack-values.yaml
-  - sonarr-values.yaml
-  - radarr-values.yaml
-  - nzbget-values.yaml
+  #- sonarr-values.yaml
+  #- radarr-values.yaml
+  #- nzbget-values.yaml
 
   # Default Namespace
   #- hajimari-values.yaml

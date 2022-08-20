@@ -18,25 +18,25 @@ spec:
   values:
     podLabels:
       app: bookstack
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "mdiPlayNetwork"
-          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          cert-manager.io/cluster-issuer: "ca-issuer"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - host: "w.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - "w.${SECRET_DEV_DOMAIN}"
-            secretName: "bookstack-devdomain-tls-staging"
+        #ingress:
+        #  main:
+        #    enabled: true
+        #    ingressClassName: "traefik"
+        #    annotations:
+        #      hajimari.io/enable: "true"
+        #      hajimari.io/icon: "mdiPlayNetwork"
+        #      #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        #      cert-manager.io/cluster-issuer: "ca-issuer"
+        #      traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        #    hosts:
+        #      - host: "w.${SECRET_DEV_DOMAIN}"
+        #        paths:
+        #          - path: /
+        #            pathType: Prefix
+        #    tls:
+        #      - hosts:
+        #          - "w.${SECRET_DEV_DOMAIN}"
+        #        secretName: "bookstack-devdomain-tls-staging"
 
     image:
       repository: ghcr.io/linuxserver/bookstack

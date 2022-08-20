@@ -4,16 +4,16 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: "alpha-r-box-outline"
+    hajimari.io/icon: "alpha-g-box-outline"
       #cert-manager.io/cluster-issuer: letsencrypt-staging
     cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
   namespace: media
-  name: &appname radarr
+  name: &appname nzbget
 spec:
   rules:
-  - host: &uri radarr.${SECRET_DEV_DOMAIN}
+  - host: &uri nzbget.${SECRET_DEV_DOMAIN}
     http:
       paths:
       - path: /
@@ -22,7 +22,7 @@ spec:
           service:
             name: *appname
             port:
-              number: 7878
+              number: 6789
   tls:
   - hosts:
     - *uri
