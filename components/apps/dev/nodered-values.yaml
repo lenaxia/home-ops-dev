@@ -9,7 +9,7 @@ spec:
       version: "10.3.2"
   values:
     image:
-      tag: 2.2.3
+      tag: 3.0.2 
     ingress:
       main:
         enabled: true
