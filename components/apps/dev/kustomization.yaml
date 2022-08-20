@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   # Utilities Namespace
   - ../base/diagnostics/podinfo
-  - ../base/diagnostics/echo-server
+    #- ../base/diagnostics/echo-server
 
   # Monitoring Namespace
   #- ../base/monitoring/prometheus-stack
@@ -33,8 +33,7 @@ resources:
 
 
 patchesStrategicMerge:
-  #- podinfo-values.yaml
-  - echoserver-values.yaml
+  # IOT:
   - mosquitto-values.yaml
   - nodered-values.yaml
 
@@ -57,5 +56,7 @@ patchesStrategicMerge:
   # Utilities Namespace
   - uptimekuma-values.yaml
   - smokeping-values.yaml
+  #- podinfo-values.yaml
+  #- echoserver-values.yaml
 
 
