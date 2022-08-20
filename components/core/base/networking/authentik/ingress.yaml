@@ -4,16 +4,16 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: mdiPlayNetwork
+    hajimari.io/icon: "alpha-a-circle"
     cert-manager.io/cluster-issuer: ca-issuer
       #cert-manager.io/cluster-issuer: letsencrypt-staging
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
       #    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authentik@kubernetescrd
-  name: authentik
+  name: &appname authentik
   namespace: networking
 spec:
   rules:
-  - host: "authentik.${SECRET_DEV_DOMAIN}"
+  - host: &uri "authentik.${SECRET_DEV_DOMAIN}"
     http:
       paths:
       - path: /
@@ -35,5 +35,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - authentik.${SECRET_DEV_DOMAIN}
-    secretName: authentik-devdomain-tls-staging
+    - *uri
+    secretName: *uri
