@@ -6,10 +6,10 @@ metadata:
 spec:
   chart:
     spec:
-      version: 0.3.1
+      version: 0.5.0
   values:
     image:
-      tag: 0.5.1
+      tag: 0.6.0
     ingress:
       main:
         enabled: true
@@ -22,7 +22,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-          - host: *uri 
+          - host: &uri "echo.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
