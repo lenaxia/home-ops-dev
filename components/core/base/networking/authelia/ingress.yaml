@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: mdiPlayNetwork
+    hajimari.io/icon: "alpha-s-circle-outline" 
     cert-manager.io/cluster-issuer: ca-issuer
       #cert-manager.io/cluster-issuer: letsencrypt-staging
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -13,7 +13,7 @@ metadata:
   namespace: networking
 spec:
   rules:
-  - host: "authelia.${SECRET_DEV_DOMAIN}"
+  - host: &uri "authelia.${SECRET_DEV_DOMAIN}"
     http:
       paths:
       - path: /
@@ -25,5 +25,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - authelia.${SECRET_DEV_DOMAIN}
-    secretName: authelia-devdomain-tls-staging
+    - *uri
+    secretName: *uri
