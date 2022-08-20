@@ -23,7 +23,7 @@ resources:
 
   # IOT Namespace
   - ../base/iot/mosquitto
-  - ../base/iot/nodered
+    #- ../base/iot/nodered
 
   # Utilities Namespace
   - ../base/utilities/vaultwarden
@@ -54,4 +54,4 @@ patchesStrategicMerge:
   - uptimekuma-values.yaml
 
   # Home Automation Namespace
-  - nodered-values.yaml
+  #- nodered-values.yaml
