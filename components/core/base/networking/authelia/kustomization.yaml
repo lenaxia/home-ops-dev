@@ -4,3 +4,5 @@ resources:
   - helm-release.yaml
   - ingress.yaml
   - secret.sops.yaml
+  - values-configmap.yaml
+  - acl.yaml
