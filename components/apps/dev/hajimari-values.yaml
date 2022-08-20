@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: hajimari
+  name: &appname hajimari
   namespace: default
 spec:
   chart:
@@ -13,15 +13,18 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "book-open-page-variant"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-          - host: "hajimari.${SECRET_DEV_DOMAIN}"
+          - host: &uri "w.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "hajimari.${SECRET_DEV_DOMAIN}"
-            secretName: "devdomain-hajimari-tls"
+            - *uri
+            secretName: *uri

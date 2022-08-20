@@ -1,30 +1,32 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nodered
+  name: &appname nodered
   namespace: homeautomation
 spec:
   chart:
     spec:
       version: "10.3.2"
   values:
-
+    image:
+      tag: v2.2.2
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "mdiPlayNetwork"
+          hajimari.io/icon: "alpha-n-box-outline"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-          - host: "nodered.${SECRET_DEV_DOMAIN}"
+          - host: &uri "nodered.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "nodered.${SECRET_DEV_DOMAIN}"
-            secretName: "nodered-devdomain-tls-staging"
+            - *uri
+            secretName: *uri

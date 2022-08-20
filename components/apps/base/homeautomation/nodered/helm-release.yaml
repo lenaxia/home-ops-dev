@@ -14,10 +14,10 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
-    #image:
-    #  repository: node-red/node-red-docker
-    #  tag: v2.2.2
-    #  pullPolicy: IfNotPresent
+    image:
+      repository: node-red/node-red-docker
+      #tag: v2.2.2
+      pullPolicy: IfNotPresent
     
     # -- environment variables.
     # @default -- See below
