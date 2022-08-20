@@ -31,6 +31,7 @@ resources:
   - ../base/utilities/uptimekuma
   - ../base/utilities/smokeping
   - ../base/utilities/changedetection
+  - ../base/utilities/librespeed
 
 
 patchesStrategicMerge:
@@ -58,6 +59,7 @@ patchesStrategicMerge:
   - uptimekuma-values.yaml
   - smokeping-values.yaml
   - changedetection-values.yaml
+  - librespeed-values.yaml
   #- podinfo-values.yaml
   - echoserver-values.yaml
 

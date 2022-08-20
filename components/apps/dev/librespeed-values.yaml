@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &appname librespeed
+  namespace: utilities
+spec:
+  chart:
+    spec:
+      version: 5.4.2
+
+  values:
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "alpha-l-box"
+          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "ca-issuer"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: &uri "speed.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri
+---

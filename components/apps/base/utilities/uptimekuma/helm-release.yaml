@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: uptimekuma
+  name: &appname uptime-kuma
   namespace: utilities
 
 spec:
-  releaseName: uptimekuma
+  releaseName: *appname
   chart:
     spec:
-      chart: uptime-kuma
+      chart: *appname
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
