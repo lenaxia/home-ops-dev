@@ -15,7 +15,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-r-box-outline"
+          hajimari.io/icon: "alpha-r-circle-outline"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
