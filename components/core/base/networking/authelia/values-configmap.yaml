@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: &appname authelia
   namespace: networking
-data: 
+data: |
   ---
   default_redirection_url: https://authelia.${SECRET_DEV_DOMAIN}
  
