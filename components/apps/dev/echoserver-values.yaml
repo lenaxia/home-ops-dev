@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &appname echo-server
-  namespace: media
+  namespace: utilities
   label:
     uri: &uri "echoserver.${SECRET_DEV_DOMAIN}"
 spec:
