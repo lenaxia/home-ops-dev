@@ -16,7 +16,7 @@ spec:
   path: ./components/apps/dev
   prune: true
   wait: true
-  timeout: 10m0s
+  timeout: 5m0s
   decryption:
     provider: sops
     secretRef:
