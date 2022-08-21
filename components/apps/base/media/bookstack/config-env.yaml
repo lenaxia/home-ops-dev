@@ -11,7 +11,7 @@ data:
     # Application key
     # Used for encryption where needed.
     # Run `php artisan key:generate` to generate a valid key.
-    APP_KEY=base64:/DIiIXtTNWH2Qc5vtVSxC7HQ7zOwyGHEAvQvzS1mPGo=
+    APP_KEY=base64:cWmR/s8qmVqToMy5ErLStoJwPy7qUF2AO1JB0Ydd398=
 
     APP_DEBUG=true
 
@@ -25,56 +25,27 @@ data:
     APP_URL=https://w.${SECRET_DEV_DOMAIN}
     
     # Database details
-    DB_HOST=${RURI_ADDR}
+    DB_HOST=bookstack-mariadb
     DB_DATABASE=bookstack
     DB_USERNAME=bookstack
-    DB_PASSWORD=e-zJMqKoe!9Sj/nG
+    DB_PASSWORD=bookstack
     
-    # General auth
-    AUTH_METHOD=ldap
-    
-    # The LDAP host, Adding a port is optional
+    ## Configure Auth Method
+    #AUTH_METHOD=ldap
+    AUTH_METHOD=oidc
+
+    # LDAP Authentication
     LDAP_SERVER=192.168.0.120:389
-    
-    # The base DN from where users will be searched within
     LDAP_BASE_DN="cn=users,dc=kao,dc=family"
-    
-    # The full DN and password of the user used to search the server
-    # Can both be left as 'false' (without quotes) to bind anonymously
     LDAP_DN="uid=autheliauser,cn=users,dc=kao,dc=family"
-    LDAP_PASS="RjN8GK92Wija7j"
-    
-    # A filter to use when searching for users
-    # The user-provided user-name used to replace any occurrences of ''
-    # If you're setting this option via other means, such as within a docker-compose.yml,
-    # you may need escape the $, often using $ or \$ instead.
-    # Note: This option cannot be used with the docker-compose.yml `env_file` option.
-    LDAP_USER_FILTER=(&(uid=\$\{user\}))
-    
-    # Set the LDAP version to use when connecting to the server
-    # Should be set to 3 in most cases.
+    LDAP_PASS=${SECRET_LDAP_PASSWORD_AUTHELIAUSER}
+    LDAP_USER_FILTER="(&(uid=${user}))"  # this should be (&(uid=\$\{user\})) but may be messed up during import
     LDAP_VERSION=3
-    
-    # Set the property to use as a unique identifier for this user.
-    # Stored and used to match LDAP users with existing BookStack users.
-    # Prefixing the value with 'BIN;' will assume the LDAP service provides the attribute value as
-    # binary data and BookStack will convert the value to a hexidecimal representation.
-    # Defaults to 'uid'.
     LDAP_ID_ATTRIBUTE=uid
-    
-    # Set the default 'email' attribute. Defaults to 'mail'
     LDAP_EMAIL_ATTRIBUTE=mail
-    
-    # Set the property to use for a user's display name. Defaults to 'cn'
     LDAP_DISPLAY_NAME_ATTRIBUTE=cn
-    
-    # Set the attribute to use for the user's avatar image.
-    # Must provide JPEG binary image data.
-    # Will be used upon login or registration when the user doesn't
-    # already have an avatar image set.
-    # Remove this option or set to 'null' to disable LDAP avatar import.
     LDAP_THUMBNAIL_ATTRIBUTE=jpegphoto
-    
+   
     # Force TLS to be used for LDAP communication.
     # Use this if you can but your LDAP support will need to support it and
     # you may need to import your certificate to the BookStack host machine.
@@ -90,6 +61,15 @@ data:
     # Only set this option if debugging since it will block logins and potentially show private details.
     #LDAP_DUMP_USER_DETAILS=true
     
+    # OIDC Authentication
+    AUTH_AUTO_INITIATE=false
+    OIDC_NAME="The Kao Cloud"
+    OIDC_DISPLAY_NAME_CLAIMS=displayname
+    OIDC_CLIENT_ID=bookstack
+    OIDC_CLIENT_SECRET=${SECRET_BOOKSTACK_OAUTH_CLIENT_SECRET}
+    OIDC_ISSUER=${SECRET_OIDC_ISSUER_URL}
+    OIDC_ISSUER_DISCOVER=true
+
     # Mail system to use
     # Can be 'smtp' or 'sendmail'
     MAIL_DRIVER=smtp
