@@ -21,7 +21,7 @@ spec:
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+          #traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
           - host: &uri "vault.${SECRET_DEV_DOMAIN}"
             paths:
