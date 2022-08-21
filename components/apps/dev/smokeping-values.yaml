@@ -15,6 +15,7 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alpha-s-box"
+          hajimari.io/group: "Utilities"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
