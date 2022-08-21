@@ -15,7 +15,6 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
-   
     service:
       main:
         primary: true
@@ -29,15 +28,11 @@ spec:
 
     image:
       repository: ghcr.io/dgtlmoon/changedetection.io
-      tag: "0.39.4"
+      #tag: "0.39.4"
       pullPolicy: IfNotPresent
     
     env:
       TZ: ${TIMEZONE}
-    
-    ingress:
-      main:
-        enabled: false
     
     persistence:
       data:

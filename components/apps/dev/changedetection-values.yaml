@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: "1.5.22"
+      version: "1.5.2"
   values:
     ingress:
       main:
@@ -15,6 +15,7 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alpha-v-box-outline"
+          hajimari.io/appName: "Change Detection"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
