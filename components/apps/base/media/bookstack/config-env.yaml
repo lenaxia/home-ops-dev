@@ -63,7 +63,7 @@ data:
     
     # OIDC Authentication
     AUTH_AUTO_INITIATE=false
-    OIDC_NAME="The Kao Cloud"
+    OIDC_NAME="bookstack"
     OIDC_DISPLAY_NAME_CLAIMS=displayname
     OIDC_CLIENT_ID=bookstack
     OIDC_CLIENT_SECRET=${SECRET_BOOKSTACK_OAUTH_CLIENT_SECRET}

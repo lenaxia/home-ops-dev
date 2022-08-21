@@ -4,4 +4,4 @@ resources:
   - cloudflare-secret.yaml
   - helm-release.yaml
   - letsencrypt-staging.yaml
-  #  - letsencrypt-production.yaml
+  - letsencrypt-production.yaml

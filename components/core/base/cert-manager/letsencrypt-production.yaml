@@ -20,3 +20,4 @@ spec:
           dnsZones:
             - ${SECRET_PROD_DOMAIN_MGO}
             - ${SECRET_PROD_DOMAIN_KAOFAMILY}
+            - ${SECRET_DEV_DOMAIN}
