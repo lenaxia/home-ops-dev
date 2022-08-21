@@ -60,7 +60,7 @@ patchesStrategicMerge:
   - smokeping-values.yaml
   - changedetection-values.yaml
   - librespeed-values.yaml
-  #- podinfo-values.yaml
+  - podinfo-values.yaml
   - echoserver-values.yaml
 
 
