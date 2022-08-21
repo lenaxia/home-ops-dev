@@ -6,12 +6,10 @@ metadata:
 spec:
   chart:
     spec:
-      version: ">=1.0.0-alpha"
+      version: "6.2.0"
   test:
     enable: false
   values:
-    #image:
-    #  tag: v21.1
     ingress:
       enabled: true
       ingressClassName: "traefik"
@@ -25,8 +23,7 @@ spec:
       hosts:
         - host: &uri "podinfo.${SECRET_DEV_DOMAIN}"
           paths:
-            - path: /
-              pathType: Prefix
+            - /
       tls:
         - hosts:
           - *uri
