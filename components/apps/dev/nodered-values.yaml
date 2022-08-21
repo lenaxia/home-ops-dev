@@ -14,6 +14,7 @@ spec:
       main:
         enabled: true
         ingressClassName: "traefik"
+        name: "Node-RED"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alpha-n-circle-outline"
