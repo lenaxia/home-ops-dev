@@ -19,3 +19,6 @@ spec:
   upgrade:
     remediation:
       retries: 4
+  values:
+    ingress:
+      enable: true

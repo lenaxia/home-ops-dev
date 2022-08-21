@@ -36,6 +36,7 @@ spec:
           - utilities
           - monitoring
           - iot
+          - longhorn-system
       name: "Mike"
       customApps:
         - name: Plex
