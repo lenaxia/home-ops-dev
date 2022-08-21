@@ -383,7 +383,7 @@ spec:
         oidc:
           ## Enables this in the config map. Currently in beta stage.
           ## See https://www.authelia.com/r/openid-connect/
-          enabled: false
+          enabled: true
     
           access_token_lifespan: 1h
           authorize_code_lifespan: 1m
