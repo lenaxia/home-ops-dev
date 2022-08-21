@@ -62,12 +62,6 @@ spec:
               url: "https://devdocs.io"
             - name: Devhints
               url: "https://devhints.io"
-        - name: Media
-          links:
-            - name: Trakt
-              url: "http://trakt.tv"
-            - name: YouTube
-              url: "https://youtube.com/feed/subscriptions"
         - name: News
           links:
             - name: NPR
