@@ -4,9 +4,3 @@ resources:
   - helm-release.yaml
   - ingress.yaml
   - secret.sops.yaml
-configMapGenerator:
-  - name: test123
-    files:
-      - values.yaml
-generatorOptions:
-  disableNameSuffixHash: true
