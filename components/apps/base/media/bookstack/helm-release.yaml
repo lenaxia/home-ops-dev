@@ -16,50 +16,40 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
-    podLabels:
-      app: *appname
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "book-open-page-variant"
-          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          cert-manager.io/cluster-issuer: "ca-issuer"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-        hosts:
-          - host: &uri "w.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-            - *uri
-            #secretName: "bookstack-devdomain-tls-staging"
-            secretName: *uri
-
     image:
       repository: ghcr.io/linuxserver/bookstack
-      tag: version-v21.12
       pullPolicy: IfNotPresent
+    podLabels:
+      app: *appname
+#    ingress:
+#      main:
+#        enabled: true
+#        ingressClassName: "traefik"
+#        annotations:
+#          hajimari.io/enable: "true"
+#          hajimari.io/icon: "book-open-page-variant"
+#          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+#          cert-manager.io/cluster-issuer: "ca-issuer"
+#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+#          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+#        hosts:
+#          - host: &uri "w.${SECRET_DEV_DOMAIN}"
+#            paths:
+#              - path: /
+#                pathType: Prefix
+#        tls:
+#          - hosts:
+#            - *uri
+#            secretName: *uri
     
-    # -- environment variables.
-    # @default -- See below
-    # LDAP bookstack tutorial: https://www.youtube.com/watch?v=50qw_LkhwoM
     env:
-      # -- Set the container timezone
       TZ: "${TIMEZONE}"
       APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
       DB_HOST: bookstack-mariadb
       DB_USER: bookstack
       DB_PASS: bookstack
-        #DB_PASS: YfA/h]uZVwhvdsRM
       DB_DATABASE: bookstack
 
-    # -- Configures service settings for the chart.
-    # @default -- See values.yaml
     service:
       main:
         ports:
