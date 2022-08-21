@@ -24,7 +24,8 @@ spec:
       hosts:
         - host: &uri "podinfo.${SECRET_DEV_DOMAIN}"
           paths:
-            - /
+            - path: /
+              pathType: Prefix
       tls:
         - hosts:
           - *uri
