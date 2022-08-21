@@ -17,7 +17,7 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alpha-k-box-outline"
-          hajimari.io/appName: "Uptime Kuma"
+          hajimari.io/appName: "Service Status"
           hajimari.io/group: "Utilities"
           #cert-manager.io/cluster-issuer: "letsencrypt-staging"
           cert-manager.io/cluster-issuer: "ca-issuer"
