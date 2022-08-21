@@ -48,6 +48,18 @@ spec:
           url: https://drive.kao.family
           icon: folder-multiple-outline
       groups:
+        - name: News
+          links:
+            - name: NPR
+              url: "https://npr.org"
+            - name: BBC
+              url: "https://bbc.com"
+            - name: The Verge
+              url: "https://theverge.com/"
+            - name: ArsTechnica
+              url: "https://arstechnica.com"
+            - name: FiveThirtyEight
+              url: "https://fivethirtyeight.com"
         - name: Cloud
           links:
             - name: Dropbox
@@ -62,18 +74,7 @@ spec:
               url: "https://devdocs.io"
             - name: Devhints
               url: "https://devhints.io"
-        - name: News
-          links:
-            - name: NPR
-              url: "https://npr.org"
-            - name: BBC
-              url: "https://bbc.com"
-            - name: The Verge
-              url: "https://theverge.com/"
-            - name: ArsTechnica
-              url: "https://arstechnica.com"
-            - name: FiveThirtyEight
-              url: "https://fivethirtyeight.com"
+
     service:
       main:
         ports:
