@@ -61,6 +61,7 @@ spec:
               url: "https://arstechnica.com"
             - name: FiveThirtyEight
               url: "https://fivethirtyeight.com"
+        - name: Media 
         - name: Cloud
           links:
             - name: Dropbox
