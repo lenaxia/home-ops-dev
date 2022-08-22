@@ -396,7 +396,7 @@ spec:
           cors:
             ## List of endpoints in addition to the metadata endpoints to permit cross-origin requests on.
             endpoints: ["authorization", "token", "revocation", "introspection", "userinfo"]
-            allowed_origins_from_client_redirect_uris: true
+            allowed_origins_from_client_redirect_uris: false
     
           clients:
           - id: openidconnect-test
@@ -415,7 +415,7 @@ spec:
             authorization_policy: one_factor
             pre_configured_consent_duration: 1y
             scopes: ["openid", "profile", "groups", "email"]
-            redirect_uris: ["https://192-168-0-169.mikekaotest.direct.quickconnect.to:5001/*"]
+            redirect_uris: ["*"]
             userinfo_signing_algorithm: none
           - id: bookstack
             description: bookstack
