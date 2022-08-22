@@ -396,7 +396,7 @@ spec:
           cors:
             ## List of endpoints in addition to the metadata endpoints to permit cross-origin requests on.
             endpoints: ["authorization", "token", "revocation", "introspection", "userinfo"]
-            allowed_origins_from_client_redirect_uris: false
+            allowed_origins_from_client_redirect_uris: true
     
           clients:
             #          - id: openidconnect-test
