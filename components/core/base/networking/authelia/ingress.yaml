@@ -8,7 +8,6 @@ metadata:
       #cert-manager.io/cluster-issuer: ca-issuer
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      #traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
   name: &appname authelia
   namespace: networking
 spec:
