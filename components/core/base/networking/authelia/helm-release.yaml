@@ -408,6 +408,15 @@ spec:
             scopes: ["openid", "profile", "groups", "email"]
             redirect_uris: ["https://openidconnect.net/callback"]
             userinfo_signing_algorithm: none
+          - id: vdsm7
+            description: vdsm7 
+            secret: "${SECRET_TEST_OAUTH_CLIENT_SECRET}"
+            public: false
+            authorization_policy: one_factor
+            pre_configured_consent_duration: 1y
+            scopes: ["openid", "profile", "groups", "email"]
+            redirect_uris: ["http://192.168.0.169:5000/#/signin"]
+            userinfo_signing_algorithm: none
           - id: bookstack
             description: bookstack
             secret: "${SECRET_BOOKSTACK_OAUTH_CLIENT_SECRET}"
