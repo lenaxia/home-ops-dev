@@ -415,7 +415,7 @@ spec:
             authorization_policy: one_factor
             pre_configured_consent_duration: 1y
             scopes: ["openid", "profile", "groups", "email"]
-            redirect_uris: ["*"]
+            redirect_uris: ["https://*"]
             userinfo_signing_algorithm: none
           - id: bookstack
             description: bookstack
