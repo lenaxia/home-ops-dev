@@ -62,7 +62,7 @@ data:
     #LDAP_DUMP_USER_DETAILS=true
     
     # OIDC Authentication
-    AUTH_AUTO_INITIATE=false
+    AUTH_AUTO_INITIATE=true
     OIDC_NAME="bookstack"
     OIDC_DISPLAY_NAME_CLAIMS=displayname
     OIDC_CLIENT_ID=bookstack
