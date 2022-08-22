@@ -415,7 +415,7 @@ spec:
             authorization_policy: one_factor
             pre_configured_consent_duration: 1y
             scopes: ["openid", "profile", "groups", "email"]
-            redirect_uris: ["https://192-168-0-169.mikekaotest.direct.quickconnect.to:5001/#/signin"]
+            redirect_uris: ["https://192-168-0-169.mikekaotest.direct.quickconnect.to:5001/*"]
             userinfo_signing_algorithm: none
           - id: bookstack
             description: bookstack
