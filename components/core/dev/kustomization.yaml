@@ -11,7 +11,7 @@ resources:
 
   # Security
   #- ../base/networking/traefik
-  - ../base/networking/authentik
+  #- ../base/networking/authentik
   - ../base/networking/authelia
 
   # Databases
@@ -24,7 +24,7 @@ patchesStrategicMerge:
 
   # Security
   #- traefik-values.yaml
-  - authentik-values.yaml
+  #- authentik-values.yaml
 
   # Storage
   - longhorn-values.yaml
