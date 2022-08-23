@@ -8,8 +8,52 @@ spec:
     spec:
       version: "12.0.1"
   values:
+
+    promscale:
+      enabled: true
+      #image: timescale/promscale:0.8.0
+      service:
+        type: LoadBalancer
+
+    timescaledb-single:
+      enabled: true
+      replicaCount: 1
+      loadBalancer:
+        enabled: true
+      persistentVolumes:
+        data:
+          size: 10Gi
+        wal:
+          size: 5Gi
+      backup:
+        enabled: false
+      #env:
+      #  PGBACKREST_REPO1_S3_BUCKET
+      #  PGBACKREST_REPO1_S3_ENDPOINT
+      #  PGBACKREST_REPO1_S3_REGION
+      #  PGBACKREST_REPO1_S3_KEY
+      #  PGBACKREST_REPO1_S3_KEY_SECRET
+
     kube-prometheus-stack:
+      enabled: true
+
+      alertManager:
+        enabled: true
+        alertmanagerSpec:
+          replicas: 1
+
       grafana:
+        enabled: true
+
+        prometheus:
+          datasource:
+            enabled: true
+        timescale:
+          datasource:
+            enabled: true
+
+        adminPassword: faith6510
+
         ingress:
           enabled: true
           ingressClassName: "traefik"
@@ -20,12 +64,27 @@ spec:
             cert-manager.io/cluster-issuer: "ca-issuer"
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           hosts:
-            - &host "grafana.${SECRET_DEV_DOMAIN}"
+            - &hostGrafana "grafana.${SECRET_DEV_DOMAIN}"
           tls:
             - hosts:
-                - "grafana.${SECRET_DEV_DOMAIN}"
-              secretName: "grafana-devdomain-tls-staging"
+                - *hostGrafana
+              secretName: *hostGrafana
+
       prometheus:
+        prometheusSpec:
+          replicas: 1
+          scrapeInterval: 1m
+          scrapeTimeout: 10s
+          evaluationInterval: 1m
+          retention: 1d
+          storageSpec:
+            volumeClaimTemplate:
+              spec:
+                resources:
+                  requests:
+                    storage:
+                      2Gi
+
         ingress:
           enabled: true
           ingressClassName: "traefik"
@@ -34,8 +93,9 @@ spec:
             cert-manager.io/cluster-issuer: "ca-issuer"
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           hosts:
-            - &host "prometheus.${SECRET_DEV_DOMAIN}"
+            - &hostProm "prometheus.${SECRET_DEV_DOMAIN}"
           tls:
             - hosts:
-                - "prometheus.${SECRET_DEV_DOMAIN}"
-              secretName: "prometheus-devdomain-tls-staging"
+                - *hostProm
+              secretName: *hostProm
+
