@@ -32,6 +32,7 @@ resources:
   - ../base/utilities/smokeping
   - ../base/utilities/changedetection
   - ../base/utilities/librespeed
+  - ../base/utilities/descheduler
 
 
 patchesStrategicMerge:
