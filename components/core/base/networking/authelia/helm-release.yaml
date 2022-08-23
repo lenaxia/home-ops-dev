@@ -406,7 +406,7 @@ spec:
             authorization_policy: one_factor
             pre_configured_consent_duration: 1y
             scopes: ["openid", "profile", "groups", "email"]
-            redirect_uris: ["https://oidcdebugger.com/debug", "https://openidconnect.net/callback", "https://w.${SECRET_DEV_DOMAIN}/oidc/callback", "https://oauth-debug.kao.foundation"]
+            redirect_uris: ["https://oidcdebugger.com/debug", "https://openidconnect.net/callback", "https://w.${SECRET_DEV_DOMAIN}/oidc/callback", "https://oauth-debug.kao.foundation/*"]
             userinfo_signing_algorithm: none
           - id: vdsm7
             description: vdsm7 
