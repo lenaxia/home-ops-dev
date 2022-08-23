@@ -30,8 +30,8 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "book-open-page-variant"
           hajimari.io/appName: "Wiki"
-          #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          cert-manager.io/cluster-issuer: "ca-issuer"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+            #cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: &uri "w.${SECRET_DEV_DOMAIN}"
