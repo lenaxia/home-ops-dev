@@ -98,13 +98,13 @@ spec:
           params:
             nodeResourceUtilizationThresholds:
               thresholds:
-                cpu: 20
-                memory: 20
-                pods: 20
+                cpu: 40
+                memory: 40
+                pods: 40
               targetThresholds:
-                cpu: 50
-                memory: 50
-                pods: 50
+                cpu: 70
+                memory: 70
+                pods: 70
         RemovePodsHavingTooManyRestarts:
           podRestartThreshold: 10
           includingInitContainers: true
