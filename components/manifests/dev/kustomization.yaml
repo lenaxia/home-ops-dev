@@ -5,6 +5,7 @@ resources:
  - ./monitoring-config
  - ./certificates
  - ./serviceaccounts
+ - ./oauth2-oidc-debugger
 
 #patchesStrategicMerge:
 #  - prometheus-op-values.yaml
