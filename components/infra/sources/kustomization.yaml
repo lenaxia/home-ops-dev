@@ -22,3 +22,4 @@ resources:
   - authentik-charts.yaml
   - authelia-charts.yaml
   - nicholaswilde-charts.yaml
+  - descheduler-charts.yaml

@@ -6,8 +6,8 @@ resources:
   - ../base/diagnostics/echo-server
 
   # Monitoring Namespace
-  #- ../base/monitoring/prometheus-stack
-  #- ../base/monitoring/grafana
+  - ../base/monitoring/prometheus-stack
+  - ../base/monitoring/grafana
   #- ../base/monitoring/loki
   #- ../base/monitoring/tobs
 
@@ -52,8 +52,8 @@ patchesStrategicMerge:
   - vaultwarden-values.yaml
 
   # Monitoring Namespace
-  #- prometheus-stack.yaml
-  #- grafana-values.yaml
+  - prometheus-stack.yaml
+  - grafana-values.yaml
   #- tobs-values.yaml
 
   # Utilities Namespace
