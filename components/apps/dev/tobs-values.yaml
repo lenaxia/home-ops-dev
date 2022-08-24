@@ -11,9 +11,11 @@ spec:
     createNamespace: true
     remediation:
       retries: 10
+    timeout: 15m
   upgrade:
     remediation:
       retries: 10
+    timeout: 15m
   values:
     opentelemetry-operator:
       enabled: false
