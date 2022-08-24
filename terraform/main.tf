@@ -29,15 +29,15 @@ provider "proxmox" {
 resource "proxmox_vm_qemu" "k3-server-lafiel" {
   count = var.k3_server_count
   name = "${format("k3-server-%02s", count.index + var.k3_lafiel_server_offset)}"
-  target_node = "lafiel"
+  target_node = "yurika"
   clone = var.template_name
   agent = 1
   os_type = "cloud-init"
-  cores = 2
+  cores = 3
   sockets = 1
   cpu = "host"
-  memory = 6114
-  balloon = 2048
+  memory = 15872
+  balloon = 12288
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -113,7 +113,7 @@ resource "proxmox_vm_qemu" "k3-server-yurika" {
   clone = var.template_name
   agent = 1
   os_type = "cloud-init"
-  cores = 2
+  cores = 1
   sockets = 1
   cpu = "host"
   memory = 4096
@@ -144,21 +144,21 @@ resource "proxmox_vm_qemu" "k3-server-yurika" {
 }
 resource "proxmox_vm_qemu" "k3-agent-yurika" {
   count = var.k3_agent_count
-  name = "${format("k3-agent-%02s", count.index + var.k3_yurika_agent_offset)}"
-  target_node = "yurika"
+  name = "${format("k3-agent-%02s", count.index + var.k3_nono_agent_offset)}"
+  target_node = "nono"
   clone = var.template_name
   agent = 1
   os_type = "cloud-init"
-  cores = 3
+  cores = 8
   sockets = 1
   cpu = "host"
-  memory = var.k3_yurika_agent_mem
+  memory = var.k3_nono_agent_mem
   balloon = 2048
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
     slot = 0
-    size = var.k3_yurika_agent_disksize
+    size = var.k3_nono_agent_disksize
     type = "scsi"
     storage = "local-zfs"
     iothread = 1
@@ -173,7 +173,7 @@ resource "proxmox_vm_qemu" "k3-agent-yurika" {
       network,
     ]
   }
-  ipconfig0 = "${format("ip=192.168.2.%02s/22,gw=192.168.0.1", count.index + var.k3_yurika_agent_offset + var.k3_agent_base_offset)}"
+  ipconfig0 = "${format("ip=192.168.2.%02s/22,gw=192.168.0.1", count.index + var.k3_nono_agent_offset + var.k3_agent_base_offset)}"
   sshkeys = <<EOF
   ${var.ssh_key_terraform}
   EOF
