@@ -43,16 +43,16 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
-      ingress:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - &host "prometheus.${SECRET_DEV_DOMAIN}"
-        tls:
-          - hosts:
-              - "prometheus.${SECRET_DEV_DOMAIN}"
-            secretName: "prometheus-devdomain-tls-staging"
+              #      ingress:
+              #        enabled: true
+              #        ingressClassName: "traefik"
+              #        annotations:
+              #          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+              #          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+              #        hosts:
+              #          - &host "prometheus.${SECRET_DEV_DOMAIN}"
+              #        tls:
+              #          - hosts:
+              #              - "prometheus.${SECRET_DEV_DOMAIN}"
+              #            secretName: "prometheus-devdomain-tls-staging"
     enabled: false

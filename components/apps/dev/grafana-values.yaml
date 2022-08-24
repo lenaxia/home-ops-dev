@@ -21,5 +21,5 @@ spec:
         - &host "grafana.${SECRET_DEV_DOMAIN}"
       tls:
         - hosts:
-            - "grafana.${SECRET_DEV_DOMAIN}"
-          secretName: "grafana-devdomain-tls-staging"
+            - *host
+          secretName: *host
