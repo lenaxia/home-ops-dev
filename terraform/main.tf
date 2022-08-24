@@ -149,7 +149,7 @@ resource "proxmox_vm_qemu" "k3-agent-yurika" {
   clone = var.template_name
   agent = 1
   os_type = "cloud-init"
-  cores = 4
+  cores = 3
   sockets = 1
   cpu = "host"
   memory = var.k3_yurika_agent_mem
