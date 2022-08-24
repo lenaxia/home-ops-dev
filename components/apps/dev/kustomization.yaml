@@ -8,7 +8,7 @@ resources:
   # Monitoring Namespace
   - ../base/monitoring/prometheus-stack
   - ../base/monitoring/grafana
-  #- ../base/monitoring/loki
+  - ../base/monitoring/loki
   #- ../base/monitoring/tobs
 
   # Default Namespace
