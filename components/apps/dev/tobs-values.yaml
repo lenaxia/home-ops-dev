@@ -24,7 +24,7 @@ spec:
         enabled: true
       persistentVolumes:
         data:
-          size: 10Gi
+          size: 11Gi
         wal:
           size: 5Gi
       backup:
@@ -85,7 +85,7 @@ spec:
                 resources:
                   requests:
                     storage:
-                      2Gi
+                      3Gi
 
         ingress:
           enabled: true

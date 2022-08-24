@@ -4,3 +4,4 @@ metadata:
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
   name: local-path
+provisioner: rancher.io/local-path
