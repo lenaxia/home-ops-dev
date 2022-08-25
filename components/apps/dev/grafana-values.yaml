@@ -26,7 +26,7 @@ spec:
     grafana.ini:
       auth:
         signout_redirect_url: "https://authelia.${SECRET_DEV_DOMAIN}/logout"
-        oauth_auto_login: false
+        oauth_auto_login: true
       auth.generic_oauth:
         enabled: true
         name: Authelia
