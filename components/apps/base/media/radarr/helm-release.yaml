@@ -16,28 +16,12 @@ spec:
   values:
     podLabels:
       app: radarr
-#    ingress:
-#      main:
-#        enabled: true
-#        ingressClassName: "traefik"
-#        annotations:
-#          hajimari.io/enable: "true"
-#          hajimari.io/icon: "mdiPlayNetwork"
-#          cert-manager.io/cluster-issuer: "letsencrypt-staging"
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#        hosts:
-#          - host: "radarr.${SECRET_DEV_DOMAIN}"
-#            paths:
-#              - path: /
-#                pathType: Prefix
-#        tls:
-#          - hosts:
-#              - "radarr.${SECRET_DEV_DOMAIN}"
-#            secretName: "radarr-devdomain-tls-staging"
+    podSecurityContext:
+      fsGroup: 568
 
     image:
       repository: ghcr.io/k8s-at-home/radarr-develop
-      tag:  v4.0.5.5981
+      #tag:  v4.0.5.5981
       pullPolicy: IfNotPresent
     
     # -- environment variables.
@@ -60,22 +44,14 @@ spec:
         enabled: true
         existingClaim: "radarr-config-volume"
     
-      media:
+      omoikane:
         enabled: true
         type: custom
         volumeSpec:
           nfs:
             server: ${NAS_ADDR}
-            path: /volume1/media
-        mountPath: /media-nfs
-      downloads-k3s:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: ${NAS_ADDR}
-            path: /volume2/downloads-k3s
-        mountPath: /downloads-k3s
+            path: /volume1/omoikane
+        mountPath: /omoikane
       downloads:
         enabled: true
         type: custom
@@ -84,4 +60,12 @@ spec:
             server: ${NAS_ADDR}
             path: /volume2/downloads
         mountPath: /downloads
+#      downloads-k3s:
+#        enabled: true
+#        type: custom
+#        volumeSpec:
+#          nfs:
+#            server: ${NAS_ADDR}
+#            path: /volume2/downloads-k3s
+#        mountPath: /downloads-k3s
 
