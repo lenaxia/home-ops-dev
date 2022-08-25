@@ -40,15 +40,15 @@ spec:
         table_manager:
           retention_deletes_enabled: true
           retention_period: 12h
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-staging"
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - &host "loki.${SECRET_DEV_DOMAIN}"
-      tls:
-        - hosts:
-            - "loki.${SECRET_DEV_DOMAIN}"
-          secretName: "loki-devdomain-tls-staging"
+      ingress:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - &host "loki.${SECRET_DEV_DOMAIN}"
+        tls:
+          - hosts:
+              - "loki.${SECRET_DEV_DOMAIN}"
+            secretName: "loki-devdomain-tls-staging"

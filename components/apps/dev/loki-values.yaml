@@ -24,25 +24,25 @@ spec:
       #          - hosts:
       #              - *host
       #            secretName: *host
-      config:
-        #existingSecret:
-        auth_enabled: false
-        # Needed for Alerting: https://grafana.com/docs/loki/latest/rules/
-        # This is just a simple example, for more details: https://grafana.com/docs/loki/latest/configuration/#ruler_config
-        ruler:
-          storage:
-            type: local
-            local:
-              directory: /rules
-          rule_path: /tmp/scratch
-          alertmanager_url: http://alertmanager.svc.namespace:9093
-          ring:
-            kvstore:
-              store: inmemory
-          enable_api: true
-      persistence:
-        enabled: true
-        existingClaim: loki-data-volume
-        size: 10Gi
-      podLabels:
-        app: loki
+      #config:
+      #  #existingSecret:
+      #  auth_enabled: false
+      #  # Needed for Alerting: https://grafana.com/docs/loki/latest/rules/
+      #  # This is just a simple example, for more details: https://grafana.com/docs/loki/latest/configuration/#ruler_config
+      #  ruler:
+      #    storage:
+      #      type: local
+      #      local:
+      #        directory: /rules
+      #    rule_path: /tmp/scratch
+      #    alertmanager_url: http://alertmanager.svc.namespace:9093
+      #    ring:
+      #      kvstore:
+      #        store: inmemory
+      #    enable_api: true
+      #persistence:
+      #  enabled: true
+      #  existingClaim: loki-data-volume
+      #  size: 10Gi
+      #podLabels:
+      #  app: loki
