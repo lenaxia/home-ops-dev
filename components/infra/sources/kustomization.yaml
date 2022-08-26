@@ -25,4 +25,4 @@ resources:
   - descheduler-charts.yaml
 
 # Operators
-  - pgo-examples-helm.yaml
+  - cloudnativepg-charts.yaml
