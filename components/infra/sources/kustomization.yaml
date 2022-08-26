@@ -23,3 +23,6 @@ resources:
   - authelia-charts.yaml
   - nicholaswilde-charts.yaml
   - descheduler-charts.yaml
+
+# Operators
+  - pgo-examples-helm.yaml

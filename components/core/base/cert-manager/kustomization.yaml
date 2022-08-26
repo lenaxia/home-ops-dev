@@ -5,3 +5,4 @@ resources:
   - helm-release.yaml
   - letsencrypt-staging.yaml
   - letsencrypt-production.yaml
+    #  - ca-issuer # commenting this out for right now because I've already distributed the kaocloud cert so dont need to do this again. If I need to start over will use this
