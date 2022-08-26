@@ -11,7 +11,7 @@ spec:
 
   values:
     image:
-      tag: v3.0.8.1507
+      tag: "v3.0.9.1555"
           
               ingress:
                 main:
