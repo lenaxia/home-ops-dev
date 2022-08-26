@@ -23,6 +23,5 @@ resources:
   - authelia-charts.yaml
   - nicholaswilde-charts.yaml
   - descheduler-charts.yaml
+  - cloudnative-pg-charts.yaml
 
-# Operators
-  - cloudnativepg-charts.yaml
