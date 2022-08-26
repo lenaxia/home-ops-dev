@@ -12,11 +12,11 @@ resources:
   #- ../base/monitoring/tobs
 
   # Default Namespace
-  #- ../base/dashboards/hajimari
+  - ../base/dashboards/hajimari
 
   # Media Namespace
   - ../base/media/sonarr
-    #- ../base/media/radarr
+  - ../base/media/radarr
   - ../base/media/nzbget
   - ../base/media/nzbhydra2
   - ../base/media/bookstack
@@ -43,12 +43,12 @@ patchesStrategicMerge:
   # Media Namespace
   - bookstack-values.yaml
   - sonarr-values.yaml
-    #- radarr-values.yaml
+  - radarr-values.yaml
   - nzbget-values.yaml
   - nzbhydra-values.yaml
 
   # Default Namespace
-  #- hajimari-values.yaml
+  - hajimari-values.yaml
   - vaultwarden-values.yaml
 
   # Monitoring Namespace
