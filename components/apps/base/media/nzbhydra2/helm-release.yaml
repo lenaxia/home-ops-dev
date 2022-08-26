@@ -37,3 +37,19 @@ spec:
       config:
         enabled: false
         existingClaim: nzbhydra2-config-volume
+      omoikane:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: ${NAS_ADDR}
+            path: /volume1/omoikane
+        mountPath: /omoikane
+      downloads:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: ${NAS_ADDR}
+            path: /volume2/downloads
+        mountPath: /downloads
