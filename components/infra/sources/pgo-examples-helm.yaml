@@ -11,6 +11,5 @@ spec:
   ignore: |
     # exclude all
     /*
-        
-	 # include eck-operator helm chart directory
+    # include eck-operator helm chart directory
     !/helm/install
