@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &appname uptime-kuma
+  name: &appname guacamole
   namespace: utilities
 
 spec:
@@ -22,20 +22,12 @@ spec:
         repository: guacamole/guacamole
         #tag: "{{ .Chart.AppVersion }}"
         pullPolicy: IfNotPresent
-      settings: {}
     
     guacd:
       image:
         repository: guacamole/guacd
         #tag: "{{ .Chart.AppVersion }}"
         pullPolicy: IfNotPresent
-    
-    dbcreation:
-      enable: false
-      #image:
-      #  repository: bitnami/postgresql
-      #  tag: 14.2.0-debian-10-r9
-      #  pullPolicy: IfNotPresent
     
     podSecurityContext:
       {}

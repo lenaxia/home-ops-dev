@@ -4,3 +4,5 @@ namespace: utilities
 resources:
   - config-pvc.yaml
   - helm-release.yaml
+patchesStrategicMerge:
+  - patches/postgres.yaml
