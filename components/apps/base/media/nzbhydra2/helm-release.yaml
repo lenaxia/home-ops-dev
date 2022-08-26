@@ -35,7 +35,7 @@ spec:
     
     persistence:
       config:
-        enabled: false
+        enabled: true
         existingClaim: nzbhydra2-config-volume
       omoikane:
         enabled: true

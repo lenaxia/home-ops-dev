@@ -37,7 +37,6 @@ resource "proxmox_vm_qemu" "k3-server-lafiel" {
   sockets = 1
   cpu = "host"
   memory = 15872
-  balloon = 12288
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -73,7 +72,6 @@ resource "proxmox_vm_qemu" "k3-agent-lafiel" {
   sockets = 1
   cpu = "host"
   memory = var.k3_lafiel_agent_mem
-  balloon = 2048
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -117,7 +115,6 @@ resource "proxmox_vm_qemu" "k3-server-yurika" {
   sockets = 1
   cpu = "host"
   memory = 4096
-  balloon = 512
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -153,7 +150,6 @@ resource "proxmox_vm_qemu" "k3-agent-yurika" {
   sockets = 1
   cpu = "host"
   memory = var.k3_nono_agent_mem
-  balloon = 2048
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -197,7 +193,6 @@ resource "proxmox_vm_qemu" "k3-server-melfina" {
   sockets = 1
   cpu = "host"
   memory = 4096
-  balloon = 512
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -233,7 +228,6 @@ resource "proxmox_vm_qemu" "k3-agent-melfina" {
   sockets = 1
   cpu = "host"
   memory = var.k3_melfina_agent_mem
-  balloon = 2048
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
