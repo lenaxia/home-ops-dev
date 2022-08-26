@@ -17,6 +17,7 @@ resources:
   # Databases
   - ../base/databases/mariadb
   - ../base/databases/redis
+  - ../base/databases/postgres-operator
 patchesStrategicMerge:
   # Networking
   - metallb-values.yaml
