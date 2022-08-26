@@ -10,7 +10,7 @@ spec:
 
   values:
     image:
-      tag: v3.14.2
+      tag: v4.6.1
     ingress:
       main:
         enabled: true
