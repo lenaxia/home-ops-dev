@@ -1,13 +1,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: &appname sonarr
   namespace: media
 spec:
-  releaseName: sonarr
+  releaseName: *appname
   chart:
     spec:
-      chart: sonarr
+      chart: *appname
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -15,7 +15,7 @@ spec:
   interval: 5m
   values:
     podLabels:
-      app: sonarr 
+      app: *appname
     podSecurityContext:
       fsGroup: 568
 
