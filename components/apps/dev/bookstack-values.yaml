@@ -42,4 +42,7 @@ spec:
           - hosts:
               - *uri
             secretName: *uri
+    service:
+      main:
+        type: LoadBalancer 
 ---
