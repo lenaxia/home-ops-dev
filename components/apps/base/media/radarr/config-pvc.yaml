@@ -6,7 +6,7 @@ metadata:
       app: radarr
 spec:
     accessModes:
-        - ReadWriteMany
+        - ReadWriteOnce
     storageClassName: longhorn
     resources:
         requests:
