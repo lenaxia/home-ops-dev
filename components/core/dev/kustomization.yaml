@@ -16,7 +16,7 @@ resources:
 
   # Databases
   - ../base/databases/mariadb
-  - ../base/databases/redis
+    #- ../base/databases/redis
   - ../base/databases/postgres-operator
 patchesStrategicMerge:
   # Networking
@@ -32,5 +32,5 @@ patchesStrategicMerge:
 
   # Databases
   - mariadb-values.yaml
-  - redis-values.yaml
+    #- redis-values.yaml
  
