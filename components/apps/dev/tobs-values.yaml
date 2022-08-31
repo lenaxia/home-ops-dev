@@ -71,8 +71,8 @@ spec:
           annotations:
             hajimari.io/enable: "true"
             hajimari.io/icon: "mdiPlayNetwork"
-            #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-            cert-manager.io/cluster-issuer: "ca-issuer"
+            cert-manager.io/cluster-issuer: "letsencrypt-production"
+            #cert-manager.io/cluster-issuer: "ca-issuer"
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           hosts:
             - &hostGrafana "grafana.${SECRET_DEV_DOMAIN}"
@@ -100,8 +100,8 @@ spec:
           enabled: true
           ingressClassName: "traefik"
           annotations:
-            #cert-manager.io/cluster-issuer: "letsencrypt-staging"
-            cert-manager.io/cluster-issuer: "ca-issuer"
+            cert-manager.io/cluster-issuer: "letsencrypt-production"
+            #cert-manager.io/cluster-issuer: "ca-issuer"
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           hosts:
             - &hostProm "prometheus.${SECRET_DEV_DOMAIN}"

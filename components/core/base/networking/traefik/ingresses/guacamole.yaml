@@ -19,7 +19,7 @@ spec:
               service:
                 name: guacamole
                 port:
-                  number: 9797
+                  number: 80
             path: /
             pathType: Prefix
   tls:
@@ -34,10 +34,9 @@ metadata:
   namespace: networking
 spec:
   ports:
-    - name: https
-      port: 9797
+    - port: 80
       protocol: TCP
-      targetPort: https
+      targetPort: 9797
 ---
 apiVersion: v1
 kind: Endpoints
@@ -48,6 +47,4 @@ subsets:
   - addresses:
       - ip: "192.168.0.125"
     ports:
-      - name: http
-        port: 9797
-        protocol: TCP
+      - port: 9797
