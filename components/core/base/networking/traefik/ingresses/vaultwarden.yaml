@@ -5,12 +5,14 @@ metadata:
   name: vaultwarden-docker
   namespace: networking
   annotations:
-    coredns.io/hostname: &host "vault.${SECRET_PROD_DOMAIN_MGO}"
+    coredns.io/hostname: "vault.${SECRET_PROD_DOMAIN_MGO}"
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+spec:
   ingressClassName: traefik
   rules:
-    - host: *host
+    - host: &host "vault.${SECRET_PROD_DOMAIN_MGO}"
       http:
         paths:
           - backend:
@@ -40,7 +42,7 @@ apiVersion: v1
 kind: Endpoints
 metadata:
   name: vaultwarden-docker
-  namespace: networking 
+  namespace: networking
 subsets:
   - addresses:
       - ip: "192.168.0.125"
