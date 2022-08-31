@@ -9,6 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+    traefik.frontend.rule.type: AddPrefix
 spec:
   ingressClassName: traefik
   rules:
@@ -20,7 +21,7 @@ spec:
                 name: guacamole
                 port:
                   number: 80
-            path: /
+            path: /guacamole
             pathType: Prefix
   tls:
     - hosts:
