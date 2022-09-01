@@ -5,14 +5,24 @@ metadata:
   name: synology-drive
   namespace: networking
   annotations:
-    coredns.io/hostname: "drive.${SECRET_PROD_DOMAIN_MGO}"
+    coredns.io/hostname: "drive.${SECRET_PROD_DOMAIN_KAOFAMILY}"
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-synology-drive@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
-    - host: &host "drive.${SECRET_PROD_DOMAIN_MGO}"
+    - host: &host "drive.${SECRET_PROD_DOMAIN_KAOFAMILY}"
+      http:
+        paths:
+          - backend:
+              service:
+                name: synology-drive
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+    - host: &host2 "drive.${SECRET_DEV_DOMAIN}"
       http:
         paths:
           - backend:
@@ -25,6 +35,7 @@ spec:
   tls:
     - hosts:
         - *host
+        - *host2
       secretName: *host
 ---
 apiVersion: v1
