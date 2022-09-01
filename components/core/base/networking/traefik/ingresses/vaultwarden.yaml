@@ -67,4 +67,6 @@ subsets:
       - ip: "192.168.0.125"
     ports:
       - port: 3012
+        name: websocket
       - port: 3080
+        name: http
