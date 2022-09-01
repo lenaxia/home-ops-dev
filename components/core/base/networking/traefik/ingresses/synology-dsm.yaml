@@ -5,14 +5,14 @@ metadata:
   name: synology-dsm
   namespace: networking
   annotations:
-    coredns.io/hostname: "dsm.${SECRET_PROD_DOMAIN_MGO}"
+    coredns.io/hostname: "dsm.${SECRET_DEV_DOMAIN}"
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
-    - host: &host "dsm.${SECRET_PROD_DOMAIN_MGO}"
+    - host: &host "dsm.${SECRET_DEV_DOMAIN}"
       http:
         paths:
           - backend:

@@ -36,9 +36,34 @@ spec:
                 name: vaultwarden-docker
                 port:
                   number: 3012
+    - host: &host2 "vault.${SECRET_DEV_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vaultwarden-docker
+                port:
+                  number: 80
+          - path: /notifications/hub/negotiate
+            pathType: Prefix
+            backend:
+              service:
+                name: vaultwarden-docker
+                port:
+                  number: 80
+          - path: /notifications/hub
+            pathType: Prefix
+            backend:
+              service:
+                name: vaultwarden-docker
+                port:
+                  number: 3012
   tls:
     - hosts:
         - *host
+        - *host2
       secretName: *host
 ---
 apiVersion: v1
