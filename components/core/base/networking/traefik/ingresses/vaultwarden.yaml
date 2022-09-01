@@ -48,10 +48,11 @@ metadata:
   namespace: networking
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       protocol: TCP
       targetPort: 3080
-    - name: websocket
+    - name: websocket  
       port: 3012
       protocol: TCP
       targetPort: 3012
