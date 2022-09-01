@@ -56,8 +56,7 @@ metadata:
   namespace: networking
 spec:
   addPrefix:
-    prefix:
-      - "/guacamole"
+    prefix: "/guacamole"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
