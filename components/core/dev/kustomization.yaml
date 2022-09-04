@@ -15,7 +15,7 @@ resources:
   - ../base/networking/authelia
 
   # Databases
-  - ../base/databases/mariadb
+  #- ../base/databases/mariadb
   - ../base/databases/redis
   - ../base/databases/postgres-operator
 patchesStrategicMerge:
@@ -31,6 +31,6 @@ patchesStrategicMerge:
   - longhorn-values.yaml
 
   # Databases
-  - mariadb-values.yaml
+  #- mariadb-values.yaml
   - redis-values.yaml
  
