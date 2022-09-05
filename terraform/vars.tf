@@ -35,7 +35,7 @@ variable "k3_melfina_agent_disksize" { default = "700G" }
 
 variable "k3_nono_server_offset" { default = 1 }
 variable "k3_nono_agent_offset" { default = 1 }
-variable "k3_nono_agent_mem" { default = "14336" }
+variable "k3_nono_agent_mem" { default = "12288" }
 variable "k3_nono_agent_disksize" { default = "150G" }
 
 variable "ssh_key_worklaptop" {

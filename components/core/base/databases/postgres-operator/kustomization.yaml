@@ -5,4 +5,4 @@ resources:
     #- dashboard
     #- scheduled-backup.yaml
   - secret.sops.yaml
-  - cluster.yaml
+  - clusters
