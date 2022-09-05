@@ -2,7 +2,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: defualtpg
+  name: defaultpg
   namespace: databases
 spec:
   instances: 3

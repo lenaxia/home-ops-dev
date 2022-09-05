@@ -5,5 +5,4 @@ resources:
     #- dashboard
     #- scheduled-backup.yaml
   - secret.sops.yaml
-  - defaultpg.yaml
-  - defaultpg-ingress.yaml
+  - clusters
