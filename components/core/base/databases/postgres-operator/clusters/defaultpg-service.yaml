@@ -30,6 +30,22 @@ spec:
       port: 5432
       targetPort: 5432
       protocol: TCP
-  selector:
-    app.kubernetes.io/name: defaultpg-ingress
-    app.kubernetes.io/part-of: defaultpg-ingress
+#  selector:
+#    app.kubernetes.io/name: defaultpg-rw
+#    app.kubernetes.io/part-of: defaultpg-ingress
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: defaultpg-ingress
+  namespace: databases
+subsets:
+  - addresses:
+      - ip: "10.43.201.241"
+    ports:
+      - port: 80
+        name: http
+      - port: 443
+        name: https
+      - port: 5432
+        name: postgres
