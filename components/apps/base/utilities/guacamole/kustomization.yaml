@@ -4,6 +4,7 @@ namespace: utilities
 resources:
   #  - config-pvc.yaml
   - helm-release.yaml
+  - firefox.yaml
   #- helm-release-guacamole.yaml
   - config-pvc.yaml
     #patchesStrategicMerge:
