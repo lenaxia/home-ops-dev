@@ -21,9 +21,9 @@ spec:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           #cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          #traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
-          - host: &uri "vault2.${SECRET_DEV_DOMAIN}"
+          - host: &uri "vault.${SECRET_PROD_DOMAIN_MGO}"
             paths:
               - path: /
                 pathType: Prefix
