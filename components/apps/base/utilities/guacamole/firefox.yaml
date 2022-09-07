@@ -76,9 +76,9 @@ spec:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
-    resources:
-      requests:
-        cpu: 10m
-        memory: 50Mi
-      limits:
-        memory: 500Mi
+#    resources:
+#      requests:
+#        cpu: 10m
+#        memory: 50Mi
+#      limits:
+#        memory: 500Mi
