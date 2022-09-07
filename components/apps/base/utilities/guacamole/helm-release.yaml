@@ -29,8 +29,8 @@ spec:
       TZ: "${TIMEZONE}"
     service:
       main:
-        http:
-          endpoint:
+        ports:
+          http:
             port: &port 4822
 #    probes:
 #      liveness: &probes
