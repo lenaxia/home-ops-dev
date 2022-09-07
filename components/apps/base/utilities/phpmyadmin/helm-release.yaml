@@ -33,7 +33,7 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
       hosts:
-        - host: &uri "phpmyadmin.${SECRET_DEV_DOMAIN}"
+        - host: &uri "phpmyadmin.thekao.cloud"
           paths:
             - path: /
               pathType: Prefix
