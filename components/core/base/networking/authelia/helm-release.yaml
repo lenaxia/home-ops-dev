@@ -347,7 +347,7 @@ spec:
         ## MySQL (Storage Provider)
         ##
         mysql:
-          enabled: false
+          enabled: true
           host: ${RURI_ADDR}
           port: 3306
           database: authelia-k3s
@@ -366,9 +366,9 @@ spec:
           ssl:
             mode: disable
             
-        encryption_key: pPubSmumpvj8vyZhMEfH1OHSsk6HoZiU9YPYBklCiYyjtOwCE8LXIEj6B2iQsyJh
-        local:
-          path: /config/db.sqlite3
+        #encryption_key: pPubSmumpvj8vyZhMEfH1OHSsk6HoZiU9YPYBklCiYyjtOwCE8LXIEj6B2iQsyJh
+        #local:
+        #  path: /config/db.sqlite3
     
       ##
       ## Notification Provider
