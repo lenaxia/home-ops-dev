@@ -4,6 +4,7 @@ resources:
   # Utilities Namespace
   - ../base/diagnostics/podinfo
   - ../base/diagnostics/echo-server
+  
 
   # Monitoring Namespace
   - ../base/monitoring/prometheus-stack
@@ -33,6 +34,7 @@ resources:
   - ../base/utilities/changedetection
   - ../base/utilities/librespeed
   - ../base/utilities/descheduler
+  - ../base/utilities/phpmyadmin
 
 
 patchesStrategicMerge:
