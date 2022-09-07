@@ -8,3 +8,5 @@ resources:
   - synology-dsm.yaml
   - synology-moments.yaml
   - synology-drive.yaml
+  - portainer.yaml
+  - phpmyadmin.yaml

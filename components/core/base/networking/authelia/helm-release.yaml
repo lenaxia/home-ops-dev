@@ -248,12 +248,12 @@ spec:
             #  policy: bypass
             #  networks:
             #    - private
-        - domain:
-            - "${SECRET_DEV_DOMAIN}"
-            - "*.${SECRET_DEV_DOMAIN}"
-          policy: two_factor
-          subject:
-            - "group:administrators"
+#        - domain:
+#            - "${SECRET_DEV_DOMAIN}"
+#            - "*.${SECRET_DEV_DOMAIN}"
+#          policy: two_factor
+#          subject:
+#            - "group:administrators"
         - domain:
             - "*.${SECRET_DEV_DOMAIN}"
             - "${SECRET_DEV_DOMAIN}"
@@ -317,7 +317,7 @@ spec:
         ## Redis Provider
         ##
         redis:
-          enabled: true
+          enabled: false
           enabledSecret: false
           host: ${RURI_ADDR}
           port: 6379
@@ -347,7 +347,7 @@ spec:
         ## MySQL (Storage Provider)
         ##
         mysql:
-          enabled: false
+          enabled: true
           host: ${RURI_ADDR}
           port: 3306
           database: authelia-k3s
@@ -356,7 +356,7 @@ spec:
           timeout: 10s
 
         postgres:
-          enabled: true
+          enabled: false
           host: defaultpg-rw
           port: 5432
           database: authelia
@@ -365,6 +365,10 @@ spec:
           password: authelia
           ssl:
             mode: disable
+            
+        #encryption_key: pPubSmumpvj8vyZhMEfH1OHSsk6HoZiU9YPYBklCiYyjtOwCE8LXIEj6B2iQsyJh
+        #local:
+        #  path: /config/db.sqlite3
     
       ##
       ## Notification Provider
