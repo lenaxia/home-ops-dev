@@ -21,6 +21,15 @@ spec:
   upgrade:
     remediation:
       retries: 5
+  env:
+    GUACD_HOSTNAME: guacd
+    MYSQL_HOSTNAME: 192.168.0.125
+    MYSQL_PORT: 3306
+    MYSQL_DATABASE: guacamole
+    MYSQL_USER: guacuser
+    MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
+    #EXTENSIONS: auth-totp
+    GUACAMOLE_HOME: /config
   values:
     image:
       repository: docker.io/guacamole/guacamole
