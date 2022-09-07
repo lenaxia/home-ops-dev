@@ -367,8 +367,8 @@ spec:
             mode: disable
             
         encryption_key: pPubSmumpvj8vyZhMEfH1OHSsk6HoZiU9YPYBklCiYyjtOwCE8LXIEj6B2iQsyJh
-          local:
-            path: /config/db.sqlite3
+        local:
+          path: /config/db.sqlite3
     
       ##
       ## Notification Provider
