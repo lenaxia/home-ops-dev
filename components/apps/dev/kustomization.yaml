@@ -35,6 +35,7 @@ resources:
   - ../base/utilities/librespeed
   - ../base/utilities/descheduler
   - ../base/utilities/phpmyadmin
+  - ../base/utilities/guacamole
 
 
 patchesStrategicMerge:
