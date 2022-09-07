@@ -78,7 +78,8 @@ spec:
 #        enabled: false
     persistence:
       config:
-        enabled: false
+        enabled: true
+        existingClaim: guacamole-config-volume
     resources:
       requests:
         cpu: 10m
