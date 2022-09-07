@@ -67,6 +67,6 @@ spec:
   chain:
     middlewares:
       - name: middlewares-rate-limit
-      - name: middlewares-guacamole-addprefix
+        #- name: middlewares-guacamole-addprefix
       - name: middlewares-secure-headers
       - name: middlewares-authelia

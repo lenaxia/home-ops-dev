@@ -29,7 +29,7 @@ spec:
       TZ: "${TIMEZONE}"
     service:
       main:
-        ports:
+        http:
           endpoint:
             port: &port 4822
 #    probes:
