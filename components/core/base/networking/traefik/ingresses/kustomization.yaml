@@ -9,3 +9,4 @@ resources:
   - synology-moments.yaml
   - synology-drive.yaml
   - portainer.yaml
+  - phpmyadmin.yaml
