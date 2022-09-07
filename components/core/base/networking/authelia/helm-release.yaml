@@ -356,7 +356,7 @@ spec:
           timeout: 10s
 
         postgres:
-          enabled: true
+          enabled: false
           host: defaultpg-rw
           port: 5432
           database: authelia
@@ -365,6 +365,10 @@ spec:
           password: authelia
           ssl:
             mode: disable
+            
+        encryption_key: pPubSmumpvj8vyZhMEfH1OHSsk6HoZiU9YPYBklCiYyjtOwCE8LXIEj6B2iQsyJh
+          local:
+            path: /config/db.sqlite3
     
       ##
       ## Notification Provider
