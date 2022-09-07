@@ -248,12 +248,12 @@ spec:
             #  policy: bypass
             #  networks:
             #    - private
-        - domain:
-            - "${SECRET_DEV_DOMAIN}"
-            - "*.${SECRET_DEV_DOMAIN}"
-          policy: two_factor
-          subject:
-            - "group:administrators"
+#        - domain:
+#            - "${SECRET_DEV_DOMAIN}"
+#            - "*.${SECRET_DEV_DOMAIN}"
+#          policy: two_factor
+#          subject:
+#            - "group:administrators"
         - domain:
             - "*.${SECRET_DEV_DOMAIN}"
             - "${SECRET_DEV_DOMAIN}"
