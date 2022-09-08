@@ -36,7 +36,7 @@ spec:
   ports:
     - port: 80
       protocol: TCP
-      targetPort: 9797
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Endpoints
@@ -45,9 +45,9 @@ metadata:
   namespace: networking
 subsets:
   - addresses:
-      - ip: "192.168.0.125"
+      - ip: "192.168.3.5"
     ports:
-      - port: 9797
+      - port: 8080
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -67,6 +67,6 @@ spec:
   chain:
     middlewares:
       - name: middlewares-rate-limit
-        #- name: middlewares-guacamole-addprefix
+      - name: middlewares-guacamole-addprefix
       - name: middlewares-secure-headers
       - name: middlewares-authelia
