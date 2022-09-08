@@ -10,3 +10,4 @@ resources:
   - synology-drive.yaml
   - portainer.yaml
   - phpmyadmin.yaml
+  - guacamole0.yaml
