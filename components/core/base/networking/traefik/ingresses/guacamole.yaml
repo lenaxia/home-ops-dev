@@ -45,7 +45,7 @@ metadata:
   namespace: networking
 subsets:
   - addresses:
-      - ip: "192.168.3.100"
+      - ip: "192.168.3.5"
     ports:
       - port: 8080
 ---
