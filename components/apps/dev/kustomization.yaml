@@ -36,6 +36,7 @@ resources:
   - ../base/utilities/descheduler
   - ../base/utilities/phpmyadmin
   - ../base/utilities/guacamole
+  - ../base/utilities/firefox
 
 
 patchesStrategicMerge:

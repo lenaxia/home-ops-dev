@@ -4,9 +4,9 @@ metadata:
     name: guacamole-config-volume
 spec:
     accessModes:
-        - ReadWriteMany
+        - ReadWriteOnce
     storageClassName: longhorn
     resources:
         requests:
-            storage: 256Mi
+            storage: 512Mi
 
