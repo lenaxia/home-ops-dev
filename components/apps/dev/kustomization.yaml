@@ -4,6 +4,7 @@ resources:
   # Utilities Namespace
   - ../base/diagnostics/podinfo
   - ../base/diagnostics/echo-server
+  - ../kube-tools/node-feature-discovery
   
 
   # Monitoring Namespace
