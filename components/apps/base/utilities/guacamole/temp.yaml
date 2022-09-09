@@ -28,7 +28,7 @@ spec:
       tag: 1.4.0
     env:
       TZ: "${TIMEZONE}"
-      GUACD_HOSTNAME: guacd
+      GUACD_HOSTNAME: localhost
       MYSQL_HOSTNAME: 192.168.0.125
       MYSQL_PORT: 3306
       MYSQL_DATABASE: guacamole
