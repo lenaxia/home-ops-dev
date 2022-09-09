@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: &host "guac2.${SECRET_DEV_DOMAIN}"
+    - host: &host "amole.${SECRET_DEV_DOMAIN}"
       http:
         paths:
           - backend:
