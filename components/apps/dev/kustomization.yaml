@@ -6,6 +6,7 @@ resources:
   - ../base/diagnostics/echo-server
   - ../base/kube-tools/node-feature-discovery
   - ../base/kube-tools/intel-gpu-plugin
+  - ../base/kube-tools/intel-gpu-exporter
   
 
   # Monitoring Namespace

@@ -86,3 +86,15 @@ spec:
         memory: 50Mi
       limits:
         memory: 500Mi
+
+    additionalContainers:
+      guacd:
+        name: guacd 
+        image: docker.io/guacamole/guacd:1.4.0
+        env:
+          TZ: "${TIMEZONE}"
+        service:
+          main:
+            ports:
+              http:
+                port: &port 4822

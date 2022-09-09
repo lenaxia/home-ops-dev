@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: utilities
 resources:
   - config-pvc.yaml
-  - helm-release.yaml
+    #- helm-release.yaml
     #- helm-release-guacamole.yaml
     #patchesStrategicMerge:
     #  - patches/postgres.yaml
