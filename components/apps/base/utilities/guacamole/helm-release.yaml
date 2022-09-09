@@ -75,16 +75,21 @@ spec:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        memory: 1200Mi
+      guacd-configmap:
+        enabled: true
+        name: guacd-configmap
+        type: configMap
+        subPath: entrypoint.sh
+        mountPath: /bin/entrypoint.sh
 
     additionalContainers:
       guacd:
         name: guacd
         image: docker.io/guacamole/guacd:1.4.0
+        command:
+          - /bin/entrypoint.sh
         env:
           TZ: "${TIMEZONE}"
+        volumeMounts:
+          - name: entrypoint.sh
+            mountPath: /bin/entrypoint.sh
