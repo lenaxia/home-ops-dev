@@ -88,8 +88,3 @@ spec:
         image: docker.io/guacamole/guacd:1.4.0
         env:
           TZ: "${TIMEZONE}"
-        service:
-          main:
-            ports:
-              http:
-                port: &port 4822
