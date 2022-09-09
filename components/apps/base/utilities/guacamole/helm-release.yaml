@@ -56,3 +56,28 @@ spec:
         memory: 50Mi
       limits:
         memory: 500Mi
+
+
+    additionalContainers:
+      guacamole:
+        name: guacamole 
+        image: docker.io/guacamole/guacamole:1.4.0
+        env:
+          - name: RTORRENT__DEFAULT_CONFIG
+            value: "false"
+          - name: RTORRENT__CONFIG_FILE
+            value: "/rc/rtorrent.rc"
+          - name: RTORRENT__SOCKET
+            value: "/sock/rtorrent.sock"
+          - name: RTORRENT__BT_PORT
+            value: "50415"
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: rtorrent-rc
+            mountPath: /rc/rtorrent.rc
+            subPath: rtorrent.rc
+          - name: rtorrent-sock
+            mountPath: /sock
+          - name: media
+            mountPath: /media
