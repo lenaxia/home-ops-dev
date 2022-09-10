@@ -96,6 +96,6 @@ spec:
           - /bin/entrypoint.sh
         env:
           TZ: "${TIMEZONE}"
-        volumeMounts:
-          - name: entrypoint.sh
-            mountPath: /bin/entrypoint.sh
+#        volumeMounts:
+#          - name: entrypoint.sh
+#            mountPath: /bin/entrypoint.sh
