@@ -3,4 +3,12 @@ kind: Kustomization
 resources:
   - config-pvc.yaml
     #- helm-release.yaml
-  - configmap.yaml
+    #- configmap.yaml
+configMapGenerator:
+  - name: guacd-cm
+    files:
+      - entrypoint.sh
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
