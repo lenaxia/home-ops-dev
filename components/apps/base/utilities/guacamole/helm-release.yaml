@@ -81,15 +81,21 @@ spec:
         name: guacd-cm
         subPath: entrypoint.sh
         mountPath: /bin/entrypoint.sh
+      guac-prop:
+        enabled: true
+        type: configMap
+        name: guac-properties
+        subPath: guacamole.properties
+        mountPath: /home/guacamole/.guacamole/guacamole.properties
 
     additionalContainers:
       guacd:
         name: guacd
         image: docker.io/guacamole/guacd:1.4.0
-#        command:
-#          - /bin/entrypoint.sh
+        command:
+          - /bin/entrypoint.sh
         env:
           TZ: "${TIMEZONE}"
-#        volumeMounts:
-#          - name: entrypoint.sh
-#            mountPath: /bin/entrypoint.sh
+        volumeMounts:
+          - name: entrypoint.sh
+            mountPath: /bin/entrypoint.sh

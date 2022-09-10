@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: utilities
 resources:
   - config-pvc.yaml
-  #- configmap.yaml
+  - configmap.yaml
   - helm-release.yaml
 configMapGenerator:
   - name: guacd-cm
