@@ -78,7 +78,7 @@ spec:
       guacd-cm:
         enabled: true
         type: configMap
-        name: guacd-configmap
+        name: guacd-cm
         subPath: entrypoint.sh
         mountPath: /bin/entrypoint.sh
 
