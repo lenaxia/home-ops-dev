@@ -7,7 +7,10 @@ resources:
 configMapGenerator:
   - name: guacd-cm
     files:
-      - entrypoint.sh
+      - entrypoint-guacd.sh
+  - name: guac-cm
+    files:
+      - entrypoint-guac.sh
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
