@@ -91,5 +91,6 @@ spec:
         env:
           TZ: "${TIMEZONE}"
         volumeMounts:
-          - name: entrypoint.sh
+          - name: guacd-cm
             mountPath: /bin/entrypoint.sh
+            subPath: entrypoint.sh
