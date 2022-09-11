@@ -29,11 +29,11 @@ spec:
     env:
       TZ: "${TIMEZONE}"
       GUACD_HOSTNAME: localhost
-      MYSQL_HOSTNAME: 192.168.0.125
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: guacamole
-      MYSQL_USER: guacuser
-      MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
+#      MYSQL_HOSTNAME: 192.168.0.125
+#      MYSQL_PORT: 3306
+#      MYSQL_DATABASE: guacamole
+#      MYSQL_USER: guacuser
+#      MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
       #EXTENSIONS: auth-totp
       GUACAMOLE_HOME: /config
     service:
