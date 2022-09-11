@@ -71,35 +71,36 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
-#    command:
-#      - /bin/entrypoint-guac.sh
+    command:
+      - /bin/entrypoint-guac.sh
     persistence:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
-#      guac-cm:
-#        enabled: true
-#        type: configMap
-#        name: guac-cm
-#        subPath: entrypoint-guac.sh
-#        mountPath: /bin/entrypoint-guac.sh
-      guacd-cm:
+      guac-cm:
         enabled: true
         type: configMap
-        name: guacd-cm
-        subPath: entrypoint.sh
-        mountPath: /bin/entrypoint.sh
+        name: guac-cm
+        subPath: entrypoint-guac.sh
+        mountPath: /bin/entrypoint-guac.sh
         defaultMode: 0777
+#      guacd-cm:
+#        enabled: true
+#        type: configMap
+#        name: guacd-cm
+#        subPath: entrypoint.sh
+#        mountPath: /bin/entrypoint.sh
+#        defaultMode: 0777
 
     additionalContainers:
       guacd:
         name: guacd
         image: docker.io/guacamole/guacd:1.4.0
-        command:
-          - /bin/entrypoint.sh
+#        command:
+#          - /bin/entrypoint.sh
         env:
           TZ: "${TIMEZONE}"
-        volumeMounts:
-          - name: guacd-cm
-            mountPath: /bin/entrypoint.sh
-            subPath: entrypoint.sh
+#        volumeMounts:
+#          - name: guacd-cm
+#            mountPath: /bin/entrypoint.sh
+#            subPath: entrypoint.sh
