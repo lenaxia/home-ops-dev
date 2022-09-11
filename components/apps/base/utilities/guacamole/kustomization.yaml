@@ -7,7 +7,7 @@ resources:
 configMapGenerator:
   - name: guacd-cm
     files:
-      - entrypoint-guacd.sh
+      - entrypoint.sh
   - name: guac-cm
     files:
       - entrypoint-guac.sh
