@@ -34,7 +34,7 @@ spec:
 #      MYSQL_DATABASE: guacamole
 #      MYSQL_USER: guacuser
 #      MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
-      #EXTENSIONS: auth-totp
+      EXTENSIONS: auth-header
       GUACAMOLE_HOME: /config
     service:
       main:
@@ -105,3 +105,4 @@ spec:
 #          - name: guacd-cm
 #            mountPath: /bin/entrypoint.sh
 #            subPath: entrypoint.sh
+#

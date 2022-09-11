@@ -4,6 +4,7 @@ namespace: utilities
 resources:
   - config-pvc.yaml
   - helm-release.yaml
+    #  - guacd-release.yaml
 configMapGenerator:
   - name: guacd-cm
     files:
