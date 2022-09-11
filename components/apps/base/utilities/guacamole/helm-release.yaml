@@ -81,12 +81,6 @@ spec:
         name: guacd-cm
         subPath: entrypoint.sh
         mountPath: /bin/entrypoint.sh
-      guac-prop:
-        enabled: true
-        type: configMap
-        name: guac-properties
-        subPath: guacamole.properties
-        mountPath: /home/guacamole/.guacamole/guacamole.properties
 
     additionalContainers:
       guacd:
