@@ -89,6 +89,7 @@ spec:
         name: guacd-cm
         subPath: entrypoint.sh
         mountPath: /bin/entrypoint.sh
+        defaultMode: 0777
 
     additionalContainers:
       guacd:
