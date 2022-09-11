@@ -71,8 +71,8 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
-    command:
-      - /bin/entrypoint-guac.sh
+#    command:
+#      - /bin/entrypoint-guac.sh
     persistence:
       config:
         enabled: true
