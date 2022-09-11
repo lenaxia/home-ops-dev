@@ -6,3 +6,4 @@ sudo apt update && sudo apt -y -t buster-backports install freerdp2-dev libpulse
 wget https://dlcdn.apache.org/guacamole/1.4.0/binary/guacamole-auth-header-1.4.0.tar.gz /home/guacamole/.guacamole/extensions/
 
 sudo bash -c 'echo "http-auth-header: Remote-User" >> /home/guacamole/.guacamole/guacamole.properties'
+sudo bash -c 'echo "testing123" >> /config/guacamole.properties'

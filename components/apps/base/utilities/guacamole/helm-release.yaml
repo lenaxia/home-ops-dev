@@ -72,7 +72,7 @@ spec:
       supplementalGroups:
         - 100
     persistence:
-      home:
+      config:
         enabled: true
         existingClaim: guacamole-config-volume
       guacd-cm:
