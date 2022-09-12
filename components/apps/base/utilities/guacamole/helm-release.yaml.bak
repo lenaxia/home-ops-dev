@@ -24,18 +24,18 @@ spec:
       retries: 5
   values:
     image:
-      repository: docker.io/maxwaldorf/guacamole
-      tag: 1.4.2
+      repository: docker.io/guacamole/guacamole
+      tag: 1.4.0
     env:
       TZ: "${TIMEZONE}"
-#      GUACD_HOSTNAME: localhost
+      GUACD_HOSTNAME: localhost
 #      MYSQL_HOSTNAME: 192.168.0.125
 #      MYSQL_PORT: 3306
 #      MYSQL_DATABASE: guacamole
 #      MYSQL_USER: guacuser
 #      MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
       EXTENSIONS: auth-header
-#      GUACAMOLE_HOME: /config
+      GUACAMOLE_HOME: /config
     service:
       main:
         ports:
@@ -71,8 +71,38 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
+#    command:
+#      - /bin/entrypoint-guac.sh
     persistence:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
         readOnly: false
+      guac-cm:
+        enabled: true
+        type: configMap
+        name: guac-cm
+        subPath: entrypoint-guac.sh
+        mountPath: /bin/entrypoint-guac.sh
+        defaultMode: 0777
+#      guacd-cm:
+#        enabled: true
+#        type: configMap
+#        name: guacd-cm
+#        subPath: entrypoint.sh
+#        mountPath: /bin/entrypoint.sh
+#        defaultMode: 0777
+
+    additionalContainers:
+      guacd:
+        name: guacd
+        image: docker.io/guacamole/guacd:1.4.0
+#        command:
+#          - /bin/entrypoint.sh
+        env:
+          TZ: "${TIMEZONE}"
+#        volumeMounts:
+#          - name: guacd-cm
+#            mountPath: /bin/entrypoint.sh
+#            subPath: entrypoint.sh
+#
