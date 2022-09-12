@@ -25,6 +25,7 @@ resources:
   - ../base/media/nzbhydra2
   - ../base/media/bookstack
   - ../base/media/metube
+  - ../base/media/overseerr
 
   # IOT Namespace
   - ../base/iot/mosquitto
