@@ -37,7 +37,7 @@ spec:
                 pathType: Prefix
                 service:
                   port: 3012
-          - host: &uri "vault.${SECRET_PROD_DOMAIN_MGO}"
+          - host: "vault.${SECRET_PROD_DOMAIN_MGO}"
             paths:
               - path: /
                 pathType: Prefix
