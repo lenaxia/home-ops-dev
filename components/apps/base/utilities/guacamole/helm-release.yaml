@@ -64,13 +64,13 @@ spec:
             secretName: *uri
     podAnnotations:
       configmap.reloader.stakater.com/reload: *app
-#    podSecurityContext:
-#      runAsUser: 0
-#      runAsGroup: 0 
-#      fsGroup: 0 
-#      fsGroupChangePolicy: "OnRootMismatch"
-#      supplementalGroups:
-#        - 100
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000 
+      fsGroup: 1000 
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 100
     persistence:
       config:
         enabled: true
