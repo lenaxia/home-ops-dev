@@ -8,7 +8,7 @@
             <protocol>ssh</protocol>
             <param name="hostname">192.168.0.125</param>
             <param name="port">22</param>
-            <param name="password">Faith6510!</param>
+            <param name="password"></param>
         </connection>
 
         <!-- Second authorized connection -->
@@ -16,7 +16,7 @@
             <protocol>rdp</protocol>
             <param name="hostname">192.168.0.39</param>
             <param name="port">3389</param>
-            <param name="password">a6M11k86</param>
+            <param name="password"></param>
         </connection>
 
     </authorize>

@@ -14,40 +14,32 @@ spec:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
-      interval: 15m
   install:
     createNamespace: true
     remediation:
-      retries: 6
+      retries: 5
   upgrade:
     remediation:
       retries: 5
   values:
     image:
       repository: docker.io/maxwaldorf/guacamole
-      tag: 1.4.2
+      tag: latest
     env:
       TZ: "${TIMEZONE}"
-#      GUACD_HOSTNAME: localhost
-#      MYSQL_HOSTNAME: 192.168.0.125
-#      MYSQL_PORT: 3306
-#      MYSQL_DATABASE: guacamole
-#      MYSQL_USER: guacuser
-#      MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
       EXTENSIONS: auth-header
-#      GUACAMOLE_HOME: /config
     service:
       main:
         ports:
           http:
-            port: 8080
+            port: &port 8080
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-s-circle-outline"
+          hajimari.io/icon: "alpha-y-circle-outline"
           hajimari.io/group: "Media"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
             ##cert-manager.io/cluster-issuer: "ca-issuer"
@@ -62,17 +54,42 @@ spec:
           - hosts:
               - *uri
             secretName: *uri
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *app
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000 
-      fsGroup: 1000 
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 100
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /
+            port: *port
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
     persistence:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
-        readOnly: false
+#      usermapping-cm:
+#        enabled: true
+#        type: configMap
+#        name: usermapping-cm
+#        subPath: user-mapping.xml
+#        mountPath: /config/guacamole/user-mapping.xml
+#        defaultMode: 0777
+#      guacprop-cm:
+#        enabled: true
+#        type: configMap
+#        name: guacprop-cm 
+#        subPath: guacamole.properties
+#        mountPath: /config/guacamole/guacamole.properties
+#        defaultMode: 0777
+#    resources:
+#      requests:
+#        cpu: 10m
+#        memory: 50Mi
+#      limits:
+#        memory: 500Mi

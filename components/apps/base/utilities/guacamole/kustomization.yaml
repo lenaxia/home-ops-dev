@@ -2,17 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: utilities
 resources:
-  - config-pvc.yaml
   - helm-release.yaml
-    #  - guacd-release.yaml
-configMapGenerator:
-  - name: guacd-cm
-    files:
-      - entrypoint.sh
-  - name: guac-cm
-    files:
-      - entrypoint-guac.sh
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
+  - config-pvc.yaml
+#configMapGenerator:
+#  - name: usermapping-cm
+#    files:
+#      - user-mapping.xml
+#  - name: guacprop-cm
+#    files:
+#      - guacamole.properties
+#generatorOptions:
+#  disableNameSuffixHash: true
+#  annotations:
+#    kustomize.toolkit.fluxcd.io/substitute: disabled

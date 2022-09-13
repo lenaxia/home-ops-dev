@@ -39,7 +39,7 @@ resources:
   - ../base/utilities/librespeed
   - ../base/utilities/descheduler
   - ../base/utilities/phpmyadmin
-  - ../base/utilities/guacamole2
+  - ../base/utilities/guacamole
   - ../base/utilities/firefox
 
 
