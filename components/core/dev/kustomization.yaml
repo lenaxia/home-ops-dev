@@ -24,7 +24,7 @@ patchesStrategicMerge:
   - cert-manager-values.yaml
 
   # Security
-  - traefik-values.yaml
+  #- traefik-values.yaml
   #- authentik-values.yaml
 
   # Storage
