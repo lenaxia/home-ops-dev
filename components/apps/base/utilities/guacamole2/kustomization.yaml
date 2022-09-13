@@ -3,3 +3,14 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - config-pvc.yaml
+configMapGenerator:
+  - name: usermapping-cm
+    files:
+      - user-mapping.xml
+  - name: guacprop-cm
+    files:
+      - guacamole.properties
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled

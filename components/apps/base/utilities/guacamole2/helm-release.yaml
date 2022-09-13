@@ -73,6 +73,20 @@ spec:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
+      usermapping-cm:
+        enabled: true
+        type: configMap
+        name: usermapping-cm
+        subPath: user-mapping.xml
+        mountPath: /config/guacamole/user-mapping.xml
+        defaultMode: 0777
+      guacprop-cm:
+        enabled: true
+        type: configMap
+        name: guacprop-cm 
+        subPath: guacamole.properties
+        mountPath: /config/guacamole/guacamole.properties
+        defaultMode: 0777
 #    resources:
 #      requests:
 #        cpu: 10m
