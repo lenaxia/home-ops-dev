@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app metube
-  namespace: media
+  name: &app guacamole
+  namespace: utilities
 spec:
   interval: 15m
   chart:
