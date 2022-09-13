@@ -65,7 +65,10 @@ spec:
               url: "https://arstechnica.com"
             - name: FiveThirtyEight
               url: "https://fivethirtyeight.com"
-        - name: Media 
+        - name: Kubernetes
+          links:
+            - name: Nannes K8s-at-home Search
+              url: "https://nanne.dev/k8s-at-home-search/"
         - name: Cloud
           links:
             - name: Dropbox
