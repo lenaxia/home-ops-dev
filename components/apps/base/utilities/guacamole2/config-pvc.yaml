@@ -3,11 +3,13 @@ kind: PersistentVolumeClaim
 metadata:
     name: guacamole-config-volume
     namespace: utilities
+    labels:
+      app: guacamole
 spec:
     accessModes:
         - ReadWriteOnce
     storageClassName: longhorn
     resources:
         requests:
-            storage: 512Mi
+            storage: 1Gi
 

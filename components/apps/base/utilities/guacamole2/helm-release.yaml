@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app guacamole
-  namespace: utilities
+  name: &app metube
+  namespace: media
 spec:
   interval: 15m
   chart:
@@ -14,40 +14,32 @@ spec:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
-      interval: 15m
   install:
     createNamespace: true
     remediation:
-      retries: 6
+      retries: 5
   upgrade:
     remediation:
       retries: 5
   values:
     image:
-      repository: docker.io/guacamole/guacamole
-      tag: 1.4.0
+      repository: docker.io/maxwaldorf/guacamole
+      tag: latest
     env:
       TZ: "${TIMEZONE}"
-      GUACD_HOSTNAME: localhost
-      MYSQL_HOSTNAME: 192.168.0.125
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: guacamole
-      MYSQL_USER: guacuser
-      MYSQL_PASSWORD: qvNc9mYV1k4Do2VXjvpExiq5Qyvd6G
-      #EXTENSIONS: auth-totp
-      GUACAMOLE_HOME: /config
+      EXTENSIONS: auth-header
     service:
       main:
         ports:
           http:
-            port: 8080
+            port: &port 8080
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-s-circle-outline"
+          hajimari.io/icon: "alpha-y-circle-outline"
           hajimari.io/group: "Media"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
             ##cert-manager.io/cluster-issuer: "ca-issuer"
@@ -62,46 +54,28 @@ spec:
           - hosts:
               - *uri
             secretName: *uri
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *app
-    podSecurityContext:
-      runAsUser: 0
-      runAsGroup: 0 
-      fsGroup: 0 
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 100
-    command:
-      - /bin/entrypoint-guac.sh
+#    probes:
+#      liveness: &probes
+#        enabled: true
+#        custom: true
+#        spec:
+#          httpGet:
+#            path: /health
+#            port: *port
+#          initialDelaySeconds: 0
+#          periodSeconds: 10
+#          timeoutSeconds: 1
+#          failureThreshold: 3
+#      readiness: *probes
+#      startup:
+#        enabled: false
     persistence:
       config:
         enabled: true
         existingClaim: guacamole-config-volume
-        readOnly: false
-      guac-cm:
-        enabled: true
-        type: configMap
-        name: guac-cm
-        subPath: entrypoint-guac.sh
-        mountPath: /bin/entrypoint-guac.sh
-        defaultMode: 0777
-#      guacd-cm:
-#        enabled: true
-#        type: configMap
-#        name: guacd-cm
-#        subPath: entrypoint.sh
-#        mountPath: /bin/entrypoint.sh
-#        defaultMode: 0777
-
-    additionalContainers:
-      guacd:
-        name: guacd
-        image: docker.io/guacamole/guacd:1.4.0
-#        command:
-#          - /bin/entrypoint.sh
-        env:
-          TZ: "${TIMEZONE}"
-#        volumeMounts:
-#          - name: guacd-cm
-#            mountPath: /bin/entrypoint.sh
-#            subPath: entrypoint.sh
+#    resources:
+#      requests:
+#        cpu: 10m
+#        memory: 50Mi
+#      limits:
+#        memory: 500Mi
