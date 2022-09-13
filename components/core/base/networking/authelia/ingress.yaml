@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: "alpha-a-circle" 
+    hajimari.io/icon: "shield-account"
       #cert-manager.io/cluster-issuer: ca-issuer
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: websecure

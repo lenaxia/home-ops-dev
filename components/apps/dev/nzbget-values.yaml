@@ -16,7 +16,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-g-box"
+          hajimari.io/icon: "download-box"
           hajimari.io/group: "Media"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           #cert-manager.io/cluster-issuer: "ca-issuer"
