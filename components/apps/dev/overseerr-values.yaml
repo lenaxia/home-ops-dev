@@ -1,0 +1,38 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &appname overseerr
+  namespace: media
+spec:
+  chart:
+    spec:
+      version: "16.3.2"
+
+  values:
+    image:
+      repository: ghcr.io/linuxserver/overseerr
+      tag: latest
+          
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "eye-circle"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+            ##cert-manager.io/cluster-issuer: "ca-issuer"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+          - host: &uri "request.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri
+---

@@ -13,3 +13,4 @@ resources:
   - monitoring.yaml
   - utilities.yaml
   - velero.yaml
+  - kube-tools.yaml
