@@ -34,6 +34,12 @@ spec:
         ports:
           http:
             port: &port 6767
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      supplementalGroups:
+        - 100
     ingress:
       main:
         enabled: true
