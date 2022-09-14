@@ -29,6 +29,13 @@ spec:
       TZ: "${TIMEZONE}"
       PGID: 1000
       PUID: 1000
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 100
     service:
       main:
         ports:
