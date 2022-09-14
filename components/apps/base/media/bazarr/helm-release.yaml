@@ -27,8 +27,8 @@ spec:
       tag: latest
     env:
       TZ: "${TIMEZONE}"
-      PGID: 1000
-      PUID: 1000
+      PGID: 911
+      PUID: 1001
 #    podSecurityContext:
 #      runAsUser: 1000
 #      runAsGroup: 1000
