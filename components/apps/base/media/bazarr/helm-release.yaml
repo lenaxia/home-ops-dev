@@ -23,8 +23,8 @@ spec:
       retries: 5
   values:
     image:
-      repository: docker.io/alexta69/metube
-      tag: latest
+      repository: ghcr.io/onedr0p/bazarr
+      tag: 1.1.1
     env:
       TZ: "${TIMEZONE}"
       PGID: 1000
