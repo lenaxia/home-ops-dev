@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: calibre-web
+  name: &appname calibre-web
   namespace: media
 spec:
   chart:
@@ -68,6 +68,7 @@ spec:
       media:
         enabled: true
         existingClaim: calibre-media-volume
+        namespace: media
         mountPath: /media
     resources:
       requests:
