@@ -36,17 +36,17 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
-    initContainers:
-      config-permissions:
-        image: busybox
-        imagePullPolicy: IfNotPresent
-        command:
-          - /bin/sh
-          - -c
-          - mv /data/config/config.ini.bak /data/config/config.ini
-        volumeMounts:
-          - name: config 
-            mountPath: /data
+#    initContainers:
+#      config-permissions:
+#        image: busybox
+#        imagePullPolicy: IfNotPresent
+#        command:
+#          - /bin/sh
+#          - -c
+#          - mv /data/config/config.ini.bak /data/config/config.ini
+#        volumeMounts:
+#          - name: config 
+#            mountPath: /data
     service:
       main:
         ports:
