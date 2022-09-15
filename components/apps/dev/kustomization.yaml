@@ -21,7 +21,7 @@ resources:
   # Media Namespace
   - ../base/media/sonarr
   - ../base/media/radarr
-  - ../base/media/bazarr
+    #- ../base/media/bazarr
   - ../base/media/nzbget
   - ../base/media/nzbhydra2
   - ../base/media/bookstack
