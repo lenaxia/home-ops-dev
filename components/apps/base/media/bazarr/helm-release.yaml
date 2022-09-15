@@ -27,12 +27,12 @@ spec:
       tag: latest
     env:
       TZ: "${TIMEZONE}"
-      PGID: 1000
-      PUID: 1000
+      PUID: 911
+      PGID: 1001
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 911
+      runAsGroup: 1001
+      fsGroup: 1001
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
