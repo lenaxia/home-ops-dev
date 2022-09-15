@@ -30,8 +30,8 @@ spec:
       PGID: 1000
       PUID: 1000
     podSecurityContext:
-      runAsUser: 1001
-      runAsGroup: 911
+      runAsUser: 911
+      runAsGroup: 1001
         #      fsGroup: 1000
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
