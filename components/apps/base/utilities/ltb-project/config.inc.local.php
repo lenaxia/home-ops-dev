@@ -48,5 +48,4 @@ $mail_priority = 3;
 $change_sshkey = true;
 $who_change_sshkey = "user"
 
-$client_ip_header = 'REMOTE_ADDR';
 ?>
