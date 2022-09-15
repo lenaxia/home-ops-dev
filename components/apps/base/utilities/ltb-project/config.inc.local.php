@@ -48,7 +48,6 @@ $mail_priority = 3;
 $change_sshkey = true;
 $who_change_sshkey = "user"
 
-$use_ratelimit = true;
 $max_attempts_per_user = 3;
 $max_attempts_per_ip = 3;
 $max_attempts_block_seconds = "60";
