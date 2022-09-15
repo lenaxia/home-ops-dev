@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-    name: guacamole-config-volume
+    name: ltb-config-volume
     namespace: utilities
     labels:
       app: guacamole
