@@ -8,9 +8,6 @@ configMapGenerator:
   - name: ltb-config
     files:
       - config.inc.local.php
-  - name: kaologo
-    files:
-      - kaologo.png
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
