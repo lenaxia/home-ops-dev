@@ -30,19 +30,22 @@ spec:
       PGID: 911
       PUID: 1001
     podSecurityContext:
-      runAsUser: 0
-      runAsGroup: 0
+      runAsUser: 1001
+      runAsGroup: 911
         #      fsGroup: 1000
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
     initContainers:
-      - name: config-permissions
+      config-permissions:
         image: busybox
-        command: ["sh", "-c", "chown 1001:911 /data/config/config.ini"]
+        command:
+          - /bin/bash
+          - -c
+          - chmod abc:abc /data/config/config.ini
         volumeMounts:
-        - name: config
-          mountPath: /data
+          - name: config 
+            mountPath: /data
     service:
       main:
         ports:
