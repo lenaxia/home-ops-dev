@@ -72,6 +72,7 @@ spec:
       config:
         enabled: true
         existingClaim: ltb-config-volume
+        mountPath: /var/www
       ltb-config:
         enabled: true
         type: configMap
