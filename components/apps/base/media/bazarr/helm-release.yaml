@@ -37,12 +37,12 @@ spec:
       supplementalGroups:
         - 100
     initContainers:
-    - name: config-permissions
-      image: busybox
-      command: ["sh", "-c", "chown 1001:911 /data/config/config.ini"]
-      volumeMounts:
-      - name: config
-        mountPath: /data
+      - name: config-permissions
+        image: busybox
+        command: ["sh", "-c", "chown 1001:911 /data/config/config.ini"]
+        volumeMounts:
+        - name: config
+          mountPath: /data
     service:
       main:
         ports:
