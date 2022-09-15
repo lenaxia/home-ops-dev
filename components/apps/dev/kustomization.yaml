@@ -44,7 +44,8 @@ resources:
   - ../base/utilities/phpmyadmin
   - ../base/utilities/guacamole
   - ../base/utilities/firefox
-  - ../base/utilities/pwm-ldap
+#  - ../base/utilities/pwm-ldap
+  - ../base/utilities/ltb-project
 
 
 patchesStrategicMerge:
