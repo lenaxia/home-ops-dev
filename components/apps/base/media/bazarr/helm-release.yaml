@@ -39,10 +39,11 @@ spec:
     initContainers:
       config-permissions:
         image: busybox
+        imagePullPolicy: IfNotPresent
         command:
-          - /bin/bash
+          - /bin/sh
           - -c
-          - chmod abc:abc /data/config/config.ini
+          - chown abc:abc /data/config/config.ini
         volumeMounts:
           - name: config 
             mountPath: /data
