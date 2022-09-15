@@ -36,6 +36,13 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
+    initContainers:
+    - name: config-permissions
+      image: busybox
+      command: ["sh", "-c", "chown 1001:911 /data/config/config.ini"]
+      volumeMounts:
+      - name: config
+        mountPath: /data
     service:
       main:
         ports:
@@ -81,6 +88,7 @@ spec:
       config:
         enabled: true
         existingClaim: bazarr-config-volume
+        readOnly: false
 #      config-ini:
 #        enabled: true
 #        type: configMap
