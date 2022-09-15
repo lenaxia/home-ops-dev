@@ -43,7 +43,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - chown abc:abc /data/config/config.ini
+          - mv /data/config/config.ini.bak /data/config/config.ini
         volumeMounts:
           - name: config 
             mountPath: /data
