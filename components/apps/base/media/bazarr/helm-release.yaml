@@ -81,13 +81,13 @@ spec:
       config:
         enabled: true
         existingClaim: bazarr-config-volume
-      config-ini:
-        enabled: true
-        type: configMap
-        name: bazarr-config
-        subPath: config.ini
-        mountPath: /config/config/config.ini
-        defaultMode: 0666
+#      config-ini:
+#        enabled: true
+#        type: configMap
+#        name: bazarr-config
+#        subPath: config.ini
+#        mountPath: /config/config/config.ini
+#        defaultMode: 0666
       omoikane:
         enabled: true
         type: custom
