@@ -9,8 +9,9 @@ $ldap_filter = "(&(objectClass=posixAccount)(uid={login}))";
 $who_change_password = "user";
 
 $hash = "ARGON2";
-$logo = "images/ltb-logo.png";
-$background_image = "images/unsplash-space.jpeg";
+#$logo = "images/ltb-logo.png";
+$logo = "images/kaologo.png";
+$background_image = "images/unsplash-sky.jpeg";
 $display_footer = false;
 $header_name_preset_login = "Remote-User";
 

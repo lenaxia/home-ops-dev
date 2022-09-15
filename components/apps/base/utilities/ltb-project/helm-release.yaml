@@ -79,6 +79,12 @@ spec:
         name: ltb-config
         subPath: config.inc.local.php
         mountPath: /var/www/conf/config.inc.local.php
+      kaologo:
+        enabled: true
+        type: configMap
+        name: kaologo
+        subPath: kaologo.png
+        mountPath: /var/www/html/images/kaologo.png
 #        defaultMode: 0777
 #    resources:
 #      requests:
