@@ -83,7 +83,8 @@ spec:
       config:
         enabled: true
         existingClaim: ltb-config-volume
-#        mountPath: /var/www/html
+        mountPath: /var/www/html
+        defaultMode: 0777
       ltb-config:
         enabled: true
         type: configMap
