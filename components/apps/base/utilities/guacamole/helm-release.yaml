@@ -39,7 +39,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-y-circle-outline"
+          hajimari.io/icon: "remote-desktop"
           hajimari.io/group: "Media"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
             ##cert-manager.io/cluster-issuer: "ca-issuer"
