@@ -49,8 +49,9 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-y-circle-outline"
-          hajimari.io/group: "Media"
+          hajimari.io/icon: "lock-reset"
+          hajimari.io/appName: "Password Reset"
+          hajimari.io/group: "utilities"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
             ##cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
