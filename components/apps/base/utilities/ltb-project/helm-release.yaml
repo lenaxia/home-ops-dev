@@ -28,7 +28,7 @@ spec:
     env:
       TZ: "${TIMEZONE}"
     initContainers:
-      config-permissions:
+      config-files:
         image: busybox
         imagePullPolicy: IfNotPresent
         command:
