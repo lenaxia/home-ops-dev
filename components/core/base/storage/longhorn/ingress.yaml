@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: "alpha-l-circle-outline" 
+    hajimari.io/icon: "cow"
     hajimari.io/appName: "Longhorn"
     cert-manager.io/cluster-issuer: ca-issuer
     #cert-manager.io/cluster-issuer: letsencrypt-staging

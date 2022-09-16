@@ -21,25 +21,6 @@ spec:
 
     persistence: 
       defaultClassReplicaCount: 3
-
-    ingress:
-      ui:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "cow"
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - host: "longhorn.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - "longhorn.${SECRET_DEV_DOMAIN}"
-            secretName: "longhorn-dev-domain-tls-staging"
-              
     defaultSettings:
       backupTargetCredentialSecret: longhorn-minio-secret
+
