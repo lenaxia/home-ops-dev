@@ -79,12 +79,12 @@ spec:
         name: ltb-config
         subPath: config.inc.local.php
         mountPath: /var/www/conf/config.inc.local.php
-      custom-css:
-        enabled: true
-        type: configMap
-        name: custom-css 
-        subPath: self-service-password.css
-        mountPath: /var/www/html/css/self-service-password.css
+#      custom-css:
+#        enabled: true
+#        type: configMap
+#        name: custom-css 
+#        subPath: self-service-password.css
+#        mountPath: /var/www/html/css/self-service-password.css
 #        defaultMode: 0777
 #    resources:
 #      requests:
