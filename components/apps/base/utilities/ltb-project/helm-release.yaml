@@ -85,6 +85,7 @@ spec:
         existingClaim: ltb-config-volume
         mountPath: /var/www/html
         defaultMode: 0777
+        readOnly: false
       ltb-config:
         enabled: true
         type: configMap
