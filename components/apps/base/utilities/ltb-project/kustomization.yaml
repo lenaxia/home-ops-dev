@@ -8,6 +8,9 @@ configMapGenerator:
   - name: ltb-config
     files:
       - config.inc.local.php
+  - name: custom-css
+    files:
+      - self-service-password.css
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

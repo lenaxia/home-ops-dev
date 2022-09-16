@@ -79,12 +79,12 @@ spec:
         name: ltb-config
         subPath: config.inc.local.php
         mountPath: /var/www/conf/config.inc.local.php
-      kaologo:
+      custom-css:
         enabled: true
         type: configMap
-        name: kaologo
-        subPath: kaologo.png
-        mountPath: /var/www/html/images/kaologo.png
+        name: custom-css 
+        subPath: self-service-password.css
+        mountPath: /var/www/html/css/self-service-password.css
 #        defaultMode: 0777
 #    resources:
 #      requests:
