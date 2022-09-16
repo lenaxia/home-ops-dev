@@ -12,6 +12,7 @@ $hash = "ARGON2";
 #$logo = "images/ltb-logo.png";
 $logo = "images/ltb-logo.png";
 $background_image = "images/unsplash-sky.jpeg";
+$custom_css = "css/custom.css";
 $display_footer = false;
 $header_name_preset_login = "Remote-User";
 
