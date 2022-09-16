@@ -13,7 +13,7 @@ spec:
       ingressClassName: "traefik"
       annotations:
         hajimari.io/enable: "true"
-        hajimari.io/icon: "mdiPlayNetwork"
+        hajimari.io/icon: "chart-scatter-plot-hexbin"
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         #cert-manager.io/cluster-issuer: "ca-issuer"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
