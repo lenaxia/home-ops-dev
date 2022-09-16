@@ -10,7 +10,7 @@ configMapGenerator:
       - config.inc.local.php
   - name: custom-css
     files:
-      - self-service-password.css
+      - custom.css
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
