@@ -16,7 +16,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-l-box"
+          hajimari.io/icon: "speedometer-slow"
           hajimari.io/appName: "Speed Test"
           hajimari.io/group: "Utilities"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
