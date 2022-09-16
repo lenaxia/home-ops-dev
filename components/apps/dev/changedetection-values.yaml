@@ -14,7 +14,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-v-box-outline"
+          hajimari.io/icon: "swap-horizontal"
           hajimari.io/appName: "Change Detection"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           #cert-manager.io/cluster-issuer: "ca-issuer"

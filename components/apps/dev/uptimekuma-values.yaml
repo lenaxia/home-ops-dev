@@ -16,7 +16,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-k-box-outline"
+          hajimari.io/icon: "list-status"
           hajimari.io/appName: "Service Status"
           hajimari.io/group: "Utilities"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
