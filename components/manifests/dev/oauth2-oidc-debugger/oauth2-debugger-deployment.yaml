@@ -62,7 +62,7 @@ metadata:
   namespace: &ns utilities
   annotations:
     hajimari.io/enable: "true"
-    hajimari.io/icon: "alpha-o-box"
+    hajimari.io/icon: "shield-bug-outline"
     cert-manager.io/cluster-issuer: letsencrypt-production
       #cert-manager.io/cluster-issuer: ca-issuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
