@@ -59,7 +59,7 @@ patchesStrategicMerge:
   - radarr-values.yaml
   - nzbget-values.yaml
   - nzbhydra-values.yaml
-    #- overseerr-values.yaml
+  - overseerr-values.yaml
 
   # Default Namespace
   - hajimari-values.yaml

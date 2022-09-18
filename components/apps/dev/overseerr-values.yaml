@@ -5,9 +5,6 @@ metadata:
   name: &appname overseerr
   namespace: media
 spec:
-  chart:
-    spec:
-      version: 0.1.1
 
   values:
     image:
