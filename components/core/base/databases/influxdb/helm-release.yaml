@@ -31,23 +31,22 @@ spec:
 #      user: "admin"
 #      retention_policy: "30d"
 #      existingSecret: influxdb-auth
-#
+
     persistence:
       enabled: true
-#      size: 5Gi
       useExisting: true
       name: influxdb-data-volume
-#
-#    service:
-#      type: ClusterIP
-#      port: 80
-#      targetPort: 8086
-#      annotations:
-#        metallb.universe.tf/address-pool: dev-infra
-#      labels:
-#        app: influxdb
-#      portName: http
-#
+
+    service:
+      type: ClusterIP
+      port: 80
+      targetPort: 8086
+      annotations:
+        metallb.universe.tf/address-pool: dev-infra
+      labels:
+        app: influxdb
+      portName: http
+
 #    ingress:
 #      enabled: false
 #      ingressClassName: "traefik"
