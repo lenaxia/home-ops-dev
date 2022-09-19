@@ -19,6 +19,7 @@ resources:
   - ../base/databases/redis
   - ../base/databases/postgres-operator
   - ../base/databases/influxdb
+  - ../base/databases/chronograf
 patchesStrategicMerge:
   # Networking
   - metallb-values.yaml
