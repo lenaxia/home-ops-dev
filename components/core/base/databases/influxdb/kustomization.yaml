@@ -4,5 +4,5 @@ metadata:
   namespace: databases
 resources:
   - secret.sops.yaml
-  - config-pvc.yaml
-  - helm-release.yaml
+    #- config-pvc.yaml
+    #- helm-release.yaml
