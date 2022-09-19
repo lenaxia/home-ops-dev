@@ -25,12 +25,12 @@ spec:
 #    podLabels:
 #      app: influxdb
 #
-#    adminUser:
-#      organization: "kaocloud"
-#      bucket: "default"
-#      user: "admin"
-#      retention_policy: "30d"
-#      existingSecret: influxdb-auth
+    adminUser:
+      organization: "kaocloud"
+      bucket: "default"
+      user: "admin"
+      retention_policy: "30d"
+      existingSecret: influxdb-auth
 
     persistence:
       enabled: true
