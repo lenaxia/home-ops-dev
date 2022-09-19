@@ -22,42 +22,43 @@ spec:
     remediation:
       retries: 3
   values:
-    podLabels:
-      app: influxdb
-
-    adminUser:
-      organization: "kaocloud"
-      bucket: "default"
-      user: "admin"
-      retention_policy: "1w"
-      existingSecret: influxdb-auth
-
+#    podLabels:
+#      app: influxdb
+#
+#    adminUser:
+#      organization: "kaocloud"
+#      bucket: "default"
+#      user: "admin"
+#      retention_policy: "30d"
+#      existingSecret: influxdb-auth
+#
     persistence:
       enabled: true
-      useExisting: true
-      name: influxdb-data-volume
-
-    service:
-      type: ClusterIP
-      port: 80
-      targetPort: 8086
-      annotations:
-        metallb.universe.tf/address-pool: dev-infra
-      labels:
-        app: influxdb
-      portName: http
-
-    ingress:
-      enabled: false
-      ingressClassName: "traefik"
-      annotations: 
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "mdiPlayNetwork"
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hostname: &uri influxdb.${SECRET_DEV_DOMAIN}
-
-      tls: true
-      secretName: *uri
-      path: /
-
+      size: 5Gi
+#      useExisting: true
+#      name: influxdb-data-volume
+#
+#    service:
+#      type: ClusterIP
+#      port: 80
+#      targetPort: 8086
+#      annotations:
+#        metallb.universe.tf/address-pool: dev-infra
+#      labels:
+#        app: influxdb
+#      portName: http
+#
+#    ingress:
+#      enabled: false
+#      ingressClassName: "traefik"
+#      annotations: 
+#          hajimari.io/enable: "true"
+#          hajimari.io/icon: "mdiPlayNetwork"
+#          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+#      hostname: &uri influxdb.${SECRET_DEV_DOMAIN}
+#
+#      tls: true
+#      secretName: *uri
+#      path: /
+#
