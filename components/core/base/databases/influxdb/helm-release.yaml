@@ -34,9 +34,9 @@ spec:
 #
     persistence:
       enabled: true
-      size: 5Gi
-#      useExisting: true
-#      name: influxdb-data-volume
+#      size: 5Gi
+      useExisting: true
+      name: influxdb-data-volume
 #
 #    service:
 #      type: ClusterIP
