@@ -18,6 +18,7 @@ resources:
   #- ../base/databases/mariadb
   - ../base/databases/redis
   - ../base/databases/postgres-operator
+  - ../base/databases/influxdb
 patchesStrategicMerge:
   # Networking
   - metallb-values.yaml

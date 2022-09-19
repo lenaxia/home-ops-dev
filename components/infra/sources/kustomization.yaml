@@ -24,4 +24,4 @@ resources:
   - nicholaswilde-charts.yaml
   - descheduler-charts.yaml
   - cloudnative-pg-charts.yaml
-
+  - influxdata-charts.yaml
