@@ -3,6 +3,6 @@ kind: Kustomization
 metadata:
   namespace: databases
 resources:
-  #- config-pvc.yaml
-  #- helm-release.yaml
-  #- secret.sops.yaml
+  - secret.sops.yaml
+  - config-pvc.yaml
+  - helm-release.yaml
