@@ -53,7 +53,7 @@ spec:
       annotations: 
           hajimari.io/enable: "true"
           hajimari.io/icon: "mdiPlayNetwork"
-          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hostname: &uri influxdb.${SECRET_DEV_DOMAIN}
 
