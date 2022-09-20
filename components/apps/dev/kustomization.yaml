@@ -13,8 +13,8 @@ resources:
   
 
   # Monitoring Namespace
-  - ../base/monitoring/prometheus-stack
-  - ../base/monitoring/grafana
+  #- ../base/monitoring/prometheus-stack
+  #- ../base/monitoring/grafana
   - ../base/monitoring/loki
   #- ../base/monitoring/tobs
 
