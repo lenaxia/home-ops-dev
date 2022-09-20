@@ -17,7 +17,7 @@ resources:
   # Databases
   #- ../base/databases/mariadb
   - ../base/databases/redis
-  - ../base/databases/postgres-operator
+  - ../base/databases/cloudnative-pg
   - ../base/databases/influxdb
   - ../base/databases/chronograf
 patchesStrategicMerge:

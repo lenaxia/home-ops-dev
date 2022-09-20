@@ -7,6 +7,9 @@ resources:
   - ../base/kube-tools/node-feature-discovery
   - ../base/kube-tools/intel-gpu-plugin
     #- ../base/kube-tools/intel-gpu-exporter
+  - ../base/kube-tools/reloader
+  - ../base/kube-tools/descheduler
+  - ../base/kube-tools/metrics-server
   
 
   # Monitoring Namespace
@@ -40,7 +43,6 @@ resources:
   - ../base/utilities/smokeping
   - ../base/utilities/changedetection
   - ../base/utilities/librespeed
-  - ../base/utilities/descheduler
   - ../base/utilities/phpmyadmin
   - ../base/utilities/guacamole
   - ../base/utilities/firefox

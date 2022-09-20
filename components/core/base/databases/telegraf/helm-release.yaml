@@ -22,9 +22,9 @@ spec:
     remediation:
       retries: 3
   values:
-#    podLabels:
-#      app: influxdb
-#
+    podLabels:
+      app: telegraf 
+
 #    adminUser:
 #      organization: "kaocloud"
 #      bucket: "default"
@@ -35,7 +35,7 @@ spec:
     persistence:
       enabled: true
       useExisting: true
-      name: influxdb-data-volume
+      name: telegraf-data-volume
 
     service:
       type: ClusterIP
@@ -44,20 +44,50 @@ spec:
       annotations:
         metallb.universe.tf/address-pool: dev-infra
       labels:
-        app: influxdb
+        app: telegraf
       portName: http
 
-#    ingress:
-#      enabled: false
-#      ingressClassName: "traefik"
-#      annotations: 
-#          hajimari.io/enable: "true"
-#          hajimari.io/icon: "mdiPlayNetwork"
-#          cert-manager.io/cluster-issuer: "letsencrypt-staging"
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#      hostname: &uri influxdb.${SECRET_DEV_DOMAIN}
-#
-#      tls: true
-#      secretName: *uri
-#      path: /
-#
+
+    ## Exposed telegraf configuration
+    ## For full list of possible values see `/docs/all-config-values.yaml` and `/docs/all-config-values.toml`
+    ## ref: https://docs.influxdata.com/telegraf/v1.1/administration/configuration/
+    config:
+      agent:
+        interval: "10s"
+        round_interval: true
+        metric_batch_size: 1000
+        metric_buffer_limit: 10000
+        collection_jitter: "0s"
+        flush_interval: "10s"
+        flush_jitter: "0s"
+        precision: ""
+        debug: false
+        quiet: false
+        logfile: ""
+        hostname: "$HOSTNAME"
+        omit_hostname: false
+      processors:
+        - enum:
+            mapping:
+              field: "status"
+              dest: "status_code"
+              value_mappings:
+                healthy: 1
+                problem: 2
+                critical: 3
+      outputs:
+        - influxdb:
+            urls:
+              - "http://influxdb.databases.svc.cluster.local:80"
+            database: "telegraf"
+            precision: "s"
+      inputs:
+        - statsd:
+            service_address: ":8125"
+            percentiles:
+              - 50
+              - 95
+              - 99
+            metric_separator: "_"
+            allowed_pending_messages: 10000
+            percentile_limit: 1000

@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: flux-system
 resources:
-  - longhorn.yaml
-  - traefik.yaml
+  - longhorn-charts.yaml
+  - traefik-charts.yaml
   - ealenn-charts.yaml
-  - bitnami.yaml
-  - metallb.yaml
-  - podinfo.yaml
+  - bitnami-charts.yaml
+  - metallb-charts.yaml
+  - podinfo-charts.yaml
   - k8s-at-home.yaml
   - grafana-charts.yaml
   - metrics-server-charts.yaml
@@ -25,3 +25,4 @@ resources:
   - descheduler-charts.yaml
   - cloudnative-pg-charts.yaml
   - influxdata-charts.yaml
+  - skater-charts.yaml
