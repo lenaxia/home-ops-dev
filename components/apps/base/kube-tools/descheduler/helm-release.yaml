@@ -98,13 +98,20 @@ spec:
           params:
             nodeResourceUtilizationThresholds:
               thresholds:
-                cpu: 40
-                memory: 40
-                pods: 40
+                cpu: 50
+                memory: 50
+                pods: 20
               targetThresholds:
                 cpu: 70
                 memory: 70
-                pods: 70
+                pods: 30
+        RemoveFailedPods:
+          enabled: true
+          params:
+            failedPods:
+              includingInitContainers: true
+              excludeOwnerKinds: ["Job"]
+              minPodLifetimeSeconds: 3600
         RemovePodsHavingTooManyRestarts:
           podRestartThreshold: 10
           includingInitContainers: true
