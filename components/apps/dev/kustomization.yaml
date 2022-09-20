@@ -68,8 +68,8 @@ patchesStrategicMerge:
   - vaultwarden-values.yaml
 
   # Monitoring Namespace
-  - prometheus-stack.yaml
-  - grafana-values.yaml
+  #- prometheus-stack.yaml
+  #- grafana-values.yaml
   - loki-values.yaml
   #- tobs-values.yaml
 
