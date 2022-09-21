@@ -10,7 +10,7 @@ $who_change_password = "user";
 
 $hash = "ARGON2";
 #$logo = "images/ltb-logo.png";
-$logo = "images/ltb-logo.png";
+$logo = "images/kao-logo.png";
 $background_image = "images/unsplash-sky.jpeg";
 $custom_css = "css/custom.css";
 $display_footer = false;
