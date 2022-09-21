@@ -44,7 +44,7 @@ spec:
           command:
             - /bin/bash
             - -c
-            - /postStart.sh
+            - /config/postStart.sh
     service:
       main:
         ports:
@@ -99,7 +99,7 @@ spec:
         type: configMap
         name: ltb-config
         subPath: postStart.sh
-        mountPath: /postStart.sh
+        mountPath: /config/postStart.sh
       ltb-config:
         enabled: true
         type: configMap
