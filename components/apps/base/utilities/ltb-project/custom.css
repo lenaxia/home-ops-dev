@@ -141,7 +141,7 @@ textarea#sshkey {
     background-color: #ffffff;
     border-color: #000000;
     background-image: none;
-    text-align: right;
+    text-align: left;
 }
 
 .alert {
@@ -169,13 +169,14 @@ textarea#sshkey {
 }
 
 .col-sm-4 {
-    width: 15%;
+    width: unset;
 }
 
 .col-sm-offset-4 {
-    margin-left: 20%;
+    margin-left: unset;
+    padding-top: 15px;
 }
 
 .col-sm-8 {
-    width: 60%;
+    width: 100%;
 }

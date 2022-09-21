@@ -45,6 +45,10 @@ spec:
             - /bin/bash
             - -c
             - /postStart.sh
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: poststart-sh
+      configmap.reloader.stakater.com/reload: ltb-config
+      configmap.reloader.stakater.com/reload: custom-css
     service:
       main:
         ports:
