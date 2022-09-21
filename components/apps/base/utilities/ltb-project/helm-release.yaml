@@ -38,13 +38,13 @@ spec:
 #        volumeMounts:
 #          - name: config
 #            mountPath: /data
-#    lifecycle: 
-#      postStart:
-#        exec:
-#          command:
-#            - /bin/bash
-#            - -c
-#            - /postStart.sh
+    lifecycle: 
+      postStart:
+        exec:
+          command:
+            - /bin/bash
+            - -c
+            - /postStart.sh
     service:
       main:
         ports:
