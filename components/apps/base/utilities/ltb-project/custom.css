@@ -169,14 +169,18 @@ textarea#sshkey {
 }
 
 .col-sm-4 {
-    width: unset;
+    width: 100%;
 }
 
 .col-sm-offset-4 {
-    margin-left: unset;
+    margin-left: 0%;
     padding-top: 15px;
 }
 
 .col-sm-8 {
     width: 100%;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
 }
