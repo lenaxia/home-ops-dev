@@ -11,6 +11,9 @@ configMapGenerator:
   - name: custom-css
     files:
       - custom.css
+  - name: poststart-sh 
+    files:
+      - postStart.sh
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
