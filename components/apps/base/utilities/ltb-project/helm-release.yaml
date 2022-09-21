@@ -94,7 +94,7 @@ spec:
       #        mountPath: /var/www/html/images
       #        defaultMode: 0777
       #        readOnly: false
-      postStartScript:
+      poststart:
         enabled: true
         type: configMap
         name: ltb-config
