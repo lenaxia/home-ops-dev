@@ -38,13 +38,13 @@ spec:
 #        volumeMounts:
 #          - name: config
 #            mountPath: /data
-#    lifecycle: 
-#      postStart:
-#        exec:
-#          command:
-#            - /bin/sh
-#            - -c
-#            - wget "http://192.168.0.120:9000/public/kaologo.png" -O /var/www/html/images/kao-logo.png 
+    lifecycle: 
+      postStart:
+        exec:
+          command:
+            - /bin/bash
+            - -c
+            - /postStart.sh
     service:
       main:
         ports:
@@ -94,6 +94,12 @@ spec:
       #        mountPath: /var/www/html/images
       #        defaultMode: 0777
       #        readOnly: false
+      postStartScript:
+        enabled: true
+        type: configMap
+        name: ltb-config
+        subPath: postStart.sh
+        mountPath: /postStart.sh
       ltb-config:
         enabled: true
         type: configMap
