@@ -81,12 +81,12 @@ spec:
       startup:
         enabled: false
     persistence:
-      var:
-        enabled: true
-        existingClaim: ltb-config-volume
-          #mountPath: /var/www/html
-        defaultMode: 0777
-        readOnly: false
+#      var:
+#        enabled: true
+#        existingClaim: ltb-config-volume
+#          #mountPath: /var/www/html
+#        defaultMode: 0777
+#        readOnly: false
       ltb-config:
         enabled: true
         type: configMap
