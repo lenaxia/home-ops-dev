@@ -27,17 +27,24 @@ spec:
       tag: latest
     env:
       TZ: "${TIMEZONE}"
-    initContainers:
-      config-files:
-        image: busybox
-        imagePullPolicy: IfNotPresent
-        command:
-          - /bin/sh
-          - -c
-          - wget "http://192.168.0.120:9000/public/kaologo.png" -O /data/ltb-logo.png 
-        volumeMounts:
-          - name: config
-            mountPath: /data
+#    initContainers:
+#      config-files:
+#        image: busybox
+#        imagePullPolicy: IfNotPresent
+#        command:
+#          - /bin/sh
+#          - -c
+#          - wget "http://192.168.0.120:9000/public/kaologo.png" -O /data/ltb-logo.png 
+#        volumeMounts:
+#          - name: config
+#            mountPath: /data
+    lifecycle: 
+      postStart:
+        exec:
+          command:
+            - /bin/sh
+            - -c
+            - wget "http://192.168.0.120:9000/public/kaologo.png" -O /data/ltb-logo.png 
     service:
       main:
         ports:
@@ -81,12 +88,12 @@ spec:
       startup:
         enabled: false
     persistence:
-      config:
-        enabled: true
-        existingClaim: ltb-config-volume
-        mountPath: /var/www/html/images
-        defaultMode: 0777
-        readOnly: false
+      #      config:
+      #        enabled: true
+      #        existingClaim: ltb-config-volume
+      #        mountPath: /var/www/html/images
+      #        defaultMode: 0777
+      #        readOnly: false
       ltb-config:
         enabled: true
         type: configMap
