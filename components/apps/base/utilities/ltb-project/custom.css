@@ -142,6 +142,8 @@ textarea#sshkey {
     border-color: #000000;
     background-image: none;
     text-align: left;
+    display: flex;
+    justify-content: center;
 }
 
 .alert {
