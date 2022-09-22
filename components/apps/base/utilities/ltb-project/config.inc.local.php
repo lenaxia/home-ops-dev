@@ -33,7 +33,7 @@ $mail_address_use_ldap = true;
 $crypt_answers = true;
 $token_lifetime = "3600";
 $reset_request_log = "/config/self-service-password";
-$reset_url = $_SERVER['HTTP_X_FORWARDED_PROTO'] . "://" . $_SERVER['HTTP_X_FORWARDED_HOST'] . $_SERVER['SCRIPT_NAME'];
+$reset_url = "https://password.thekao.cloud";
 
 $mail_from = "mike@kao.family";
 $mail_from_name = "The Kao Cloud Self-Service Password Reset";
