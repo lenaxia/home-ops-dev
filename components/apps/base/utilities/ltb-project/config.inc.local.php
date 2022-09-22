@@ -49,5 +49,9 @@ $mail_priority = 3;
 
 $change_sshkey = true;
 $who_change_sshkey = "user"
+$change_sshkey_attribute = "sshPublicKey";
+$change_sshkey_objectClass = "ldapPublicKey";
+$ssh_valid_key_types = array('ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ssh-ed25519');
+$notify_on_sshkey_change = true;
 
 ?>
