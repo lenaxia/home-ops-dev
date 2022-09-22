@@ -28,19 +28,27 @@ $use_pwnedpasswords = true;
 $pwd_no_reuse = false;
 $pwd_show_policy = "onerror";
 
+$use_tokens = true;
+$mail_address_use_ldap = true;
 $crypt_answers = true;
+$token_lifetime = "3600";
+$reset_request_log = "/config/self-service-password";
+$reset_url = $_SERVER['HTTP_X_FORWARDED_PROTO'] . "://" . $_SERVER['HTTP_X_FORWARDED_HOST'] . $_SERVER['SCRIPT_NAME'];
+
+$mail_from = "mike@kao.family";
+$mail_from_name = "The Kao Cloud Self-Service Password Reset";
+$mail_signature = "";
+$notify_on_change = true;
 
 $mail_sendmailpath = '/usr/sbin/sendmail';
 $mail_protocol = 'smtp';
 $mail_smtp_debug = 0;
 $mail_debug_format = 'html';
-$mail_smtp_host = 'localhost';
-$mail_smtp_auth = false;
-$mail_smtp_user = '';
-$mail_smtp_pass = '';
-$mail_smtp_port = 25;
-$mail_smtp_timeout = 30;
-$mail_smtp_keepalive = false;
+$mail_smtp_host = 'email-smtp.us-west-2.amazonaws.com';
+$mail_smtp_auth = true;
+$mail_smtp_user = 'AKIAWL74NM3JRMD3BHHY';
+$mail_smtp_pass = 'BDPqOfeZVg1Z1lvZKl4PN3XsiSIrcGsb4SAITElSYj+b';
+$mail_smtp_port = 587;
 $mail_smtp_secure = 'tls';
 $mail_smtp_autotls = true;
 $mail_smtp_options = array();
@@ -56,4 +64,5 @@ $change_sshkey_objectClass = "ldapPublicKey";
 $ssh_valid_key_types = array('ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ssh-ed25519');
 $notify_on_sshkey_change = true;
 
+$use_questions = false;
 ?>
