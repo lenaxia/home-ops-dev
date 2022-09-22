@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  dependsOn:
-    - name: infrastructure
+#  dependsOn:
+#    - name: infrastructure
   sourceRef:
     kind: GitRepository
     name: flux-system
