@@ -11,3 +11,4 @@ resources:
   - portainer.yaml
   - phpmyadmin.yaml
   - plex.yaml
+  - minio.yaml
