@@ -2,17 +2,15 @@
 $keyphrase = "getenv(SECRET_LTB_KEYPHRASE)";
 $debug = true;
 $ldap_url = "ldap://192.168.0.120:389";
-#$ldap_binddn = "uid=ltb-admin,cn=users,dc=kao,dc=family";
-#$ldap_bindpw = "${SECRET_LTB_PROJECT_LDAP_PASSWORD}";
-$ldap_binddn = "uid=root,cn=users,dc=kao,dc=family";
+$ldap_binddn = getenv(SECRET_LTB_LDAP_BINDDN);
 $ldap_bindpw = "getenv(SECRET_LTB_LDAP_PASSWORD)";
-$ldap_base = "dc=kao,dc=family";
+$ldap_base = getenv(SECRET_LTB_LDAP_BASE);
 $ldap_filter = "(&(objectClass=posixAccount)(uid={login}))";
 $who_change_password = "user";
 
 $hash = "ARGON2";
 #$logo = "images/ltb-logo.png";
-$logo = "images/kao-logo.png";
+$logo = "images/custom-logo.png";
 $background_image = "images/unsplash-sky.jpeg";
 $custom_css = "css/custom.css";
 $display_footer = false;
@@ -33,10 +31,10 @@ $mail_address_use_ldap = true;
 $crypt_answers = true;
 $token_lifetime = "3600";
 $reset_request_log = "/config/self-service-password";
-$reset_url = "https://password.thekao.cloud";
+$reset_url = "https://getenv(SECRET_LTB_PASSWORD_RESET_URL)";
 
-$mail_from = "mike@kao.family";
-$mail_from_name = "The Kao Cloud Self-Service Password Reset";
+$mail_from = "getenv(SECRET_LTB_SMTP_MAIL_FROM)";
+$mail_from_name = getenv(SECRET_LTB_SMTP_MAIL_FROM_NAME);
 $mail_signature = "";
 $notify_on_change = true;
 
@@ -44,10 +42,10 @@ $notify_on_change = true;
 #$mail_protocol = 'smtp';
 #$mail_smtp_debug = 0;
 #$mail_debug_format = 'html';
-#$mail_smtp_host = 'email-smtp.us-west-2.amazonaws.com';
+#$mail_smtp_host = 'getenv(SECRET_LTB_SMTP_HOST)';
 #$mail_smtp_auth = true;
-#$mail_smtp_user = '';
-#$mail_smtp_pass = '';
+#$mail_smtp_user = 'getenv(SECRET_LTB_SMTP_USER)';
+#$mail_smtp_pass = 'getenv(SECRET_LTB_SMTP_PASSWORD)';
 #$mail_smtp_port = 587;
 #$mail_smtp_secure = 'tls';
 #$mail_smtp_autotls = true;
