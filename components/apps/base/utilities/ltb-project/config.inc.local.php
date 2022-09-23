@@ -2,9 +2,9 @@
 $keyphrase = getenv('SECRET_LTB_KEYPHRASE');
 $debug = true;
 $ldap_url = "ldap://192.168.0.120:389";
-$ldap_binddn = getenv('SECRET_LTB_LDAP_BINDDN');
-$ldap_bindpw = getenv('SECRET_LTB_LDAP_PASSWORD');
-$ldap_base = getenv('SECRET_LTB_LDAP_BASE');
+$ldap_binddn = "getenv('SECRET_LTB_LDAP_BINDDN')";
+$ldap_bindpw = "getenv('SECRET_LTB_LDAP_PASSWORD')";
+$ldap_base = "getenv('SECRET_LTB_LDAP_BASE')";
 $ldap_filter = "(&(objectClass=posixAccount)(uid={login}))";
 $who_change_password = "user";
 
