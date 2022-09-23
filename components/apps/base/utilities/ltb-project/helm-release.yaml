@@ -28,7 +28,7 @@ spec:
     env:
       TZ: "${TIMEZONE}"
     envFrom:
-      secretRef:
+      - secretRef:
         name: ltb-secret
 #    initContainers:
 #      config-files:
