@@ -5,7 +5,6 @@ metadata:
   name: &app tautulli
   namespace: media
 spec:
-
   values:
     #    image:
     #      repository: ghcr.io/linuxserver/tautulli
