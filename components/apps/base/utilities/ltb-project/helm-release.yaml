@@ -27,6 +27,9 @@ spec:
       tag: latest
     env:
       TZ: "${TIMEZONE}"
+    envFrom:
+      secretRef:
+        name: ltb-secret
 #    initContainers:
 #      config-files:
 #        image: busybox
