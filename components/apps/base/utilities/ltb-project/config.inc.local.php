@@ -10,7 +10,8 @@ $who_change_password = "user";
 
 $hash = "ARGON2";
 #$logo = "images/ltb-logo.png";
-$logo = "images/custom-logo.png";
+#$logo = "images/custom-logo.png";
+$logo = getenv('SECRET_LTB_LOGO');
 $background_image = "images/unsplash-sky.jpeg";
 $custom_css = "css/custom.css";
 $display_footer = false;
