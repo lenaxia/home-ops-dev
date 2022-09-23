@@ -49,7 +49,7 @@ spec:
             - -c
             - /postStart.sh
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "poststart-sh,ltb-config,custom-css"
+      configmap.reloader.stakater.com/reload: "poststart-sh,ltb-config,custom-css,ltb-secret"
     service:
       main:
         ports:
