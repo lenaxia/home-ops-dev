@@ -6,9 +6,9 @@ resources:
   - config-pvc.yaml
   - secret.sops.yaml
 configMapGenerator:
-  #  - name: ltb-config
-  #    files:
-  #      - config.inc.local.php
+  - name: ltb-config
+    files:
+      - config.inc.local.php
   - name: custom-css
     files:
       - custom.css

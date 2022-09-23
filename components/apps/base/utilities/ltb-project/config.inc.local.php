@@ -1,11 +1,11 @@
 <?php // My SSP configuration
-$keyphrase = "${SECRET_LTB_PROJECT_KEYPHRASE}";
+$keyphrase = "getenv(SECRET_LTB_KEYPHRASE)";
 $debug = true;
 $ldap_url = "ldap://192.168.0.120:389";
 #$ldap_binddn = "uid=ltb-admin,cn=users,dc=kao,dc=family";
 #$ldap_bindpw = "${SECRET_LTB_PROJECT_LDAP_PASSWORD}";
 $ldap_binddn = "uid=root,cn=users,dc=kao,dc=family";
-$ldap_bindpw = "${SECRET_LDAP_ROOT_PASSWORD}";
+$ldap_bindpw = "getenv(SECRET_LTB_LDAP_PASSWORD)";
 $ldap_base = "dc=kao,dc=family";
 $ldap_filter = "(&(objectClass=posixAccount)(uid={login}))";
 $who_change_password = "user";
