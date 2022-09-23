@@ -108,7 +108,7 @@ spec:
         defaultMode: 0777
       ltb-config:
         enabled: true
-        type: secret
+        type: configMap 
         name: ltb-config
         subPath: config.inc.local.php
         mountPath: /var/www/conf/config.inc.local.php
