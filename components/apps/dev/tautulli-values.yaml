@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &appname tautulli
+  name: &app tautulli
   namespace: media
 spec:
 
   values:
-    image:
-      repository: ghcr.io/linuxserver/tautulli
-      tag: latest
+    #    image:
+    #      repository: ghcr.io/linuxserver/tautulli
+    #      tag: latest
           
     ingress:
       main:
