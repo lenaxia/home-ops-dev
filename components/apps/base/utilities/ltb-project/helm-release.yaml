@@ -29,7 +29,7 @@ spec:
       TZ: "${TIMEZONE}"
     envFrom:
       - secretRef:
-        name: ltb-secret
+          name: ltb-secret
 #    initContainers:
 #      config-files:
 #        image: busybox
