@@ -10,7 +10,7 @@ $who_change_password = "user";
 
 $hash = "ARGON2";
 #$logo = "images/ltb-logo.png";
-$logo = "images/kao-logo.png";
+$logo = getenv('SECRET_LTB_LOGO');
 $background_image = "images/unsplash-sky.jpeg";
 $custom_css = "css/custom.css";
 $display_footer = false;
@@ -31,10 +31,10 @@ $mail_address_use_ldap = true;
 $crypt_answers = true;
 $token_lifetime = "3600";
 $reset_request_log = "/config/self-service-password";
-$reset_url = "https://password.thekao.cloud";
+$reset_url = getenv('SECRET_LTB_PASSWORD_RESET_URL');
 
-$mail_from = "";
-$mail_from_name = "";
+$mail_from = getenv('SECRET_LTB_SMTP_MAIL_FROM');
+$mail_from_name = getenv('SECRET_LTB_SMTP_MAIL_FROM_NAME');;
 $mail_signature = "";
 $notify_on_change = true;
 
@@ -42,10 +42,10 @@ $mail_sendmailpath = '/usr/sbin/sendmail';
 $mail_protocol = 'smtp';
 $mail_smtp_debug = 0;
 $mail_debug_format = 'html';
-$mail_smtp_host = '';
+$mail_smtp_host = getenv('SECRET_LTB_SMTP_HOST');
 $mail_smtp_auth = true;
-$mail_smtp_user = '';
-$mail_smtp_pass = '';
+$mail_smtp_user = getenv('SECRET_LTB_SMTP_USER');
+$mail_smtp_pass = getenv('SECRET_LTB_SMTP_PASSWORD');
 $mail_smtp_port = 587;
 $mail_smtp_secure = 'tls';
 $mail_smtp_autotls = true;
