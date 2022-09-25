@@ -32,7 +32,7 @@ resources:
   - ../base/media/overseerr
   - ../base/media/calibre
   - ../base/media/calibre-web
-  - ../base/media/tautulli
+    #  - ../base/media/tautulli
 
   # IOT Namespace
   - ../base/iot/mosquitto
@@ -63,7 +63,7 @@ patchesStrategicMerge:
   - nzbget-values.yaml
   - nzbhydra-values.yaml
   - overseerr-values.yaml
-  - tautulli-values.yaml
+    #  - tautulli-values.yaml
 
   # Default Namespace
   - hajimari-values.yaml
