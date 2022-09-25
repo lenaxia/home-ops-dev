@@ -34,27 +34,27 @@ spec:
         ports:
           http:
             port: &port 8181
-#    ingress:
-#      main:
-#        enabled: true
-#        ingressClassName: "traefik"
-#        annotations:
-#          hajimari.io/enable: "true"
-#          hajimari.io/icon: "alpha-o-circle"
-#          hajimari.io/group: "Media"
-#          cert-manager.io/cluster-issuer: "letsencrypt-production"
-#            ##cert-manager.io/cluster-issuer: "ca-issuer"
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-#        hosts:
-#          - host: &uri "tautulli.${SECRET_DEV_DOMAIN}"
-#            paths:
-#              - path: /
-#                pathType: Prefix
-#        tls:
-#          - hosts:
-#              - *uri
-#            secretName: *uri
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "alpha-o-circle"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+            ##cert-manager.io/cluster-issuer: "ca-issuer"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+          - host: &uri "tautulli.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri
     probes:
       liveness: &probes
         enabled: true
