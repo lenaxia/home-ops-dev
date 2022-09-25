@@ -6,9 +6,9 @@ metadata:
   namespace: media
 spec:
   values:
-    #    image:
-    #      repository: ghcr.io/linuxserver/tautulli
-    #      tag: latest
+    image:
+      repository: ghcr.io/linuxserver/tautulli
+      tag: latest
           
     ingress:
       main:
