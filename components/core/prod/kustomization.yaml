@@ -19,7 +19,7 @@ resources:
   - ../base/databases/redis
   - ../base/databases/cloudnative-pg
   - ../base/databases/influxdb
-  - ../base/databases/chronograf
+    #  - ../base/databases/chronograf
 patchesStrategicMerge:
   # Networking
   - metallb-values.yaml
