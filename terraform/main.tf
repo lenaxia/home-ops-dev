@@ -305,7 +305,7 @@ resource "proxmox_vm_qemu" "k3-dev-server-00" {
       network,
     ]
   }
-  ipconfig0 = "${format("ip=192.168.12.%s/22,gw=192.168.0.1", count.index + var.k3_dev_server00_offset + var.k3_dev_offset)}"
+  ipconfig0 = "${format("ip=192.168.2.%s/22,gw=192.168.0.1", count.index + var.k3_dev_server00_offset + var.k3_dev_offset)}"
   sshkeys = <<EOF
   ${var.ssh_key_terraform}
   EOF
@@ -313,11 +313,11 @@ resource "proxmox_vm_qemu" "k3-dev-server-00" {
 
 
 ##########
-## Agent 00 
+## Dev Agent 00 
 ##########
 
 resource "proxmox_vm_qemu" "k3-dev-agent-00" {
-  count = 1
+  count = 2
   name = "${format("k3-dev-agent-%02s", count.index + var.k3_dev_agent00_offset)}"
   target_node = var.k3_dev_agent00_host
   clone = var.template_name
@@ -346,7 +346,7 @@ resource "proxmox_vm_qemu" "k3-dev-agent-00" {
       network,
     ]
   }
-  ipconfig0 = "${format("ip=192.168.12.%s/22,gw=192.168.0.1", count.index + var.k3_dev_offset + var.k3_dev_agent00_offset)}"
+  ipconfig0 = "${format("ip=192.168.2.%s/22,gw=192.168.0.1", count.index + var.k3_dev_offset + var.k3_dev_agent00_offset)}"
   sshkeys = <<EOF
   ${var.ssh_key_terraform}
   EOF

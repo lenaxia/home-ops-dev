@@ -1,0 +1,43 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  # Utilities Namespace
+  - ../base/diagnostics/podinfo
+  - ../base/diagnostics/echo-server
+  - ../base/kube-tools/node-feature-discovery
+  - ../base/kube-tools/intel-gpu-plugin
+    #- ../base/kube-tools/intel-gpu-exporter
+  - ../base/kube-tools/reloader
+  
+  # Monitoring Namespace
+  - ../base/monitoring/prometheus-stack
+  - ../base/monitoring/grafana
+  - ../base/monitoring/loki
+  #- ../base/monitoring/tobs
+
+  # Default Namespace
+  - ../base/dashboards/hajimari
+
+  # Media Namespace
+  - ../base/media/calibre
+  - ../base/media/calibre-web
+
+  # Utilities Namespace
+  - ../base/utilities/guacamole
+
+
+patchesStrategicMerge:
+  # Default Namespace
+  - hajimari-values.yaml
+
+  # Monitoring Namespace
+  - prometheus-stack.yaml
+  - grafana-values.yaml
+  - loki-values.yaml
+  #- tobs-values.yaml
+
+  # Utilities Namespace
+    #- podinfo-values.yaml
+  - echoserver-values.yaml
+
+

@@ -13,7 +13,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/apps/prod
+  path: ./components/apps/dev
   prune: true
   wait: true
   timeout: 3m0s
