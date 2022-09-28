@@ -31,7 +31,7 @@ resources:
   - ../base/media/metube
   - ../base/media/overseerr
   - ../base/media/calibre
-  - ../base/media/calibre-web
+    #  - ../base/media/calibre-web
   - ../base/media/tautulli
 
   # IOT Namespace
