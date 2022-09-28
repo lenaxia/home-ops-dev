@@ -5,7 +5,7 @@ metadata:
   name: apps
   namespace: flux-system
 spec:
-  interval: 14s
+  interval: 30s
   dependsOn:
     - name: infrastructure
     - name: core
@@ -16,7 +16,7 @@ spec:
   path: ./components/apps/prod
   prune: true
   wait: true
-  timeout: 3m0s
+  timeout: 5m0s
   decryption:
     provider: sops
     secretRef:
