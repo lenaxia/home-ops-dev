@@ -16,7 +16,7 @@ resources:
   #- ../base/monitoring/prometheus-stack
   #- ../base/monitoring/grafana
   #- ../base/monitoring/loki
-  - ../base/monitoring/tobs
+  #- ../base/monitoring/tobs
 
   # Default Namespace
   - ../base/dashboards/hajimari
@@ -73,7 +73,7 @@ patchesStrategicMerge:
   #- prometheus-stack.yaml
   #- grafana-values.yaml
   #- loki-values.yaml
-  - tobs-values.yaml
+  #- tobs-values.yaml
 
   # Utilities Namespace
   - uptimekuma-values.yaml
