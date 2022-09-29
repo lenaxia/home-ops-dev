@@ -11,6 +11,7 @@ resources:
 
   # Security
   - ../base/networking/traefik
+  - ../base/networking/traefik/ingresses
   #- ../base/networking/authentik
   - ../base/networking/authelia
 
