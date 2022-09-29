@@ -21,4 +21,4 @@ spec:
       retries: 3
   values:
     crds:
-      enabled: true
+      enabled: false
