@@ -14,5 +14,5 @@ spec:
         nodePort: null
 
     persistence: 
-      defaultClassReplicaCount: 1
+      defaultClassReplicaCount: 2
 
