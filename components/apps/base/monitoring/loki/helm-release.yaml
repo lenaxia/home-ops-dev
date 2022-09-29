@@ -50,5 +50,5 @@ spec:
           - &host "loki.${SECRET_DEV_DOMAIN}"
         tls:
           - hosts:
-              - "loki.${SECRET_DEV_DOMAIN}"
-            secretName: "loki-devdomain-tls-staging"
+              - *host
+            secretName: *host
