@@ -10,6 +10,8 @@ resources:
   - ../base/networking/traefik
     #- ../base/networking/authelia
 
+  - ../base/storage/longhorn
+
 patchesStrategicMerge:
   # Networking
   - metallb-values.yaml
@@ -17,3 +19,5 @@ patchesStrategicMerge:
 
   # Security
   - traefik-values.yaml
+
+  - longhorn-values.yaml
