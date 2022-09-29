@@ -7,7 +7,7 @@ resources:
   - ../base/networking/metallb
 
   # Security
-  #  - ../base/networking/traefik
+  - ../base/networking/traefik
     #- ../base/networking/authelia
 
 patchesStrategicMerge:
@@ -16,4 +16,4 @@ patchesStrategicMerge:
   - cert-manager-values.yaml
 
   # Security
-  #  - traefik-values.yaml
+  - traefik-values.yaml
