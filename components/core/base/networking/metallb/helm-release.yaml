@@ -19,3 +19,6 @@ spec:
   upgrade:
     remediation:
       retries: 3
+  values:
+    crds:
+      enabled: true
