@@ -5,13 +5,19 @@ metadata:
   name: defaultpg
   namespace: databases
 spec:
-  instances: 3
+  instances: 2
   primaryUpdateStrategy: unsupervised
   storage:
     size: 20Gi
     storageClass: longhorn
   superuserSecret:
     name: postgres-superuser
+  bootstrap:
+    initdb:
+      database: default
+      owner: 3BK9XBSeNTKK7kFd 
+      secret:
+        name: postgres-superuser
   monitoring:
     enablePodMonitor: true
   backup:
