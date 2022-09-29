@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - middlewares
-  - ingress.yaml
+  - traefik.yaml
