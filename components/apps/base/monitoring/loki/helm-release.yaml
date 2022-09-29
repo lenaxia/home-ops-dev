@@ -42,15 +42,3 @@ spec:
           retention_period: 12h
     gateway:
       enabled: false
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - &host "loki.${SECRET_DEV_DOMAIN}"
-      tls:
-        - hosts:
-            - *host
-          secretName: *host

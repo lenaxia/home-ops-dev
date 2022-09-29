@@ -16,3 +16,5 @@ patchesStrategicMerge:
   
   - grafana-values.yaml
   - prometheus-stack.yaml
+  - loki-values.yaml
+
