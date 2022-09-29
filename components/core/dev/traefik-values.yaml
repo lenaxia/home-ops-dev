@@ -8,3 +8,11 @@ spec:
   chart:
     spec:
       version: 10.15.0
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-dashboard
+  namespace: networking
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-noauth@kubernetescrd
