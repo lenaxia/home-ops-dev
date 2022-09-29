@@ -8,7 +8,7 @@ resources:
 
   # Security
   - ../base/networking/traefik
-  - ../base/networking/authelia
+    #- ../base/networking/authelia
 
 patchesStrategicMerge:
   # Networking
