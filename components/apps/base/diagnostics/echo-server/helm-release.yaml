@@ -28,6 +28,8 @@ spec:
       tag: 0.5.1
     ingress:
       enabled: false
+    service:
+      type: LoadBalancer
     resources:
       requests:
         cpu: 50m
