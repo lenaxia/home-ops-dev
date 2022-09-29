@@ -23,7 +23,7 @@ spec:
       destinationPath: s3://cnpg-5wxuej/defaultpg
         #endpointURL: http://minio.default.svc.cluster.local:9000
       endpointURL: http://192.168.0.120:9000
-      serverName: omoikane
+      serverName: defaultpg
       s3Credentials:
         accessKeyId:
           name: postgres-minio
