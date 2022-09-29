@@ -15,7 +15,6 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/icon: "chart-scatter-plot-hexbin"
         cert-manager.io/cluster-issuer: "letsencrypt-production"
-        #cert-manager.io/cluster-issuer: "ca-issuer"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - &host "grafana.${SECRET_DEV_DOMAIN}"
@@ -24,30 +23,9 @@ spec:
             - *host
           secretName: *host
     grafana.ini:
-      auth:
-        signout_redirect_url: "https://authelia.${SECRET_DEV_DOMAIN}/logout"
-        oauth_auto_login: true
-      auth.generic_oauth:
-        enabled: true
-        name: Authelia
-        client_id: grafana
-        client_secret: "${SECRET_GRAFANA_OAUTH_CLIENT_SECRET}"
-        scopes: "openid profile email groups"
-        empty_scopes: false
-        auth_url: "https://authelia.${SECRET_DEV_DOMAIN}/api/oidc/authorization"
-        token_url: "https://authelia.${SECRET_DEV_DOMAIN}/api/oidc/token"
-        api_url: "https://authelia.${SECRET_DEV_DOMAIN}/api/oidc/userinfo"
-        login_attribute_path: preferred_username
-        groups_attribute_path: groups
-        name_attribute_path: name
-        use_pkce: true
-      auth.generic_oauth.group_mapping:
-        role_attribute_path: |
-          contains(groups[*], 'admins') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
-        org_id: 1
+      #auth:
       auth.basic:
-        enabled: false
-        # disable_login_form: false
+        enabled: true
       auth.anonymous:
         enabled: true
         #org_name: HomeOps
