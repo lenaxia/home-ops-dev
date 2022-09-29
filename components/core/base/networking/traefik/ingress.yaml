@@ -16,7 +16,7 @@ spec:
   ingressClassName: "traefik"
   tls:
     - hosts:
-        - &host "traefik.${SECRET_DEV_DOMAIN}"
+        - &host "traefik.kao.foundation"
       secretName: *host
   rules:
     - host: *host
