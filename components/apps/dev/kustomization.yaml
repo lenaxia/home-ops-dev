@@ -7,14 +7,16 @@ resources:
   - ../base/utilities/smokeping
   - ../base/utilities/firefox
 
-  - ../base/monitoring/prometheus-stack
-  - ../base/monitoring/grafana
-  - ../base/monitoring/loki
+    #  - ../base/monitoring/prometheus-stack
+    #  - ../base/monitoring/grafana
+    #  - ../base/monitoring/loki
+  - ../base/monitoring/tobs
 patchesStrategicMerge:
   - hajimari-values.yaml
   - smokeping-values.yaml
   
-  - grafana-values.yaml
-  - prometheus-stack.yaml
-  - loki-values.yaml
+    #  - grafana-values.yaml
+    #  - prometheus-stack.yaml
+    #  - loki-values.yaml
 
+  - tobs-values.yaml
