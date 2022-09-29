@@ -45,9 +45,9 @@ spec:
     env:
       TZ: "${TIMEZONE}"
       APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
-      DB_HOST: bookstack-mariadb
+      DB_HOST: 192.168.0.125
       DB_USER: bookstack
-      DB_PASS: bookstack
+      DB_PASS: xvQo3Bgl2YJ*un-z
       DB_DATABASE: bookstack
 
     service:
@@ -71,7 +71,7 @@ spec:
     #    For more options see [mariadb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mariadb).
     # @default -- See values.yaml
     mariadb:
-      enabled: true
+      enabled: disable
       architecture: standalone
       auth:
         database: bookstack
