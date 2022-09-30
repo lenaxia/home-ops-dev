@@ -12,7 +12,7 @@
                 "s3:GetBucketLocation"
             ],
             "Resource": [
-                "arn:aws:s3:::outline"
+                "arn:aws:s3:::outline-3eyxnvg6"
             ]
         },
         {
@@ -26,7 +26,7 @@
                 "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::outline"
+                "arn:aws:s3:::outline-3eyxnvg6"
             ],
             "Condition": {
                 "StringEquals": {
@@ -48,8 +48,8 @@
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::outline/avatars*",
-                "arn:aws:s3:::outline/public*"
+                "arn:aws:s3:::outline-3eyxnvg6/avatars*",
+                "arn:aws:s3:::outline-3eyxnvg6/public*"
             ]
         }
     ]
