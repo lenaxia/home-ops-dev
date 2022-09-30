@@ -5,4 +5,4 @@ metadata:
 resources:
   #  - config-pvc.yaml
   - helm-release.yaml
-  - minio-secret.sops.yaml
+  - secret.sops.yaml
