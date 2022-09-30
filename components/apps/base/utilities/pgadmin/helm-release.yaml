@@ -23,7 +23,7 @@ spec:
       retries: 5
   values:
     image:
-      repository: docker.io/bitnami/phppgadmin
+      repository: docker.io/dpage/pgadmin4
       tag: latest
     env:
       TZ: "${TIMEZONE}"
@@ -45,14 +45,14 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "lock-reset"
-          hajimari.io/appName: "Password Reset"
+          hajimari.io/appName: "PG Admin 4"
           hajimari.io/group: "utilities"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
             ##cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-          - host: &uri "phppgadmin.${SECRET_DEV_DOMAIN}"
+          - host: &uri "pgadmin.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix

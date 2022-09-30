@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: phppgadmin
-data:
-  DATABASE_HOST: defaultpg-rw.databases.svc.cluster.local
-  DATABASE_PORT_NUMBER: "5432"
-  DATABASE_SSL_MODE: disable
