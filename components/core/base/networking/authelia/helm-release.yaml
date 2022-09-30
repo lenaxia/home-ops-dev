@@ -481,7 +481,7 @@ spec:
             public: false
             authorization_policy: one_factor
             pre_configured_consent_duration: 1y
-            scopes: ["openid", "profile", "groups", "email", "offline_access"]
+            scopes: ["openid", "profile", "email", "offline_access"]
             redirect_uris: ["https://docs.${SECRET_DEV_DOMAIN}/auth/oidc.callback"]
             userinfo_signing_algorithm: none
             # -
