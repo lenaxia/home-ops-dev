@@ -37,6 +37,7 @@ spec:
         ports:
           http:
             port: &port 80
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
