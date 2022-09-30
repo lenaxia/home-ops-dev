@@ -47,7 +47,7 @@ spec:
       APP_URL: "https://w.${SECRET_DEV_DOMAIN}"
       DB_HOST: 192.168.0.125
       DB_USER: bookstack
-      DB_PASS: xvQo3Bgl2YJ*un-z
+      DB_PASS: hul6[5CXOzeqX@9s
       DB_DATABASE: bookstack
 
     service:
