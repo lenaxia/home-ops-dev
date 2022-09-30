@@ -10,4 +10,4 @@ patches:
   - path: config/patch-deployment.yaml
     target:
       kind: Deployment
-      name: "*"
+      name: ".*"
