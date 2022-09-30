@@ -45,9 +45,16 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx"
+        ingressClassName: "traefik"
         annotations:
-          external-dns.home.arpa/enabled: "true"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "lock-reset"
+          hajimari.io/appName: "Outline"
+          hajimari.io/group: "utilities"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+            ##cert-manager.io/cluster-issuer: "ca-issuer"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
           - host: &host "docs.${SECRET_DEV_DOMAIN}"
             paths:
