@@ -375,7 +375,8 @@ spec:
 
         postgres:
           enabled: true
-          host: defaultpg-rw.databases.svc.cluster.local
+            #host: defaultpg-rw.databases.svc.cluster.local
+          host: 192.168.5.125
           port: 5432
           database: authelia
           schema: public
@@ -401,11 +402,11 @@ spec:
         smtp:
           enabled: true
           enabledSecret: true
-          host: email-smtp.us-west-2.amazonaws.com
+          host: 
           port: 587
           timeout: 5s
-          username: AKIAWL74NM3JSZ73BVD5
-          sender: mike@kao.family
+          username: 
+          sender: 
           identifier: localhost
           subject: "[TheKaoCloud] {title}"
     
