@@ -33,6 +33,7 @@ resources:
   - ../base/media/calibre
   - ../base/media/calibre-web
   - ../base/media/tautulli
+  - ../base/media/outline
 
   # IOT Namespace
   - ../base/iot/mosquitto
