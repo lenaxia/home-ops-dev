@@ -32,7 +32,6 @@ spec:
           apiVersion: apps/v1
           metadata:
             name: authelia
-            namespace: networking
           spec:
             template:
               spec:
