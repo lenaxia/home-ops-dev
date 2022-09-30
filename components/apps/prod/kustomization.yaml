@@ -40,7 +40,7 @@ resources:
   - ../base/iot/nodered
 
   # Utilities Namespace
-  - ../base/utilities/vaultwarden
+  #  - ../base/utilities/vaultwarden
   - ../base/utilities/uptimekuma
   - ../base/utilities/smokeping
   - ../base/utilities/changedetection
@@ -69,7 +69,7 @@ patchesStrategicMerge:
 
   # Default Namespace
   - hajimari-values.yaml
-  - vaultwarden-values.yaml
+    #  - vaultwarden-values.yaml
 
   # Monitoring Namespace
   #- prometheus-stack.yaml
