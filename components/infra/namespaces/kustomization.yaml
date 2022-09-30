@@ -6,9 +6,7 @@ resources:
   - cert-manager.yaml
   - networking.yaml
   - infra.yaml
-  - podinfo.yaml
   - media.yaml
-  - traefik.yaml
   - iot.yaml
   - monitoring.yaml
   - utilities.yaml
