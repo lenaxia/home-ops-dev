@@ -22,7 +22,7 @@ spec:
     remediation:
       retries: 5
   dependsOn:
-    - name: postgres-operator-cloudnative-pg
+    - name: postgres-operator 
       namespace: databases
         #    - name: redis
         #      namespace: databases
