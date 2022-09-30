@@ -24,7 +24,7 @@ spec:
       retries: 4
   upgrade:
     remediation:
-      retries: 3
+      retries: 4
   postRenderers:
   - kustomize: 
       patchesStrategicMerge:
@@ -390,8 +390,8 @@ spec:
           port: 5432
           database: authelia
           schema: public
-          username: postgres
-          password: QkAM7sf@8AExe&7
+          username: authelia
+          password: authelia
           ssl:
             mode: disable
             
