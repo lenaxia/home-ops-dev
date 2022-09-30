@@ -400,7 +400,7 @@ spec:
         ## SMTP (Notification Provider)
         ##
         smtp:
-          enabled: true
+          enabled: false
           enabledSecret: true
           host: 
           port: 587
