@@ -28,7 +28,7 @@ spec:
         #      namespace: databases
   values:
     controller:
-      replicas: 3
+      replicas: 1
       strategy: RollingUpdate
     image:
       repository: docker.io/outlinewiki/outline
