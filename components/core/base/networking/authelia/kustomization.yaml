@@ -6,8 +6,8 @@ resources:
   - secret.sops.yaml
     #patchesStrategicMerge:
     #  - config/patch-postgres.yaml
-patches:
-  - path: config/patch-deployment.yaml
-    target:
-      kind: Deployment
-      name: "*.*"
+    #patches:
+    #  - path: config/patch-deployment.yaml
+    #    target:
+    #      kind: Deployment
+    #      name: "*.*"
