@@ -16,7 +16,7 @@ spec:
   path: ./components/apps/prod
   prune: true
   wait: true
-  timeout: 3m0s
+  timeout: 1m0s
   decryption:
     provider: sops
     secretRef:
