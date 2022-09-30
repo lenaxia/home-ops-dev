@@ -49,6 +49,7 @@ resources:
   - ../base/utilities/firefox
 #  - ../base/utilities/pwm-ldap
   - ../base/utilities/ltb-project
+  - ../base/utilities/phppgadmin
 
 
 patchesStrategicMerge:
