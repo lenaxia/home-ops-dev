@@ -400,13 +400,13 @@ spec:
         ## SMTP (Notification Provider)
         ##
         smtp:
-          enabled: false
+          enabled: true
           enabledSecret: true
-          host: 
+          host: smtp.gmail.com
           port: 587
           timeout: 5s
-          username: 
-          sender: 
+          username: ruri@lenaxia.net
+          sender: ruri@lenaxia.net
           identifier: localhost
           subject: "[TheKaoCloud] {title}"
     
