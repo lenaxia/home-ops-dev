@@ -11,6 +11,7 @@ metadata:
   name: &appname authelia
   namespace: networking
 spec:
+  ingressClassName: "traefik"
   rules:
   - host: &uri "authelia.${SECRET_DEV_DOMAIN}"
     http:
