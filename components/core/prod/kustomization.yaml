@@ -13,7 +13,7 @@ resources:
   - ../base/networking/traefik
   - ../base/networking/traefik/ingresses
   #- ../base/networking/authentik
-  - ../base/networking/authelia
+  #- ../base/networking/authelia
 
   # Databases
   #- ../base/databases/mariadb
