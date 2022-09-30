@@ -4,5 +4,5 @@ resources:
   - helm-release.yaml
   - ingress.yaml
   - secret.sops.yaml
-patchesStrategicMerge:
-  - config/patch-postgres.yaml
+    #patchesStrategicMerge:
+    #  - config/patch-postgres.yaml
