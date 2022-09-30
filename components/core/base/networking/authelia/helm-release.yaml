@@ -48,7 +48,7 @@ spec:
                         secretKeyRef:
                           name: postgres-superuser
                           key: password
-                          namespace: databases
+                            #namespace: databases
                     - name: POSTGRES_USER
                       value: authelia
                     - name: POSTGRES_PASS
