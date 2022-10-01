@@ -317,7 +317,7 @@ resource "proxmox_vm_qemu" "k3-dev-server-00" {
 ##########
 
 resource "proxmox_vm_qemu" "k3-dev-agent-00" {
-  count = 2
+  count = 1
   name = "${format("k3-dev-agent-%02s", count.index + var.k3_dev_agent00_offset)}"
   target_node = var.k3_dev_agent00_host
   clone = var.template_name
@@ -347,6 +347,47 @@ resource "proxmox_vm_qemu" "k3-dev-agent-00" {
     ]
   }
   ipconfig0 = "${format("ip=192.168.2.%s/22,gw=192.168.0.1", count.index + var.k3_dev_offset + var.k3_dev_agent00_offset)}"
+  sshkeys = <<EOF
+  ${var.ssh_key_terraform}
+  EOF
+}
+
+
+##########
+## Docker Host
+##########
+
+resource "proxmox_vm_qemu" "docker" {
+  count = 1
+  name = "docker"
+  target_node = "ifurita"
+  clone = var.template_name
+  agent = 1
+  os_type = "cloud-init"
+  cores = 4
+  sockets = 1
+  cpu = "host"
+  memory = "2048"
+  scsihw = "virtio-scsi-pci"
+  bootdisk = "scsi0"
+  disk {
+    slot = 0
+    size = "20G"
+    type = "scsi"
+    storage = "local-zfs"
+    iothread = 1
+  }
+  network {
+    model = "virtio"
+    bridge = "vmbr0"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      network,
+    ]
+  }
+  ipconfig0 = "ip=192.168.3.120/22,gw=192.168.0.1"
   sshkeys = <<EOF
   ${var.ssh_key_terraform}
   EOF
