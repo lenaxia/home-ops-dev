@@ -22,3 +22,4 @@ patchesStrategicMerge:
   - traefik-values.yaml
 
   - longhorn-values.yaml
+  - csi-driver-nfs-values.yaml
