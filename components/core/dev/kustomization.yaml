@@ -11,6 +11,7 @@ resources:
     #- ../base/networking/authelia
 
   - ../base/storage/longhorn
+  - ../base/storage/csi-driver-nfs
 
 patchesStrategicMerge:
   # Networking
