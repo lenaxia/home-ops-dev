@@ -9,6 +9,7 @@ resources:
     #- ../base/kube-tools/intel-gpu-exporter
   - ../base/kube-tools/reloader
   - ../base/kube-tools/descheduler
+  - ../base/kube-tools/minio
     #- ../base/kube-tools/metrics-server  # k3s already comes with a metrics server
   
 
