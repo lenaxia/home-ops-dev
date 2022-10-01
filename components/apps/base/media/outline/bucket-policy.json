@@ -9,7 +9,8 @@
                 ]
             },
             "Action": [
-                "s3:GetBucketLocation"
+                "s3:GetBucketLocation",
+                "s3:ListBucket"
             ],
             "Resource": [
                 "arn:aws:s3:::outline-3eyxnvg6"
@@ -23,19 +24,12 @@
                 ]
             },
             "Action": [
+                "s3:GetBucketLocation",
                 "s3:ListBucket"
             ],
             "Resource": [
                 "arn:aws:s3:::outline-3eyxnvg6"
-            ],
-            "Condition": {
-                "StringEquals": {
-                    "s3:prefix": [
-                        "avatars",
-                        "public"
-                    ]
-                }
-            }
+            ]
         },
         {
             "Effect": "Allow",
@@ -45,7 +39,9 @@
                 ]
             },
             "Action": [
-                "s3:GetObject"
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
             ],
             "Resource": [
                 "arn:aws:s3:::outline-3eyxnvg6/avatars*",

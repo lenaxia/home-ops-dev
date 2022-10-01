@@ -57,7 +57,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
-          - host: &uri "docs.${SECRET_DEV_DOMAIN}"
+          - host: &uri "w.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
