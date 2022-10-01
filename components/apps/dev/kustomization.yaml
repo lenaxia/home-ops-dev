@@ -6,7 +6,7 @@ resources:
   - ../base/diagnostics/echo-server
   - ../base/utilities/smokeping
   - ../base/utilities/firefox
-  - ../base/utilities/minio
+    #  - ../base/utilities/minio
 
     #  - ../base/monitoring/prometheus-stack
     #  - ../base/monitoring/grafana
