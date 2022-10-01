@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   # Storage
   - ../base/storage/longhorn
+  - ../base/storage/csi-driver-nfs
   - ../base/storage/velero
 
   # Networking
