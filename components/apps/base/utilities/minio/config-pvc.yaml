@@ -1,33 +1,46 @@
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minio-nfs
-spec:
-  capacity:
-    storage: 1Mi
-  accessModes:
-    - ReadWriteMany
-  storageClassName: minio-nfs
-  persistentVolumeReclaimPolicy: Retain
-  nfs:
-    server: "192.168.0.120"
-    path: /volume3/minio
-  mountOptions:
-    - nfsvers=3
-    - nconnect=8
-    - hard
-    - noatime
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: minio-nfs
+#spec:
+#  capacity:
+#    storage: 1Mi
+#  accessModes:
+#    - ReadWriteMany
+#  storageClassName: minio-nfs
+#  persistentVolumeReclaimPolicy: Retain
+#  nfs:
+#    server: "192.168.0.120"
+#    path: /volume3/minio
+#  mountOptions:
+#    - nfsvers=3
+#    - nconnect=8
+#    - hard
+#    - noatime
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: minio-nfs
+#  namespace: minio
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  storageClassName: minio-nfs
+#  resources:
+#    requests:
+#      storage: 1Mi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minio-nfs
-  namespace: minio
+    name: minio-nfs2
 spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: minio-nfs
-  resources:
-    requests:
-      storage: 1Mi
+    accessModes:
+        - ReadWriteMany
+    storageClassName: longhorn
+    resources:
+        requests:
+            storage: 5Gi
+
