@@ -24,12 +24,12 @@ spec:
   values:
     image:
       repository: quay.io/minio/minio
-      tag: RELEASE.2022-09-07T22-25-02Z
+      tag: RELEASE.2022-09-25T15-44-53Z
     env:
       TZ: "America/Los_Angeles"
       MINIO_UPDATE: "off"
-        #MINIO_PROMETHEUS_URL: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-        #MINIO_PROMETHEUS_JOB_ID: minio
+      #MINIO_PROMETHEUS_URL: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+      #MINIO_PROMETHEUS_JOB_ID: minio
       MINIO_BROWSER_REDIRECT_URL: "https://minio.${SECRET_DEV_DOMAIN}"
       MINIO_SERVER_URL: "https://s3.${SECRET_DEV_DOMAIN}"
       # MINIO_IDENTITY_OPENID_CONFIG_URL: "https://auth.${SECRET_PUBLIC_DOMAIN}/.well-known/openid-configuration"
