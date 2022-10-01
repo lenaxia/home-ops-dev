@@ -86,6 +86,10 @@ spec:
         enabled: true
         existingClaim: minio-nfs2
         mountPath: /data
+      config2:
+        enabled: true
+        existingClaim: minio-nfs
+        mountPath: /data2
       #config:
       #  enabled: true
       #  type: custom
