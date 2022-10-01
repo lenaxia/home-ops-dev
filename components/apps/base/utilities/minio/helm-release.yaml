@@ -84,12 +84,8 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: minio-nfs2
-        mountPath: /data
-      config2:
-        enabled: true
         existingClaim: minio-nfs
-        mountPath: /data2
+        mountPath: /data
       #config:
       #  enabled: true
       #  type: custom
