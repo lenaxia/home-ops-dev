@@ -82,18 +82,18 @@ spec:
       supplementalGroups:
         - 100
     persistence:
-      #config:
-      #  enabled: true
-      #  existingClaim: minio-nfs
-      #  mountPath: /data
       config:
         enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: ${NAS_ADDR}
-            path: /volume3/minio
+        existingClaim: minio-nfs
         mountPath: /data
+      #config:
+      #  enabled: true
+      #  type: custom
+      #  volumeSpec:
+      #    nfs:
+      #      server: ${NAS_ADDR}
+      #      path: /volume3/minio
+      #  mountPath: /data
     podAnnotations:
       secret.reloader.stakater.com/reload: *app
     resources:
