@@ -20,7 +20,7 @@ resources:
   #- ../base/databases/mariadb
   - ../base/databases/redis
   - ../base/databases/cloudnative-pg
-  - ../base/databases/cloudnative-pg/clusters
+    #- ../base/databases/cloudnative-pg/clusters
   - ../base/databases/influxdb
   - ../base/databases/chronograf
 patchesStrategicMerge:
