@@ -23,7 +23,7 @@ resources:
   - ../base/dashboards/hajimari
 
   # Media Namespace
-  - ../base/media/sonarr
+  #  - ../base/media/sonarr
   - ../base/media/radarr
   - ../base/media/bazarr
   - ../base/media/nzbget
@@ -61,7 +61,7 @@ patchesStrategicMerge:
 
   # Media Namespace
   #- bookstack-values.yaml
-  - sonarr-values.yaml
+  #  - sonarr-values.yaml
   - radarr-values.yaml
   - nzbget-values.yaml
   - nzbhydra-values.yaml
