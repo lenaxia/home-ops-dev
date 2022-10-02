@@ -25,10 +25,10 @@ spec:
     barmanObjectStore:
       wal:
         compression: bzip2
-        maxParallel: 7
+        maxParallel: 8
       destinationPath: s3://cnpg-5wxuej/
       endpointURL: http://minio.utilities.svc.cluster.local:9000
-      serverName: defaultpg
+      serverName: postgres-v1
       s3Credentials:
         accessKeyId:
           name: postgres-minio
