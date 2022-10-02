@@ -10,8 +10,9 @@ spec:
       - OPTIONS
       - PUT
     accessControlAllowOriginList:
-      - https://w.${SECRET_DEV_DOMAIN}
-      - https://s3.${SECRET_DEV_DOMAIN}
+      - *
+        #      - https://w.${SECRET_DEV_DOMAIN}
+        #      - https://s3.${SECRET_DEV_DOMAIN}
     accessControlMaxAge: 100
     addVaryHeader: true
     stsSeconds: 63072000
