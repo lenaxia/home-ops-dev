@@ -28,7 +28,7 @@ spec:
         maxParallel: 7
       destinationPath: s3://cnpg-5wxuej/
         #endpointURL: http://minio.default.svc.cluster.local:9000
-      endpointURL: http://s3.${SECRET_DEV_DOMAIN}
+      endpointURL: https://s3.${SECRET_DEV_DOMAIN}
       serverName: defaultpg
       s3Credentials:
         accessKeyId:
