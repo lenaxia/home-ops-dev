@@ -5,3 +5,4 @@ resources:
   - helm-release.yaml
   - secret.sops.yaml
   - config-pvc.yaml
+  - middlewares.yaml
