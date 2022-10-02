@@ -76,7 +76,7 @@ spec:
               - *host-api
             secretName: "{{ .Release.Name }}-tls"
     podSecurityContext:
-      runAsUser: 0
+      runAsUser: 11
       runAsGroup: 0
       fsGroup: 0
       fsGroupChangePolicy: "OnRootMismatch"
