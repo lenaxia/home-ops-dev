@@ -22,6 +22,7 @@ spec:
     customFrameOptionsValue: "allow-from https:${SECRET_DEV_DOMAIN}" #CSP takes care of this but may be needed for organizr.
     contentTypeNosniff: true
     browserXssFilter: true
+    referrerPolicy: "origin-when-cross-origin"
       #referrerPolicy: "same-origin"
     # Setting contentSecurityPolicy is more secure but it can break things. Proper auth will reduce the risk.
     # the below line also breaks some apps due to 'none' - sonarr, radarr, etc.
