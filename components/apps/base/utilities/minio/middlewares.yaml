@@ -9,7 +9,7 @@ spec:
       - GET
       - OPTIONS
       - PUT
-    accessControlAllowOrigin:
+    accessControlAllowOriginList:
       - https://w.${SECRET_DEV_DOMAIN}
     accessControlMaxAge: 100
     addVaryHeader: true
