@@ -37,6 +37,9 @@ spec:
         secretAccessKey:
           name: postgres-minio
           key: MINIO_SECRET_KEY
+        region:
+          name: postgres-minio
+          key: MINIO_REGION
 
 # CNPG Recovery
 # https://cloudnative-pg.io/documentation/1.15/bootstrap/#bootstrap-from-a-backup-recovery
