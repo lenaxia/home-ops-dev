@@ -256,7 +256,7 @@ spec:
           key: configuration.acl.yaml
           existingSecret: ""
     
-        default_policy: one_factor
+        default_policy: deny
     
         networks:
         - name: private
@@ -268,22 +268,82 @@ spec:
         rules:
         - domain: authelia.${SECRET_DEV_DOMAIN}
           policy: bypass
+        # Require 2fa in all access modes
         - domain:
             - "dsm.${SECRET_DEV_DOMAIN}"
+            - "guac.${SECRET_DEV_DOMAIN}"
+            - "amole.${SECRET_DEV_DOMAIN}"
           policy: two_factor
-            #- domain: "*.${SECRET_DEV_DOMAIN}"
-            #  policy: bypass
-            #  networks:
-            #    - private
-#        - domain:
-#            - "${SECRET_DEV_DOMAIN}"
-#            - "*.${SECRET_DEV_DOMAIN}"
-#          policy: two_factor
-#          subject:
-#            - "group:administrators"
-        - domain:
+        # Local only bypass policies
+        - domain: 
+            - "ldap.${SECRET_DEV_DOMAIN}"
+          policy: bypass
+          networks:
+            - private
+        # Public bypass policies
+        - domain: 
+            #media
+            - "w.${SECRET_DEV_DOMAIN}"
+            #synology
+            - "drive.${SECRET_DEV_DOMAIN}"
+            - "drive.${ SECRET_PROD_DOMAIN_KF}"
+            - "moments.${SECRET_DEV_DOMAIN}"
+            - "moments.${SECRET_PROD_DOMAIN_KF}"
+            #utilities
+            - "status.${SECRET_DEV_DOMAIN}"
+            - "vault.${SECRET_PROD_DOMAIN_MGO}"
+            - "vault.${SECRET_DEV_DOMAIN}"
+            #storage
+            - "s3.${SECRET_DEV_DOMAIN}"
+
+          policy: bypass
+        # Local only policies
+        - domain: 
             - "*.${SECRET_DEV_DOMAIN}"
-            - "${SECRET_DEV_DOMAIN}"
+          policy: one_factor
+          networks:
+            - private
+        # Public services - 2 Factor
+        - domain:
+            - "traefik.${SECRET_DEV_DOMAIN}"
+            #media
+            - "tautulli.${SECRET_DEV_DOMAIN}"
+            - "bazarr.${SECRET_DEV_DOMAIN}"
+            - "sonarr.${SECRET_DEV_DOMAIN}"
+            - "radarr.${SECRET_DEV_DOMAIN}"
+            - "nzbget.${SECRET_DEV_DOMAIN}"
+            - "nzbhydra.${SECRET_DEV_DOMAIN}"
+            - "calibre.${SECRET_DEV_DOMAIN}"
+            - "change.${SECRET_DEV_DOMAIN}"
+            - "dl.${SECRET_DEV_DOMAIN}"
+            #monitoring
+            - "chronograf.${SECRET_DEV_DOMAIN}"
+            #utilities
+            - "echo.${SECRET_DEV_DOMAIN}"
+            - "firefox.${SECRET_DEV_DOMAIN}"
+            - "guac.${SECRET_DEV_DOMAIN}"
+            - "amole.${SECRET_DEV_DOMAIN}"
+            - "oauth-debug.${SECRET_DEV_DOMAIN}"
+            - "pgadmin.${SECRET_DEV_DOMAIN}"
+            - "phpmyadmin.${SECRET_DEV_DOMAIN}"
+            - "portainer.${SECRET_DEV_DOMAIN}"
+            - "proxmox.${SECRET_DEV_DOMAIN}"
+            #storage
+            - "minio.${SECRET_DEV_DOMAIN}"
+            - "longhorn.${SECRET_DEV_DOMAIN}"
+            #iot
+            - "nodered.${SECRET_DEV_DOMAIN}"
+
+
+          policy: two_factor
+        # Public services - 1 Factor
+        - domain:
+            #media
+            - "library.${SECRET_DEV_DOMAIN}"
+            - "plex.${SECRET_DEV_DOMAIN}"
+            #utilitie
+            - "hajimari.${SECRET_DEV_DOMAIN}"
+            - "speed.${SECRET_DEV_DOMAIN}"
           policy: one_factor
         # rules:
         # - domain_regex: '^.*\.example.com$'
