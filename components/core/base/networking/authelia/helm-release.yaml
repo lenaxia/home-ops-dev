@@ -318,6 +318,9 @@ spec:
             - "dl.${SECRET_DEV_DOMAIN}"
             #monitoring
             - "chronograf.${SECRET_DEV_DOMAIN}"
+            - "loki.${SECRET_DEV_DOMAIN}"
+            - "grafana.${SECRET_DEV_DOMAIN}"
+            - "prom.${SECRET_DEV_DOMAIN}"
             #utilities
             - "echo.${SECRET_DEV_DOMAIN}"
             - "firefox.${SECRET_DEV_DOMAIN}"
