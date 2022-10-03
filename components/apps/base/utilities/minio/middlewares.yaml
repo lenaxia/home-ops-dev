@@ -36,10 +36,11 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: chain-no-auth-minio
+  name: chain-authelia-minio
   namespace: networking
 spec:
   chain:
     middlewares:
       - name: middlewares-rate-limit
       - name: middlewares-minio-headers
+      - name: middlewares-authelia

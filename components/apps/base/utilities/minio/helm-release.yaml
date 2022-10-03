@@ -54,16 +54,15 @@ spec:
           hajimari.io/icon: "television-box"
           hajimari.io/group: "Media"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-            ##cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth-minio@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-minio@kubernetescrd
         hosts:
-          #- host: &host-console "{{ .Release.Name }}.${SECRET_DEV_DOMAIN}"
-          #  paths:
-          #    - path: /
-          #      pathType: Prefix
-          #      service:
-          #        port: *port-console
+          - host: &host-console "{{ .Release.Name }}.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: *port-console
           - host: &host-api "s3.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
@@ -72,31 +71,31 @@ spec:
                   port: *port-api
         tls:
           - hosts:
-            #- *host-console
+              - *host-console
               - *host-api
             secretName: *host-api
-      console:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "television-box"
-          hajimari.io/group: "Media"
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-            ##cert-manager.io/cluster-issuer: "ca-issuer"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth-minio@kubernetescrd
-        hosts:
-          - host: &host-console "{{ .Release.Name }}.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  port: *port-console
-        tls:
-          - hosts:
-              - *host-console
-            secretName: *host-console
+      #console:
+      #  enabled: true
+      #  ingressClassName: "traefik"
+      #  annotations:
+      #    hajimari.io/enable: "true"
+      #    hajimari.io/icon: "television-box"
+      #    hajimari.io/group: "Media"
+      #    cert-manager.io/cluster-issuer: "letsencrypt-production"
+      #      ##cert-manager.io/cluster-issuer: "ca-issuer"
+      #    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      #    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-minio@kubernetescrd
+      #  hosts:
+      #    - host: &host-console "{{ .Release.Name }}.${SECRET_DEV_DOMAIN}"
+      #      paths:
+      #        - path: /
+      #          pathType: Prefix
+      #          service:
+      #            port: *port-console
+      #  tls:
+      #    - hosts:
+      #        - *host-console
+      #      secretName: *host-console
     podSecurityContext:
       runAsUser: 0
       runAsGroup: 0
