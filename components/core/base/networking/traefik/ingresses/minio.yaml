@@ -5,14 +5,14 @@ metadata:
   name: minio
   namespace: networking
   annotations:
-    coredns.io/hostname: "s3.${SECRET_PROD_DOMAIN_KAOFOUNDATION}"
+    coredns.io/hostname: "s3.${SECRET_PROD_DOMAIN_KFD}"
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-noauth@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
-    - host: &host "s3.${SECRET_PROD_DOMAIN_KAOFOUNDATION}"
+    - host: &host "s3.${SECRET_PROD_DOMAIN_KFD}"
       http:
         paths:
           - backend:

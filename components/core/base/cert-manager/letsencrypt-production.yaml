@@ -19,6 +19,6 @@ spec:
         selector:
           dnsZones:
             - ${SECRET_PROD_DOMAIN_MGO}
-            - ${SECRET_PROD_DOMAIN_KAOFAMILY}
-            - ${SECRET_PROD_DOMAIN_KAOFOUNDATION}
+            - ${SECRET_PROD_DOMAIN_KF}
+            - ${SECRET_PROD_DOMAIN_KFD}
             - ${SECRET_DEV_DOMAIN}
