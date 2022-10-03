@@ -48,8 +48,7 @@ resources:
   - ../base/utilities/librespeed
   - ../base/utilities/phpmyadmin
   - ../base/utilities/guacamole
-  - ../base/utilities/firefox
-#  - ../base/utilities/pwm-ldap
+    #- ../base/utilities/firefox
   - ../base/utilities/ltb-project
   - ../base/utilities/pgadmin
 
