@@ -5,14 +5,14 @@ metadata:
   name: synology-moments
   namespace: networking
   annotations:
-    coredns.io/hostname: "moments.${SECRET_PROD_DOMAIN_KAOFAMILY}"
+    coredns.io/hostname: "moments.${SECRET_PROD_DOMAIN_KF}"
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: networking-chain-synology-moments@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
-    - host: &host "moments.${SECRET_PROD_DOMAIN_KAOFAMILY}"
+    - host: &host "moments.${SECRET_PROD_DOMAIN_KF}"
       http:
         paths:
           - backend:
