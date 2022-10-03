@@ -10,4 +10,4 @@ resources:
   - portainer.yaml
   - phpmyadmin.yaml
   - plex.yaml
-  - minio.yaml
+  - omoikane-ldap.yaml
