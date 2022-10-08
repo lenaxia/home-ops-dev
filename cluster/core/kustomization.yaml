@@ -4,7 +4,7 @@ resources:
   # Networking
   - ./cert-manager
   - ./cert-manager/ca-issuer # include self-signed issuer
-  - ./networking/metallb
+  - ./metallb
 
   - ./storage/longhorn
   - ./storage/csi-driver-nfs
