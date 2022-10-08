@@ -15,4 +15,4 @@ resources:
     #- ./monitoring/tobs
 
   - ./networking/traefik
-  - ./authentication/authelia
+    #- ./authentication/authelia
