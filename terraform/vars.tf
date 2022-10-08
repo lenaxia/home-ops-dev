@@ -45,12 +45,12 @@ variable "k3_agent02_host" { default = "ifurita" }
 
 variable "k3_dev_server00_offset" { default = 0 }
 variable "k3_dev_server00_mem" { default = "5120" }
-variable "k3_dev_server00_cores" { default = "1" }
+variable "k3_dev_server00_cores" { default = "2" }
 variable "k3_dev_server00_host" { default = "melfina" }
 
 variable "k3_dev_agent00_offset" { default = 1 }
 variable "k3_dev_agent00_mem" { default = "10240" }
-variable "k3_dev_agent00_cores" { default = "3" }
+variable "k3_dev_agent00_cores" { default = "2" }
 variable "k3_dev_agent00_disksize" { default = "200G" }
 variable "k3_dev_agent00_host" { default = "lafiel" }
 

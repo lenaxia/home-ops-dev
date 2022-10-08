@@ -42,14 +42,14 @@ spec:
                     - name: POSTGRES_HOST
                       value: defaultpg-rw.databases.svc.cluster.local
                     - name: POSTGRES_DB
-                      value: authelia
+                      value: authelia-dev
                     - name: POSTGRES_SUPER_PASS
                       valueFrom:
                         secretKeyRef:
                           name: postgres-superuser
                           key: password
                     - name: POSTGRES_USER
-                      value: authelia
+                      value: authelia-dev
                     - name: POSTGRES_PASS
                       value: authelia
   values:
@@ -449,9 +449,9 @@ spec:
           enabled: false
           host: defaultpg-rw.databases.svc.cluster.local
           port: 5432
-          database: authelia
+          database: authelia-dev
           schema: public
-          username: authelia
+          username: authelia-dev
           password: authelia
           ssl:
             mode: disable
