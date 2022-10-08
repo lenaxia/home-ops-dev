@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &appname loki-stack
+  namespace: monitoring
+spec:
+  interval: 5m
+  dependsOn:
+    - name: kube-prometheus-stack
+  chart:
+    spec:
+      version: "2.x"
+      chart: *appname
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 60m
+  # https://github.com/grafana/helm-charts/blob/main/charts/loki-stack/values.yaml
+  # https://github.com/grafana/helm-charts/blob/main/charts/loki/values.yaml
+  values:
+    grafana:
+      enabled: false
+      sidecar:
+        datasources:
+          enabled: true
+          maxLines: 1000
+    promtail:
+      enabled: false
+    loki:
+      enabled: true
+      isDefault: false
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          app.kubernetes.io/part-of: kube-prometheus-stack
+      config:
+        chunk_store_config:
+          max_look_back_period: 0s
+        table_manager:
+          retention_deletes_enabled: true
+          retention_period: 12h
+    gateway:
+      enabled: false
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
+      hosts:
+        - &host "loki.${SECRET_DEV_DOMAIN}"
+      tls:
+        - hosts:
+            - *host
+          secretName: *host
