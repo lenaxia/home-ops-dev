@@ -10,5 +10,5 @@ resources:
   - iot.yaml
   - monitoring.yaml
   - utilities.yaml
-  - velero.yaml
+  - kyverno.yaml
   - kube-tools.yaml

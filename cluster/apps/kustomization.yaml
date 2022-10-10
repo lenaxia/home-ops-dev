@@ -17,3 +17,6 @@ resources:
 
   - ./networking/traefik
     #- ./authentication/authelia
+    #
+  - ./databases/cloudnative-pg
+  - ./databases/cloudnative-pg/clusters
