@@ -6,7 +6,7 @@ metadata:
   name: cluster-settings
 data:
   RURI_ADDR: "192.168.0.25"
-  NAS_ADDR: "192.168.0.20"
+  NAS_ADDR: "192.168.0.120"
   ADGUARD_ADDR: "192.168.0.5"
   TIMEZONE: "America/Los_Angeles"
 
