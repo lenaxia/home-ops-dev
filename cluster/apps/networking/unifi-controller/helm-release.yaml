@@ -38,22 +38,32 @@ spec:
           http:
             port: 8443
             protocol: HTTPS
-          controller:
-            enabled: true
-            port: 8080
-            protocol: TCP
-          portal-http:
-            enabled: false
-            port: 8880
-            protocol: HTTP
           portal-https:
             enabled: false
             port: 8843
             protocol: HTTPS
+      tcp:
+        type: LoadBalancer
+        loadBalancerIP: "${SVC_UNIFI_ADDR2}"
+        externalTrafficPolicy: Local
+        annotations:
+          metallb.universe.tf/allow-shared-ip: unifi
+        ports:
+          controller:
+            enabled: true
+            port: 8080
+            protocol: TCP
           speedtest:
             enabled: true
             port: 6789
             protocol: TCP
+      udp:
+        type: LoadBalancer
+        loadBalancerIP: "${SVC_UNIFI_ADDR2}"
+        externalTrafficPolicy: Local
+        annotations:
+          metallb.universe.tf/allow-shared-ip: unifi
+        ports:
           stun:
             enabled: true
             port: 3478
