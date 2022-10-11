@@ -60,6 +60,8 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  port: 8443
         tls:
           - hosts:
               - *uri
