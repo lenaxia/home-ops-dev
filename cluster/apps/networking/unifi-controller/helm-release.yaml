@@ -2,100 +2,100 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app unifi-controller
-  namespace: networking
+  name: unifi
+  namespace: network
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
       chart: app-template
       version: 0.2.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: bjw-s
         namespace: flux-system
-  install:
-    createNamespace: true
-    remediation:
-      retries: 5
-  upgrade:
-    remediation:
-      retries: 5
+
   values:
     image:
-      repository: lscr.io/linuxserver/unifi-controller
-      tag: 7.2.94
+      repository: jacobalberty/unifi
+      tag: v7.2.94
+
     env:
-      TZ: "${TIMEZONE}"
-      PGID: 1000
-      PUID: 1000
+      RUNAS_UID0: "false"
+      UNIFI_UID: "999"
+      UNIFI_GID: "999"
+      UNIFI_STDOUT: "true"
+      JVM_INIT_HEAP_SIZE:
+      JVM_MAX_HEAP_SIZE: 1024M
+
     service:
       main:
+        type: LoadBalancer
+        loadBalancerIP: "${SVC_UNIFI_ADDR}"
+        externalTrafficPolicy: Local
         ports:
-          http: # GUI
-            port: &port 8443
-          stun: # STUN port
-            port: &stunport 3478
-          comm: # controller communication
-            port: &comm 8080
-          speed: # mobile speed test
-            port: &speed 6789
-          disc: # device discovery
-          port: &disc 10001
+          http:
+            port: 8443
+            protocol: HTTPS
+          controller:
+            enabled: true
+            port: 8080
+            protocol: TCP
+          portal-http:
+            enabled: false
+            port: 8880
+            protocol: HTTP
+          portal-https:
+            enabled: false
+            port: 8843
+            protocol: HTTPS
+          speedtest:
+            enabled: true
+            port: 6789
+            protocol: TCP
+          stun:
+            enabled: true
+            port: 3478
+            protocol: UDP
+          syslog:
+            enabled: true
+            port: 5514
+            protocol: UDP
+          discovery:
+            enabled: true
+            port: 10001
+            protocol: UDP
 
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "router-network"
           hajimari.io/group: "Networking"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-            ##cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        ingressClassName: "nginx"
         hosts:
-          - host: &uri "unifi.${SECRET_DEV_DOMAIN}"
+          - host: &host "unifi.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
-                service:
-                  port: 8443
         tls:
           - hosts:
-              - *uri
-            secretName: *uri
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /health
-            port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
-      startup:
-        enabled: false
+              - *host
+            secretName: *host
+
     persistence:
-      config:
+      data:
         enabled: true
         existingClaim: unifi-config-volume
-#      downloads:
-#        enabled: true
-#        type: custom
-#        volumeSpec:
-#          nfs:
-#            server: ${NAS_ADDR}
-#            path: "/volume2/downloads/[Plex Temp Library]/YouTube"
-#        mountPath: /downloads
-#    resources:
-#      requests:
-#        cpu: 10m
-#        memory: 50Mi
-#      limits:
-#        memory: 500Mi
+        mountPath: /unifi
+
+    resources:
+      requests:
+        cpu: 23m
+        memory: 1390M
+      limits:
+        memory: 1390M
