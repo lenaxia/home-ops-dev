@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
     name: unifi-config-volume
-    namespace: media
+    namespace: networking
     labels:
       app: unifi
 spec:
