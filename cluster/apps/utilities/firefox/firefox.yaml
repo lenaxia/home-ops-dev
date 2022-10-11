@@ -27,7 +27,7 @@ spec:
       tag: latest
     env:
       TZ: "${TIMEZONE}"
-      UMASK: 022
+        #UMASK: 022
       DISPLAY_WIDTH: 1920
       DISPLAY_HEIGHT: 1080
       KEEP_APP_RUNNING: 1
