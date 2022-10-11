@@ -5,7 +5,7 @@ resources:
   - ./diagnostics/podinfo
   - ./diagnostics/echo-server
   - ./utilities/smokeping
-    #- ./utilities/firefox
+  - ./utilities/firefox
   - ./utilities/pgadmin
   #- ./utilities/minio
   - ./media/metube
