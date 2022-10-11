@@ -4,7 +4,7 @@ metadata:
   name: core
   namespace: flux-system
 spec:
-  interval: 30s
+  interval: 15s
   dependsOn:
     - name: infrastructure
     - name: crds
@@ -14,7 +14,7 @@ spec:
   path: ./cluster/core
   prune: true
   wait: true
-  timeout: 5m0s
+  timeout: 2m0s
   decryption:
     provider: sops
     secretRef:

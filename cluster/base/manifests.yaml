@@ -5,10 +5,9 @@ metadata:
   name: manifests
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 15s
   dependsOn:
     - name: infrastructure
-    - name: core
     - name: crds
   sourceRef:
     kind: GitRepository
@@ -16,7 +15,7 @@ spec:
   path: ./cluster/manifests
   prune: true
   wait: true
-  timeout: 5m0s
+  timeout: 2m0s
   decryption:
     provider: sops
     secretRef:
