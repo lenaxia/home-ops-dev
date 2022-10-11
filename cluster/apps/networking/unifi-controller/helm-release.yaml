@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: lscr.io/linuxserver/unifi-controller
-      tag: 7.2.94-ls163
+      tag: 7.2.94
     env:
       TZ: "${TIMEZONE}"
       PGID: 1000
