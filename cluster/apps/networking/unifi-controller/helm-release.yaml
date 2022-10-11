@@ -18,16 +18,21 @@ spec:
 
   values:
     image:
-      repository: docker.io/jacobalberty/unifi
-      tag: v7.2.94
+      #repository: docker.io/jacobalberty/unifi
+      #tag: v7.2.94
+      repository: lscr.io/linuxserver/unifi-controller
+      tag: 7.2.94-ls163
 
     env:
-      RUNAS_UID0: "false"
-      UNIFI_UID: "999"
-      UNIFI_GID: "999"
-      UNIFI_STDOUT: "true"
-      JVM_INIT_HEAP_SIZE:
-      JVM_MAX_HEAP_SIZE: 1024M
+      #RUNAS_UID0: "false"
+      #UNIFI_UID: "999"
+      #UNIFI_GID: "999"
+      #UNIFI_STDOUT: "true"
+      #JVM_INIT_HEAP_SIZE:
+      #JVM_MAX_HEAP_SIZE: 1024M
+      TZ: ${TIMEZONE}
+      PGID: 1000
+      PUID: 1000
 
     service:
       main:
