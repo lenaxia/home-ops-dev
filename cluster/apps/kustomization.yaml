@@ -24,4 +24,4 @@ resources:
 
     #- ./storage/kopia-web
 
-    #- ./kube-tools/system-upgrade
+  - ./kube-tools/system-upgrade
