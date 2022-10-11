@@ -34,21 +34,6 @@ metadata:
   labels:
     app.kubernetes.io/component: kube-tools
 ---
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-  - databases.yaml
-  - longhorn-system.yaml
-  - cert-manager.yaml
-  - networking.yaml
-  - infra.yaml
-  - media.yaml
-  - iot.yaml
-  - monitoring.yaml
-  - utilities.yaml
-  - velero.yaml
-  - kube-tools.yaml
----
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -104,3 +89,10 @@ metadata:
   name: velero
   labels:
     app.kubernetes.io/component: velero
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: system-upgrade
+  labels:
+    app.kubernetes.io/component: system-upgrade
