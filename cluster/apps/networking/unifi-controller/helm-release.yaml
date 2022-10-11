@@ -18,10 +18,10 @@ spec:
 
   values:
     image:
-      #repository: docker.io/jacobalberty/unifi
-      #tag: v7.2.94
-      repository: lscr.io/linuxserver/unifi-controller
-      tag: 7.2.94-ls163
+      repository: docker.io/jacobalberty/unifi
+      tag: v7.2.94
+        #repository: lscr.io/linuxserver/unifi-controller
+        #tag: 7.2.94-ls163
 
     env:
       #RUNAS_UID0: "false"
