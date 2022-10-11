@@ -16,7 +16,7 @@ resources:
     #- ./monitoring/tobs
 
   - ./networking/traefik
-  - ./networking/unifi-controller
+    #- ./networking/unifi-controller
     #- ./authentication/authelia
     #
   - ./databases/cloudnative-pg
