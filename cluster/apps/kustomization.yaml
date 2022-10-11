@@ -22,4 +22,4 @@ resources:
   - ./databases/cloudnative-pg
   - ./databases/cloudnative-pg/clusters
 
-  - ./storage/kopia-web
+    #- ./storage/kopia-web
