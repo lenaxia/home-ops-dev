@@ -23,3 +23,5 @@ resources:
   - ./databases/cloudnative-pg/clusters
 
     #- ./storage/kopia-web
+
+  - ./kube-tools/system-upgrade
