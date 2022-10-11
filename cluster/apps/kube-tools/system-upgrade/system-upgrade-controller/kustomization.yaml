@@ -9,7 +9,7 @@ images:
     newTag: v0.9.1
 patchesStrategicMerge:
   # Delete namespace resource
-  - ./system-upgrade-patches.yaml
+  #- ./system-upgrade-patches.yaml
   # Add labels
   - |-
     apiVersion: apps/v1
