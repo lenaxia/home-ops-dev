@@ -31,7 +31,7 @@ spec:
 
     service:
       main:
-        type: LoadBalancer
+        type: ClusterIP
         loadBalancerIP: "${SVC_UNIFI_ADDR}"
         externalTrafficPolicy: Local
         ports:
