@@ -5,7 +5,7 @@ metadata:
   namespace: longhorn-system
 resources:
   - helm-release.yaml
-    #- patch-local-path.yaml
+  - patch-local-path.yaml
   - backup-secret.sops.yaml
     #- recurring-jobs.yaml
   - ingress.yaml
