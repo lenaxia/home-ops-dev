@@ -10,6 +10,7 @@ spec:
   chart:
     spec:
       chart: *appname
+      version: "12.4.1"
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -23,17 +24,12 @@ spec:
 
     image:
       repository: ghcr.io/k8s-at-home/nzbget
-      tag: v21.1
+      #tag: v21.1
       pullPolicy: IfNotPresent
     
-    # -- environment variables.
-    # @default -- See below
     env:
-      # -- Set the container timezone
       TZ: "${TIMEZONE}"
     
-    # -- Configures service settings for the chart.
-    # @default -- See values.yaml
     service:
       main:
         ports:
@@ -63,3 +59,23 @@ spec:
             path: /volume2/downloads
         mountPath: /downloads
 
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "download-box"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+          - host: &uri "nzbget.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+            - *uri
+            secretName: *uri

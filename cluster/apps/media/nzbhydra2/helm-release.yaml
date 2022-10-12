@@ -8,6 +8,7 @@ spec:
   chart:
     spec:
       chart: *appname
+      version: "10.4.1"
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -15,12 +16,13 @@ spec:
   interval: 5m
   values:
     podLabels:
-      app: &appname
+      app: *appname
     podSecurityContext:
       fsGroup: 568
 
     image:
       repository: ghcr.io/k8s-at-home/nzbhydra2
+      tag: v4.6.1
         #tag: v3.14.2
       pullPolicy: IfNotPresent
     
@@ -29,14 +31,10 @@ spec:
     
     service:
       main:
-        type: LoadBalancer
+        type: ClusterIP
         ports:
           http:
             port: 5076
-    
-    ingress:
-      main:
-        enabled: false
     
     persistence:
       config:
@@ -58,3 +56,33 @@ spec:
             server: ${NAS_ADDR}
             path: /volume2/downloads
         mountPath: /downloads
+      backup:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: ${NAS_ADDR}
+            path: /volume1/backups
+        mountPath: /config/backup
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "cloud-search"
+          hajimari.io/appName: "NZBHydra"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+          - host: &uri "nzbhydra.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+            - *uri
+            secretName: *uri

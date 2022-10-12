@@ -23,14 +23,16 @@ spec:
       retries: 5
   values:
     image:
-      repository: ghcr.io/linuxserver/tautulli
-      tag: latest
+      #repository: ghcr.io/linuxserver/tautulli
+      repository: ghcr.io/onedr0p/tautulli
+      tag: 2.10.4@sha256:4275df0318a55a1c21f4a56e536f371da31cdf315919ee8317a2446246a1d4b9 
     env:
       TZ: "${TIMEZONE}"
       PUID: 1000
       PGID: 1000
     service:
       main:
+        type: LoadBalancer
         ports:
           http:
             port: &port 8181
@@ -40,10 +42,9 @@ spec:
         ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-o-circle"
+          hajimari.io/icon: "chart-bar"
           hajimari.io/group: "Media"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-            ##cert-manager.io/cluster-issuer: "ca-issuer"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
@@ -70,10 +71,24 @@ spec:
       readiness: *probes
       startup:
         enabled: false
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
     persistence:
       config:
         enabled: true
         existingClaim: tautulli-config-volume
+      backups:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: ${NAS_ADDR}
+            path: /volume1/backups/tautulli
+        mountPath: /config/backups
+ 
 #    resources:
 #      requests:
 #        cpu: 10m

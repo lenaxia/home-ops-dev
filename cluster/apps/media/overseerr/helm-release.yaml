@@ -34,27 +34,6 @@ spec:
         ports:
           http:
             port: &port 5055
-#    ingress:
-#      main:
-#        enabled: true
-#        ingressClassName: "traefik"
-#        annotations:
-#          hajimari.io/enable: "true"
-#          hajimari.io/icon: "alpha-o-circle"
-#          hajimari.io/group: "Media"
-#          cert-manager.io/cluster-issuer: "letsencrypt-production"
-#            ##cert-manager.io/cluster-issuer: "ca-issuer"
-#          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-#        hosts:
-#          - host: &uri "request.${SECRET_DEV_DOMAIN}"
-#            paths:
-#              - path: /
-#                pathType: Prefix
-#        tls:
-#          - hosts:
-#              - *uri
-#            secretName: *uri
     probes:
       liveness: &probes
         enabled: true
@@ -80,3 +59,24 @@ spec:
 #        memory: 50Mi
 #      limits:
 #        memory: 500Mi
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "eye-circle"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+          - host: &uri "request.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri
+---

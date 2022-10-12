@@ -21,7 +21,7 @@ spec:
 
     image:
       repository: ghcr.io/k8s-at-home/radarr-develop
-      #tag:  v4.0.5.5981
+      tag:  v4.2.2.6503
       pullPolicy: IfNotPresent
     
     # -- environment variables.
@@ -60,12 +60,32 @@ spec:
             server: ${NAS_ADDR}
             path: /volume2/downloads
         mountPath: /downloads
-#      downloads-k3s:
-#        enabled: true
-#        type: custom
-#        volumeSpec:
-#          nfs:
-#            server: ${NAS_ADDR}
-#            path: /volume2/downloads-k3s
-#        mountPath: /downloads-k3s
+      backups:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: ${NAS_ADDR}
+            path: /volume1/backups
+        mountPath: /config/Backups
 
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "filmstrip"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+          - host: &uri "radarr.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri

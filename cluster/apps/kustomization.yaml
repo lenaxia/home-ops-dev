@@ -7,8 +7,13 @@ resources:
   - ./utilities/smokeping
   - ./utilities/firefox
   - ./utilities/pgadmin
-  #- ./utilities/minio
+  - ./utilities/vaultwarden
   - ./media/metube
+  - ./media/sonarr
+  - ./media/radarr
+  - ./media/tautulli
+  - ./media/outline
+
 
     #  - ./monitoring/prometheus-stack
     #  - ./monitoring/grafana
