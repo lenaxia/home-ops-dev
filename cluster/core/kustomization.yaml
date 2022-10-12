@@ -6,5 +6,5 @@ resources:
   - ./cert-manager/ca-issuer # include self-signed issuer
   - ./metallb
 
-  - ./storage/longhorn
+    #- ./storage/longhorn
   - ./storage/csi-driver-nfs
