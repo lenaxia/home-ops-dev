@@ -96,3 +96,10 @@ metadata:
   name: system-upgrade
   labels:
     app.kubernetes.io/component: system-upgrade
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kyverno
+  labels:
+    app.kubernetes.io/component: kyverno
