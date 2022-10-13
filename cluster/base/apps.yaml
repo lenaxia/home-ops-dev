@@ -5,7 +5,7 @@ metadata:
   name: apps
   namespace: flux-system
 spec:
-  interval: 25s
+  interval: 24s
   dependsOn:
     - name: infrastructure
     - name: core
