@@ -1,0 +1,28 @@
+{
+  "apiVersion": "storage.k8s.io/v1",
+  "kind": "VolumeAttachment",
+  "metadata": {
+    "annotations": {
+      "csi.alpha.kubernetes.io/node-id": "k3-dev-agent-01"
+    },
+    "creationTimestamp": "2022-10-13T07:40:31Z",
+    "deletionGracePeriodSeconds": 0,
+    "deletionTimestamp": "2022-10-13T08:34:26Z",
+    "finalizers": [
+      "external-attacher/driver-longhorn-io"
+    ],
+    "name": "csi-315d35e80e45c93ce77fbd4d74dd8a8468f9c53d24ccff99d2ea5b99ae2bf4a3",
+    "resourceVersion": "474235",
+    "uid": "97423dc2-2f96-4ead-a7db-809b16e45e45"
+  },
+  "spec": {
+    "finalizers": []
+  },
+  "status": {
+    "attached": true,
+    "detachError": {
+      "message": "rpc error: code = Internal desc = Bad response statusCode [500]. Status [500 Internal Server Error]. Body: [code=Server Error, detail=, message=cannot finish API request due to too many error retries] from [http://longhorn-backend:9500/v1/volumes/pvc-9872c1e3-ccc7-449e-8bbd-93d332368fa5?action=detach]",
+      "time": "2022-10-13T08:36:16Z"
+    }
+  }
+}
