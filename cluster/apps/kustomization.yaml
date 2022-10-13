@@ -1,18 +1,18 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  #- ./dashboards/hajimari
+  - ./dashboards/hajimari
   - ./diagnostics/podinfo
   - ./diagnostics/echo-server
   - ./utilities/smokeping
   - ./utilities/firefox
   - ./utilities/pgadmin
   - ./utilities/vaultwarden
-    #- ./media/metube
-    #- ./media/sonarr
-    #- ./media/radarr
+  - ./media/metube
+  - ./media/sonarr
+  - ./media/radarr
   - ./media/tautulli
-    #- ./media/outline
+  - ./media/outline
 
 
     #  - ./monitoring/prometheus-stack
@@ -24,10 +24,10 @@ resources:
     #- ./networking/unifi-controller
     #- ./authentication/authelia
     #
-    #- ./databases/cloudnative-pg
+  - ./databases/cloudnative-pg
   - ./databases/cloudnative-pg/clusters
 
-    #- ./storage/kopia-web
+  - ./storage/kopia-web
 
     #- ./kube-tools/system-upgrade
-    #- ./kube-tools/kyverno
+  - ./kube-tools/kyverno
