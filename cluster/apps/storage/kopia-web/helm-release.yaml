@@ -53,6 +53,7 @@ spec:
       - --without-password
     service:
       main:
+        type: LoadBalancer
         ports:
           http:
             port: 80
