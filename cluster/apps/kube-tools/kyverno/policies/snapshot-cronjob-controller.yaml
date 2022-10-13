@@ -71,8 +71,7 @@ spec:
                 name: "{{ request.object.metadata.name }}"
                 uid: "{{ request.object.metadata.uid }}"
           spec:
-            #schedule: "0 3 * * *"
-            schedule: "28 * * * *"  #run it every 10 minutes til
+            schedule: "0 3 * * *"
             suspend: false
             concurrencyPolicy: Forbid
             successfulJobsHistoryLimit: 1

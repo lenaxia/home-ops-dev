@@ -38,5 +38,5 @@ spec:
             claimName: ${VOLUME}
         - name: snapshots
           nfs:
-            server: expanse
-            path: /tycho/Apps/External/Kopia
+            server: 192.168.0.120
+            path: /volume1/backups/kopia-dev
