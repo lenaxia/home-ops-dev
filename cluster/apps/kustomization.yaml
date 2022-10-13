@@ -10,7 +10,7 @@ resources:
   - ./utilities/vaultwarden
   - ./media/metube
   - ./media/sonarr
-  - ./media/radarr
+    #- ./media/radarr
   - ./media/tautulli
   - ./media/outline
 
