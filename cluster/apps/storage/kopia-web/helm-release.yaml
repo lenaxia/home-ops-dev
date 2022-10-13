@@ -22,20 +22,20 @@ spec:
     remediation:
       retries: 5
   values:
-    #    initContainers:
-    #      wait-for-repo:
-    #        image: ghcr.io/onedr0p/kopia:0.12.1@sha256:e333295b519ce586e7c050c970b2255d87bdb2979298ff87ebdb1113e381ba3b
-    #        command:
-    #          - /bin/bash
-    #          - -c
-    #          - |-
-    #            until [ -f /snapshots/kopia.repository.f ]; do
-    #                printf "\e[1;32m%-6s\e[m\n" "Awaiting for the Kopia repo to become ready ..."
-    #                sleep 1
-    #            done
-    #        volumeMounts:
-    #          - name: snapshots
-    #            mountPath: /snapshots
+    initContainers:
+      wait-for-repo:
+        image: ghcr.io/onedr0p/kopia:0.12.1@sha256:e333295b519ce586e7c050c970b2255d87bdb2979298ff87ebdb1113e381ba3b
+        command:
+          - /bin/bash
+          - -c
+          - |-
+            until [ -f /snapshots/kopia.repository.f ]; do
+                printf "\e[1;32m%-6s\e[m\n" "Awaiting for the Kopia repo to become ready ..."
+                sleep 1
+            done
+        volumeMounts:
+          - name: snapshots
+            mountPath: /snapshots
     image:
       repository: ghcr.io/onedr0p/kopia
       tag: 0.12.1@sha256:e333295b519ce586e7c050c970b2255d87bdb2979298ff87ebdb1113e381ba3b
@@ -94,7 +94,7 @@ spec:
         enabled: true
         type: nfs
         server: "${NAS_ADDR}"
-        path: /volume1/backups/kopia
+        path: /volume1/backups/kopia-dev
         mountPath: /snapshots
     podAnnotations:
       configmap.reloader.stakater.com/reload: *app
