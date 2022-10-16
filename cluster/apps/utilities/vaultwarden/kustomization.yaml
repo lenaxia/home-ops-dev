@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: utilities
 resources:
   - config-pvc.yaml
-    #- helm-release.yaml
+  - helm-release.yaml
     #- cronjob.yaml
   - secret.sops.yaml
