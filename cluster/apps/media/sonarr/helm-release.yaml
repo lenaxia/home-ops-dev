@@ -61,14 +61,14 @@ spec:
             server: ${NAS_ADDR}
             path: /volume1/backups
         mountPath: /config/Backups
-      downloads:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: ${NAS_ADDR}
-            path: /volume2/downloads
-        mountPath: /downloads
+          #      downloads:
+          #        enabled: true
+          #        type: custom
+          #        volumeSpec:
+          #          nfs:
+          #            server: ${NAS_ADDR}
+          #            path: /volume2/downloads
+          #        mountPath: /downloads
 
     ingress:
       main:
