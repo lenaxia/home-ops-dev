@@ -13,6 +13,7 @@ metadata:
   name: &appname longhorn-frontend
   namespace: longhorn-system
 spec:
+  ingressClassName: traefik
   rules:
   - host: &uri "longhorn.${SECRET_DEV_DOMAIN}"
     http:

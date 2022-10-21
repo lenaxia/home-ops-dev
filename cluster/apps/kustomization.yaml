@@ -28,6 +28,7 @@ resources:
   - ./databases/cloudnative-pg/clusters
 
   - ./storage/kopia-web
+  - ./storage/nextcloud
 
     #- ./kube-tools/system-upgrade
   - ./kube-tools/kyverno
