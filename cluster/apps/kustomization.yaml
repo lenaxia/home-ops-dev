@@ -8,7 +8,7 @@ resources:
   - ./utilities/firefox
   - ./utilities/pgadmin
   - ./utilities/vaultwarden
-  - ./media/metube
+    #- ./media/metube
     #- ./media/sonarr
     #- ./media/radarr
   - ./media/tautulli
