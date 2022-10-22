@@ -7,10 +7,10 @@ resources:
   - ./utilities/smokeping
   - ./utilities/firefox
   - ./utilities/pgadmin
-    #- ./utilities/vaultwarden
+  - ./utilities/vaultwarden
   - ./media/metube
-  - ./media/sonarr
-  - ./media/radarr
+    #- ./media/sonarr
+    #- ./media/radarr
   - ./media/tautulli
   - ./media/outline
 
