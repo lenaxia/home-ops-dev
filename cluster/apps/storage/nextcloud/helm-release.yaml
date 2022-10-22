@@ -32,7 +32,7 @@ spec:
           - name: POSTGRES_HOST
             value: defaultpg-rw.databases.svc.cluster.local
           - name: POSTGRES_DB
-            value: authelia
+            value: nextcloud
           - name: POSTGRES_SUPER_PASS
             valueFrom:
               secretKeyRef:
@@ -40,9 +40,9 @@ spec:
                 key: password
                 namespace: databases
           - name: POSTGRES_USER
-            value: authelia
+            value: nextcloud 
           - name: POSTGRES_PASS
-            value: authelia
+            value: alsdkjflkhf23@423rdf2
 
     replicaCount: 1
 
@@ -121,13 +121,7 @@ spec:
             'trusted_proxies' =>
               [
                 'traefik'
-              ],
-            'forwarded_for_headers' =>
-              [
-                0 => 'X-Forwarded-For',
-                1 => 'HTTP_X_FORWARDED_FOR',
-              ],
-            'default_phone_region' => 'SE',
+              ]
           );
 
         redis.config.php: |-
@@ -137,7 +131,7 @@ spec:
             'memcache.distributed' => '\OC\Memcache\Redis',
             'memcache.locking' => '\OC\Memcache\Redis',
             'redis' => array(
-              'host' => 'redis.databases.svc.cluster.local',
+              'host' => 'redis-master.databases.svc.cluster.local',
               'port' => 6379,
               'password' => '${SECRET_REDIS_PASSWORD}'
             )
