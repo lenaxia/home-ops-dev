@@ -9,8 +9,8 @@ resources:
   - ./utilities/pgadmin
     #- ./utilities/vaultwarden
   - ./media/metube
-    #- ./media/sonarr
-    #- ./media/radarr
+  - ./media/sonarr
+  - ./media/radarr
   - ./media/tautulli
   - ./media/outline
 
