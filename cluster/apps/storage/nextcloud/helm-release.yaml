@@ -143,7 +143,6 @@ spec:
                 secretKeyRef:
                   name: postgres-superuser
                   key: password
-                  namespace: databases
             - name: POSTGRES_USER
               value: nextcloud 
             - name: POSTGRES_PASS
