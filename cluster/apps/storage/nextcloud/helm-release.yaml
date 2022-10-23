@@ -89,6 +89,7 @@ spec:
 
       persistence:
         subPath:
+
       mail:
         enabled: false
         fromAddress: user
@@ -155,20 +156,20 @@ spec:
             )
           );
           
-        custom.config.php: |-
-          <?php
-          $CONFIG = array (
-            'overwriteprotocol' => 'https',
-            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
-            'filelocking.enabled' => 'true',
-            'loglevel' => '2',
-            'enable_previews' => true,
-            'trusted_domains' =>
-               [
-                'nextcloud',
-                'drive.${SECRET_DEV_DOMAIN}'
-               ]
-          );
+          #        custom.config.php: |-
+          #          <?php
+          #          $CONFIG = array (
+          #            'overwriteprotocol' => 'https',
+          #            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
+          #            'filelocking.enabled' => 'true',
+          #            'loglevel' => '2',
+          #            'enable_previews' => true,
+          #            'trusted_domains' =>
+          #               [
+          #                'nextcloud',
+          #                'drive.${SECRET_DEV_DOMAIN}'
+          #               ]
+          #          );
 
       # For example, to use S3 as primary storage
       # ref: https://docs.nextcloud.com/server/13/admin_manual/configuration_files/primary_storage.html#simple-storage-service-s3
@@ -256,7 +257,6 @@ spec:
 
     nginx:
       enabled: false
-      
     internalDatabase:
       enabled: false
 
@@ -265,13 +265,8 @@ spec:
     ##
     externalDatabase:
       enabled: true
-
-      ## Supported database engines: mysql or postgresql
       type: postgresql
-
-      ## Database host
       host: defaultpg-rw.databases.svc.cluster.local
-
       existingSecret:
         enabled: true
         secretName: nextcloud-config
@@ -280,10 +275,8 @@ spec:
 
     mariadb:
       enabled: false
-
     postgresql:
       enabled: false
-
     redis:
       enabled: false
 
