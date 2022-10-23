@@ -25,25 +25,6 @@ spec:
       tag: 24.0.6
       pullPolicy: Always
 
-    extraInitContainers:
-      - name: init-db
-        image: ghcr.io/onedr0p/postgres-initdb:14.5
-        env:
-          - name: POSTGRES_HOST
-            value: defaultpg-rw.databases.svc.cluster.local
-          - name: POSTGRES_DB
-            value: nextcloud
-          - name: POSTGRES_SUPER_PASS
-            valueFrom:
-              secretKeyRef:
-                name: postgres-superuser
-                key: password
-                namespace: databases
-          - name: POSTGRES_USER
-            value: nextcloud 
-          - name: POSTGRES_PASS
-            value: alsdkjflkhf23@423rdf2
-
     replicaCount: 1
 
     podAnnotations:
@@ -148,6 +129,25 @@ spec:
       #      secretKeyRef:
       #        name: nextcloud
       #        key: secret_key
+
+      extraInitContainers:
+        - name: init-db
+          image: ghcr.io/onedr0p/postgres-initdb:14.5
+          env:
+            - name: POSTGRES_HOST
+              value: defaultpg-rw.databases.svc.cluster.local
+            - name: POSTGRES_DB
+              value: nextcloud
+            - name: POSTGRES_SUPER_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-superuser
+                  key: password
+                  namespace: databases
+            - name: POSTGRES_USER
+              value: nextcloud 
+            - name: POSTGRES_PASS
+              value: alsdkjflkhf23@423rdf2
 
     nginx:
       enabled: false
