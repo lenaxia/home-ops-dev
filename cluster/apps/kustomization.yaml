@@ -29,7 +29,7 @@ resources:
   - ./databases/redis
 
   - ./storage/kopia-web
-    #- ./storage/nextcloud
+  - ./storage/nextcloud
 
     #- ./kube-tools/system-upgrade
   - ./kube-tools/kyverno
