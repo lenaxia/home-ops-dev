@@ -223,10 +223,12 @@ spec:
                   name: postgres-superuser
                   key: password
             - name: POSTGRES_USER
+              valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
                   key:  postgres_password
             - name: POSTGRES_PASS
+              valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
                   key: postgres_username
