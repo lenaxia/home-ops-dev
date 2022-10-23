@@ -110,7 +110,7 @@ spec:
         # To protect /var/www/html/config
         .htaccess: true
         # Redis default configuration
-        redis.config.php: true
+        redis.config.php: false
         # Apache configuration for rewrite urls
         apache-pretty-urls.config.php: true
         # Define APCu as local cache
