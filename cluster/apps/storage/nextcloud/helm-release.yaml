@@ -326,6 +326,7 @@ spec:
     service:
       type: LoadBalancer
       port: 8080
+      LoadBalancerIP: ''
 
     ## Enable persistence using Persistent Volume Claims
     ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
