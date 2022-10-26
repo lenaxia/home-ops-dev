@@ -13,7 +13,7 @@ resources:
   - ./media/radarr
     #- ./media/tautulli
   - ./media/outline
-    #- ./media/invidious
+  - ./media/invidious
 
 
     #  - ./monitoring/prometheus-stack
