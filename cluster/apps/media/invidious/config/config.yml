@@ -30,7 +30,7 @@
 ## Accepted values: a postgres:// URI
 ## Default: postgres://kemal:kemal@localhost:5432/invidious
 ##
-database_url: "postgres://invidious:asdSDFas42@#235asdf@defaultpg-rw.databases.svc.cluster.local:5432/invidious"
+database_url: "postgres://invidious:asdSDFas42@#235asdf@defaultpg-rw.databases.svc.cluster.local.:5432/invidious"
 
 ##
 ## Enable automatic table integrity check. This will create
