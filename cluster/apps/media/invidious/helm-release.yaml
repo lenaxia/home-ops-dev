@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app invidious-server
-  namespace: default
+  name: &app invidious
+  namespace: media
 spec:
   interval: 15m
   chart:
@@ -21,13 +21,16 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: postgres
-      namespace: default
+        #  dependsOn:
+        #    - name: postgres
+        #      namespace: default
   values:
     image:
       repository: quay.io/invidious/invidious
       tag: 12db1be87b581b7de616768995e1e69f21a9b691
+    envFrom:
+      - secretRef:
+          name: *app
     service:
       main:
         ports:
@@ -38,16 +41,21 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          auth.home.arpa/enabled: "true"
-          external-dns.home.arpa/enabled: "true"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "youtube"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-          - host: &host "invidious.${SECRET_CLUSTER_DOMAIN}"
+          - host: &uri "invidious.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - *host
+              - *uri
+            secretName: *uri
     persistence:
       config:
         enabled: true

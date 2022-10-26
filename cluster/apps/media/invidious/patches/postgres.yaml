@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: invidious-server
-  namespace: default
+  name: &app invidious
+  namespace: media
 spec:
   values:
     initContainers:
@@ -11,9 +11,9 @@ spec:
         image: ghcr.io/onedr0p/postgres-initdb:14.5
         env:
           - name: POSTGRES_HOST
-            value: postgres-rw.default.svc.cluster.local.
+            value: defaultpg-rw.databases.svc.cluster.local
           - name: POSTGRES_DB
-            value: invidious
+            value: *app
           - name: POSTGRES_SUPER_PASS
             valueFrom:
               secretKeyRef:
@@ -22,10 +22,10 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                name: invidious
-                key: username
+                name: *app
+                key: USERNAME
           - name: POSTGRES_PASS
             valueFrom:
               secretKeyRef:
-                name: invidious
-                key: password
+                name: *app 
+                key: PASSWORD
