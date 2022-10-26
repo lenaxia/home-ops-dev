@@ -7,7 +7,6 @@ patchesStrategicMerge:
   - patches/postgres.yaml
 configMapGenerator:
   - name: invidious-server
-    namespace: media
     files:
       - config/config.yml
 generatorOptions:
