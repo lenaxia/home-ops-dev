@@ -51,7 +51,7 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/icon: "cloud"
         hajimari.io/appName: "NextCloud"
-        cert-manager.io/cluster-issuer: letsencrypt-producton
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
       path: /
@@ -59,7 +59,8 @@ spec:
 
       tls:
         - hosts:
-            - "drive.${SECRET_DEV_DOMAIN}"
+            - &host "drive.${SECRET_DEV_DOMAIN}"
+          secretName: *host 
 
     # Allow configuration of lifecycle hooks
     # ref: https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
