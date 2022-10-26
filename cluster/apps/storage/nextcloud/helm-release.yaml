@@ -143,18 +143,18 @@ spec:
       #            )
       #          );
       #
-      #        redis.config.php: |-
-      #          <?php
-      #          $CONFIG = array (
-      #            'memcache.local' => '\\OC\\Memcache\\Redis',
-      #            'memcache.distributed' => '\OC\Memcache\Redis',
-      #            'memcache.locking' => '\OC\Memcache\Redis',
-      #            'redis' => array(
-      #              'host' => 'redis-master.databases.svc.cluster.local',
-      #              'port' => 6379,
-      #              'password' => ''
-      #            )
-      #          );
+        redis.config.php: |-
+          <?php
+          $CONFIG = array (
+            'memcache.local' => '\\OC\\Memcache\\Redis',
+            'memcache.distributed' => '\OC\Memcache\Redis',
+            'memcache.locking' => '\OC\Memcache\Redis',
+            'redis' => array(
+              'host' => 'redis-master.databases.svc.cluster.local',
+              'port' => 6379,
+              'password' => ''
+            )
+          );
           
           #        custom.config.php: |-
           #          <?php
