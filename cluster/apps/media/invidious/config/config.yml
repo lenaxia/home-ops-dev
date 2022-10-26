@@ -61,7 +61,7 @@ check_tables: true
 ## Accepted values: 1-65535
 ## Default: 3000
 ##
-port: 3000
+#port: 3000
 
 ##
 ## When the invidious instance is behind a proxy, and the proxy
