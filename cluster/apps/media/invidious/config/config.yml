@@ -94,7 +94,7 @@ check_tables: true
 ## Accepted values: a fully qualified domain name (FQDN)
 ## Default: <none>
 ##
-domain: invidious.${SECRET_CLUSTER_DOMAIN}
+domain: invidious.${SECRET_DEV_DOMAIN}
 
 ##
 ## Tell Invidious that it is behind a proxy that provides only
