@@ -288,7 +288,7 @@ log_level: Debug
 ## Accepted values: an array of strings
 ## Default: [""]
 ##
-#admins: [""]
+admins: ["mikek", "mikekao", "lenaxia"]
 
 # -----------------------------
 #  Background jobs
