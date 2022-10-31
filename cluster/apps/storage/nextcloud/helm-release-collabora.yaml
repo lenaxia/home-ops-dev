@@ -44,7 +44,7 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "cloud"
-          hajimari.io/appName: "Collabra"
+          hajimari.io/appName: "Collabora"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-nextcloud@kubernetescrd
@@ -53,5 +53,5 @@ spec:
   
         tls:
           - hosts:
-              - &host "collabra.${SECRET_DEV_DOMAIN}"
+              - &host "collabora.${SECRET_DEV_DOMAIN}"
             secretName: *host
