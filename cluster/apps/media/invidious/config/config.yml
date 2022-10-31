@@ -200,7 +200,7 @@ https_only: false
 ## Accepted values: All, Trace, Debug, Info, Warn, Error, Fatal, Off
 ## Default: Info
 ##
-#log_level: Info
+log_level: Debug
 
 # -----------------------------
 #  Features
