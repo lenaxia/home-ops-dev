@@ -21,7 +21,7 @@ spec:
     frameDeny: true
     forceSTSHeader: true
     # frameDeny: true #overwritten by customFrameOptionsValue
-    customFrameOptionsValue: "SAMEORIGIN"
+    customFrameOptionsValue: "allow-from https:${SECRET_DEV_DOMAIN}"
     contentTypeNosniff: true
     referrerPolicy: "origin-when-cross-origin"
     #referrerPolicy: "same-origin"
