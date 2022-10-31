@@ -157,20 +157,26 @@ spec:
             )
           );
           
-          #        custom.config.php: |-
-          #          <?php
-          #          $CONFIG = array (
-          #            'overwriteprotocol' => 'https',
-          #            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
-          #            'filelocking.enabled' => 'true',
-          #            'loglevel' => '2',
-          #            'enable_previews' => true,
-          #            'trusted_domains' =>
-          #               [
-          #                'nextcloud',
-          #                'drive.${SECRET_DEV_DOMAIN}'
-          #               ]
-          #          );
+        custom.config.php: |-
+          <?php
+          $CONFIG = array (
+            'overwriteprotocol' => 'https',
+            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
+            'filelocking.enabled' => 'true',
+            'loglevel' => '2',
+            'enable_previews' => true,
+            'trusted_domains' =>
+               [
+                'nextcloud',
+                'drive.${SECRET_DEV_DOMAIN}'
+               ],
+            'trusted_proxies' =>
+               [
+                '192.168.12.10',
+                'drive.${SECRET_DEV_DOMAIN}'
+               ]
+
+          );
 
       # For example, to use S3 as primary storage
       # ref: https://docs.nextcloud.com/server/13/admin_manual/configuration_files/primary_storage.html#simple-storage-service-s3
