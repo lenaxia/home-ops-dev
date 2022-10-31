@@ -4,10 +4,10 @@ metadata:
   name: middlewares-nextcloud-headers
   namespace: networking
 spec:
-  redirectRegex:
-    permanent: true
-    regex: "https://(.*)/.well-known/(card|cal)dav"
-    replacement: "https://${1}/remote.php/dav/"
+  #  redirectRegex:
+  #    permanent: true
+  #    regex: "https://(.*)/.well-known/(card|cal)dav"
+  #    replacement: "https://${1}/remote.php/dav/"
   headers:
     accessControlAllowMethods:
       - GET
