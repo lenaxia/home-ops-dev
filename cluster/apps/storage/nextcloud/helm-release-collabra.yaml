@@ -38,19 +38,20 @@ spec:
             port: 9980
     
     ingress:
-      enabled: true
-      className: traefik
-      annotations:
-        hajimari.io/enable: "true"
-        hajimari.io/icon: "cloud"
-        hajimari.io/appName: "Collabra"
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-nextcloud@kubernetescrd
-      path: /
-      pathType: Prefix
-
-      tls:
-        - hosts:
-            - &host "collabra.${SECRET_DEV_DOMAIN}"
-          secretName: *host
+      main:
+        enabled: true
+        className: traefik
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "cloud"
+          hajimari.io/appName: "Collabra"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-nextcloud@kubernetescrd
+        path: /
+        pathType: Prefix
+  
+        tls:
+          - hosts:
+              - &host "collabra.${SECRET_DEV_DOMAIN}"
+            secretName: *host
