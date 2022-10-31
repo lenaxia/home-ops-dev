@@ -163,6 +163,7 @@ spec:
             'overwriteprotocol' => 'https',
             'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
             'filelocking.enabled' => 'true',
+            'default_phone_region' => 'US',
             'loglevel' => '2',
             'enable_previews' => true,
             'trusted_domains' =>
