@@ -47,7 +47,7 @@ spec:
           hajimari.io/appName: "Collabora"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-nextcloud@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         path: /
         pathType: Prefix
   
