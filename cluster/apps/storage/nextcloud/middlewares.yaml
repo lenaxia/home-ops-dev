@@ -5,7 +5,7 @@ metadata:
   namespace: networking
 spec:
   redirectRegex:
-    permanent: true
+    permanent: false
     regex: "https://(.*)/.well-known/(card|cal)dav"
     replacement: "https://${SECRET_DEV_DOMAIN}/remote.php/dav/"
   headers:
