@@ -40,18 +40,20 @@ spec:
     ingress:
       main:
         enabled: true
-        className: traefik
+        ingressClassName: "traefik"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "cloud"
-          hajimari.io/appName: "Collabora"
+          hajimari.io/icon: "eye-circle"
+          hajimari.io/group: "Storage"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-        path: /
-        pathType: Prefix
-  
+        hosts:
+          - host: &uri "collabora.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
-              - &host "collabora.${SECRET_DEV_DOMAIN}"
-            secretName: *host
+              - *uri
+            secretName: *uri
