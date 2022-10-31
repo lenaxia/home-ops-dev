@@ -7,3 +7,4 @@ resources:
   - config-pvc.yaml
   - nfs-pvc.yaml
   - secret.sops.yaml
+  - middlewares.yaml

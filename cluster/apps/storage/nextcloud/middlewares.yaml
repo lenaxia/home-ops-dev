@@ -1,0 +1,45 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: middlewares-nextcloud-headers
+  namespace: networking
+spec:
+  redirectregex:
+    permanent: true
+    regex: "https://(.*)/.well-known/(card|cal)dav"
+    replacement: "https://${1}/remote.php/dav/"
+  headers:
+    accessControlAllowOriginList:
+      - "*"
+        #      - https://w.${SECRET_DEV_DOMAIN}
+        #      - https://s3.${SECRET_DEV_DOMAIN}
+    accessControlMaxAge: 100
+    addVaryHeader: true
+    stsSeconds: 63072000
+    stsIncludeSubdomains: true
+    stsPreload: true
+    frameDeny: true
+    forceSTSHeader: true
+    # frameDeny: true #overwritten by customFrameOptionsValue
+    customFrameOptionsValue: "SAMEORIGIN"
+    contentTypeNosniff: true
+    referrerPolicy: "origin-when-cross-origin"
+    #referrerPolicy: "same-origin"
+    # Setting contentSecurityPolicy is more secure but it can break things. Proper auth will reduce the risk.
+    # the below line also breaks some apps due to 'none' - sonarr, radarr, etc.
+    # contentSecurityPolicy: "frame-ancestors '*.example.com:*';object-src 'none';script-src 'none';"
+    permissionsPolicy: "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'; vr 'none';"
+    customResponseHeaders:
+      X-Robots-Tag: "none"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-authelia-nextcloud
+  namespace: networking
+spec:
+  chain:
+    middlewares:
+      - name: middlewares-rate-limit
+      - name: middlewares-nextcloud-headers
+      - name: middlewares-authelia
