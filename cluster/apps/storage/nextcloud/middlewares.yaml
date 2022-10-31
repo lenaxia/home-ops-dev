@@ -22,7 +22,8 @@ spec:
     frameDeny: true
     forceSTSHeader: true
     # frameDeny: true #overwritten by customFrameOptionsValue
-    customFrameOptionsValue: "allow-from https:${SECRET_DEV_DOMAIN}" #CSP takes care of this but may be needed for organizr.
+    #customFrameOptionsValue: "allow-from https:${SECRET_DEV_DOMAIN}" #CSP takes care of this but may be needed for organizr.
+    customFrameOptionsValue: "SAMEORIGIN" #CSP takes care of this but may be needed for organizr.
     contentTypeNosniff: true
     browserXssFilter: true
     referrerPolicy: "origin-when-cross-origin"
@@ -32,7 +33,7 @@ spec:
     # contentSecurityPolicy: "frame-ancestors '*.example.com:*';object-src 'none';script-src 'none';"
     permissionsPolicy: "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'; vr 'none';"
     customResponseHeaders:
-      X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex,"
+      X-Robots-Tag: "none"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
