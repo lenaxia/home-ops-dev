@@ -19,7 +19,7 @@ resources:
     #  - ./monitoring/prometheus-stack
     #  - ./monitoring/grafana
     #  - ./monitoring/loki
-    #- ./monitoring/tobs
+  - ./monitoring/tobs
 
   - ./networking/traefik
     #- ./networking/unifi-controller
