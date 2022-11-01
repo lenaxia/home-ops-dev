@@ -19,7 +19,7 @@ spec:
   install:
     createNamespace: true
     remediation:
-      retries: 5
+      retries: 6
     timeout: 15m
   upgrade:
     remediation:
