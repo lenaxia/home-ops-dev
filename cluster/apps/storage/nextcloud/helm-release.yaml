@@ -344,7 +344,7 @@ spec:
 
       nextcloudData:
         enabled: true
-        existingClaim: "nextcloud-nfs"
+          #existingClaim: "nextcloud-nfs"
 
     resources: {}
       # We usually recommend not to specify default resources and to leave this as a conscious
