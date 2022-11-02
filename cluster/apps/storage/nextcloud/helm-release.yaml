@@ -340,7 +340,7 @@ spec:
     ##
     persistence:
       enabled: true
-      existingClaim: "nextcloud-config"
+        #existingClaim: "nextcloud-config"
 
       nextcloudData:
         enabled: true
