@@ -8,3 +8,4 @@ resources:
   - nfs-pvc.yaml
   - secret.sops.yaml
   - middlewares.yaml
+  - cronjob.yaml
