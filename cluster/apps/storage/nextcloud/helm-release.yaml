@@ -209,12 +209,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
-                  key:  postgres_password
+                  key:  postgres_username
             - name: POSTGRES_PASS
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
-                  key: postgres_username
+                  key: postgres_password
 
       # Extra sidecar containers.
       extraSidecarContainers: []
