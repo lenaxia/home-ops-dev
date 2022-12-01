@@ -323,7 +323,7 @@ spec:
       failureThreshold: 3
       successThreshold: 1
     readinessProbe:
-      enabled: falsetrue
+      enabled: false
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
