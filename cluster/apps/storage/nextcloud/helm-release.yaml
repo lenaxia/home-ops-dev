@@ -254,7 +254,7 @@ spec:
     ## External database configuration
     ##
     externalDatabase:
-      enabled: false
+      enabled: true
       type: postgresql
       host: defaultpg-rw.databases.svc.cluster.local
       existingSecret:
