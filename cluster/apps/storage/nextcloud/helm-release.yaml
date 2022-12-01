@@ -248,7 +248,7 @@ spec:
       ## You need to set an fpm version of the image for nextcloud if you want to use nginx!
       enabled: false
     internalDatabase:
-      enabled: true
+      enabled: false
 
     ##
     ## External database configuration
