@@ -191,58 +191,58 @@ spec:
         #      #        name: nextcloud
         #      #        key: secret_key
         #
-        #      # Extra init containers that runs before pods start.
-        #      extraInitContainers: []
-        #        - name: init-db
-        #          image: ghcr.io/onedr0p/postgres-initdb:14.5
-        #          env:
-        #            - name: POSTGRES_HOST
-        #              value: defaultpg-rw.databases.svc.cluster.local
-        #            - name: POSTGRES_DB
-        #              value: nextcloud
-        #            - name: POSTGRES_SUPER_PASS
-        #              valueFrom:
-        #                secretKeyRef:
-        #                  name: postgres-superuser
-        #                  key: password
-        #            - name: POSTGRES_USER
-        #              valueFrom:
-        #                secretKeyRef:
-        #                  name: nextcloud-config
-        #                  key:  postgres_password
-        #            - name: POSTGRES_PASS
-        #              valueFrom:
-        #                secretKeyRef:
-        #                  name: nextcloud-config
-        #                  key: postgres_username
-        #
-        #      # Extra sidecar containers.
-        #      extraSidecarContainers: []
-        #      #  - name: nextcloud-logger
-        #      #    image: busybox
-        #      #    command: [/bin/sh, -c, 'while ! test -f "/run/nextcloud/data/nextcloud.log"; do sleep 1; done; tail -n+1 -f /run/nextcloud/data/nextcloud.log']
-        #      #    volumeMounts:
-        #      #    - name: nextcloud-data
-        #      #      mountPath: /run/nextcloud/data
-        #
-        #      # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
-        #      # to NextCloud pods in Kubernetes. This can then be configured in External Storage
-        #      extraVolumes:
-        #      #  - name: nfs
-        #      #    nfs:
-        #      #      server: "10.0.0.1"
-        #      #      path: "/nextcloud_data"
-        #      #      readOnly: false
-        #      extraVolumeMounts:
-        #      #  - name: nfs
-        #      #    mountPath: "/legacy_data"
-        #
-        #      # Extra secuurityContext parameters. For example you may need to define runAsNonRoot directive
-        #      # extraSecurityContext:
-        #      #   runAsUser: "33"
-        #      #   runAsGroup: "33"
-        #      #   runAsNonRoot: true
-        #      #   readOnlyRootFilesystem: true
+      # Extra init containers that runs before pods start.
+      extraInitContainers: []
+        - name: init-db
+          image: ghcr.io/onedr0p/postgres-initdb:14.5
+          env:
+            - name: POSTGRES_HOST
+              value: defaultpg-rw.databases.svc.cluster.local
+            - name: POSTGRES_DB
+              value: nextcloud
+            - name: POSTGRES_SUPER_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-superuser
+                  key: password
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-config
+                  key:  postgres_password
+            - name: POSTGRES_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-config
+                  key: postgres_username
+
+      # Extra sidecar containers.
+      extraSidecarContainers: []
+      #  - name: nextcloud-logger
+      #    image: busybox
+      #    command: [/bin/sh, -c, 'while ! test -f "/run/nextcloud/data/nextcloud.log"; do sleep 1; done; tail -n+1 -f /run/nextcloud/data/nextcloud.log']
+      #    volumeMounts:
+      #    - name: nextcloud-data
+      #      mountPath: /run/nextcloud/data
+
+      # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+      # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+      extraVolumes:
+      #  - name: nfs
+      #    nfs:
+      #      server: "10.0.0.1"
+      #      path: "/nextcloud_data"
+      #      readOnly: false
+      extraVolumeMounts:
+      #  - name: nfs
+      #    mountPath: "/legacy_data"
+
+      # Extra secuurityContext parameters. For example you may need to define runAsNonRoot directive
+      # extraSecurityContext:
+      #   runAsUser: "33"
+      #   runAsGroup: "33"
+      #   runAsNonRoot: true
+      #   readOnlyRootFilesystem: true
 
     nginx:
       ## You need to set an fpm version of the image for nextcloud if you want to use nginx!
