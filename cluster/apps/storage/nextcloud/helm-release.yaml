@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
       interval: 60m
         #  dependsOn:
-        #    - name: redis
+        #    - name: redis  
         #      namespace: databases
   # Values link: https://github.com/nextcloud/helm/blob/master/charts/nextcloud/values.yaml
   values:
