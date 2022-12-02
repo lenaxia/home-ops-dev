@@ -68,7 +68,7 @@ spec:
       protocol: https
 
     nextcloud:
-      host: drive.${SECRET_DEV_DOMAIN}
+      host: *host
       ## Use an existing secret
       existingSecret:
         enabled: true
@@ -197,7 +197,7 @@ spec:
           image: ghcr.io/onedr0p/postgres-initdb:14.5
           env:
             - name: POSTGRES_HOST
-              value: defaultpg-rw.databases.svc.cluster.local
+              value: &postgresHost defaultpg-rw.databases.svc.cluster.local
             - name: POSTGRES_DB
               value: nextcloud
             - name: POSTGRES_SUPER_PASS
@@ -209,7 +209,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
-                  key:  postgres_username
+                  key: postgres_username
             - name: POSTGRES_PASS
               valueFrom:
                 secretKeyRef:
@@ -245,7 +245,6 @@ spec:
       #   readOnlyRootFilesystem: true
 
     nginx:
-      ## You need to set an fpm version of the image for nextcloud if you want to use nginx!
       enabled: false
     internalDatabase:
       enabled: false
@@ -256,7 +255,7 @@ spec:
     externalDatabase:
       enabled: true
       type: postgresql
-      host: defaultpg-rw.databases.svc.cluster.local
+      host: *postgresHost
       existingSecret:
         enabled: true
         secretName: nextcloud-config
@@ -275,7 +274,6 @@ spec:
     ##
     cronjob:
       enabled: false
-
       # Allow configuration of lifecycle hooks
       # ref: https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
       lifecycle: {}
@@ -316,14 +314,14 @@ spec:
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
     ##
     livenessProbe:
-      enabled: false
+      enabled: true
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 3
       successThreshold: 1
     readinessProbe:
-      enabled: false
+      enabled: true
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
