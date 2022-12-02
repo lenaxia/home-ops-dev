@@ -158,7 +158,7 @@ spec:
       successThreshold: 1
     startupProbe:
       enabled: true
-      initialDelaySeconds: 960
+      initialDelaySeconds: 1920
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 30
