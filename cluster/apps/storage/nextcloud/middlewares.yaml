@@ -1,13 +1,27 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: middlewares-nextcloud-wellknown
-  namespace: networking
+  name: middlewares-nextcloud-wellknown1
+  labels:
+    app.kubernetes.io/name: nextcloud
 spec:
   redirectRegex:
     permanent: true
-    regex: "^/.well-known/ca(l|rd)dav"
-    replacement: "/remote.php/dav/"
+    regex: "https://(.*)/.well-known/(card|cal)dav"
+    replacement: "https://$1/remote.php/dav/"
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: middlewares-nextcloud-wellknown2
+  labels:
+    app.kubernetes.io/name: nextcloud
+spec:
+  redirectRegex:
+    permanent: true
+    regex: "^https?://([^/]*)/.well-known/(webfinger|nodeinfo)$"
+    replacement: "https://$1/index.php/.well-known/$2"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -50,7 +64,8 @@ metadata:
 spec:
   chain:
     middlewares:
+      - name: middlewares-secure-headers
       - name: middlewares-rate-limit
-      - name: middlewares-nextcloud-headers
-      - name: middlewares-nextcloud-wellknown
+      - name: middlewares-nextcloud-wellknown1
+      - name: middlewares-nextcloud-wellknown2
         #- name: middlewares-authelia
