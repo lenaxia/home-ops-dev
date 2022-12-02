@@ -55,7 +55,8 @@ spec:
           value: &redisHost redis-master.databases.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: "6379"
-#        - name: REDIS_HOST_PASSWORD
+        - name: REDIS_HOST_PASSWORD
+          value: ""
 #          valueFrom:
 #            secretKeyRef:
 #              name: nextcloud-secret
