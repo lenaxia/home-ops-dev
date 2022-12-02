@@ -107,7 +107,7 @@ spec:
         # To protect /var/www/html/config
         .htaccess: true
         # Redis default configuration
-        redis.config.php: false
+        redis.config.php: true
         # Apache configuration for rewrite urls
         apache-pretty-urls.config.php: true
         # Define APCu as local cache
@@ -139,19 +139,19 @@ spec:
         #              )
         #            )
         #          );
-        redis.config.php: |-
-          <?php
-          $CONFIG = array (
-            'memcache.local' => '\\OC\\Memcache\\Redis',
-            'memcache.distributed' => '\OC\Memcache\Redis',
-            'memcache.locking' => '\OC\Memcache\Redis',
-            'redis' => array(
-              'host' => 'redis-master.databases.svc.cluster.local',
-              'port' => 6379,
-              'password' => ''
-            )
-          );
-          
+        #redis.config.php: |-
+        #  <?php
+        #  $CONFIG = array (
+        #    'memcache.local' => '\\OC\\Memcache\\Redis',
+        #    'memcache.distributed' => '\OC\Memcache\Redis',
+        #    'memcache.locking' => '\OC\Memcache\Redis',
+        #    'redis' => array(
+        #      'host' => 'redis-master.databases.svc.cluster.local',
+        #      'port' => 6379,
+        #      'password' => ''
+        #    )
+        #  );
+            
         custom.config.php: |-
           <?php
           $CONFIG = array (
