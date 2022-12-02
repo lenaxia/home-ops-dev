@@ -113,6 +113,28 @@ spec:
                 secretKeyRef:
                   name: nextcloud-config
                   key: postgres_password
+
+      configs:
+        custom.config.php: |-
+          <?php
+          $CONFIG = array (
+            'overwriteprotocol' => 'https',
+            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
+            'filelocking.enabled' => 'true',
+            'default_phone_region' => 'US',
+            'loglevel' => '2',
+            'enable_previews' => true,
+            'trusted_domains' =>
+               [
+                'nextcloud',
+                'drive.${SECRET_DEV_DOMAIN}'
+               ],
+            'trusted_proxies' =>
+               [
+                '192.168.12.10'
+               ]
+          );
+
     nginx:
       enabled: true
       image:
