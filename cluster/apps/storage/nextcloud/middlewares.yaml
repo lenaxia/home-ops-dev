@@ -2,6 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: middlewares-nextcloud-wellknown1
+  namespace: networking
   labels:
     app.kubernetes.io/name: nextcloud
 spec:
@@ -15,6 +16,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: middlewares-nextcloud-wellknown2
+  namespace: networking
   labels:
     app.kubernetes.io/name: nextcloud
 spec:
