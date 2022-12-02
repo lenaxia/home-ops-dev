@@ -1,4 +1,4 @@
-epiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &app nextcloud
@@ -52,13 +52,13 @@ spec:
         usernameKey: nextcloud-username
         passwordKey: nextcloud-password  # secretName: nameofsecret
       datadir: /var/www/data
-      extraEnv:
+        #      extraEnv:
         #        - name: REDIS_HOST
         #          value: &redisHost redis-master.databases.svc.cluster.local
         #        - name: REDIS_HOST_PORT
         #          value: "6379"
-        - name: REDIS_HOST_PASSWORD
-          value: ""
+        #        - name: REDIS_HOST_PASSWORD
+        #          value: ""
 #          valueFrom:
 #            secretKeyRef:
 #              name: nextcloud-secret
