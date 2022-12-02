@@ -47,11 +47,11 @@ spec:
           secretName: *host
     nextcloud:
       host: *host
-        #      existingSecret:
-        #        enabled: true
-        #        secretName: nextcloud-config
-        #        usernameKey: nextcloud-username
-        #        passwordKey: nextcloud-password  # secretName: nameofsecret
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-config
+        usernameKey: nextcloud-username
+        passwordKey: nextcloud-password  # secretName: nameofsecret
       datadir: /var/www/data
       extraEnv:
         - name: REDIS_HOST
