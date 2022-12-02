@@ -247,13 +247,13 @@ spec:
     nginx:
       enabled: false
     internalDatabase:
-      enabled: false
+      enabled: true
 
     ##
     ## External database configuration
     ##
     externalDatabase:
-      enabled: true
+      enabled: false
       type: postgresql
       host: *postgresHost
       existingSecret:
