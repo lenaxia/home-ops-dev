@@ -143,30 +143,30 @@ spec:
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
     ##
     livenessProbe:
-      enabled: true
+      enabled: false
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 3
       successThreshold: 1
     readinessProbe:
-      enabled: true
+      enabled: false
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 3
       successThreshold: 1
     startupProbe:
-      enabled: true
+      enabled: false
       initialDelaySeconds: 1920
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 30
       successThreshold: 1
 
-    resources:
-      requests:
-        cpu: 34m
-        memory: 203Mi
-      limits:
-        memory: 363Mi
+#    resources:
+#      requests:
+#        cpu: 34m
+#        memory: 203Mi
+#      limits:
+#        memory: 363Mi
