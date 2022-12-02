@@ -135,7 +135,8 @@ spec:
       existingClaim: nextcloud-config
       nextcloudData:
         enabled: true
-        existingClaim: nextcloud-nfs
+        #existingClaim: nextcloud-nfs
+        existingClaim: nextcloud-datalocal
     startupProbe:
       enabled: false
     resources:
