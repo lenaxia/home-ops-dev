@@ -166,7 +166,7 @@ spec:
 
 
     redis:
-      enabled: false
+      enabled: true
       auth:
         enabled: true
         password: 'iKBzuB2oc5htYj'
