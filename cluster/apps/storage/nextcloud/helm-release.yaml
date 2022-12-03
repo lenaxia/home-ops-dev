@@ -58,11 +58,10 @@ spec:
         - name: REDIS_HOST_PORT
           value: "6379"
         - name: REDIS_HOST_PASSWORD
-          value: ""
-#          valueFrom:
-#            secretKeyRef:
-#              name: nextcloud-secret
-#              key: redis-password
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-config
+              key: redis-password
       extraInitContainers:
         - name: wait-database
           image: alpine:3.17.0
