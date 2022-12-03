@@ -54,14 +54,16 @@ spec:
       datadir: /var/www/data
       extraEnv:
         - name: REDIS_HOST
-          value: &redisHost redis-master.databases.svc.cluster.local
+          #value: &redisHost redis-master.databases.svc.cluster.local
+          value: &redisHost 192.168.0.125
         - name: REDIS_HOST_PORT
           value: "6379"
         - name: REDIS_HOST_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: nextcloud-config
-              key: redis-password
+          value: ""
+          #          valueFrom:
+          #            secretKeyRef:
+          #              name: nextcloud-config
+          #              key: redis-password
       extraInitContainers:
         - name: wait-database
           image: alpine:3.17.0
