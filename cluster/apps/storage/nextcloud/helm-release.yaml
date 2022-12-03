@@ -44,6 +44,15 @@ spec:
         - hosts:
             - &host "drive.${SECRET_DEV_DOMAIN}"
           secretName: *host
+
+#    lifecycle:
+#      postStart:
+#        exec:
+#          command:
+#            - /bin/bash
+#            - -c
+#            - /postStart.sh
+
     nextcloud:
       host: *host
       existingSecret:
