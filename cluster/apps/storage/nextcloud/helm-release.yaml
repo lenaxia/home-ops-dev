@@ -52,17 +52,17 @@ spec:
         usernameKey: nextcloud-username
         passwordKey: nextcloud-password  # secretName: nameofsecret
       datadir: /var/www/data
-      extraEnv:
-        - name: REDIS_HOST
-          #value: &redisHost redis-master.databases.svc.cluster.local
-          value: &redisHost localhost
-        - name: REDIS_HOST_PORT
-          value: "6379"
-        - name: REDIS_HOST_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: nextcloud-config
-              key: redis-password
+        #      extraEnv:
+        #        - name: REDIS_HOST
+        #          #value: &redisHost redis-master.databases.svc.cluster.local
+        #          value: &redisHost localhost
+        #        - name: REDIS_HOST_PORT
+        #          value: "6379"
+        #        - name: REDIS_HOST_PASSWORD
+        #          valueFrom:
+        #            secretKeyRef:
+        #              name: nextcloud-config
+        #              key: redis-password
       extraInitContainers:
         - name: wait-database
           image: alpine:3.17.0
@@ -164,12 +164,6 @@ spec:
         #existingClaim: nextcloud-nfs
         existingClaim: nextcloud-datalocal
 
-
-    redis:
-      enabled: true
-      auth:
-        enabled: true
-        password: 'iKBzuB2oc5htYj'
     ## Liveness and readiness probe values
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
     ##
