@@ -138,23 +138,23 @@ spec:
                ]
           );
 
-        s3.config.php: |-
-          <?php
-          $CONFIG = array (
-            'objectstore' => array(
-              'class' => '\\OC\\Files\\ObjectStore\\S3',
-              'arguments' => array(
-                'bucket'     => 'nextcloud-oh7iqq',
-                'autocreate' => true,
-                'key'        => 'nextcloud-hss3fs',
-                'secret'     => 's4G2d6N33FE5NhYa',
-                'region'     => 'local',
-                'hostname'   => 's3.thekao.cloud',
-                'use_ssl'    => true,
-                'use_path_style' => true
-              )
-            )
-          );
+          #        s3.config.php: |-
+          #          <?php
+          #          $CONFIG = array (
+          #            'objectstore' => array(
+          #              'class' => '\\OC\\Files\\ObjectStore\\S3',
+          #              'arguments' => array(
+          #                'bucket'     => 'nextcloud-oh7iqq',
+          #                'autocreate' => true,
+          #                'key'        => 'nextcloud-hss3fs',
+          #                'secret'     => 's4G2d6N33FE5NhYa',
+          #                'region'     => 'local',
+          #                'hostname'   => 's3.thekao.cloud',
+          #                'use_ssl'    => true,
+          #                'use_path_style' => true
+          #              )
+          #            )
+          #          );
 
     nginx:
       enabled: true
@@ -177,10 +177,10 @@ spec:
       enabled: true
         #existingClaim: nextcloud-config
       
-        #      nextcloudData:
-        #        enabled: true
-        #        #existingClaim: nextcloud-nfs
-        #        existingClaim: nextcloud-datalocal
+            nextcloudData:
+              enabled: true
+              existingClaim: nextcloud-nfs
+                #existingClaim: nextcloud-datalocal
 
     ## Liveness and readiness probe values
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
