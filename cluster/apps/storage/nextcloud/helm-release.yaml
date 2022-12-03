@@ -156,9 +156,6 @@ spec:
             )
           );
 
-
-
-
     nginx:
       enabled: true
       image:
@@ -178,7 +175,7 @@ spec:
         passwordKey: postgres_password
     persistence:
       enabled: true
-      existingClaim: nextcloud-config
+        #existingClaim: nextcloud-config
       
         #      nextcloudData:
         #        enabled: true
