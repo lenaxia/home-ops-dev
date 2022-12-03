@@ -26,4 +26,4 @@ spec:
               command:
                 - curl
               args:
-                - https://nextcloud.${SECRET_DOMAIN_2}/cron.php
+                - https://drive.${SECRET_DEV_DOMAIN}/cron.php

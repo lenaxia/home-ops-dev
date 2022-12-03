@@ -162,6 +162,7 @@ spec:
         tag: 1.23-alpine
     internalDatabase:
       enabled: false
+
     externalDatabase:
       enabled: true
       type: postgresql
@@ -172,6 +173,14 @@ spec:
         secretName: nextcloud-config
         usernameKey: postgres_username
         passwordKey: postgres_password
+
+    cronjob:
+      enabled: true
+      schedule: "*/5 * * * *"
+      curlInsecure: false
+      failedJobsHistoryLimit: 5
+      successfulJobsHistoryLimit: 2
+
     persistence:
       enabled: true
         #existingClaim: nextcloud-config
