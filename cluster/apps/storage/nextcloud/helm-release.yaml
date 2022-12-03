@@ -149,7 +149,7 @@ spec:
                 'key'        => 'nextcloud-hss3fs',
                 'secret'     => 's4G2d6N33FE5NhYa',
                 'region'     => 'local',
-                'hostname'   => 'https://s3.thekao.cloud',
+                'hostname'   => 's3.thekao.cloud',
                 'use_ssl'    => true,
                 'use_path_style' => true
               )
