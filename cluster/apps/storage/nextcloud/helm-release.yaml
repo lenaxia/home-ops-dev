@@ -55,7 +55,7 @@ spec:
       extraEnv:
         - name: REDIS_HOST
           #value: &redisHost redis-master.databases.svc.cluster.local
-          value: &redisHost redis
+          value: &redisHost localhost
         - name: REDIS_HOST_PORT
           value: "6379"
         - name: REDIS_HOST_PASSWORD
