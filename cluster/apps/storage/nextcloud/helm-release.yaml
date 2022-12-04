@@ -67,13 +67,11 @@ spec:
             secretKeyRef:
               name: redis-secret
               key: host
-          #value: &redisHost redis-master.databases.svc.cluster.local
         - name: REDIS_HOST_PORT
           valueFrom:
             secretKeyRef:
               name: redis-secret
               key: port
-          #value: "6379"
         - name: REDIS_HOST_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -111,13 +109,11 @@ spec:
                 secretKeyRef:
                   name: redis-secret
                   key: host
-              #value: *redisHost
             - name: REDIS_HOST_PORT
               valueFrom:
                 secretKeyRef:
                   name: redis-secret
                   key: port
-              #value: "6379"
         - name: init-db
           image: ghcr.io/onedr0p/postgres-initdb:14.5
           env:
@@ -213,7 +209,6 @@ spec:
       nextcloudData:
         enabled: true
         existingClaim: nextcloud-nfs
-          #existingClaim: nextcloud-datalocal
 
     ## Liveness and readiness probe values
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
