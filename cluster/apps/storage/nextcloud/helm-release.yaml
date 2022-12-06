@@ -1,49 +1,32 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &app nextcloud
   namespace: storage
 spec:
-  interval: 60m
+  interval: 15m
   chart:
     spec:
-      chart: *app
-      version: 3.1.2
+      chart: nextcloud
+      version: 3.3.3
       sourceRef:
         kind: HelmRepository
         name: nextcloud-charts
         namespace: flux-system
-      interval: 60m
-        #  dependsOn:
-        #    - name: redis  
-        #      namespace: databases
-  # Values link: https://github.com/nextcloud/helm/blob/master/charts/nextcloud/values.yaml
+      interval: 15m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
-    ## Official nextcloud image version
-    ## ref: https://hub.docker.com/r/library/nextcloud/tags/
-    ##
+    fullnameOverride: *app
     image:
       repository: nextcloud
-      tag: 24.0.6
-      pullPolicy: Always
-      # pullSecrets:
-      #   - myRegistrKeySecretName
-
-    nameOverride: ""
-    fullnameOverride: ""
-    
-    podAnnotations:
-      secret.reloader.stakater.com/reload: "nextcloud-config"
-      
-    deploymentAnnotations: {}
-
-    # Number of replicas to be deployed
-    replicaCount: 1
-
-    ## Allowing use of ingress controllers
-    ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
-    ##
+      tag: 25.0.1-fpm-alpine
+      flavor: fpm-alpine
     ingress:
       enabled: true
       className: traefik
@@ -60,170 +43,82 @@ spec:
       tls:
         - hosts:
             - &host "drive.${SECRET_DEV_DOMAIN}"
-          secretName: *host 
+          secretName: *host
 
-    # Allow configuration of lifecycle hooks
-    # ref: https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
-    lifecycle: {}
-      # postStartCommand: []
-      # preStopCommand: []
-
-    phpClientHttpsFix:
-      enabled: false
-      protocol: https
+#    lifecycle:
+#      postStart:
+#        exec:
+#          command:
+#            - /bin/bash
+#            - -c
+#            - /postStart.sh
 
     nextcloud:
-      host: drive.${SECRET_DEV_DOMAIN}
-      ## Use an existing secret
+      host: *host
       existingSecret:
         enabled: true
         secretName: nextcloud-config
         usernameKey: nextcloud-username
         passwordKey: nextcloud-password  # secretName: nameofsecret
-        # tokenKey: serverinfo_token
-        # smtpUsernameKey: smtp_username
-        # smtpPasswordKey: smtp_password
-      update: 0
-      # If web server is not binding default port, you can define it
-      # containerPort: 8080
-      datadir: /var/www/html/data
-
-      persistence:
-        subPath:
-
-      mail:
-        enabled: false
-        fromAddress: user
-        domain: domain.com
-        smtp:
-          host: domain.com
-          secure: ssl
-          port: 465
-          authtype: LOGIN
-          name: user
-          password: pass
-      # PHP Configuration files
-      # Will be injected in /usr/local/etc/php/conf.d for apache image and in /usr/local/etc/php-fpm.d when nginx.enabled: true
-      phpConfigs: {}
-      # Default config files
-      # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
-      # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/16.0/apache/config
-      defaultConfigs:
-        # To protect /var/www/html/config
-        .htaccess: true
-        # Redis default configuration
-        redis.config.php: false
-        # Apache configuration for rewrite urls
-        apache-pretty-urls.config.php: true
-        # Define APCu as local cache
-        apcu.config.php: true
-        # Apps directory configs
-        apps.config.php: true
-        # Used for auto configure database
-        autoconfig.php: true
-        # SMTP default configuration
-        smtp.config.php: true
-      # Extra config files created in /var/www/html/config/
-      # ref: https://docs.nextcloud.com/server/15/admin_manual/configuration_server/config_sample_php_parameters.html#multiple-config-php-file
-      configs: 
-        #        s3.config.php: |-
-        #          <?php
-        #          $CONFIG = array (
-        #            'objectstore' => array(
-        #              'class' => '\\OC\\Files\\ObjectStore\\S3',
-        #              'arguments' => array(
-        #                'bucket'     => 'nextcloud-oh7iqq',
-        #                'autocreate' => true,
-        #                'key'        => 'nextcloud-hss3fs',
-        #                'secret'     => 's4G2d6N33FE5NhYa',
-        #                'region'     => 'local',
-        #                'hostname'   => 'https://s3.thekao.cloud',
-        #                'use_ssl'    => true,
-        #                'use_path_style' => true
-        #              )
-        #            )
-        #          );
-      
-        redis.config.php: |-
-          <?php
-          $CONFIG = array (
-            'memcache.local' => '\\OC\\Memcache\\Redis',
-            'memcache.distributed' => '\OC\Memcache\Redis',
-            'memcache.locking' => '\OC\Memcache\Redis',
-            'redis' => array(
-              'host' => 'redis-master.databases.svc.cluster.local',
-              'port' => 6379,
-              'password' => 'iKBzuB2oc5htYj'
-            )
-          );
-          
-        custom.config.php: |-
-          <?php
-          $CONFIG = array (
-            'overwriteprotocol' => 'https',
-            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
-            'filelocking.enabled' => 'true',
-            'default_phone_region' => 'US',
-            'loglevel' => '2',
-            'enable_previews' => true,
-            'trusted_domains' =>
-               [
-                'nextcloud',
-                'drive.${SECRET_DEV_DOMAIN}'
-               ],
-            'trusted_proxies' =>
-               [
-                '192.168.12.10'
-               ]
-
-          );
-
-      # For example, to use S3 as primary storage
-      # ref: https://docs.nextcloud.com/server/13/admin_manual/configuration_files/primary_storage.html#simple-storage-service-s3
-      #
-      #  configs:
-      #    s3.config.php: |-
-      #      <?php
-      #      $CONFIG = array (
-      #        'objectstore' => array(
-      #          'class' => '\\OC\\Files\\ObjectStore\\S3',
-      #          'arguments' => array(
-      #            'bucket'     => 'my-bucket',
-      #            'autocreate' => true,
-      #            'key'        => 'xxx',
-      #            'secret'     => 'xxx',
-      #            'region'     => 'us-east-1',
-      #            'use_ssl'    => true
-      #          )
-      #        )
-      #      );
-
-      ## Strategy used to replace old pods
-      ## IMPORTANT: use with care, it is suggested to leave as that for upgrade purposes
-      ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
-      strategy:
-        type: Recreate
-        # type: RollingUpdate
-        # rollingUpdate:
-        #   maxSurge: 1
-        #   maxUnavailable: 0
-
-      ##
-      ## Extra environment variables
+      datadir: /var/www/data
       extraEnv:
-      #  - name: SOME_SECRET_ENV
-      #    valueFrom:
-      #      secretKeyRef:
-      #        name: nextcloud
-      #        key: secret_key
-
-      # Extra init containers that runs before pods start.
+        - name: REDIS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: redis-secret
+              key: host
+        - name: REDIS_HOST_PORT
+          valueFrom:
+            secretKeyRef:
+              name: redis-secret
+              key: port
+        - name: REDIS_HOST_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-secret
+              key: password
       extraInitContainers:
+        - name: wait-database
+          image: alpine:3.17.0
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+          args:
+            - -c
+            - >-
+              until nc -w 1 -v $MYSQL_HOST:3306 || nc -w 1 -v $POSTGRES_HOST:5432;
+              do echo "Waiting for database";
+              done
+          env:
+            - name: POSTGRES_HOST
+              value: &postgresHost defaultpg-rw.databases.svc.cluster.local
+        - name: wait-redis
+          image: alpine:3.17.0
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+          args:
+            - -c
+            - >-
+              until nc -w 1 -v $REDIS_HOST:$REDIS_HOST_PORT;
+              do echo "Waiting for Redis";
+              done
+          env:
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: host
+            - name: REDIS_HOST_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: port
         - name: init-db
           image: ghcr.io/onedr0p/postgres-initdb:14.5
           env:
             - name: POSTGRES_HOST
-              value: defaultpg-rw.databases.svc.cluster.local
+              value: *postgresHost
             - name: POSTGRES_DB
               value: nextcloud
             - name: POSTGRES_SUPER_PASS
@@ -235,141 +130,98 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
-                  key:  postgres_username
+                  key: postgres_username
             - name: POSTGRES_PASS
               valueFrom:
                 secretKeyRef:
                   name: nextcloud-config
                   key: postgres_password
-                 
 
-      # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
-      # to NextCloud pods in Kubernetes. This can then be configured in External Storage
-      extraVolumes:
-      #  - name: nfs
-      #    nfs:
-      #      server: "10.0.0.1"
-      #      path: "/nextcloud_data"
-      #      readOnly: false
-      extraVolumeMounts:
-      #  - name: nfs
-      #    mountPath: "/legacy_data"
+      configs:
+        custom.config.php: |-
+          <?php
+          $CONFIG = array (
+            'overwriteprotocol' => 'https',
+            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
+            'filelocking.enabled' => 'true',
+            'default_phone_region' => 'US',
+            'loglevel' => '0',
+            'enable_previews' => true,
+            'trusted_domains' =>
+               [
+                'nextcloud',
+                'drive.${SECRET_DEV_DOMAIN}'
+               ],
+            'trusted_proxies' =>
+               [
+                '192.168.5.10'
+               ]
+          );
 
-      # Extra secuurityContext parameters. For example you may need to define runAsNonRoot directive
-      # extraSecurityContext:
-      #   runAsUser: "33"
-      #   runAsGroup: "33"
-      #   runAsNonRoot: true
-      #   readOnlyRootFilesystem: true
+          #        s3.config.php: |-
+          #          <?php
+          #          $CONFIG = array (
+          #            'objectstore' => array(
+          #              'class' => '\\OC\\Files\\ObjectStore\\S3',
+          #              'arguments' => array(
+          #                'bucket'     => 'nextcloud-oh7iqq',
+          #                'autocreate' => true,
+          #                'key'        => 'nextcloud-hss3fs',
+          #                'secret'     => 's4G2d6N33FE5NhYa',
+          #                'region'     => 'local',
+          #                'hostname'   => 's3.thekao.cloud',
+          #                'use_ssl'    => true,
+          #                'use_path_style' => true
+          #              )
+          #            )
+          #          );
 
     nginx:
-      enabled: false
+      enabled: true
+      image:
+        repository: nginx
+        tag: 1.23-alpine
     internalDatabase:
       enabled: false
 
-    ##
-    ## External database configuration
-    ##
     externalDatabase:
       enabled: true
       type: postgresql
-      host: defaultpg-rw.databases.svc.cluster.local
+      host: *postgresHost
+      database: nextcloud
       existingSecret:
         enabled: true
         secretName: nextcloud-config
         usernameKey: postgres_username
         passwordKey: postgres_password
 
-    mariadb:
-      enabled: false
-    postgresql:
-      enabled: false
-    redis:
-      enabled: false
-
-    ## Cronjob to execute Nextcloud background tasks
-    ## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#webcron
-    ##
     cronjob:
-      enabled: false
-      # Nexcloud image is used as default but only curl is needed
-      image: {}
-        # repository: nextcloud
-        # tag: 16.0.3-apache
-        # pullPolicy: IfNotPresent
-        # pullSecrets:
-        #   - myRegistrKeySecretName
-      # Every 5 minutes
-      # Note: Setting this to any any other value than 5 minutes might
-      #  cause issues with how nextcloud background jobs are executed
+      enabled: true
       schedule: "*/5 * * * *"
-      annotations: {}
-      # Set curl's insecure option if you use e.g. self-signed certificates
       curlInsecure: false
       failedJobsHistoryLimit: 5
       successfulJobsHistoryLimit: 2
-      # If not set, nextcloud deployment one will be set
-      # resources:
-        # We usually recommend not to specify default resources and to leave this as a conscious
-        # choice for the user. This also increases chances charts run on environments with little
-        # resources, such as Minikube. If you do want to specify resources, uncomment the following
-        # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-        # limits:
-        #  cpu: 100m
-        #  memory: 128Mi
-        # requests:
-        #  cpu: 100m
-        #  memory: 128Mi
 
-      # If not set, nextcloud deployment one will be set
-      # nodeSelector: {}
-
-      # If not set, nextcloud deployment one will be set
-      # tolerations: []
-
-      # If not set, nextcloud deployment one will be set
-      # affinity: {}
-
-    service:
-      type: ClusterIP
-      port: 8080
-      #loadBalancerIP: '192.168.12.20'
-
-    ## Enable persistence using Persistent Volume Claims
-    ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-    ##
     persistence:
       enabled: true
-        #existingClaim: "nextcloud-config"
-
+      existingClaim: nextcloud-config
+      
       nextcloudData:
         enabled: true
-          #existingClaim: "nextcloud-nfs"
-
-    resources: {}
-      # We usually recommend not to specify default resources and to leave this as a conscious
-      # choice for the user. This also increases chances charts run on environments with little
-      # resources, such as Minikube. If you do want to specify resources, uncomment the following
-      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-      # limits:
-      #  cpu: 100m
-      #  memory: 128Mi
-      # requests:
-      #  cpu: 100m
-      #  memory: 128Mi
+        existingClaim: nextcloud-nfs
 
     ## Liveness and readiness probe values
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
     ##
     livenessProbe:
-      enabled: true
+      enabled: false
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 3
       successThreshold: 1
     readinessProbe:
-      enabled: true
+      enabled: false
       initialDelaySeconds: 10
       periodSeconds: 10
       timeoutSeconds: 5
@@ -377,101 +229,15 @@ spec:
       successThreshold: 1
     startupProbe:
       enabled: false
-      initialDelaySeconds: 30
+      initialDelaySeconds: 1920
       periodSeconds: 10
       timeoutSeconds: 5
       failureThreshold: 30
       successThreshold: 1
 
-
-    ## Enable pod autoscaling using HorizontalPodAutoscaler
-    ## ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-    ##
-    hpa:
-      enabled: false
-      cputhreshold: 60
-      minPods: 1
-      maxPods: 10
-
-    nodeSelector: {}
-
-    tolerations: []
-
-    affinity: {}
-
-
-    ## Prometheus Exporter / Metrics
-    ##
-    metrics:
-      enabled: false
-
-      replicaCount: 1
-      # The metrics exporter needs to know how you serve Nextcloud either http or https
-      https: false
-      # Use API token if set, otherwise fall back to password authentication
-      # https://github.com/xperimental/nextcloud-exporter#token-authentication
-      # Currently you still need to set the token manually in your nextcloud install
-      token: ""
-      timeout: 5s
-
-      image:
-        repository: xperimental/nextcloud-exporter
-        tag: 0.5.1
-        pullPolicy: IfNotPresent
-
-      ## Metrics exporter resource requests and limits
-      ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
-      ##
-      # resources: {}
-
-      ## Metrics exporter pod Annotation and Labels
-      # podAnnotations: {}
-
-      # podLabels: {}
-
-      service:
-        type: ClusterIP
-        ## Use serviceLoadBalancerIP to request a specific static IP,
-        ## otherwise leave blank
-        # loadBalancerIP:
-        annotations:
-          prometheus.io/scrape: "true"
-          prometheus.io/port: "9205"
-        labels: {}
-
-      ## Prometheus Operator ServiceMonitor configuration
-      ##
-      serviceMonitor:
-        ## @param metrics.serviceMonitor.enabled Create ServiceMonitor Resource for scraping metrics using PrometheusOperator
-          ##
-        enabled: false
-
-        ## @param metrics.serviceMonitor.namespace Namespace in which Prometheus is running
-        ##
-        namespace: ""
-
-        ## @param metrics.serviceMonitor.jobLabel The name of the label on the target service to use as the job name in prometheus.
-        ##
-        jobLabel: ""
-
-        ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
-        ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
-        ##
-        interval: 30s
-
-        ## @param metrics.serviceMonitor.scrapeTimeout Specify the timeout after which the scrape is ended
-        ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
-        ##
-        scrapeTimeout: ""
-
-        ## @param metrics.serviceMonitor.labels Extra labels for the ServiceMonitor
-        ##
-        labels: {}
-
-
-    rbac:
-      enabled: false
-      serviceaccount:
-        create: true
-        name: nextcloud-serviceaccount
-        annotations: {}
+#    resources:
+#      requests:
+#        cpu: 34m
+#        memory: 203Mi
+#      limits:
+#        memory: 363Mi
