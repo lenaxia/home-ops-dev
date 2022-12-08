@@ -145,7 +145,7 @@ spec:
             'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
             'filelocking.enabled' => 'true',
             'default_phone_region' => 'US',
-            'loglevel' => '0',
+            'loglevel' => '2',
             'enable_previews' => true,
             'trusted_domains' =>
                [
@@ -154,7 +154,7 @@ spec:
                ],
             'trusted_proxies' =>
                [
-                '192.168.5.10'
+                '192.168.12.10'
                ]
           );
 
@@ -204,11 +204,11 @@ spec:
 
     persistence:
       enabled: true
-      existingClaim: nextcloud-config
+        #existingClaim: nextcloud-config
       
       nextcloudData:
         enabled: true
-        existingClaim: nextcloud-nfs
+          #existingClaim: nextcloud-nfs
 
     ## Liveness and readiness probe values
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
