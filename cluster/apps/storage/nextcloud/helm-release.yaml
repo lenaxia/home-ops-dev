@@ -42,7 +42,7 @@ spec:
 
       tls:
         - hosts:
-            - &host "drive.${SECRET_DEV_DOMAIN}"
+            - &host "hub.${SECRET_DEV_DOMAIN}"
           secretName: *host
 
 #    lifecycle:
@@ -137,12 +137,33 @@ spec:
                   name: nextcloud-config
                   key: postgres_password
 
+      phpConfigs:
+        uploadLimit.ini: |
+          upload_max_filesize = 16G
+          post_max_size = 16G
+          max_input_time = 3600
+          max_execution_time = 3600
+          default_phone_region = US
+        www.conf: |
+          [www]
+          user = www-data
+          group = www-data
+          listen = 127.0.0.1:9000
+
+          pm = dynamic
+          pm.max_children = 300
+          pm.start_servers = 20
+          pm.min_spare_servers = 6
+          pm.max_spare_servers = 18
+          pm.max_requests = 500
+          pm.process_idle_timeout = 10s
+
       configs:
         custom.config.php: |-
           <?php
           $CONFIG = array (
             'overwriteprotocol' => 'https',
-            'overwrite.cli.url' => 'https://drive.${SECRET_DEV_DOMAIN}',
+            'overwrite.cli.url' => 'https://hub.${SECRET_DEV_DOMAIN}',
             'filelocking.enabled' => 'true',
             'default_phone_region' => 'US',
             'loglevel' => '2',
@@ -150,7 +171,7 @@ spec:
             'trusted_domains' =>
                [
                 'nextcloud',
-                'drive.${SECRET_DEV_DOMAIN}'
+                'hub.${SECRET_DEV_DOMAIN}'
                ],
             'trusted_proxies' =>
                [
@@ -235,6 +256,19 @@ spec:
       failureThreshold: 30
       successThreshold: 1
 
+    affinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: ["redis"]
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values: ["master"]
+            topologyKey: kubernetes.io/hostname
+            
 #    resources:
 #      requests:
 #        cpu: 34m

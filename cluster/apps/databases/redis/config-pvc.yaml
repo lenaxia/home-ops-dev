@@ -12,3 +12,15 @@ spec:
     requests:
       storage: 3Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: &name redis-local
+  namespace: databases
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 1Gi

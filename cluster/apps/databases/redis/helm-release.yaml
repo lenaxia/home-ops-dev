@@ -44,6 +44,15 @@ spec:
         enabled: true
         existingClaim: redis-data-volume
 
+      extraVolumeMounts:
+        - name: redis-local
+            mountPath: /socks
+
+      extraVolumes:
+        - name: redis-local
+          persistentVolumeClaim:
+            claimName: redis-local
+
       service:
         type: LoadBalancer
         loadBalancerIP: "${SVC_REDIS_ADDR}"
