@@ -258,13 +258,12 @@ spec:
 
         #    affinity:
         #      podAffinity:
-        #        preferredDuringSchedulingIgnoredDuringExecution:
-        #          - labelSelector:
-        #              matchExpressions:
-        #                - key: app.kubernetes.io/name
-        #                  operator: In
-        #                  values: ["redis"]
-        #            topologyKey: kubernetes.io/hostname
+        #        requiredDuringSchedulingIgnoredDuringExecution:
+        #        - topologyKey: kubernetes.io/hostname
+        #          labelSelector:
+        #            matchLabels:
+        #              - app.kubernetes.io/name: redis
+        #                #- app.kubernetes.io/component: master
             
 #    resources:
 #      requests:
