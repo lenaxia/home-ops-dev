@@ -7,6 +7,7 @@ resources:
   - ./utilities/smokeping
   - ./utilities/firefox
   - ./utilities/pgadmin
+  - ./utilities/ltb-project
   #- ./utilities/vaultwarden
   - ./media/metube
   - ./media/sonarr
