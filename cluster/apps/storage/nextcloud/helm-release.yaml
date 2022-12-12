@@ -45,13 +45,13 @@ spec:
             - &host "hub.${SECRET_DEV_DOMAIN}"
           secretName: *host
 
-#    lifecycle:
-#      postStart:
-#        exec:
-#          command:
-#            - /bin/bash
-#            - -c
-#            - /postStart.sh
+    lifecycle:
+      postStart:
+        exec:
+          command:
+            - /bin/bash
+            - -c
+            - add apk ffmpeg
 
     nextcloud:
       host: *host
@@ -120,7 +120,7 @@ spec:
             - name: POSTGRES_HOST
               value: *postgresHost
             - name: POSTGRES_DB
-              value: nextcloud
+              value: &pgdbname nextcloud
             - name: POSTGRES_SUPER_PASS
               valueFrom:
                 secretKeyRef:
@@ -209,7 +209,7 @@ spec:
       enabled: true
       type: postgresql
       host: *postgresHost
-      database: nextcloud
+      database: *pgdbname
       existingSecret:
         enabled: true
         secretName: nextcloud-config
