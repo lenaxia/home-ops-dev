@@ -122,8 +122,7 @@ spec:
         volumeSpec:
           nfs:
             server: ${NAS_ADDR}
-            path: /volume1/backups
-        mountPath: /config/backup
+            path: /volume1/backups/bazarr
 #    resources:
 #      requests:
 #        cpu: 10m
