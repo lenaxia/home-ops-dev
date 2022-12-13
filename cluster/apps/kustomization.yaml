@@ -9,10 +9,10 @@ resources:
   - ./utilities/pgadmin
   - ./utilities/ltb-project
   #- ./utilities/vaultwarden
-  #- ./media/metube
+  - ./media/metube
   - ./media/sonarr
   - ./media/radarr
-    #- ./media/bazarr
+  - ./media/bazarr
     #- ./media/tautulli
   - ./media/outline
   - ./media/invidious
@@ -29,7 +29,7 @@ resources:
     #
   - ./databases/cloudnative-pg
   - ./databases/cloudnative-pg/clusters
-    #- ./databases/redis
+  - ./databases/redis
 
   - ./storage/kopia-web
   - ./storage/nextcloud
