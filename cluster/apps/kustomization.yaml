@@ -12,6 +12,7 @@ resources:
   - ./media/metube
   - ./media/sonarr
   - ./media/radarr
+  - ./media/bazarr
     #- ./media/tautulli
   - ./media/outline
   - ./media/invidious
