@@ -32,11 +32,12 @@ spec:
           name: *app
     podAnnotations:
       configmap.reloader.stakater.com/reload: "vaultwarden-ldap"
-        #    service:
-        #      main:
-        #        ports:
-        #          http:
-        #            port: &port 80
+   service:
+     main:
+       enabled: false
+         #       ports:
+         #         http:
+         #           port: &port 80
         #    probes:
         #      liveness: &probes
         #        enabled: true
