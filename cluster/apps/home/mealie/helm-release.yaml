@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: docker.io/hkotel/mealie
-      tag: frontend-v1.0.0beta-4
+      tag: frontend-v1.0.0beta-5
     
     additionalContainers:
       api:
