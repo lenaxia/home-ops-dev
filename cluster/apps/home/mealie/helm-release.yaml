@@ -30,6 +30,8 @@ spec:
             value: "9000"
           - name: TZ
             value: ${TIMEZONE}
+          - name: BASE_URL
+            value: https://meals.${SECRET_DEV_DOMAIN}
         ports:
           - name: api
             containerPort: 9000
@@ -41,7 +43,6 @@ spec:
       TZ: ${TIMEZONE}
       # -- Set the application database type
       DB_TYPE: postgres 
-      BASE_URL: https://meals.${SECRET_DEV_DOMAIN}
 
     envFrom:
       - secretRef:
