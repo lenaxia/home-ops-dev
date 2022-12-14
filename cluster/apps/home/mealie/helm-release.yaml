@@ -76,10 +76,10 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-        - host: meals.${CLUSTER_DOMAIN}
+        - host: meals.${SECRET_DEV_DOMAIN}
           paths:
           - path: /
             pathType: Prefix
         tls:
         - hosts:
-          - meals.${CLUSTER_DOMAIN}
+          - meals.${SECRET_DEV_DOMAIN}
