@@ -12,12 +12,12 @@ spec:
           - name: POSTGRES_HOST
             valueFrom:
               secretKeyRef:
-                name: &appname
+                name: *appname
                 key: POSTGRES_SERVER
           - name: POSTGRES_DB
             valueFrom:
               secretKeyRef:
-                name: &appname
+                name: *appname
                 key: POSTGRES_DB
           - name: POSTGRES_SUPER_PASS
             valueFrom:
@@ -27,10 +27,10 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                name: &appname
+                name: *appname
                 key: POSTGRES_USER
           - name: POSTGRES_PASS
             valueFrom:
               secretKeyRef:
-                name: &appname
+                name: *appname
                 key: POSTGRES_PASSWORD
