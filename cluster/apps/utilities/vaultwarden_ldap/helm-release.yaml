@@ -23,11 +23,12 @@ spec:
       retries: 5
   values:
     image:
-      #repository: docker.io/vividboarder/vaultwarden_ldap
-      repository: docker.io/alexta69/metube
+      repository: docker.io/vividboarder/vaultwarden_ldap
+      #repository: docker.io/alexta69/metube
       tag: latest
     env:
       TZ: "${TIMEZONE}"
+      CONFIG_PATH: "/config.toml"
         #    envFrom:
         #      - secretRef:
         #          name: *app
