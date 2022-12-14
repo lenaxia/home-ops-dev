@@ -36,5 +36,5 @@ resources:
   - ./storage/kopia-web
     #- ./storage/nextcloud
 
-    #- ./kube-tools/system-upgrade
+  - ./kube-tools/system-upgrade
   - ./kube-tools/kyverno
