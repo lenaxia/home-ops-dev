@@ -23,7 +23,7 @@ spec:
     additionalContainers:
       api:
         name: mealie-api
-        image: docker.io/hkotel/mealie:api-v1.0.0beta-4@sha256:463bcf457fde8a7c739bb597822b409489d8e16d313913034e6e974c0b8e0fd8
+        image: docker.io/hkotel/mealie:api-v1.0.0beta-5
         imagePullPolicy: IfNotPresent
         env:
           - name: API_PORT
@@ -41,6 +41,7 @@ spec:
       TZ: ${TIMEZONE}
       # -- Set the application database type
       DB_TYPE: postgres 
+      BASE_URL: https://meals.${SECRET_DEV_DOMAIN}
 
     envFrom:
       - secretRef:
