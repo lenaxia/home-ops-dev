@@ -27,11 +27,11 @@ spec:
       tag: latest
     env:
       TZ: "${TIMEZONE}"
-    envFrom:
-      - secretRef:
-          name: *app
+        #    envFrom:
+        #      - secretRef:
+        #          name: *app
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "vaultwarden-ldap"
+      configmap.reloader.stakater.com/reload: *app
     service:
       main:
         enabled: false
@@ -53,6 +53,14 @@ spec:
         #      readiness: *probes
         #      startup:
         #        enabled: false
+
+    persistence:
+      config-toml:
+        enabled: true
+        type: configMap
+        name: *app
+        subPath: config.toml
+        mountPath: /config.toml
           
     resources:
       requests:
