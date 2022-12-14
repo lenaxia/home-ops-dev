@@ -19,7 +19,7 @@ resources:
   - ./media/invidious
 
 
-  - ./home/mealie
+    #  - ./home/mealie
     #  - ./monitoring/prometheus-stack
     #  - ./monitoring/grafana
     #  - ./monitoring/loki
