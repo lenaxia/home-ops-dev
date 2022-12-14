@@ -40,7 +40,7 @@ spec:
     env:
       TZ: ${TIMEZONE}
       # -- Set the application database type
-      DB_TYPE: sqlite
+      DB_TYPE: postgres 
 
     envFrom:
       - secretRef:
