@@ -8,7 +8,7 @@ resources:
   - ./utilities/firefox
   - ./utilities/pgadmin
   - ./utilities/ltb-project
-  - ./utilities/vaultwarden_ldap
+  #- ./utilities/vaultwarden_ldap
   #- ./utilities/vaultwarden
   - ./media/metube
   - ./media/sonarr
@@ -20,7 +20,7 @@ resources:
 
 
   - ./home/mealie
-    #  - ./monitoring/prometheus-stack
+  - ./monitoring/prometheus-stack
     #  - ./monitoring/grafana
     #  - ./monitoring/loki
     #- ./monitoring/tobs
