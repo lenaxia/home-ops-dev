@@ -24,7 +24,7 @@ spec:
   values:
     prometheusOperator:
       tls:
-        enabled: true
+        enabled: false 
       createCustomResource: true
       prometheusConfigReloader:
         resources:
