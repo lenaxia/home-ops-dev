@@ -52,15 +52,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
-          - host: &uri "prom-op.${SECRET_DEV_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+          - "alerts.${SECRET_DEV_DOMAIN}"
+        path: /
+        pathType: Prefix
         tls:
           - hosts:
               - *uri
             secretName: *uri
-
       config:
         global:
           resolve_timeout: 5m
