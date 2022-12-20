@@ -21,10 +21,12 @@ spec:
     remediation:
       retries: 6
     timeout: 15m
+    crds: Create
   upgrade:
     remediation:
       retries: 5
     timeout: 15m
+    crds: CreateReplace
   values:
     opentelemetry-operator:
       enabled: true
