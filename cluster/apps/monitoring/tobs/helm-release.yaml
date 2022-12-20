@@ -27,7 +27,7 @@ spec:
     timeout: 15m
   values:
     opentelemetry-operator:
-      enabled: false
+      enabled: true
 
     promscale:
       enabled: true
