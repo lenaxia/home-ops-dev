@@ -17,10 +17,10 @@ spec:
   install:
     createNamespace: true
     remediation:
-      retries: 5
+      retries: 8
   upgrade:
     remediation:
-      retries: 5
+      retries: 8
   values:
     fullnameOverride: *app
     image:
@@ -36,7 +36,7 @@ spec:
         hajimari.io/appName: "NextCloud"
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia-nextcloud@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: networking-chain-nextcloud-headers@kubernetescrd
       path: /
       pathType: Prefix
 
@@ -46,7 +46,7 @@ spec:
           secretName: *host
 
     lifecycle:
-      postStartCommand: ["/bin/bash","-c","add apk ffmpeg"]
+      postStartCommand: ["/bin/sh","-c","apk add ffmpeg"]
 
     nextcloud:
       host: *host
@@ -133,6 +133,15 @@ spec:
                   key: postgres_password
 
       phpConfigs:
+        opcache.conf: |
+          php_admin_value[opcache.enable] = 1
+          php_admin_value[opcache.save_comments] = 1
+          php_admin_value[opcache.interned_strings_buffer] = 1000
+          php_admin_value[opcache.memory_consumption] = 1024
+          php_admin_value[opcache.max_accelerated_files] = 30000
+          php_admin_value[opcache.validate_timestamps] = 0
+          php_admin_value[opcache.revalidate_freq] = 60
+          php_admin_value[memory_limit] = -1
         uploadLimit.ini: |
           upload_max_filesize = 16G
           post_max_size = 16G
@@ -167,14 +176,46 @@ spec:
                [
                 'nextcloud',
                 'hub.${SECRET_DEV_DOMAIN}',
-                '192.168.0.0/24',
                ],
             'trusted_proxies' =>
                [
                 '192.168.12.10',
-                '10.43.244.212',
-               ]
+               ],
+            'enabledPreviewProviders' =>
+               [
+                'OC\\Preview\\TIFF',
+                'OC\\Preview\\TXT',
+                'OC\\Preview\\MarkDown',
+                'OC\\Preview\\PDF',
+                'OC\\Preview\\MSOfficeDoc',
+                'OC\\Preview\\JPEG',
+                'OC\\Preview\\PNG',
+                'OC\\Preview\\GIF',
+                'OC\\Preview\\BMP',
+                'OC\\Preview\\XBitmap',
+                'OC\\Preview\\MP3',
+                'OC\\Preview\\HEIC',
+                'OC\\Preview\\Movie',
+                'OC\\Preview\\MKV',
+                'OC\\Preview\\MP4',
+                'OC\\Preview\\AVI',
+                'OC\\Preview\\MP3',
+                'OC\\Preview\\OpenDocument',
+                'OC\\Preview\\Krita',
+                'OC\\Preview\\Imaginary',
+              ],
+              #'preview_imaginary_url' => 'http://imaginary.media.svc.cluster.local:9000',
           );
+          
+          
+      # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+      # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+      extraVolumes:
+        - name: redis-socket
+          emptyDir: {}
+      extraVolumeMounts:
+        - name: redis-socket
+          mountPath: "/var/run/redis/redis.sock/"
 
     nginx:
       enabled: true
@@ -205,11 +246,11 @@ spec:
 
     persistence:
       enabled: true
-        #existingClaim: nextcloud-config
+      existingClaim: nextcloud-config
       
       nextcloudData:
         enabled: true
-          #existingClaim: nextcloud-nfs
+        existingClaim: nextcloud-nfs
 
     ## Liveness and readiness probe values
     ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
@@ -229,7 +270,7 @@ spec:
       failureThreshold: 3
       successThreshold: 1
     startupProbe:
-      enabled: false
+      enabled: true
       initialDelaySeconds: 1920
       periodSeconds: 10
       timeoutSeconds: 5
@@ -244,6 +285,8 @@ spec:
         #            matchLabels:
         #              - app.kubernetes.io/name: redis
         #                #- app.kubernetes.io/component: master
+        #
+
             
 #    resources:
 #      requests:
@@ -251,3 +294,26 @@ spec:
 #        memory: 203Mi
 #      limits:
 #        memory: 363Mi
+
+
+
+
+    ##
+    ## Redis chart configuration
+    ## for more options see https://github.com/bitnami/charts/tree/master/bitnami/redis
+    ##
+    
+    redis:
+      enabled: false
+      auth:
+        enabled: true
+        password: 'changeme'
+  
+      master:
+        # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+        # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+        extraVolumeMounts:
+          - name: redis-socket
+            mountPath: "/var/run/redis/redis.sock/"
+  
+  
