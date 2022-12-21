@@ -309,12 +309,12 @@ spec:
         enabled: true
         password: 'blah'
     
-      #master:
-      #      # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
-      #      # to NextCloud pods in Kubernetes. This can then be configured in External Storage
-      #      extraVolumeMounts:
-      #        - name: redis-socket
-      #          mountPath: "/var/run/redis/redis.sock/"
+    master:
+          # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+          # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+          extraVolumeMounts:
+            - name: redis-socket
+              mountPath: "/var/run/redis/redis.sock/"
     replica:
       replicaCount: 0
   
