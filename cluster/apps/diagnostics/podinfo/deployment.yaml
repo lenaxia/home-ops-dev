@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podinfo
-  namespace: default
+  namespace: databases
 spec:
   minReadySeconds: 3
   revisionHistoryLimit: 5
@@ -73,6 +73,13 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
+        volumeMounts:
+          - name: shared-vol
+            mountPath: /var/run/redis
+      volumes:
+        - name: shared-vol
+          persistentVolumeClaim:
+            claimName: local-volume-pvc
       affinity:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

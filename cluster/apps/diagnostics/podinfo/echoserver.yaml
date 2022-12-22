@@ -9,7 +9,7 @@ metadata:
   name: echoserver
   namespace: default
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: echoserver
@@ -18,6 +18,10 @@ spec:
       labels:
         app: echoserver
     spec:
+      securityContext:
+        runAsUser: 100
+        runAsGroup: 101
+        fsGroup: 101
       containers:
       - image: ealen/echo-server:latest
         imagePullPolicy: IfNotPresent
@@ -33,7 +37,7 @@ spec:
       volumes:
         - name: shared-vol
           persistentVolumeClaim:
-            claimName: shared-vol
+            claimName: local-volume-pvc
 ---
 apiVersion: v1
 kind: Service
