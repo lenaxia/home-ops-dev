@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: databases
 resources:
   - helm-release.yaml
-  - secret.sops.yaml
+    #  - secret.sops.yaml
 #- clusters
 configMapGenerator:
   - name: redis-operator-dashboard
