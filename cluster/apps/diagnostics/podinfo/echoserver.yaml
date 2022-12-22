@@ -1,0 +1,50 @@
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: echoserver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoserver
+  namespace: default
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: echoserver
+  template:
+    metadata:
+      labels:
+        app: echoserver
+    spec:
+      containers:
+      - image: ealen/echo-server:latest
+        imagePullPolicy: IfNotPresent
+        name: echoserver
+        ports:
+        - containerPort: 80
+        env:
+        - name: PORT
+          value: "80"
+        volumeMounts:
+          - name: shared-vol
+            mountPath: /var/run/redis
+      volumes:
+        - name: shared-vol
+          persistentVolumeClaim:
+            claimName: shared-vol
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echoserver
+  namespace: default
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: LoadBalancer
+  selector:
+    app: echoserver

@@ -21,3 +21,4 @@ resources:
     #  disableNameSuffixHash: true
     #  annotations:
     #    kustomize.toolkit.fluxcd.io/substitute: disabled
+  - cm.yaml
