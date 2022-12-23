@@ -209,7 +209,7 @@ spec:
           );
           
     nginx:
-      enabled: false
+      enabled: true
       image:
         repository: nginx
         tag: 1.23-alpine
