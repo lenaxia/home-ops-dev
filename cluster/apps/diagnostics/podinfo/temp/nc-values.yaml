@@ -1,0 +1,271 @@
+## Official nextcloud image version
+## ref: https://hub.docker.com/r/library/nextcloud/tags/
+##
+image:
+  repository: nextcloud
+  # tag: 24.0.3-apache
+  pullPolicy: IfNotPresent
+  # pullSecrets:
+  #   - myRegistrKeySecretName
+
+nameOverride: ""
+fullnameOverride: ""
+podAnnotations: {}
+deploymentAnnotations: {}
+
+# Number of replicas to be deployed
+replicaCount: 1
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "cloud"
+    hajimari.io/appName: "NextCloud"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
+  path: /
+  pathType: Prefix
+
+  tls:
+    - hosts:
+        - &host "hub2.kao.haus"
+      secretName: *host
+
+lifecycle: {}
+
+phpClientHttpsFix:
+  enabled: false
+  protocol: https
+
+nextcloud:
+  host: hub2.kao.haus
+  username: admin
+  password: changeme
+  ## Use an existing secret
+  existingSecret:
+    enabled: false
+    # secretName: nameofsecret
+    # usernameKey: username
+    # passwordKey: password
+    # tokenKey: serverinfo_token
+    # smtpUsernameKey: smtp_username
+    # smtpPasswordKey: smtp_password
+  update: 0
+  # PHP Configuration files
+  # Will be injected in /usr/local/etc/php/conf.d for apache image and in /usr/local/etc/php-fpm.d when nginx.enabled: true
+  phpConfigs: {}
+  # Default config files
+  # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
+  # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/16.0/apache/config
+  defaultConfigs:
+    .htaccess: true
+    redis.config.php: false
+    apache-pretty-urls.config.php: true
+    apcu.config.php: true
+    apps.config.php: true
+    autoconfig.php: true
+    smtp.config.php: true
+
+  configs:
+    redis.config.php: |-
+      <?php
+        $CONFIG = array (
+          'memcache.local' => '\OC\Memcache\APCu',
+          'memcache.distributed' => '\OC\Memcache\Redis',
+          'redis' => [
+               'host'     => '/var/run/redis/redis.sock',
+               'port'     => 0,
+               'dbindex'  => 0,
+               'password' => '',
+               'timeout'  => 1.5,
+          ],
+        );
+
+    custom.config.php: |-
+      <?php
+      $CONFIG = array (
+        'overwriteprotocol' => 'https',
+        'overwrite.cli.url' => 'https://hub.${SECRET_DEV_DOMAIN}',
+        'filelocking.enabled' => 'true',
+        'default_phone_region' => 'US',
+        'loglevel' => '2',
+        'enable_previews' => true,
+        'trusted_domains' =>
+           [
+            'nextcloud',
+            'hub.kao.haus',
+            '192.168.0.0/16',
+            '0.0.0.0/0',
+           ],
+        'trusted_proxies' =>
+           [
+            '192.168.12.10',
+           ],
+      );
+
+  strategy:
+    type: Recreate
+
+  ##
+  ## Extra environment variables
+  extraEnv:
+  #  - name: SOME_SECRET_ENV
+  #    valueFrom:
+  #      secretKeyRef:
+  #        name: nextcloud
+  #        key: secret_key
+
+  # Extra init containers that runs before pods start.
+  extraInitContainers: 
+    - name: init-db
+      image: ghcr.io/onedr0p/postgres-initdb:14.5
+      env:
+        - name: POSTGRES_HOST
+          value: defaultpg-rw.databases.svc.cluster.local
+        - name: POSTGRES_DB
+          value: &pgdbname nextcloud2
+        - name: POSTGRES_SUPER_PASS
+          valueFrom:
+            secretKeyRef:
+              name: postgres-superuser
+              key: password
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-config
+              key: postgres_username
+        - name: POSTGRES_PASS
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-config
+              key: postgres_password
+
+  # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+  # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+  extraVolumes:
+    - name: shared-vol
+      persistentVolumeClaim:
+        claimName: local-volume-pvc
+  extraVolumeMounts:
+    - name: shared-vol
+      mountPath: "/var/run/redis"
+      readOnly: false
+
+  # Extra secuurityContext parameters. For example you may need to define runAsNonRoot directive
+  # extraSecurityContext:
+  #   runAsUser: "33"
+  #   runAsGroup: "33"
+  #   runAsNonRoot: true
+  #   readOnlyRootFilesystem: true
+
+nginx:
+  ## You need to set an fpm version of the image for nextcloud if you want to use nginx!
+  enabled: false
+  image:
+    repository: nginx
+    tag: alpine
+    pullPolicy: IfNotPresent
+
+internalDatabase:
+  enabled: false
+  name: nextcloud
+
+##
+## External database configuration
+##
+externalDatabase:
+  enabled: true
+  type: postgresql
+  host: defaultpg-rw.databases.svc.cluster.local
+  database: *pgdbname
+  existingSecret:
+    enabled: false
+    secretName: nextcloud-config
+    usernameKey: postgres_username
+    passwordKey: postgres_password
+
+##
+## PostgreSQL chart configuration
+## for more options see https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+##
+postgresql:
+  enabled: false
+  global:
+    postgresql:
+      auth:
+        username: nextcloud
+        password: changeme
+        database: nextcloud
+  primary:
+    persistence:
+      enabled: false
+      # storageClass: ""
+
+##
+## Redis chart configuration
+## for more options see https://github.com/bitnami/charts/tree/master/bitnami/redis
+##
+
+redis:
+  enabled: false
+  auth:
+    enabled: true
+    password: 'changeme'
+
+## Cronjob to execute Nextcloud background tasks
+## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#cron
+##
+cronjob:
+  enabled: false
+
+  # Allow configuration of lifecycle hooks
+  # ref: https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
+  lifecycle: {}
+    # postStartCommand: []
+    # preStopCommand: []
+
+service:
+  type: LoadBalancer
+  port: 8080
+  loadBalancerIP: ""
+  nodePort: nil
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+
+  ## Use an additional pvc for the data directory rather than a subpath of the default PVC
+  ## Useful to store data on a different storageClass (e.g. on slower disks)
+  nextcloudData:
+    enabled: true
+
+## Liveness and readiness probe values
+## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+##
+livenessProbe:
+  enabled: false
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+  successThreshold: 1
+readinessProbe:
+  enabled: false
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+  successThreshold: 1
+startupProbe:
+  enabled: false
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
