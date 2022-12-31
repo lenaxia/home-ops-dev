@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podinfo
-  namespace: databases
+  namespace: default
 spec:
   minReadySeconds: 3
   revisionHistoryLimit: 5
@@ -85,18 +85,19 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
-                  - key: app.kubernetes.io/instance
+                  - key: app.kubernetes.io/name
                     operator: In
                     values:
-                      - redis
+                      - redisfailover
               topologyKey: kubernetes.io/hostname
               namespaces:
-                - databases
+                - default
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: podinfo
+  namespace: default
 spec:
   type: LoadBalancer
   selector:

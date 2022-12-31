@@ -15,11 +15,11 @@ spec:
   interval: 5m
   install:
     remediation:
-      retries: 6
+      retries: 3
     crds: Create
   upgrade:
     remediation:
-      retries: 6
+      retries: 3
     crds: CreateReplace
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
@@ -33,6 +33,40 @@ spec:
             cpu: 200m
       admissionWebhooks:
         enabled: false
+    grafana:
+      enabled: false
+        sidecar:
+          dashboards:
+            enabled: true
+            label: grafana_dashboard
+            labelValue: "1"
+
+            ## Annotations for Grafana dashboard configmaps
+            ##
+            annotations: {}
+            multicluster:
+              global:
+                enabled: false
+              etcd:
+                enabled: false
+            provider:
+              allowUiUpdates: false
+          datasources:
+            enabled: true
+            defaultDatasourceEnabled: true
+            isDefaultDatasource: true
+
+            uid: prometheus
+
+            ## URL of prometheus datasource
+            ##
+            # url: http://prometheus-stack-prometheus:9090/
+
+            # If not defined, will use prometheus.prometheusSpec.scrapeInterval or its default
+            # defaultDatasourceScrapeInterval: 15s
+            
+    alertmanager:
+      enabled: true
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -52,18 +86,17 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
-          - "alerts.${SECRET_DEV_DOMAIN}"
+          - &alertUri "alerts.${SECRET_DEV_DOMAIN}"
         path: /
         pathType: Prefix
         tls:
           - hosts:
-              - "alerts.${SECRET_DEV_DOMAIN}"
-            secretName: "alerts.${SECRET_DEV_DOMAIN}"
+              - *alertUri
+            secretName: *alertUri
       config:
         global:
           resolve_timeout: 5m
-    alertmanager:
-      enabled: false
+
     prometheus:
       prometheusSpec:
         retention: 24h
@@ -86,12 +119,12 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
-          - host: &uri "prom.${SECRET_DEV_DOMAIN}"
+          - host: &promUri "prom.${SECRET_DEV_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - *uri
-            secretName: *uri
+              - *promUri
+            secretName: *promUri
 
