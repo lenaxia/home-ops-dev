@@ -66,30 +66,30 @@ spec:
                 requests:
                   storage: 5Gi
 
-                    #    grafana:
-                    #      enabled: false
-                    #      sidecar:
-                    #        dashboards:
-                    #          enabled: true
-                    #          label: grafana_dashboard
-                    #          labelValue: "1"
-                    #    
-                    #          ## Annotations for Grafana dashboard configmaps
-                    #          ##
-                    #          annotations: {}
-                    #          multicluster:
-                    #            global:
-                    #              enabled: false
-                    #            etcd:
-                    #              enabled: false
-                    #          provider:
-                    #            allowUiUpdates: false
-                    #        datasources:
-                    #          enabled: true
-                    #          defaultDatasourceEnabled: true
-                    #          isDefaultDatasource: true
-                    #    
-                    #          uid: prometheus
+    grafana:
+      enabled: false
+      sidecar:
+        dashboards:
+          enabled: true
+          label: grafana_dashboard
+          labelValue: "1"
+    
+          ## Annotations for Grafana dashboard configmaps
+          ##
+          annotations: {}
+          multicluster:
+            global:
+              enabled: false
+            etcd:
+              enabled: false
+          provider:
+            allowUiUpdates: false
+        datasources:
+          enabled: true
+          defaultDatasourceEnabled: true
+          isDefaultDatasource: true
+    
+          uid: prometheus
                     #
                     #    prometheusOperator:
                     #      enabled: true
