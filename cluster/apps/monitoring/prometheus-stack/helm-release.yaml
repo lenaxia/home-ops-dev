@@ -117,6 +117,15 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn 
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 5Gi
+            selector: {}
  
       ingress:
         enabled: true
