@@ -51,6 +51,7 @@ spec:
         hosts:
           - &alertUri "alerts.${SECRET_DEV_DOMAIN}"
         path: /
+        pathType: prefix
         tls:
           - hosts:
               - *alertUri
