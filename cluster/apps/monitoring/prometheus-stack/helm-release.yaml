@@ -22,15 +22,15 @@ spec:
       retries: 4
     crds: CreateReplace
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
-  values:
-    defaultRules:
-      create: true
-      rules:
-        alertmanager: true
-        etcd: true
-        configReloaders: true
-        general: true
-
+  #  values:
+  #    defaultRules:
+  #      create: true
+  #      rules:
+  #        alertmanager: true
+  #        etcd: true
+  #        configReloaders: true
+  #        general: true
+  #
   #    alertmanager:
   #      enabled: true
   #      config:
