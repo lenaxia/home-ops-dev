@@ -129,7 +129,8 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
           - &promUri "prom.${SECRET_DEV_DOMAIN}"
-        paths: /
+        paths: 
+          - /
         pathType: Prefix
         tls:
           - hosts:
