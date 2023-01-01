@@ -112,7 +112,7 @@ spec:
      prometheusSpec:
        replicas: 1
        shards: 1
-       retention: 15d
+         #       retention: 15d
          #       podMonitorNamespaceSelector: {}
          #       podMonitorSelector:
          #         matchLabels:
