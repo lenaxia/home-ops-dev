@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -72,7 +73,7 @@ spec:
           enabled: true
           label: grafana_dashboard
           labelValue: "1"
-    
+
           ## Annotations for Grafana dashboard configmaps
           ##
           annotations: {}
@@ -87,7 +88,7 @@ spec:
           enabled: true
           defaultDatasourceEnabled: true
           isDefaultDatasource: true
-    
+
           uid: prometheus
 
     prometheusOperator:
@@ -116,20 +117,20 @@ spec:
           matchLabels:
             app.kubernetes.io/component: monitoring
 
-      ingress:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-p-box"
-          hajimari.io/appName: "Prometheus"
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
-        hosts:
-          - &promUri "prom.${SECRET_DEV_DOMAIN}"
-        paths: /
-        tls:
-          - hosts:
-              - *promUri
-            secretName: *promUri
+              #      ingress:
+              #        enabled: true
+              #        ingressClassName: "traefik"
+              #        annotations:
+              #          hajimari.io/enable: "true"
+              #          hajimari.io/icon: "alpha-p-box"
+              #          hajimari.io/appName: "Prometheus"
+              #          cert-manager.io/cluster-issuer: "letsencrypt-production"
+              #          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+              #          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
+              #        hosts:
+              #          - &promUri "prom.${SECRET_DEV_DOMAIN}"
+              #        paths: /
+              #        tls:
+              #          - hosts:
+              #              - *promUri
+              #            secretName: *promUri
