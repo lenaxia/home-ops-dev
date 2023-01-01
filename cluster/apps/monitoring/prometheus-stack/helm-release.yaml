@@ -15,11 +15,11 @@ spec:
   interval: 5m
   install:
     remediation:
-      retries: 3
+      retries: 4
     crds: Create
   upgrade:
     remediation:
-      retries: 3
+      retries: 4
     crds: CreateReplace
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
