@@ -90,19 +90,19 @@ spec:
           isDefaultDatasource: true
     
           uid: prometheus
-                    #
-                    #    prometheusOperator:
-                    #      enabled: true
-                    #      tls:
-                    #        enabled: false
-                    #      prometheusConfigReloader:
-                    #        resources:
-                    #          limits:
-                    #            cpu: 200m
-                    #      admissionWebhooks:
-                    #        enabled: true
-                    #
-                    #
+
+    prometheusOperator:
+      enabled: true
+      tls:
+        enabled: false
+      prometheusConfigReloader:
+        resources:
+          limits:
+            cpu: 200m
+      admissionWebhooks:
+        enabled: true
+
+
                     #    prometheus:
                     #      enabled: true
                     #      thanosService:
