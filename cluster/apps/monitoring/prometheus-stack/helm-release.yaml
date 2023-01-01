@@ -49,8 +49,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
         hosts:
           - &alertUri "alerts.${SECRET_DEV_DOMAIN}"
-        path: 
-          - /
+        path: /
         tls:
           - hosts:
               - *alertUri
