@@ -125,7 +125,6 @@ spec:
               resources:
                 requests:
                   storage: 5Gi
-            selector: {}
  
       ingress:
         enabled: true
