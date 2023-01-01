@@ -103,21 +103,21 @@ spec:
         enabled: true
 
 
-   prometheus:
-     enabled: true
-       #     thanosService:
-       #       enabled: false
-       #     thanosServiceMonitor:
-       #       enabled: false
-         #     prometheusSpec:
-         #       replicas: 1
-         #       shards: 1
-         #       retention: 15d
-         #       podMonitorNamespaceSelector: {}
-         #       podMonitorSelector:
-         #         matchLabels:
-         #           app.kubernetes.io/component: monitoring
-         #
+    prometheus:
+      enabled: true
+      thanosService:
+        enabled: false
+      thanosServiceMonitor:
+        enabled: false
+      prometheusSpec:
+        replicas: 1
+        shards: 1
+        retention: 15d
+        podMonitorNamespaceSelector: {}
+        podMonitorSelector:
+          matchLabels:
+            app.kubernetes.io/component: monitoring
+
                     #      ingress:
                     #        enabled: true
                     #        ingressClassName: "traefik"
