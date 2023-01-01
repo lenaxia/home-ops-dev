@@ -113,7 +113,6 @@ spec:
         replicas: 1
         shards: 1
         retention: 15d
-        podMonitorNamespaceSelector: {}
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
