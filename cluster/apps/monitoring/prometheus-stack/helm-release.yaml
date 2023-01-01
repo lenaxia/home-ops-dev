@@ -109,9 +109,9 @@ spec:
        enabled: false
      thanosServiceMonitor:
        enabled: false
-     prometheusSpec:
-       replicas: 1
-       shards: 1
+         #     prometheusSpec:
+         #       replicas: 1
+         #       shards: 1
          #       retention: 15d
          #       podMonitorNamespaceSelector: {}
          #       podMonitorSelector:
