@@ -38,24 +38,24 @@ spec:
         global:
           resolve_timeout: 5m
 
-      ingress:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "alpha-p-box"
-          hajimari.io/appName: "Prometheus Operator"
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
-        hosts:
-          - &alertUri "alerts.${SECRET_DEV_DOMAIN}"
-        path: /
-        pathType: prefix
-        tls:
-          - hosts:
-              - *alertUri
-            secretName: *alertUri
+            #      ingress:
+            #        enabled: true
+            #        ingressClassName: "traefik"
+            #        annotations:
+            #          hajimari.io/enable: "true"
+            #          hajimari.io/icon: "alpha-p-box"
+            #          hajimari.io/appName: "Prometheus Operator"
+            #          cert-manager.io/cluster-issuer: "letsencrypt-production"
+            #          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+            #          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
+            #        hosts:
+            #          - &alertUri "alerts.${SECRET_DEV_DOMAIN}"
+            #        path: /
+            #        pathType: prefix
+            #        tls:
+            #          - hosts:
+            #              - *alertUri
+            #            secretName: *alertUri
 
       alertmanagerSpec:
         storage:
