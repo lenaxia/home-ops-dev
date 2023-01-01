@@ -118,22 +118,22 @@ spec:
           matchLabels:
             app.kubernetes.io/component: monitoring
 
-                    #      ingress:
-                    #        enabled: true
-                    #        ingressClassName: "traefik"
-                    #        annotations:
-                    #          hajimari.io/enable: "true"
-                    #          hajimari.io/icon: "alpha-p-box"
-                    #          hajimari.io/appName: "Prometheus"
-                    #          cert-manager.io/cluster-issuer: "letsencrypt-production"
-                    #          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-                    #          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
-                    #        hosts:
-                    #          - host: &promUri "prom.${SECRET_DEV_DOMAIN}"
-                    #            paths:
-                    #              - path: /
-                    #                pathType: Prefix
-                    #        tls:
-                    #          - hosts:
-                    #              - *promUri
-                    #            secretName: *promUri
+      ingress:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "alpha-p-box"
+          hajimari.io/appName: "Prometheus"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
+        hosts:
+          - host: &promUri "prom.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *promUri
+            secretName: *promUri
