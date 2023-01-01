@@ -77,7 +77,7 @@ spec:
           - name: Prometheus
             type: prometheus
             access: proxy
-            url: http://kube-prometheus-stack.monitoring.svc.cluster.local:9090/
+            url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090/
             # url: http://mimir-query-frontend.monitoring.svc.cluster.local:8080/prometheus
             #            isDefault: true
             #          - name: Loki
