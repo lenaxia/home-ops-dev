@@ -23,20 +23,58 @@ spec:
     crds: CreateReplace
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
-    defaultRules:
-      create: true
-      rules:
-        alertmanager: true
-        etcd: true
-        configReloaders: true
-        general: true
-
+    prometheusOperator:
+      tls:
+        enabled: false 
+      createCustomResource: true
+      prometheusConfigReloader:
+        resources:
+          limits:
+            cpu: 200m
+      admissionWebhooks:
+        enabled: false
+    grafana:
+      enabled: false
+#      sidecar:
+#        dashboards:
+#          enabled: true
+#          label: grafana_dashboard
+#          labelValue: "1"
+#
+#          ## Annotations for Grafana dashboard configmaps
+#          ##
+#          annotations: {}
+#          multicluster:
+#            global:
+#              enabled: false
+#            etcd:
+#              enabled: false
+#          provider:
+#            allowUiUpdates: false
+#        datasources:
+#          enabled: true
+#          defaultDatasourceEnabled: true
+#          isDefaultDatasource: true
+#
+#          uid: prometheus
+#
+#          ## URL of prometheus datasource
+#          ##
+#          # url: http://prometheus-stack-prometheus:9090/
+#
+#          # If not defined, will use prometheus.prometheusSpec.scrapeInterval or its default
+#          # defaultDatasourceScrapeInterval: 15s
+          
     alertmanager:
       enabled: true
-      config:
-        global:
-          resolve_timeout: 5m
-
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              resources:
+                requests:
+                  storage: 5Gi
       ingress:
         enabled: true
         ingressClassName: "traefik"
@@ -55,69 +93,21 @@ spec:
           - hosts:
               - *alertUri
             secretName: *alertUri
-
-      alertmanagerSpec:
-        storage:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: gluster
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 5Gi
-
-    grafana:
-      enabled: false
-      sidecar:
-        dashboards:
-          enabled: true
-          label: grafana_dashboard
-          labelValue: "1"
-    
-          ## Annotations for Grafana dashboard configmaps
-          ##
-          annotations: {}
-          multicluster:
-            global:
-              enabled: false
-            etcd:
-              enabled: false
-          provider:
-            allowUiUpdates: false
-        datasources:
-          enabled: true
-          defaultDatasourceEnabled: true
-          isDefaultDatasource: true
-    
-          uid: prometheus
-
-    prometheusOperator:
-      enabled: true
-      tls:
-        enabled: false
-      prometheusConfigReloader:
-        resources:
-          limits:
-            cpu: 200m
-      admissionWebhooks:
-        enabled: true
-
+      config:
+        global:
+          resolve_timeout: 5m
 
     prometheus:
-      enabled: true
-      thanosService:
-        enabled: false
-      thanosServiceMonitor:
-        enabled: false
       prometheusSpec:
-        replicas: 1
-        shards: 1
-        retention: 15d
+        retention: 24h
+        resources:
+          requests:
+            cpu: 200m
+            memory: 200Mi
         podMonitorNamespaceSelector: {}
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
-
       ingress:
         enabled: true
         ingressClassName: "traefik"
@@ -137,3 +127,4 @@ spec:
           - hosts:
               - *promUri
             secretName: *promUri
+
