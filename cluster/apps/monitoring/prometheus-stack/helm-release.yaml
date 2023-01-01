@@ -105,10 +105,10 @@ spec:
 
    prometheus:
      enabled: true
-     thanosService:
-       enabled: false
-     thanosServiceMonitor:
-       enabled: false
+       #     thanosService:
+       #       enabled: false
+       #     thanosServiceMonitor:
+       #       enabled: false
          #     prometheusSpec:
          #       replicas: 1
          #       shards: 1
