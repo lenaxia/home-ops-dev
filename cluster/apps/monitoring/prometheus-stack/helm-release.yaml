@@ -86,7 +86,13 @@ spec:
             - receiver: "pushover"
               matchers:
                 - severity = "critical"
+              continue: true
+            - receiver: "pushover"
+              matchers:
                 - severity = "warning"
+              continue: true
+            - receiver: "pushover"
+              matchers:
                 - alertname =~ "InfoInhibitor|Watchdog"
               continue: true
         inhibit_rules:
