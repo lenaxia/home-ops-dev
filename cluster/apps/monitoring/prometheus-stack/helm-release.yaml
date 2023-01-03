@@ -80,13 +80,14 @@ spec:
           repeat_interval: 6h
           receiver: "pushover"
           routes:
-            - receiver: "null"
-              matchers:
-                - alertname =~ "InfoInhibitor|Watchdog"
+            #- receiver: "null"
+            #  matchers:
+            #    - alertname =~ "InfoInhibitor|Watchdog"
             - receiver: "pushover"
               matchers:
                 - severity = "critical"
                 - severity = "warning"
+                - alertname =~ "InfoInhibitor|Watchdog"
               continue: true
         inhibit_rules:
           - source_matchers:
