@@ -19,7 +19,7 @@ spec:
     crds: Create
   upgrade:
     remediation:
-      retries: 6
+      retries: 7
     crds: CreateReplace
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
