@@ -67,7 +67,7 @@ spec:
                   storage: 5Gi
 
     grafana:
-      enabled: true
+      enabled: false
       sidecar:
         dashboards:
           enabled: true
