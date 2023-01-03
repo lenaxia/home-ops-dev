@@ -5,7 +5,7 @@ metadata:
   name: manifests
   namespace: flux-system
 spec:
-  interval: 30s
+  interval: 1m
   dependsOn:
     - name: infrastructure
     - name: crds
