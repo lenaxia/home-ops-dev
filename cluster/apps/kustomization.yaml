@@ -38,4 +38,4 @@ resources:
   - ./storage/nextcloud
 
   - ./kube-tools/system-upgrade
-  - ./koube-tools/kyverno
+  - ./kube-tools/kyverno
