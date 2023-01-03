@@ -6,7 +6,7 @@ resources:
   - helm-release.yaml
   - letsencrypt-staging.yaml
   - letsencrypt-production.yaml
-  - prometheusrule.yaml
+    #  - prometheusrule.yaml
 configMapGenerator:
   - name: cert-manager-dashboard
     files:
