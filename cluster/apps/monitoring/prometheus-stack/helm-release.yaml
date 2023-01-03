@@ -80,20 +80,20 @@ spec:
           repeat_interval: 6h
           receiver: "pushover"
           routes:
-            #- receiver: "null"
-            #  matchers:
-            #    - alertname =~ "InfoInhibitor|Watchdog"
+            - receiver: "null"
+              matchers:
+                - alertname =~ "InfoInhibitor|Watchdog"
             - receiver: "pushover"
               matchers:
                 - severity = "critical"
               continue: true
             - receiver: "pushover"
               matchers:
-                - severity = "warning"
+                - alertname =~ "KubeNodeNotReady|KubeNodeUnreachable|KubeNodeReadinessFlapping"
               continue: true
             - receiver: "pushover"
               matchers:
-                - alertname =~ "InfoInhibitor|Watchdog"
+                - alertname =~ "KubePodCrashLooping|KubePodNotReady"
               continue: true
         inhibit_rules:
           - source_matchers:
