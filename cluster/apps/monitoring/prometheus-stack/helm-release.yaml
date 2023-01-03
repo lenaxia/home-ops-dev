@@ -113,10 +113,10 @@ spec:
         replicas: 1
         shards: 1
         retention: 15d
-        podMonitorNamespaceSelector: {}
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/component: monitoring
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
             spec:
