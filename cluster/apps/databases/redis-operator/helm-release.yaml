@@ -26,3 +26,10 @@ spec:
   values:
     image:
       tag: v1.2.3
+    monitoring:
+      # Enable Prometheus PodMonitor to monitor the operator.
+      enabled: false
+      serviceMonitor: false
+      serviceAnnotations: {}
+      prometheus:
+        name: unknown
