@@ -68,6 +68,7 @@ spec:
 
     grafana:
       enabled: false
+      forceDeployDashboards: true
       sidecar:
         dashboards:
           enabled: true
@@ -79,9 +80,9 @@ spec:
           annotations: {}
           multicluster:
             global:
-              enabled: false
+              enabled: true
             etcd:
-              enabled: false
+              enabled: true
           provider:
             allowUiUpdates: false
         datasources:
