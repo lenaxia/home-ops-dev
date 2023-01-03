@@ -30,7 +30,7 @@ spec:
       # Enable Prometheus PodMonitor to monitor the operator.
       enabled: true
       serviceMonitor: true
-      serviceAnnotations: 
-        app.kubernetes.io/component: controller
+      #serviceAnnotations: 
+      #  app.kubernetes.io/component: controller
       prometheus:
         name: unknown
