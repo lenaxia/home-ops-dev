@@ -31,6 +31,6 @@ spec:
       enabled: true
       serviceMonitor: true
       serviceAnnotations: 
-        - app.kubernetes.io/component: controller
+        app.kubernetes.io/component: controller
       prometheus:
         name: unknown
