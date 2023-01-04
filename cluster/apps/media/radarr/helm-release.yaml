@@ -7,10 +7,11 @@ spec:
   releaseName: *appname
   chart:
     spec:
-      chart: *appname
+      chart: app-template
+      version: 1.2.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s-charts
         namespace: flux-system
   interval: 5m
   values:
@@ -20,7 +21,7 @@ spec:
       fsGroup: 568
 
     image:
-      repository: ghcr.io/k8s-at-home/radarr-develop
+      repository: ghcr.io/onedr0p/radarr-develop
       tag:  v4.3.0.6671
       pullPolicy: IfNotPresent
     
