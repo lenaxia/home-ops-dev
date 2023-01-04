@@ -121,7 +121,7 @@ nextcloud:
   # Extra init containers that runs before pods start.
   extraInitContainers: 
     - name: init-db
-      image: ghcr.io/onedr0p/postgres-initdb:14.5
+      image: ghcr.io/onedr0p/postgres-initdb:14.6
       env:
         - name: POSTGRES_HOST
           value: defaultpg-rw.databases.svc.cluster.local
