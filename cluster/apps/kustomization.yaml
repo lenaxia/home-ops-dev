@@ -9,7 +9,7 @@ resources:
   - ./diagnostics/podinfo
   - ./diagnostics/echo-server
   - ./utilities/smokeping
-  - ./utilities/firefox
+    #- ./utilities/firefox
   - ./utilities/pgadmin
   - ./utilities/ltb-project
   #- ./utilities/vaultwarden_ldap
