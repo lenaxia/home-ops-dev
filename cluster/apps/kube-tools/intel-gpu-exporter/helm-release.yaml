@@ -23,7 +23,7 @@ spec:
       retries: 5
   dependsOn:
     - name: intel-gpu-plugin
-      namespace: utilities
+      namespace: kube-tools
   values:
     controller:
       type: daemonset
