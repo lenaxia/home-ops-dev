@@ -13,6 +13,7 @@ resources:
   - ./utilities/ltb-project
   #- ./utilities/vaultwarden_ldap
   #- ./utilities/vaultwarden
+  - ./media/plex
   - ./media/metube
   - ./media/sonarr
   - ./media/radarr
