@@ -7,7 +7,7 @@
     ":semanticCommits",
     ":enablePreCommit",
     ":automergeDigest",
-    ":automergeBranch",
+    ":automergeBranch"
   ]
   "flux": {
     "fileMatch": ["cluster/.+\\.ya?ml$"]
