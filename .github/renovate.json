@@ -10,6 +10,7 @@
     ":automergeBranch",
     "github>lenaxia/home-ops-dev//.github/renovate/commitMessage.json5",
     "github>lenaxia/home-ops-dev//.github/renovate/labels.json5",
+    "github>lenaxia/home-ops-dev//.github/renovate/autoMerge.json5",
     "github>lenaxia/home-ops-dev//.github/renovate/semanticCommits.json5"
   ],
   "flux": {

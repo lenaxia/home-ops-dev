@@ -24,7 +24,7 @@ spec:
       retries: 4
   upgrade:
     remediation:
-      retries: 4
+      retries: 5
   values:
     image:
       name: ghcr.io/k8s-at-home/traefik
