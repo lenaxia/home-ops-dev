@@ -38,7 +38,7 @@
       # -- image repository
       repository: adguard/adguardhome
       # -- image tag
-      tag: v0.106.3
+      tag: v0.107.21
       # -- image pull policy
       pullPolicy: IfNotPresent
     
