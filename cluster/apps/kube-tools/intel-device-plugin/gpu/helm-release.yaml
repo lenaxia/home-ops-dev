@@ -29,3 +29,12 @@ spec:
     name: intel-gpu-plugin
     sharedDevNum: 3
     nodeFeatureRule: true
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: feature.node.kubernetes.io/custom-intel-gpu
+              operator: In
+              values:
+              - "true"
