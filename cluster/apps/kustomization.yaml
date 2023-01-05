@@ -15,16 +15,16 @@ resources:
   #- ./utilities/vaultwarden_ldap
   #- ./utilities/vaultwarden
   #- ./media/plex
-  - ./media/metube
-  - ./media/sonarr
-  - ./media/radarr
+  #- ./media/metube
+  #- ./media/sonarr
+  #- ./media/radarr
     #- ./media/bazarr
     #- ./media/tautulli
   - ./media/outline
   - ./media/invidious
 
 
-  - ./home/mealie
+    #- ./home/mealie
     #- ./monitoring/prometheus-stack
   - ./monitoring/grafana
   - ./monitoring/flux
