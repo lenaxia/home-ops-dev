@@ -22,7 +22,7 @@ spec:
 
     image:
       repository: ghcr.io/onedr0p/radarr-develop
-      tag:  v4.3.0.6671
+      tag:  4.3.2.6857
       pullPolicy: IfNotPresent
     
     # -- environment variables.
