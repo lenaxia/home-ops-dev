@@ -272,7 +272,7 @@ spec:
     ## Prometheus Exporter / Metrics
     ##
     metrics:
-      enabled: false
+      enabled: true
       replicaCount: 1
       https: true
       # Use API token if set, otherwise fall back to password authentication
