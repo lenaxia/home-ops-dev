@@ -15,7 +15,7 @@ resources:
   #- ./utilities/vaultwarden_ldap
   #- ./utilities/vaultwarden
   #- ./media/plex
-  #- ./media/metube
+  - ./media/metube
   #- ./media/sonarr
   #- ./media/radarr
     #- ./media/bazarr
