@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
   - ./kube-tools/node-feature-discovery/ks.yaml
   - ./kube-tools/intel-device-plugin/ks.yaml
-  #- ./kube-tools/intel-gpu-plugin
-    #- ./kube-tools/intel-gpu-exporter
   #- ./dashboards/hajimari
   - ./diagnostics/podinfo
   - ./diagnostics/echo-server

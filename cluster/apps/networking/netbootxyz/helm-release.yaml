@@ -106,14 +106,14 @@ spec:
         enabled: true
         existingClaim: netbootxyz-config-volume
         readOnly: false
-      assets:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: ${NAS_ADDR}
-            path: /volume1/backups/netbootxyz
-        mountPath: /backups
+          #      assets:
+          #        enabled: true
+          #        type: custom
+          #        volumeSpec:
+          #          nfs:
+          #            server: ${NAS_ADDR}
+          #            path: /volume1/backups/netbootxyz
+          #        mountPath: /backups
           
 #    resources:
 #      requests:
