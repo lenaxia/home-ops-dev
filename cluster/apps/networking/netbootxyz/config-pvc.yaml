@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: netbootxyz-config-volume
+    namespace: networking
+    labels:
+      app: netboot 
+      snapshot.home.arpa/enabled: "true"
+spec:
+    accessModes:
+        - ReadWriteOnce
+    storageClassName: longhorn
+    resources:
+        requests:
+            storage: 512Mi
+

@@ -32,6 +32,7 @@ resources:
     #- ./monitoring/tobs
 
   - ./networking/traefik
+  - ./networking/netbootxyz
     #- ./networking/unifi-controller
     #- ./authentication/authelia
     #
