@@ -5,7 +5,7 @@ metadata:
     namespace: networking
     labels:
       app: netboot 
-      snapshot.home.arpa/enabled: "true"
+#      snapshot.home.arpa/enabled: "true"
 spec:
     accessModes:
         - ReadWriteOnce
