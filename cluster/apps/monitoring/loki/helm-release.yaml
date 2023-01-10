@@ -51,22 +51,22 @@ spec:
           configs:
             - from: "2021-08-01"
               store: boltdb-shipper
-              object_store: s3
+              #object_store: s3
               schema: v11
               index:
                 prefix: loki_index_
                 period: 24h
         common:
           path_prefix: /var/loki
-          replication_factor: 3
-          storage:
-            s3:
-              s3: null
-              endpoint: https://s3.${SECRET_DEV_DOMAIN}
-              region: local
-              bucketnames: loki-9fy7zg
-              insecure: true
-              s3forcepathstyle: true
+          replication_factor: 1
+          #storage:
+          #  s3:
+          #    s3: null
+          #    endpoint: https://s3.${SECRET_DEV_DOMAIN}
+          #    region: local
+          #    bucketnames: loki-9fy7zg
+          #    insecure: true
+          #    s3forcepathstyle: true
           ring:
             kvstore:
               store: memberlist
@@ -88,7 +88,7 @@ spec:
               store: memberlist
         compactor:
           working_directory: /var/loki/boltdb-shipper-compactor
-          shared_store: s3
+          #shared_store: s3
           compaction_interval: 10m
           retention_enabled: true
           retention_delete_delay: 2h
