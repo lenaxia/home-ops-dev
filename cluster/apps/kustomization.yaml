@@ -23,7 +23,7 @@ resources:
 
 
     #- ./home/mealie
-    #- ./monitoring/prometheus-stack
+  - ./monitoring/prometheus-stack
   - ./monitoring/grafana
   - ./monitoring/flux
     #  - ./monitoring/loki
