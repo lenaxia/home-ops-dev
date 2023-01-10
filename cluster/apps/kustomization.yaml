@@ -26,7 +26,8 @@ resources:
   - ./monitoring/prometheus-stack
   - ./monitoring/grafana
   - ./monitoring/flux
-    #  - ./monitoring/loki
+  - ./monitoring/loki
+  - ./monitoring/vector/ks.yaml
     #- ./monitoring/tobs
 
   - ./networking/traefik
