@@ -62,7 +62,7 @@ spec:
           storage:
             s3:
               s3: null
-              endpoint: https://s3.${SECRET_DEV_DOMAIN}
+              endpoint: https://s3.thekao.cloud
               region: local
               bucketnames: loki-dev
               insecure: true
