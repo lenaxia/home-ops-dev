@@ -360,14 +360,14 @@ resource "proxmox_vm_qemu" "k3-dev-agent-00" {
 resource "proxmox_vm_qemu" "docker" {
   count = 1
   name = "docker"
-  target_node = "ifurita"
+  target_node = "melfina"
   clone = var.template_name
   agent = 1
   os_type = "cloud-init"
   cores = 4
   sockets = 1
   cpu = "host"
-  memory = "2048"
+  memory = "12048"
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {

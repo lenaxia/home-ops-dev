@@ -22,6 +22,8 @@ resources:
   - ./media/invidious
 
 
+  - ./iot/knative
+
     #- ./home/mealie
   - ./monitoring/prometheus-stack
   - ./monitoring/grafana
