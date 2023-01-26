@@ -26,14 +26,16 @@ provider "proxmox" {
 ## Server 00 
 ##########
 
-resource "proxmox_vm_qemu" "k3-server-lafiel" {
+resource "proxmox_vm_qemu" "k3-server-00" {
   count = var.k3_server_count
   name = "${format("k3-server-%02s", count.index + var.k3_server00_offset)}"
   target_node = var.k3_server00_host 
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
-  cores = 3
+  qemu_os = "Linux"
+  cores = 4
   sockets = 1
   cpu = "host"
   memory = 15872
@@ -67,14 +69,16 @@ resource "proxmox_vm_qemu" "k3-server-lafiel" {
 ## Agent 00 
 ##########
 
-resource "proxmox_vm_qemu" "k3-agent-lafiel" {
+resource "proxmox_vm_qemu" "k3-agent-00" {
   count = var.k3_agent_count
   name = "${format("k3-agent-%02s", count.index + var.k3_agent00_offset)}"
   target_node = var.k3_agent00_host
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
-  cores = 3
+  qemu_os = "Linux"
+  cores = 8
   sockets = 1
   cpu = "host"
   memory = var.k3_agent00_mem
@@ -109,14 +113,16 @@ resource "proxmox_vm_qemu" "k3-agent-lafiel" {
 ## Server 01
 ##########
 
-resource "proxmox_vm_qemu" "k3-server-yurika" {
+resource "proxmox_vm_qemu" "k3-server-01" {
   count = 0
   #count = var.k3_server_count
   name = "${format("k3-server-%02s", count.index + var.k3_server01_offset)}"
   target_node = var.k3_server01_host
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
+  qemu_os = "Linux"
   cores = 1
   sockets = 1
   cpu = "host"
@@ -150,13 +156,15 @@ resource "proxmox_vm_qemu" "k3-server-yurika" {
 ## Agent 01
 ##########
 
-resource "proxmox_vm_qemu" "k3-agent-yurika" {
+resource "proxmox_vm_qemu" "k3-agent-01" {
   count = var.k3_agent_count
   name = "${format("k3-agent-%02s", count.index + var.k3_agent01_offset)}"
   target_node = var.k3_agent01_host
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
+  qemu_os = "Linux"
   cores = 8
   sockets = 1
   cpu = "host"
@@ -192,14 +200,16 @@ resource "proxmox_vm_qemu" "k3-agent-yurika" {
 ## Server 02
 ##########
 
-resource "proxmox_vm_qemu" "k3-server-melfina" {
+resource "proxmox_vm_qemu" "k3-server-02" {
   count = 0
   #count = var.k3_server_count
   name = "${format("k3-server-%02s", count.index + var.k3_server02_offset)}"
   target_node = var.k3_server02_host
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
+  qemu_os = "Linux"
   cores = 2
   sockets = 1
   cpu = "host"
@@ -233,14 +243,16 @@ resource "proxmox_vm_qemu" "k3-server-melfina" {
 ## Agent 02
 ##########
 
-resource "proxmox_vm_qemu" "k3-agent-melfina" {
+resource "proxmox_vm_qemu" "k3-agent-02" {
   count = var.k3_agent_count
   name = "${format("k3-agent-%02s", count.index + var.k3_agent02_offset)}"
   target_node = var.k3_agent02_host
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
-  cores = 4
+  qemu_os = "Linux"
+  cores = 8
   sockets = 1
   cpu = "host"
   memory = var.k3_agent02_mem
@@ -269,19 +281,19 @@ resource "proxmox_vm_qemu" "k3-agent-melfina" {
   EOF
 }
 
-
-
 ##########
 ## Dev Server 00 
 ##########
 
 resource "proxmox_vm_qemu" "k3-dev-server-00" {
-  count = 1
+  count = 3
   name = "${format("k3-dev-server-%02s", count.index + var.k3_dev_server00_offset)}"
-  target_node = var.k3_dev_server00_host 
+  target_node = element(var.proxmox_dev_hosts, count.index+1)
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
+  qemu_os = "Linux"
   cores = var.k3_dev_server00_cores
   sockets = 1
   cpu = "host"
@@ -317,12 +329,14 @@ resource "proxmox_vm_qemu" "k3-dev-server-00" {
 ##########
 
 resource "proxmox_vm_qemu" "k3-dev-agent-00" {
-  count = 1
+  count = 3
   name = "${format("k3-dev-agent-%02s", count.index + var.k3_dev_agent00_offset)}"
-  target_node = var.k3_dev_agent00_host
+  target_node = element(var.proxmox_dev_hosts, count.index)
   clone = var.template_name
   agent = 1
+  disk_gb = null
   os_type = "cloud-init"
+  qemu_os = "Linux"
   cores = var.k3_dev_agent00_cores 
   sockets = 1
   cpu = "host"
@@ -357,17 +371,19 @@ resource "proxmox_vm_qemu" "k3-dev-agent-00" {
 ## Docker Host
 ##########
 
-resource "proxmox_vm_qemu" "docker" {
-  count = 1
-  name = "docker"
-  target_node = "melfina"
+resource "proxmox_vm_qemu" "dockertf" {
+  count = 0
+  name = "dockertf"
+  target_node = "ifurita"
   clone = var.template_name
   agent = 1
   os_type = "cloud-init"
+  disk_gb = null
+  qemu_os = "Linux"
   cores = 4
   sockets = 1
   cpu = "host"
-  memory = "12048"
+  memory = "2048"
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
@@ -393,3 +409,40 @@ resource "proxmox_vm_qemu" "docker" {
   EOF
 }
 
+resource "proxmox_vm_qemu" "test_server" {
+  count = 0 
+  name = "test-vm-00" 
+  target_node = "ifurita"
+  clone = var.template_name
+  agent = 1
+  os_type = "cloud-init"
+  cores = 2
+  sockets = 1
+  cpu = "host"
+  memory = 2048
+  scsihw = "virtio-scsi-pci"
+  bootdisk = "scsi0"
+  disk {
+    slot = 0
+    size = "10G"
+    type = "scsi"
+    storage = "local-zfs"
+    iothread = 1
+  }
+
+  network {
+    model = "virtio"
+    bridge = "vmbr0"
+  }
+  lifecycle {
+    ignore_changes = [
+      network,
+    ]
+  }
+
+  ipconfig0 = "ip=192.168.2.121/32,gw=192.168.0.1"
+
+  sshkeys = <<EOF
+  ${var.ssh_key_terraform}
+  EOF
+}
