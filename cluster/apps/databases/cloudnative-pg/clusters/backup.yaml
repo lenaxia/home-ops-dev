@@ -1,0 +1,76 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: backup
+  namespace: databases
+spec:
+  affinity:
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:14.5
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 20Gi
+    storageClass: local-path
+  superuserSecret:
+    name: postgres-superuser
+#  bootstrap:
+#    initdb:
+#      database: default
+#      owner: 3BK9XBSeNTKK7kFd 
+#      secret:
+#        name: postgres-superuser
+  monitoring:
+    enablePodMonitor: true
+#  backup:
+#    retentionPolicy: 30d
+#    barmanObjectStore:
+#      wal:
+#        compression: bzip2
+#        maxParallel: 8
+#      destinationPath: s3://cnpg-5wxuej/
+#      #endpointURL: https://s3.${SECRET_DEV_DOMAIN}
+#      endpointURL: http://minio.storage.svc.cluster.local:9000
+#      serverName: backup-backup-v3
+#      s3Credentials:
+#        accessKeyId:
+#          name: postgres-minio
+#          key: MINIO_ACCESS_KEY
+#        secretAccessKey:
+#          name: postgres-minio
+#          key: MINIO_SECRET_KEY
+#        region:
+#          name: postgres-minio
+#          key: MINIO_REGION
+  
+# CNPG Recovery
+# https://cloudnative-pg.io/documentation/1.15/bootstrap/#bootstrap-from-a-backup-recovery
+
+  bootstrap:
+    recovery:
+      source: defaultpgBackup
+#      recoveryTarget:
+#        targetTime: "2023-01-10 00:00:27.425144+00:00"
+
+  externalClusters:
+    - name: defaultpgBackup
+      barmanObjectStore:
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cnpg-5wxuej/
+          #endpointURL: https://s3.${SECRET_DEV_DOMAIN}
+        endpointURL: http://minio.storage.svc.cluster.local:9000
+        serverName: defaultpg-backup-v9
+        s3Credentials:
+          accessKeyId:
+            name: postgres-minio
+            key: MINIO_ACCESS_KEY
+          secretAccessKey:
+            name: postgres-minio
+            key: MINIO_SECRET_KEY
+          region:
+            name: postgres-minio
+            key: MINIO_REGION

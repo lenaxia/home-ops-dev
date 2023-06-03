@@ -1,0 +1,31 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "cow"
+    hajimari.io/appName: "Longhorn"
+    hajimari.io/group: "Storage"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+  name: &appname longhorn-frontend
+  namespace: longhorn-system
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: &uri "longhorn.${SECRET_DEV_DOMAIN}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: *appname
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - *uri
+    secretName: *uri

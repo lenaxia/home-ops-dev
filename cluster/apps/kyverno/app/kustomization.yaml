@@ -1,0 +1,10 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/name: &app kyverno
+  app.kubernetes.io/instance: *app
+resources:
+  # renovate: registryUrl=https://kyverno.github.io/kyverno/ chart=kyverno
+  - helm-release.yaml
+  - rbac.yaml

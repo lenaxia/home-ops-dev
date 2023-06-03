@@ -1,0 +1,48 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  releaseName: longhorn
+  chart:
+    spec:
+      chart: longhorn
+      version: 1.4.2
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn
+        namespace: flux-system
+  interval: 6m
+  install:
+    remediation:
+      retries: 7
+  upgrade:
+    remediation:
+      retries: 7
+  #valuesFrom:
+  #  - kind: Secret
+  #    targetPath: defaultSettings.backupTarget
+  #    name: longhorn-minio-secret
+  #    valuesKey: AWS_ENDPOINTS
+  #    optional: false
+  values:
+    service:
+      ui:
+        #type: LoadBalancer
+        nodePort: null
+
+    persistence:
+      defaultClass: true
+      defaultFsType: ext4
+      defaultMkfsParams: ""
+      defaultClassReplicaCount: 3
+      defaultDataLocality: "best-effort"
+    defaultSettings:
+    #  backupTargetCredentialSecret: longhorn-minio-secret
+      autoDeletePodWhenVolumeDetachedUnexpectedly: true
+      orphanAutoDeletion: true
+      nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"
+      dataLocality: "best-effort"
+      replicaAutoBalance: "best-effort"
+

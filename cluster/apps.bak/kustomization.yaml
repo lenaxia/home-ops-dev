@@ -1,0 +1,49 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./kube-tools/node-feature-discovery/ks.yaml
+  - ./kube-tools/intel-device-plugin/ks.yaml
+  #- ./dashboards/hajimari
+  - ./diagnostics/podinfo
+  - ./diagnostics/echo-server
+  - ./utilities/smokeping
+    #- ./utilities/firefox
+  - ./utilities/pgadmin
+  - ./utilities/ltb-project
+  #- ./utilities/vaultwarden_ldap
+  #- ./utilities/vaultwarden
+  - ./media/plex
+    #- ./media/metube
+  #- ./media/sonarr
+  #- ./media/radarr
+    #- ./media/bazarr
+    #- ./media/tautulli
+  - ./media/outline
+  - ./media/invidious
+
+
+  - ./iot/knative
+
+    #- ./home/mealie
+  - ./monitoring/prometheus-stack
+  - ./monitoring/grafana
+  - ./monitoring/flux
+  - ./monitoring/loki
+  - ./monitoring/vector/ks.yaml
+    #- ./monitoring/tobs
+
+  - ./networking/traefik
+    #- ./networking/netboot
+    #- ./networking/unifi-controller
+    #- ./authentication/authelia
+    #
+  - ./databases/cloudnative-pg
+  - ./databases/cloudnative-pg/clusters
+  - ./databases/redis
+  - ./databases/redis-operator
+
+  - ./storage/kopia-web
+  - ./storage/nextcloud
+
+  - ./kube-tools/system-upgrade
+  - ./kube-tools/kyverno

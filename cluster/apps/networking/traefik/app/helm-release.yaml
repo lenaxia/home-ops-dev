@@ -1,0 +1,146 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: traefik
+      version: 23.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
+      interval: 5m
+  dependsOn:
+    - name: cert-manager
+      namespace: cert-manager
+  install:
+    createNamespace: true
+    remediation:
+      retries: 4
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    image:
+      name: traefik
+      tag: v2.9.6
+    deployment:
+      kind: Deployment
+      replicas: 3
+
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
+
+    service:
+      enabled: true
+      type: LoadBalancer
+      spec:
+        loadBalancerIP: "${SVC_TRAEFIK_ADDR}"
+        externalTrafficPolicy: Local
+      annotations:
+        metallb.universe.tf/address-pool: dev-infra
+        external-dns.home.arpa/enabled: "true"
+        external-dns.alpha.kubernetes.io/hostname: "${SECRET_DEV_DOMAIN}"
+    logs:
+      general:
+        format: json
+        level: INFO
+      access:
+        enabled: true
+        format: json
+    ingressClass:
+      enabled: true
+      isDefaultClass: true
+      fallbackApiVersion: v1
+    ingressRoute:
+      dashboard:
+        enabled: false
+    globalArguments:
+      - "--api.insecure=true"
+      - "--serverstransport.insecureskipverify=true"
+      - "--providers.kubernetesingress.ingressclass=traefik"
+      - "--metrics.prometheus=true"
+      - "--metrics.prometheus.entryPoint=metrics"
+      - "--entryPoints.websecure.forwardedHeaders.trustedIPs=10.0.0.0/8,192.168.0.0/16,172.16.0.0/12,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,104.16.0.0/13,104.24.0.0/14,108.162.192.0/18,131.0.72.0/22,141.101.64.0/18,162.158.0.0/15,172.64.0.0/13,173.245.48.0/20,188.114.96.0/20,190.93.240.0/20,197.234.240.0/22,198.41.128.0/17,2400:cb00::/32,2606:4700::/32,2803:f800::/32,2405:b500::/32,2405:8100::/32,2a06:98c0::/29,2c0f:f248::/32"
+    additionalArguments:
+      - "--providers.kubernetesingress.ingressendpoint.ip=${SVC_TRAEFIK_ADDR}"
+      - "--providers.kubernetesingress.allowexternalnameservices=true"
+      - "--providers.kubernetescrd.allowexternalnameservices=true"
+    ports:
+      traefik:
+        expose: true
+      web:
+        redirectTo: websecure
+      websecure:
+        tls:
+          enabled: true
+          options: "default"
+      metrics:
+        port: 8082
+        expose: true
+        exposedPort: 8082
+    tlsOptions:
+      default:
+        minVersion: VersionTLS12
+        maxVersion: VersionTLS13
+        sniStrict: true
+    pilot:
+      enabled: false
+    experimental:
+      plugins:
+        enabled: false
+    metrics:
+      prometheus:
+        entryPoint: metrics
+        ## Enable metrics on routers. Default=false
+        addRoutersLabels: true
+
+        serviceMonitor:
+          metricRelabelings: []
+          #  - sourceLabels: [__name__]
+          #    separator: ;
+          #    regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+          #    replacement: $1
+          #    action: drop
+          relabelings: []
+          #  - sourceLabels: [__meta_kubernetes_pod_node_name]
+          #    separator: ;
+          #    regex: ^(.*)$
+          #    targetLabel: nodename
+          #    replacement: $1
+          #    action: replace
+          jobLabel: traefik
+          interval: 30s
+          honorLabels: true
+          # (Optional)
+          # scrapeTimeout: 5s
+          honorTimestamps: true
+          enableHttp2: true
+          # followRedirects: true
+          # additionalLabels:
+          #   foo: bar
+        prometheusRule:
+          additionalLabels: {}
+          rules:
+            - alert: TraefikDown
+              expr: up{job="traefik"} == 0
+              for: 5m
+              labels:
+                context: traefik
+                severity: warning
+              annotations:
+                summary: "Traefik Down"
+                description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
+  
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 500m
+      limits:
+        memory: 500Mi
+

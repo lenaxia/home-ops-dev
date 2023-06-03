@@ -18,4 +18,3 @@
 
     - name: Install keepalived
       include_tasks: tasks/enable_keepalived.yml
- 

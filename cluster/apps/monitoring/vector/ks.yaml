@@ -14,7 +14,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: flux-system
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
@@ -23,6 +23,17 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 3m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substitute: {}
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+      - kind: Secret
+        name: cluster-secrets
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomization_v1beta2.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -39,7 +50,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: flux-system
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease

@@ -1,0 +1,105 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.trux.dev/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app plex
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    image:
+      repository: ghcr.io/onedr0p/plex
+      tag: 1.32.2.7100-248a2daf0@sha256:e169d7ba4c37de7fa416a63cb86fe8642b8552ecaf135271c670fa97abd0fee5
+    env:
+      TZ: "${TIMEZONE}"
+      PLEX_CLAIM: claim-RGPtV5WwXo9JZcoHzti2
+    service:
+      main:
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        loadBalancerIP: "${SVC_PLEX_ADDR}"
+        ports:
+          http:
+            port: &port 32400
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "mdi:plex"
+          hajimari.io/group: "Media"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-no-auth@kubernetescrd
+        hosts:
+          - host: &uri "plex.${SECRET_DEV_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *uri
+            secretName: *uri
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 44
+        - 109
+        - 100
+    persistence:
+      config:
+        enabled: true
+        existingClaim: plex-config-volume
+      omoikane:
+        enabled: true
+        type: nfs
+        server: ${NAS_ADDR}
+        path: /volume1/omoikane
+        mountPath: /omoikane
+        readOnly: true
+      downloads:
+        enabled: true
+        type: nfs
+        server: ${NAS_ADDR}
+        path: /volume2/downloads
+        mountPath: /downloads
+        readOnly: true
+      transcode:
+        enabled: true
+        type: emptyDir
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: feature.node.kubernetes.io/custom-intel-gpu
+                  operator: In
+                  values:
+                    - "true"
+    resources:
+      requests:
+        gpu.intel.com/i915: 1
+        cpu: 200m
+        memory: 2000Mi
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 20000Mi

@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-socks-pvc
+  namespace: storage
+  annotations:
+    volumeType: longhorn
+spec:
+  accessModes:
+    - ReadWriteOnce
+  #storageClassName: local-path
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 512Mi

@@ -1,3 +1,13 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: defaultpg-scheduled-backup
+  namespace: databases
+spec:
+  schedule: "0 0 11 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: defaultpg
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
@@ -5,21 +15,23 @@ metadata:
   name: defaultpg
   namespace: databases
 spec:
-  instances: 1
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:14.5
   primaryUpdateStrategy: unsupervised
   storage:
     size: 20Gi
-    storageClass: longhorn
+    storageClass: local-path
   superuserSecret:
     name: postgres-superuser
-  bootstrap:
-    initdb:
-      database: default
-      owner: 3BK9XBSeNTKK7kFd 
-      secret:
-        name: postgres-superuser
+  affinity:
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
   monitoring:
     enablePodMonitor: true
+  postgresql:
+    parameters:
+      max_connections: "300"
+      shared_buffers: 512MB
   backup:
     retentionPolicy: 30d
     barmanObjectStore:
@@ -27,9 +39,8 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://cnpg-5wxuej/dev
-        #endpointURL: http://minio.utilities.svc.cluster.local:9000
-      endpointURL: https://s3.thekao.cloud
-      serverName: defaultpg
+      endpointURL: http://minio.storage.svc.cluster.local:9000
+      serverName: defaultpg-backup-v13
       s3Credentials:
         accessKeyId:
           name: postgres-minio
@@ -41,25 +52,36 @@ spec:
           name: postgres-minio
           key: MINIO_REGION
 
+#  bootstrap:
+#    initdb:
+#      database: default
+#      owner: 3BK9XBSeNTKK7kFd 
+#      secret:
+#        name: postgres-superuser
+
 # CNPG Recovery
 # https://cloudnative-pg.io/documentation/1.15/bootstrap/#bootstrap-from-a-backup-recovery
-#
+
 #  bootstrap:
 #    recovery:
 #      source: defaultpgBackup
-#
-#  externalClusters:
-#    - name: defaultpgBackup
-#      barmanObjectStore:
-#        destinationPath: s3://cnpg-5wxuej/defaultpg
-#        endpointURL: http://192.168.0.120:9000
-#        serverName: defaultpg
-#        s3Credentials:
-#          accessKeyId:
-#            name: postgres-minio
-#            key: MINIO_ACCESS_KEY
-#          secretAccessKey:
-#            name: postgres-minio
-#            key: MINIO_SECRET_KEY
-#        wal:
-#          maxParallel: 8
+
+  externalClusters:
+    - name: defaultpgBackup
+      barmanObjectStore:
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cnpg-5wxuej/
+        endpointURL: http://minio.storage.svc.cluster.local:9000
+        serverName: defaultpg-backup-v12
+        s3Credentials:
+          accessKeyId:
+            name: postgres-minio
+            key: MINIO_ACCESS_KEY
+          secretAccessKey:
+            name: postgres-minio
+            key: MINIO_SECRET_KEY
+          region:
+            name: postgres-minio
+            key: MINIO_REGION

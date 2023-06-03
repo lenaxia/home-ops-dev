@@ -1,0 +1,124 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &appname telegraf
+  namespace: databases
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: telegraf
+      version: 1.8.28
+      sourceRef:
+        kind: HelmRepository
+        name: influxdata-charts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    service:
+      enabled: true
+      type: ClusterIP
+      annotations:
+        metallb.universe.tf/address-pool: dev-infra
+
+    ## Exposed telegraf configuration
+    ## For full list of possible values see `/docs/all-config-values.yaml` and `/docs/all-config-values.toml`
+    ## ref: https://docs.influxdata.com/telegraf/v1.1/administration/configuration/
+    config:
+      agent:
+        interval: "10s"
+        round_interval: true
+        metric_batch_size: 1000
+        metric_buffer_limit: 10000
+        collection_jitter: "0s"
+        flush_interval: "10s"
+        flush_jitter: "0s"
+        precision: ""
+        debug: false
+        quiet: false
+        logfile: ""
+        hostname: "telegraf"
+        omit_hostname: false
+      processors:
+        - enum:
+            mapping:
+              field: "status"
+              dest: "status_code"
+              value_mappings:
+                healthy: 1
+                problem: 2
+                critical: 3
+      outputs:
+        - influxdb:
+            urls:
+              - "http://influxdb-influxdb2.databases.svc.cluster.local:8086"
+            database: "telegraf"
+            precision: "s"
+            namedrop:
+              - "hs_*"
+              - "ifTable"
+              - "diskTable"
+              - "raidTable"
+              - "laTable"
+              - "hrStorageTable"
+              - "snmp.SYNO"
+              - "influxdb_*"
+              - "influxdb"
+              - "docker_*"
+              - "docker"
+              - "pihole.lan"
+              - "snmp.rtn87r"
+              - "ifXTable"
+              - "icmpMsgStatsTable"
+              - "hrProcessorTable"
+              - "hrDeviceTable"
+        - influxdb:
+            urls:
+              - "http://influxdb-influxdb2.databases.svc.cluster.local:8086"
+            database: "homeseer"
+            precision: "s" 
+            namepass: 
+              - "hs_*"
+        - influxdb:
+            urls:
+              - "http://influxdb-influxdb2.databases.svc.cluster.local:8086"
+            database: "synology"
+            precision: "s" 
+            namepass: 
+              - "ifTable"
+              - "diskTable"
+              - "raidTable"
+              - "laTable"
+              - "hrStorageTable"
+              - "snmp.SYNO"
+
+      inputs:
+        - statsd:
+            service_address: ":8125"
+            percentiles:
+              - 50
+              - 95
+              - 99
+            metric_separator: "_"
+            allowed_pending_messages: 10000
+            percentile_limit: 1000
+        - mqtt_consumer:
+            servers:
+              - "tcp://mosquitto.home.svc.cluster.local:1883"
+            topics:
+              - "telegraf/host01/cpu"
+              - "telegraf/+/mem"
+              - "sensors/#"
+              - "environmental/#" 
+            qos: 2
+            data_format: "influx"
+            username: "sensor" 
+            password: "derived-pester-arrival"
+            

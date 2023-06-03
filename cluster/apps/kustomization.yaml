@@ -1,49 +1,81 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiversion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./kube-tools/node-feature-discovery/ks.yaml
-  - ./kube-tools/intel-device-plugin/ks.yaml
-  #- ./dashboards/hajimari
-  - ./diagnostics/podinfo
-  - ./diagnostics/echo-server
-  - ./utilities/smokeping
-    #- ./utilities/firefox
-  - ./utilities/pgadmin
-  - ./utilities/ltb-project
-  #- ./utilities/vaultwarden_ldap
-  #- ./utilities/vaultwarden
-  - ./media/plex
-    #- ./media/metube
-  #- ./media/sonarr
-  #- ./media/radarr
-    #- ./media/bazarr
-    #- ./media/tautulli
-  - ./media/outline
-  - ./media/invidious
+  - ./kyverno/ks.yaml
+  #- ./system-upgrade/ks.yaml
 
+  # Databases
+  - ./databases/redis/ks.yaml
+  - ./databases/redis-operator/ks.yaml
+  - ./databases/cloudnative-pg/ks.yaml
+  - ./databases/influxdb/ks.yaml
+    #- ./databases/telegraf/ks.yaml
 
-  - ./iot/knative
+  - ./kube-system/node-feature-discovery/ks.yaml
+  - ./kube-system/intel-device-plugin/ks.yaml
+  - ./kube-system/reloader
+  - ./kube-system/descheduler
+  ##- ./kube-system/metrics-server  # k3s already comes with a metrics server
 
-    #- ./home/mealie
-  - ./monitoring/prometheus-stack
-  - ./monitoring/grafana
+  # Storage
+  - ./storage/nextcloud/ks.yaml
+  - ./storage/kopia-web/ks.yaml
+  - ./storage/longhorn/ks.yaml
+  - ./storage/minio/ks.yaml
+
+  # Networking
+  - ./networking/traefik/ks.yaml
+  - ./networking/authelia/ks.yaml
+  - ./networking/cert-manager/ks.yaml
+  - ./networking/metallb/ks.yaml
+  - ./networking/external-dns/ks.yaml
+  #- ./networking/multus/ks.yaml
+  
+  # Home
+  - ./home/babybuddy/ks.yaml
+  - ./home/babybuddy-ava/ks.yaml
+  - ./home/node-red/ks.yaml
+  - ./home/localai/ks.yaml
+  - ./home/home-assistant/ks.yaml
+  - ./home/zwavejs/ks.yaml
+  - ./home/mosquitto/ks.yaml
+  #- ./home/fasten/ks.yaml
+
+  # Monitoring Namespace
   - ./monitoring/flux
-  - ./monitoring/loki
-  - ./monitoring/vector/ks.yaml
-    #- ./monitoring/tobs
+#  - ./monitoring/prometheus-stack/ks.yaml
+  - ./monitoring/grafana/ks.yaml
+  #- ./monitoring/loki/ks.yaml
+  #- ./monitoring/vector/ks.yaml
 
-  - ./networking/traefik
-    #- ./networking/netboot
-    #- ./networking/unifi-controller
-    #- ./authentication/authelia
-    #
-  - ./databases/cloudnative-pg
-  - ./databases/cloudnative-pg/clusters
-  - ./databases/redis
-  - ./databases/redis-operator
+  # Default Namespace
+  - ./home/hajimari/ks.yaml
 
-  - ./storage/kopia-web
-  - ./storage/nextcloud
+  # Media Namespace
+  - ./media/plex/ks.yaml
+  #- ./media/ersatztv/ks.yaml
+  - ./media/tautulli/ks.yaml
+  - ./media/sonarr/ks.yaml
+  - ./media/radarr/ks.yaml
+  - ./media/bazarr/ks.yaml
+  - ./media/readarr/ks.yaml
+  - ./media/nzbget/ks.yaml
+  - ./media/nzbhydra2/ks.yaml
+  - ./media/metube/ks.yaml
+  - ./media/mediarequests/ks.yaml
+  - ./media/calibre/ks.yaml
+  - ./media/outline/ks.yaml
+  - ./media/imaginary/ks.yaml
 
-  - ./kube-tools/system-upgrade
-  - ./kube-tools/kyverno
+  # Utilities Namespace
+  - ./utilities/vaultwarden/ks.yaml
+  #- ./utilities/vaultwarden-ldap/ks.yaml
+  - ./utilities/uptimekuma/ks.yaml
+  - ./utilities/smokeping/ks.yaml
+  #- ./utilities/changedetection/ks.yaml
+  - ./utilities/librespeed/ks.yaml
+  - ./utilities/guacamole/ks.yaml
+  - ./utilities/ltb-project/ks.yaml
+  - ./utilities/pgadmin/ks.yaml
+  - ./utilities/podinfo/ks.yaml
+  - ./utilities/echo-server/ks.yaml
