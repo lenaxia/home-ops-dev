@@ -12,7 +12,7 @@ resources:
   #- ./databases/telegraf/ks.yaml
 
   - ./kube-system/node-feature-discovery/ks.yaml
-  - ./kube-system/intel-device-plugin/ks.yaml
+  #- ./kube-system/intel-device-plugin/ks.yaml
   - ./kube-system/reloader
   #- ./kube-system/descheduler
   ##- ./kube-system/metrics-server  # k3s already comes with a metrics server
@@ -20,7 +20,7 @@ resources:
   # Storage
   #- ./storage/nextcloud/ks.yaml
   #- ./storage/kopia-web/ks.yaml
-  #- ./storage/longhorn/ks.yaml
+  - ./storage/longhorn/ks.yaml
   #- ./storage/minio/ks.yaml
 
   # Networking
