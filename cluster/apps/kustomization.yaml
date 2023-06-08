@@ -5,30 +5,30 @@ resources:
   #- ./system-upgrade/ks.yaml
 
   # Databases
-  #- ./databases/redis/ks.yaml
+  - ./databases/redis/ks.yaml
   #- ./databases/redis-operator/ks.yaml
-  #- ./databases/cloudnative-pg/ks.yaml
+  - ./databases/cloudnative-pg/ks.yaml
   #- ./databases/influxdb/ks.yaml
   #- ./databases/telegraf/ks.yaml
 
   - ./kube-system/node-feature-discovery/ks.yaml
-  #- ./kube-system/intel-device-plugin/ks.yaml
+  - ./kube-system/intel-device-plugin/ks.yaml
   - ./kube-system/reloader
-  #- ./kube-system/descheduler
+  - ./kube-system/descheduler
   ##- ./kube-system/metrics-server  # k3s already comes with a metrics server
 
   # Storage
   #- ./storage/nextcloud/ks.yaml
-  #- ./storage/kopia-web/ks.yaml
-  #- ./storage/longhorn/ks.yaml
-  #- ./storage/minio/ks.yaml
+  - ./storage/kopia-web/ks.yaml
+  - ./storage/longhorn/ks.yaml
+  - ./storage/minio/ks.yaml
 
   # Networking
-  #- ./networking/traefik/ks.yaml
-  #- ./networking/authelia/ks.yaml
-  #- ./networking/cert-manager/ks.yaml
-  #- ./networking/metallb/ks.yaml
-  #- ./networking/external-dns/ks.yaml
+  - ./networking/traefik/ks.yaml
+  - ./networking/authelia/ks.yaml
+  - ./networking/cert-manager/ks.yaml
+  - ./networking/metallb/ks.yaml
+  - ./networking/external-dns/ks.yaml
   #- ./networking/multus/ks.yaml
   
   # Home
@@ -68,7 +68,7 @@ resources:
   #- ./media/imaginary/ks.yaml
 
   # Utilities Namespace
-  #- ./utilities/vaultwarden/ks.yaml
+  - ./utilities/vaultwarden/ks.yaml
   #- ./utilities/vaultwarden-ldap/ks.yaml
   #- ./utilities/uptimekuma/ks.yaml
   #- ./utilities/smokeping/ks.yaml
@@ -77,5 +77,5 @@ resources:
   #- ./utilities/guacamole/ks.yaml
   #- ./utilities/ltb-project/ks.yaml
   #- ./utilities/pgadmin/ks.yaml
-  #- ./utilities/podinfo/ks.yaml
-  #- ./utilities/echo-server/ks.yaml
+  - ./utilities/podinfo/ks.yaml
+  - ./utilities/echo-server/ks.yaml
