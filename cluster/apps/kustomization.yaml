@@ -1,8 +1,8 @@
 apiversion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./kyverno/ks.yaml
-  - ./system-upgrade/ks.yaml
+  #- ./kyverno/ks.yaml
+  #- ./system-upgrade/ks.yaml
 
   # Databases
   - ./databases/redis/ks.yaml
