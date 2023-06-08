@@ -158,7 +158,7 @@ spec:
             secretName: *alertUri
 
       alertmanagerSpec:
-        replicas: 3
+        replicas: 2
         storage:
           volumeClaimTemplate:
             spec:
@@ -217,7 +217,7 @@ spec:
       thanosServiceMonitor:
         enabled: false
       prometheusSpec:
-        replicas: 3
+        replicas: 2
         shards: 1
         retention: 15d
         ruleSelectorNilUsesHelmValues: false
