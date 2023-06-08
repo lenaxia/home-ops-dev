@@ -19,9 +19,9 @@ resources:
 
   # Storage
   #- ./storage/nextcloud/ks.yaml
-  - ./storage/kopia-web/ks.yaml
+  #- ./storage/kopia-web/ks.yaml
   - ./storage/longhorn/ks.yaml
-  - ./storage/minio/ks.yaml
+  #- ./storage/minio/ks.yaml
 
   # Networking
   - ./networking/traefik/ks.yaml

@@ -7,7 +7,7 @@ kubernetes:
         ansible_ssh_port: 22
         ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
       hosts:
-        k8s-0:
+        k3s-cp-00:
           ansible_host: 192.168.3.30
     worker:
       vars:
@@ -15,7 +15,7 @@ kubernetes:
         ansible_ssh_port: 22
         ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
       hosts:
-        k8s-1:
+        k3s-worker-00:
           ansible_host: 192.168.3.31
-        k8s-2:
+        k3s-worker-01:
           ansible_host: 192.168.3.32
