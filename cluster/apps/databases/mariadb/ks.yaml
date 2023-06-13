@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/databases/maraidb/app
+  path: ./cluster/apps/databases/mariadb/app
   prune: true
   sourceRef:
     kind: GitRepository
