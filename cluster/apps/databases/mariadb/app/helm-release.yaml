@@ -33,6 +33,8 @@ spec:
       persistence:
         enabled: true
         existingClaim: mariadb-data-volume
+      service:
+        type: LoadBalancer
     metrics:
       enabled: true
       serviceMonitor:
