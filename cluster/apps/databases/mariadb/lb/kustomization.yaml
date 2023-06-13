@@ -6,13 +6,13 @@ namespace: databases
 resources:
   - helm-release.yaml
 configMapGenerator:
-  - name: redis-lb-configmap
+  - name: mariadb-lb-configmap
     files:
       - haproxy.cfg=./config/haproxy.cfg
 configurations:
   - ./patches/kustomizeconfig.yaml
 labels:
   - pairs:
-      app.kubernetes.io/name: redis-lb
-      app.kubernetes.io/instance: redis-lb
-      app.kubernetes.io/part-of: redis
+      app.kubernetes.io/name: mariadb-lb
+      app.kubernetes.io/instance: mariadb-lb
+      app.kubernetes.io/part-of: mariadb

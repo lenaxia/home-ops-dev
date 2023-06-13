@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: redis-lb
+  name: mariadb-lb
   namespace: databases
 spec:
   interval: 15m
@@ -37,22 +37,16 @@ spec:
       main:
         type: LoadBalancer
         annotations:
-          coredns.io/hostname: redis.${SECRET_DEV_DOMAIN}
-        loadBalancerIPs: ["${SVC_REDIS_ADDR}"]
+          coredns.io/hostname: mariadb.${SECRET_DEV_DOMAIN}
+        loadBalancerIPs: ["${SVC_MARIADB_ADDR}"]
         externalTrafficPolicy: Local
         ports:
           http:
             port: 8080
             targetPort: 8080
-          redis-write:
-            port: 6379
-            targetPort: 6379
-          redis-read:
-            port: 6380
-            targetPort: 6380
-          redis-sentinel:
-            port: 26379
-            targetPort: 26379
+          mariadb:
+            port: 3306 
+            targetPort: 3306
     serviceMonitor:
       main:
         enabled: true
@@ -69,7 +63,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
         hosts:
-        - host: &uri redis-lb.${SECRET_DEV_DOMAIN}
+        - host: &uri mariadb-lb.${SECRET_DEV_DOMAIN}
           paths:
           - path: /
             pathType: Prefix
@@ -87,7 +81,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: redis-lb-configmap # overriden by kustomizeconfig
+        name: mariadb-lb-configmap # overriden by kustomizeconfig
         mountPath: /usr/local/etc/haproxy/haproxy.cfg
         subPath: haproxy.cfg
         readOnly: true
