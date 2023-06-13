@@ -35,6 +35,7 @@ spec:
         existingClaim: mariadb-data-volume
       service:
         type: LoadBalancer
+        loadBalancerIP: ${SVC_MARIADB_PRIMARY_ADDR}
     metrics:
       enabled: true
       serviceMonitor:
