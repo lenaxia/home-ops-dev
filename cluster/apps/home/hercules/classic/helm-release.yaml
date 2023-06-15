@@ -50,12 +50,12 @@ spec:
           http:
             port: 6900
             targetPort: 6900
-#          char:
-#            port: 6121
-#            targetPort: 6121
-#          map:
-#            port: 5121
-#            targetPort: 5121
+          char:
+            port: 6121
+            targetPort: 6121
+          map:
+            port: 5121
+            targetPort: 5121
 
     ingress:
       main:
