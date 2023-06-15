@@ -45,6 +45,7 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIPs: ["${SVC_HERCULES_CLASSIC_ADDR}"]
+        externalTrafficPolicy: Local
         ports:
           login:
             port: 6900
