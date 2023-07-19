@@ -138,8 +138,8 @@ spec:
           config: {
             feeds: [
               {
-                title: "New York Times",
-                url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+                title: "NPR",
+                url: "https://feeds.npr.org/"
               }
             ],
             showSourceTitle: true,
