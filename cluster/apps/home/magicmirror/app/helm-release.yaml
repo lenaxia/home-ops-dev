@@ -25,7 +25,12 @@ spec:
     - name: DEBUG
       value: "true"
 
-        #command: ['npm','run','server']
+    command:
+      - /opt/magic_mirror/entrypoint.sh
+      - npm
+      - run
+      - server
+
 
     persistence:
       config:
