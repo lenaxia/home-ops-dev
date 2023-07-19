@@ -1,4 +1,4 @@
-apiversion: kustomize.config.k8s.io/v1beta1
+agpiversion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./kyverno/ks.yaml
@@ -35,7 +35,7 @@ resources:
   # Home
   - ./home/babybuddy/ks.yaml
   - ./home/hercules/ks.yaml
-  - ./home/magicmirror/ks.yaml
+    #- ./home/magicmirror/ks.yaml
   #- ./home/babybuddy-ava/ks.yaml
   #- ./home/node-red/ks.yaml
   - ./home/localai/ks.yaml
