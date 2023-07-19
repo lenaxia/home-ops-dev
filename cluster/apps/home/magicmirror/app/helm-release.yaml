@@ -46,11 +46,7 @@ spec:
             protocol: TCP
         volumeMounts:
           - name: config
-            mountPath: /home/node/MagicMirror/config
-          - name: modules
-            mountPath: /home/node/MagicMirror/modules
-          - name: css
-            mountPath: /home/node/MagicMirror/css
+            mountPath: /home/node/MagicMirror
           - name: mmpm-config 
             mountPath: /home/node/.config/mmpm
 
@@ -61,21 +57,21 @@ spec:
         size: 256Mi
         type: pvc
         accessMode: ReadWriteOnce
-        mouthPath: /opt/magic_mirror/config
-      modules:
-        enabled: true
-        storageClass: longhorn
-        size: 1Gi
-        type: pvc
-        accessMode: ReadWriteOnce
-        mouthPath: /opt/magic_mirror/modules
-      css:
-        enabled: true
-        storageClass: longhorn
-        size: 128Mi
-        type: pvc
-        accessMode: ReadWriteOnce
-        mouthPath: /opt/magic_mirror/css
+        mouthPath: /opt/magic_mirror
+          #      modules:
+          #        enabled: true
+          #        storageClass: longhorn
+          #        size: 1Gi
+          #        type: pvc
+          #        accessMode: ReadWriteOnce
+          #        mouthPath: /opt/magic_mirror/modules
+          #      css:
+          #        enabled: true
+          #        storageClass: longhorn
+          #        size: 128Mi
+          #        type: pvc
+          #        accessMode: ReadWriteOnce
+          #        mouthPath: /opt/magic_mirror/css
       mmpm-config:
         enabled: true
         storageClass: longhorn
