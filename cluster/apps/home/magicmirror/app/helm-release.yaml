@@ -31,6 +31,14 @@ spec:
       - run
       - server
 
+    persistence:
+      config-js:
+        enabled: true
+        type: configMap
+        name: mm-config-js
+        subPath: config.js
+        mountPath: /opt/magic_mirror/config/config.js
+
     service:
       main:
         type: LoadBalancer
