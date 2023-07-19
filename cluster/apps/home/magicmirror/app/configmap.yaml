@@ -76,8 +76,12 @@ data:
             config: {
               feeds: [
                 {
-                  title: "NPR",
-                  url: "https://feeds.npr.org/"
+                  title: "BBC World",
+                  url: "http://feeds.bbci.co.uk/news/world/rss.xml"
+                },
+                {
+                  title: "BBC Business",
+                  url: "http://feeds.bbci.co.uk/news/business/rss.xml"
                 }
               ],
               showSourceTitle: true,
