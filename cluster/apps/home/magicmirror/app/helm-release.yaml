@@ -42,7 +42,7 @@ spec:
             value: 192.168.12.220
         ports:
           - name: http
-            containerPort: 7890 
+            containerPort: &mmpmport 7890 
             protocol: TCP
         volumeMounts:
           - name: config
@@ -96,6 +96,8 @@ spec:
         ports:
           http:
             port: &port 8080
+          mmpm:
+            port: *mmpmport
 
     ingress:
       main:
