@@ -1,0 +1,80 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &appname magicmirror
+  namespace: home
+spec:
+  interval: 20m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 5m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
+  values:
+
+    image: 
+      repository: karsten13/magicmirror
+      tag: v2.24.0
+
+    env:
+    - name: DEBUG
+      value: "true"
+
+    command: ['npm','run','server']
+
+    persistence:
+      config:
+        enabled: true
+        storageClass: local-path
+        size: 128Mi 
+        type: pvc
+        accessMode: ReadWriteOnce
+      modules:
+        enabled: true
+        storageClass: local-path
+        size: 128Mi 
+        type: pvc
+        accessMode: ReadWriteOnce
+
+    service:
+      main:
+        type: LoadBalancer
+        ports:
+          http:
+            port: &port 8080
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: eos-icons:ai
+          hajimari.io/info: Local AI
+          hajimari.io/group: home
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+        hosts:
+        - host: &uri ai.${SECRET_DEV_DOMAIN}
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+            - *uri
+          secretName: *uri
+    
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 200Mi
+      limits:
+        memory: 2000Mi
