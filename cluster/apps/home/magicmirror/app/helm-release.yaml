@@ -31,21 +31,6 @@ spec:
       - run
       - server
 
-
-    persistence:
-      config:
-        enabled: true
-        storageClass: local-path
-        size: 128Mi 
-        type: pvc
-        accessMode: ReadWriteOnce
-      modules:
-        enabled: true
-        storageClass: local-path
-        size: 128Mi 
-        type: pvc
-        accessMode: ReadWriteOnce
-
     service:
       main:
         type: LoadBalancer
@@ -65,7 +50,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
         hosts:
-        - host: &uri ai.${SECRET_DEV_DOMAIN}
+        - host: &uri mm.${SECRET_DEV_DOMAIN}
           paths:
           - path: /
             pathType: Prefix
@@ -83,3 +68,85 @@ spec:
         memory: 200Mi
       limits:
         memory: 2000Mi
+
+
+    modules:
+      install:
+        - "https://gitlab.com/khassel/MMM-RepoStats"
+        - "https://github.com/jalibu/MMM-RAIN-MAP"
+
+    config: |
+      language: "en",
+      locale: "en-US",
+      logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
+      timeFormat: 24,
+      units: "metric",
+      modules: [
+        {
+          module: "alert",
+        },
+        {
+          module: "updatenotification",
+          position: "top_bar"
+        },
+        {
+          module: "clock",
+          position: "top_left"
+        },
+        {
+          module: "calendar",
+          header: "US Holidays",
+          position: "top_left",
+          config: {
+            calendars: [
+              {
+                symbol: "calendar-check",
+                url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"					}
+            ]
+          }
+        },
+        {
+          module: "compliments",
+          position: "lower_third"
+        },
+        {
+          module: "weather",
+          position: "top_right",
+          config: {
+            weatherProvider: "openweathermap",
+            type: "current",
+            location: "New York",
+            locationID: "5128581", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+            apiKey: "YOUR_OPENWEATHER_API_KEY"
+          }
+        },
+        {
+          module: "weather",
+          position: "top_right",
+          header: "Weather Forecast",
+          config: {
+            weatherProvider: "openweathermap",
+            type: "forecast",
+            location: "New York",
+            locationID: "5128581", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+            apiKey: "YOUR_OPENWEATHER_API_KEY"
+          }
+        },
+        {
+          module: "newsfeed",
+          position: "bottom_bar",
+          config: {
+            feeds: [
+              {
+                title: "New York Times",
+                url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+              }
+            ],
+            showSourceTitle: true,
+            showPublishDate: true,
+            broadcastNewsFeeds: true,
+            broadcastNewsUpdates: true
+          }
+        },
+      ]
+    

@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-js
+  namespace: media
+data:
+  config.js: |
+    let config = {
+    	address: "0.0.0.0",
+    	port: {{ .Values.service.port }},
+    	{{- if .Values.ingress.enabled }}
+    	basePath: "{{ .Values.ingress.path }}/",
+    	{{ else }}
+    	basePath: "/",
+    	{{ end }}
+    	ipWhitelist: [],
+    	useHttps: false, 		// Support HTTPS or not, default "false" will use HTTP
+    	httpsPrivateKey: "", 	// HTTPS private key path, only require when useHttps is true
+    	httpsCertificate: "", 	// HTTPS Certificate path, only require when useHttps is true
+    	{{ .Values.config }}
+    };
+    
+    /*************** DO NOT EDIT THE LINE BELOW ***************/
+    if (typeof module !== "undefined") {module.exports = config;}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: magicmirror-install-modules
+data:
+  install_modules.sh: |-
+    cd /opt/magic_mirror/modules
+    {{ range $index, $val := .Values.modules.install }}
+    echo installig {{ $val | quote }}
+    git clone {{ $val | quote }}
+    folder=$(echo {{ $val | quote }} | sed -r 's|.*\/(.*)|\1|g' | xargs)
+    cd $folder
+    npm install --omit=dev || true
+    cd ..
+    {{ end }}
+    ls -la
