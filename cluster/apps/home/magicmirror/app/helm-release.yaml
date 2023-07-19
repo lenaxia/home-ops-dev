@@ -34,7 +34,54 @@ spec:
       - run
       - server
 
+    sidecars:
+      mmpm:
+        image: karsten13/mmpm:latest
+        env:
+          - name: MMPM_MAGICMIRROR_URI
+            value: {{ .Values.service.main.loadBalancerIP }}
+        ports:
+          - name: http
+            containerPort: 7890 
+            protocol: TCP
+        volumeMounts:
+          - name: config
+            mountPath: /home/node/MagicMirror/config
+          - name: modules
+            mountPath: /home/node/MagicMirror/modules
+          - name: css
+            mountPath: /home/node/MagicMirror/css
+          - name: mmpm-config 
+            mountPath: /home/node/.config/mmpm
+
     persistence:
+      config:
+        enabled: true
+        storageClass: longhorn
+        size: 256Mi
+        type: pvc
+        accessMode: ReadWriteOnce
+        mouthPath: /opt/magic_mirror/config
+      modules:
+        enabled: true
+        storageClass: longhorn
+        size: 1Gi
+        type: pvc
+        accessMode: ReadWriteOnce
+        mouthPath: /opt/magic_mirror/modules
+      css:
+        enabled: true
+        storageClass: longhorn
+        size: 128Mi
+        type: pvc
+        accessMode: ReadWriteOnce
+        mouthPath: /opt/magic_mirror/css
+      mmpm-config:
+        enabled: true
+        storageClass: longhorn
+        size: 128Mi
+        type: pvc
+        accessMode: ReadWriteOnce
       config-js:
         enabled: true
         type: configMap
@@ -45,6 +92,7 @@ spec:
     service:
       main:
         type: LoadBalancer
+        loadBalancerIP: 192.168.12.220
         ports:
           http:
             port: &port 8080
