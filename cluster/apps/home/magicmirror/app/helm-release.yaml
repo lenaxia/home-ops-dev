@@ -39,7 +39,7 @@ spec:
         image: karsten13/mmpm:latest
         env:
           - name: MMPM_MAGICMIRROR_URI
-            value: 192.168.12.220
+            value: http://192.168.12.220:8080
         ports:
           - name: http
             containerPort: &mmpmport 7890 
