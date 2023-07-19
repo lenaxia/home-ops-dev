@@ -39,7 +39,7 @@ spec:
         image: karsten13/mmpm:latest
         env:
           - name: MMPM_MAGICMIRROR_URI
-            value: {{ .Values.service.main.loadBalancerIP }}
+            value: 192.168.12.220
         ports:
           - name: http
             containerPort: 7890 
