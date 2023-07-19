@@ -25,7 +25,7 @@ spec:
     - name: DEBUG
       value: "true"
 
-    command: ['npm','run','server']
+        #command: ['npm','run','server']
 
     persistence:
       config:
