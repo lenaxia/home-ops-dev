@@ -17,6 +17,9 @@ spec:
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
 
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "mm-config-js"
+
     image: 
       repository: karsten13/magicmirror
       tag: v2.24.0
