@@ -26,7 +26,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/redis
-      tag: 7.0.5-debian-11-r11
+      tag: 7.0.12-debian-11-r11
         
     ## Redis&reg; Authentication parameters
     ## ref: https://github.com/bitnami/containers/tree/main/bitnami/redis#setting-the-server-password-on-first-run
