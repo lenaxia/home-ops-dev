@@ -18,7 +18,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: *appname
-                key: DB_NAME
+                key: DB_DATABASE
           - name: POSTGRES_SUPER_PASS
             valueFrom:
               secretKeyRef:
