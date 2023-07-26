@@ -6,3 +6,4 @@ commonLabels:
 resources:
   - helm-release.yaml
   - config-pvc.yaml
+  - volsync.yaml

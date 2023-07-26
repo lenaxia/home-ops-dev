@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/volsync.backube/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: tautulli
+  namespace: default
+spec:
+  sourcePVC: tautulli-config-volume
+  trigger:
+    #schedule: "0 7 * * *"
+    manual: manual-backup-0
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 7
+    repository: tautulli
+    cacheCapacity: 8Gi
+    cacheStorageClassName: local-path
+    volumeSnapshotClassName: longhorn-snapshot-vsc
+    storageClassName: longhorn
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+    retain:
+      daily: 7
+      within: 3d
