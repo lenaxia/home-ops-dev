@@ -16,7 +16,7 @@ spec:
     cacheCapacity: 8Gi
     cacheStorageClassName: local-path
     volumeSnapshotClassName: longhorn-snapshot-vsc
-    storageClassName: longhorn
+    storageClassName: local-path
     moverSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
