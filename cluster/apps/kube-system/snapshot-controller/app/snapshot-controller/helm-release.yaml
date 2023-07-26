@@ -29,10 +29,12 @@ spec:
     keepHistory: false
   values:
     volumeSnapshotClasses:
-      - name: longhorn
+      - name: longhorn-snapshot-vsc
         driver: driver.longhorn.io
         annotations:
           snapshot.storage.kubernetes.io/is-default-class: "true"
         deletionPolicy: Delete
+        parameters:
+          type: snap
     serviceMonitor:
       create: true

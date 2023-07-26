@@ -15,7 +15,7 @@ spec:
     repository: vaultwarden
     cacheCapacity: 8Gi
     cacheStorageClassName: local-path
-    volumeSnapshotClassName: longhorn
+    volumeSnapshotClassName: longhorn-snapshot-vsc
     storageClassName: longhorn
     moverSecurityContext:
       runAsUser: 0
