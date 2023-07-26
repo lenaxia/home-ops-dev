@@ -75,6 +75,8 @@ metadata:
   name: utilities
   labels:
     app.kubernetes.io/component: utilities 
+  annotations:
+    volsync.backube/privileged-movers: "true"
 ---
 apiVersion: v1
 kind: Namespace
