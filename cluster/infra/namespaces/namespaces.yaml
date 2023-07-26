@@ -40,6 +40,8 @@ metadata:
   name: media
   labels:
     app.kubernetes.io/component: media
+  annotations:
+    volsync.backube/privileged-movers: "true"
 ---
 apiVersion: v1
 kind: Namespace
