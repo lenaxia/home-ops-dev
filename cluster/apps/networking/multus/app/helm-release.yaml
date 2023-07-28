@@ -27,7 +27,7 @@ spec:
 
       paths:
         config: /var/lib/rancher/k3s/agent/etc/cni/net.d/
-        bin: /var/lib/rancher/k3s/data/ad774f9b85e0ed18b900fb55939212cdc63b13cfcac93670a6fa7d4ff913d746/bin
+        bin: /var/lib/rancher/k3s/data/ad774f9b85e0ed18b900fb55939212cdc63b13cfcac93670a6fa7d4ff913d746/bin/
 
       version: "0.3.1"
 
