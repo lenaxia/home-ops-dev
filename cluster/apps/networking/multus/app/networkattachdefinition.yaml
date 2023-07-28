@@ -18,9 +18,10 @@ spec:
             "ips": true
           },
           "ipam": {
-            "type": "static",
+           "type": "dhcp",  # DHCP is typically used in home networks
+            "subnet": "192.168.5.0/20",
             "routes": [
-              { "dst": "192.168.0.0/20", "gw": "192.168.0.1" }
+              { "dst": "0.0.0.0/0", "gw": "192.168.0.1" }
             ]
           }
         }
