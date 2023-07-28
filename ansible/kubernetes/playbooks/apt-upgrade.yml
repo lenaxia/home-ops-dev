@@ -1,0 +1,22 @@
+---
+
+- hosts: 
+  - master
+  - worker
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Update apt
+      ansible.builtin.apt: update_cache=yes
+    
+    - name: Install or upgrade any required packages
+      ansible.builtin.apt:
+        upgrade: full
+    
+    - name: Install any required packages
+      apt:
+        pkg: "{{ item }}"
+        state: present
+      loop:
+        - net-tools
+
