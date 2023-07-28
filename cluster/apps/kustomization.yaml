@@ -20,7 +20,7 @@ resources:
   ##- ./kube-system/metrics-server  # k3s already comes with a metrics server
 
   # Storage
-  - ./storage/nextcloud/ks.yaml
+  #- ./storage/nextcloud/ks.yaml
   - ./storage/volsync/ks.yaml
   - ./storage/kopia-web/ks.yaml
   - ./storage/longhorn/ks.yaml
@@ -35,10 +35,10 @@ resources:
   - ./networking/multus/ks.yaml
   
   # Home
-  - ./home/babybuddy/ks.yaml
-  - ./home/gamevault/ks.yaml
+  #- ./home/babybuddy/ks.yaml
+  #- ./home/gamevault/ks.yaml
   - ./home/hercules/ks.yaml
-  - ./home/magicmirror/ks.yaml
+    #- ./home/magicmirror/ks.yaml
   #- ./home/babybuddy-ava/ks.yaml
   #- ./home/node-red/ks.yaml
   - ./home/localai/ks.yaml
@@ -50,7 +50,7 @@ resources:
   # Monitoring Namespace
   - ./monitoring/flux
     #- ./monitoring/prometheus-stack/ks.yaml
-  - ./monitoring/grafana/ks.yaml
+    #- ./monitoring/grafana/ks.yaml
   #- ./monitoring/loki/ks.yaml
   #- ./monitoring/vector/ks.yaml
 
@@ -61,7 +61,7 @@ resources:
   - ./media/plex/ks.yaml
   #- ./media/ersatztv/ks.yaml
   - ./media/tautulli/ks.yaml
-  - ./media/sonarr/ks.yaml
+    #- ./media/sonarr/ks.yaml
   #- ./media/radarr/ks.yaml
   #- ./media/bazarr/ks.yaml
   #- ./media/readarr/ks.yaml
