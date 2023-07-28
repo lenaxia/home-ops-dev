@@ -1,8 +1,9 @@
+---
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
   name: multus-iot
-  namespace: networking
+  namespace: network
 spec:
   config: |-
     {
@@ -13,14 +14,15 @@ spec:
           "type": "macvlan",
           "master": "enp0s25",
           "mode": "bridge",
+          "capabilities": {
+            "ips": true
+          },
           "ipam": {
-            "type": "dhcp",  # DHCP is typically used in home networks
-            "subnet": "192.168.0.0/20",
+            "type": "static",
             "routes": [
-              { "dst": "0.0.0.0/0", "gw": "192.168.0.1" }
+              { "dst": "192.168.0.0/20", "gw": "192.168.0.1" }
             ]
           }
         }
       ]
     }
-
