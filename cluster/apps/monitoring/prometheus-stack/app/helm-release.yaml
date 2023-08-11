@@ -16,13 +16,13 @@ spec:
   install:
     remediation:
       retries: 7
+    crds: CreateReplace
   upgrade:
     remediation:
       retries: 8
+    crds: CreateReplace
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
-    crds:
-      enabled: true
     defaultRules:
       create: true
       rules:

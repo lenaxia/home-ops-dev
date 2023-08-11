@@ -91,19 +91,19 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: multus
-    namespace: networking
+    namespace: kube-system
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: multus
-  namespace: networking
+  namespace: kube-system
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
   name: multus-daemon-config
-  namespace: networking
+  namespace: kube-system
   labels:
     tier: node
     app: multus
@@ -123,7 +123,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: kube-multus-ds
-  namespace: networking
+  namespace: kube-system
   labels:
     tier: node
     app: multus
@@ -203,10 +203,10 @@ spec:
       volumes:
         - name: cni
           hostPath:
-            path: /var/lib/rancher/k3s/agent/etc/cni/net.d
+            path: /etc/cni/net.d
         - name: cnibin
           hostPath:
-            path: /var/lib/rancher/k3s/data/ad774f9b85e0ed18b900fb55939212cdc63b13cfcac93670a6fa7d4ff913d746/bin
+            path: /opt/cni/bin
         - name: hostroot
           hostPath:
             path: /

@@ -19,6 +19,8 @@ k3s_use_unsupported_config: true
 #  - calico-bgpconfiguration.yaml.j2
 #  - calico-bgppeer.yaml.j2
 k3s_server_manifests_urls:
+  - url: https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset-thick.yml
+    filename: multus-daemonset-thick.yml
   - url: https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.60.1/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
     filename: alertmanagerconfigs.yaml
   - url: https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.60.1/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml
