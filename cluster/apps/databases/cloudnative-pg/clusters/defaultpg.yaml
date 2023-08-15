@@ -1,13 +1,13 @@
-apiVersion: postgresql.cnpg.io/v1
-kind: ScheduledBackup
-metadata:
-  name: defaultpg-scheduled-backup
-  namespace: databases
-spec:
-  schedule: "0 0 11 * * *"
-  backupOwnerReference: self
-  cluster:
-    name: defaultpg
+#apiVersion: postgresql.cnpg.io/v1
+#kind: ScheduledBackup
+#metadata:
+#  name: defaultpg-scheduled-backup
+#  namespace: databases
+#spec:
+#  schedule: "0 0 11 * * *"
+#  backupOwnerReference: self
+#  cluster:
+#    name: defaultpg
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
@@ -32,25 +32,25 @@ spec:
     parameters:
       max_connections: "300"
       shared_buffers: 512MB
-  backup:
-    retentionPolicy: 30d
-    barmanObjectStore:
-      wal:
-        compression: bzip2
-        maxParallel: 8
-      destinationPath: s3://cnpg-5wxuej/dev
-      endpointURL: http://minio.storage.svc.cluster.local:9000
-      serverName: defaultpg-backup-v13
-      s3Credentials:
-        accessKeyId:
-          name: postgres-minio
-          key: MINIO_ACCESS_KEY
-        secretAccessKey:
-          name: postgres-minio
-          key: MINIO_SECRET_KEY
-        region:
-          name: postgres-minio
-          key: MINIO_REGION
+        #  backup:
+        #    retentionPolicy: 30d
+        #    barmanObjectStore:
+        #      wal:
+        #        compression: bzip2
+        #        maxParallel: 8
+        #      destinationPath: s3://cnpg-5wxuej/dev
+        #      endpointURL: http://minio.storage.svc.cluster.local:9000
+        #      serverName: defaultpg-backup-v13
+        #      s3Credentials:
+        #        accessKeyId:
+        #          name: postgres-minio
+        #          key: MINIO_ACCESS_KEY
+        #        secretAccessKey:
+        #          name: postgres-minio
+        #          key: MINIO_SECRET_KEY
+        #        region:
+        #          name: postgres-minio
+        #          key: MINIO_REGION
 
 #  bootstrap:
 #    initdb:
@@ -66,22 +66,22 @@ spec:
 #    recovery:
 #      source: defaultpgBackup
 
-  externalClusters:
-    - name: defaultpgBackup
-      barmanObjectStore:
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://cnpg-5wxuej/
-        endpointURL: http://minio.storage.svc.cluster.local:9000
-        serverName: defaultpg-backup-v12
-        s3Credentials:
-          accessKeyId:
-            name: postgres-minio
-            key: MINIO_ACCESS_KEY
-          secretAccessKey:
-            name: postgres-minio
-            key: MINIO_SECRET_KEY
-          region:
-            name: postgres-minio
-            key: MINIO_REGION
+            #  externalClusters:
+            #    - name: defaultpgBackup
+            #      barmanObjectStore:
+            #        wal:
+            #          compression: bzip2
+            #          maxParallel: 8
+            #        destinationPath: s3://cnpg-5wxuej/
+            #        endpointURL: http://minio.storage.svc.cluster.local:9000
+            #        serverName: defaultpg-backup-v12
+            #        s3Credentials:
+            #          accessKeyId:
+            #            name: postgres-minio
+            #            key: MINIO_ACCESS_KEY
+            #          secretAccessKey:
+            #            name: postgres-minio
+            #            key: MINIO_SECRET_KEY
+            #          region:
+            #            name: postgres-minio
+            #            key: MINIO_REGION
