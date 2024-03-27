@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: docker.io/minio/minio
-      tag: RELEASE.2023-06-02T23-17-26Z
+      tag: RELEASE.2024-03-26T22-10-45Z
       pullPolicy: Always
     env:
       TZ: "America/Los_Angeles"
