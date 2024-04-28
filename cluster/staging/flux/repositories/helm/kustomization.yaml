@@ -36,3 +36,4 @@ resources:
   - go-skynet-charts.yaml
   - piraeus.yaml
   - backube.yaml
+  - nvidia.yaml
