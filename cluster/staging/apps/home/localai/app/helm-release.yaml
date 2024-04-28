@@ -135,7 +135,7 @@ spec:
         globalMount: /tmp/generated
     
     service:
-      type: ClusterIP
+      type: LoadBalancer
       # If deferring to an internal only load balancer
       # externalTrafficPolicy: Local
       port: 8080
