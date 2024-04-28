@@ -10,7 +10,7 @@ spec:
 #    - name: crds
   sourceRef:
     kind: GitRepository
-    name: home-k3s
+    name: flux-system
   path: ./cluster/staging/apps
   prune: true
   wait: true

@@ -3,7 +3,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: home-k3s
+  name: flux-system
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -31,7 +31,7 @@ spec:
   wait: false
   sourceRef:
     kind: GitRepository
-    name: home-k3s
+    name: flux-system
   decryption:
     provider: sops
     secretRef:
