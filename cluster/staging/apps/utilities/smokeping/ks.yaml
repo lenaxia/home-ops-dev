@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/utilities/smokeping/app
+  path: ./cluster/staging/apps/utilities/smokeping/app
   prune: true
   sourceRef:
     kind: GitRepository

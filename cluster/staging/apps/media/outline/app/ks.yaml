@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-media-sonarr
-  path: ./cluster/apps/media/bazarr/app
+  path: ./cluster/staging/apps/media/bazarr/app
   prune: true
   sourceRef:
     kind: GitRepository

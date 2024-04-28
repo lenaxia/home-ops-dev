@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/utilities/uptimekuma/app
+  path: ./cluster/staging/apps/utilities/uptimekuma/app
   prune: true
   sourceRef:
     kind: GitRepository

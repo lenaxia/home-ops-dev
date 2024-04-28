@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/networking/traefik/app
+  path: ./cluster/staging/apps/networking/traefik/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/home/fasten/app
+  path: ./cluster/staging/apps/home/fasten/app
   prune: true
   sourceRef:
     kind: GitRepository

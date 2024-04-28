@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/system-upgrade/app
+  path: ./cluster/staging/apps/system-upgrade/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -29,7 +29,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-system-upgrade-controller
-  path: ./cluster/apps/system-upgrade/plans
+  path: ./cluster/staging/apps/system-upgrade/plans
   prune: true
   sourceRef:
     kind: GitRepository

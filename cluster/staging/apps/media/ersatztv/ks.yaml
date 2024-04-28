@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/ersatztv/app
+  path: ./cluster/staging/apps/media/ersatztv/app
   prune: true
   sourceRef:
     kind: GitRepository

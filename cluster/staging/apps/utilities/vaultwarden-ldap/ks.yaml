@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-utilities-vaultwarden
-  path: ./cluster/apps/utilities/vaultwarden-ldap/app
+  path: ./cluster/staging/apps/utilities/vaultwarden-ldap/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-storage-longhorn
     - name: cluster-databases-postgres-clusters
-  path: ./cluster/apps/utilities/pgadmin/app
+  path: ./cluster/staging/apps/utilities/pgadmin/app
   prune: true
   sourceRef:
     kind: GitRepository

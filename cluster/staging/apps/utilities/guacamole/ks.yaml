@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/utilities/guacamole/app
+  path: ./cluster/staging/apps/utilities/guacamole/app
   prune: true
   sourceRef:
     kind: GitRepository

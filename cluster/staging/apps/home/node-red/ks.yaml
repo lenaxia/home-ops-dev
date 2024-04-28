@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-storage-longhorn
     - name: cluster-databases-postgres-clusters
-  path: ./cluster/apps/home/node-red/app
+  path: ./cluster/staging/apps/home/node-red/app
   prune: true
   sourceRef:
     kind: GitRepository

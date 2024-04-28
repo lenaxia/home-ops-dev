@@ -12,7 +12,7 @@ spec:
     - name: cluster-storage-longhorn
     - name: cluster-databases-postgres-clusters
     #- name: cluster-networking-multus
-  path: ./cluster/apps/home/home-assistant/app
+  path: ./cluster/staging/apps/home/home-assistant/app
   prune: true
   sourceRef:
     kind: GitRepository

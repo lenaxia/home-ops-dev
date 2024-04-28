@@ -10,7 +10,7 @@ metadata:
 spec:
 #  dependsOn:
 #    - name: cluster-apps-loki
-  path: ./cluster/apps/monitoring/vector/aggregator
+  path: ./cluster/staging/apps/monitoring/vector/aggregator
   prune: true
   sourceRef:
     kind: GitRepository
@@ -46,7 +46,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-vector-aggregator
-  path: ./cluster/apps/monitoring/vector/agent
+  path: ./cluster/staging/apps/monitoring/vector/agent
   prune: true
   sourceRef:
     kind: GitRepository

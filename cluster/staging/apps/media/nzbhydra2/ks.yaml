@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-media-sonarr
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/nzbhydra2/app
+  path: ./cluster/staging/apps/media/nzbhydra2/app
   prune: true
   sourceRef:
     kind: GitRepository

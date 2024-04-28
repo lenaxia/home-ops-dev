@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-monitoring-prometheus-stack
     - name: cluster-storage-minio
-  path: ./cluster/apps/monitoring/loki/app
+  path: ./cluster/staging/apps/monitoring/loki/app
   prune: true
   sourceRef:
     kind: GitRepository

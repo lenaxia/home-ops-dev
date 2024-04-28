@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-databases-postgres-clusters
     - name: cluster-storage-minio
-  path: ./cluster/apps/media/outline/app
+  path: ./cluster/staging/apps/media/outline/app
   prune: true
   sourceRef:
     kind: GitRepository

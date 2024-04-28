@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-storage-longhorn
     - name: cluster-databases-mariadb
-  path: ./cluster/apps/home/hercules/classic
+  path: ./cluster/staging/apps/home/hercules/classic
   prune: true
   sourceRef:
     kind: GitRepository
@@ -38,7 +38,7 @@ spec:
   dependsOn:
     - name: cluster-storage-longhorn
     - name: cluster-databases-mariadb
-  path: ./cluster/apps/home/hercules/renewal
+  path: ./cluster/staging/apps/home/hercules/renewal
   prune: true
   sourceRef:
     kind: GitRepository

@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/radarr/app
+  path: ./cluster/staging/apps/media/radarr/app
   prune: true
   sourceRef:
     kind: GitRepository

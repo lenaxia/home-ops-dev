@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/metube/app
+  path: ./cluster/staging/apps/media/metube/app
   prune: true
   sourceRef:
     kind: GitRepository

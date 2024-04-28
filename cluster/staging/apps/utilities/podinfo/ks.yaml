@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/utilities/podinfo/app
+  path: ./cluster/staging/apps/utilities/podinfo/app
   prune: true
   sourceRef:
     kind: GitRepository

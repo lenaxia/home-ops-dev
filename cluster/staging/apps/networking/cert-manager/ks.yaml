@@ -10,7 +10,7 @@ metadata:
 spec:
   #  dependsOn:
   #    - name: cluster-networking-multus
-  path: ./cluster/apps/networking/cert-manager/app
+  path: ./cluster/staging/apps/networking/cert-manager/app
   prune: true
   sourceRef:
     kind: GitRepository

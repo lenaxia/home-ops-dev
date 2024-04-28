@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/utilities/adguard/app
+  path: ./cluster/staging/apps/utilities/adguard/app
   prune: true
   sourceRef:
     kind: GitRepository

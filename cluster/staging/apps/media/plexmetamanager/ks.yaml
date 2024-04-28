@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-media-plex
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/plexmetamanager/app
+  path: ./cluster/staging/apps/media/plexmetamanager/app
   prune: true
   sourceRef:
     kind: GitRepository

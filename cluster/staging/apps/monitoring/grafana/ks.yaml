@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-databases-postgres-clusters
-  path: ./cluster/apps/monitoring/grafana/app
+  path: ./cluster/staging/apps/monitoring/grafana/app
   prune: true
   sourceRef:
     kind: GitRepository

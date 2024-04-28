@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-databases-postgres-clusters
       #- name: cluster-databases-redis
-  path: ./cluster/apps/networking/authelia/app
+  path: ./cluster/staging/apps/networking/authelia/app
   prune: true
   sourceRef:
     kind: GitRepository

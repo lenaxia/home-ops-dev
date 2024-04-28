@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/utilities/ltb-admin/app
+  path: ./cluster/staging/apps/utilities/ltb-admin/app
   prune: true
   sourceRef:
     kind: GitRepository

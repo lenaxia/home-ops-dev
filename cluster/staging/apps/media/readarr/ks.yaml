@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-storage-longhorn
     - name: cluster-media-calibre
-  path: ./cluster/apps/media/readarr/app
+  path: ./cluster/staging/apps/media/readarr/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/home/localai/app
+  path: ./cluster/staging/apps/home/localai/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/home/localai/chatbot-ui
+  path: ./cluster/staging/apps/home/localai/chatbot-ui
   prune: true
   sourceRef:
     kind: GitRepository
@@ -54,7 +54,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/home/localai/nextweb
+  path: ./cluster/staging/apps/home/localai/nextweb
   prune: true
   sourceRef:
     kind: GitRepository

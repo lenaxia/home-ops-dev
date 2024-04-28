@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/databases/redis/app
+  path: ./cluster/staging/apps/databases/redis/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -33,7 +33,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-databases-redis
-  path: ./cluster/apps/databases/redis/lb
+  path: ./cluster/staging/apps/databases/redis/lb
   prune: true
   sourceRef:
     kind: GitRepository

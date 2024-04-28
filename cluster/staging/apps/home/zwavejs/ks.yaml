@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/home/zwavejs/app
+  path: ./cluster/staging/apps/home/zwavejs/app
   prune: true
   sourceRef:
     kind: GitRepository

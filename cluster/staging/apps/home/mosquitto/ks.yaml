@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/home/mosquitto/app
+  path: ./cluster/staging/apps/home/mosquitto/app
   prune: true
   sourceRef:
     kind: GitRepository

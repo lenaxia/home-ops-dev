@@ -10,7 +10,7 @@ metadata:
 spec:
   #  dependsOn:
   #    - name: cluster-networking-multus
-  path: ./cluster/apps/storage/longhorn/app
+  path: ./cluster/staging/apps/storage/longhorn/app
   prune: true
   sourceRef:
     kind: GitRepository

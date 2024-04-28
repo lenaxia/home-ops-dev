@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: cluster-storage-longhorn
     - name: cluster-apps-intel-device-plugin-gpu
-  path: ./cluster/apps/media/plex/app
+  path: ./cluster/staging/apps/media/plex/app
   prune: true
   sourceRef:
     kind: GitRepository

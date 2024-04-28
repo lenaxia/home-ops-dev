@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-networking-metallb
-  path: ./cluster/apps/networking/multus/app
+  path: ./cluster/staging/apps/networking/multus/app
   prune: true
   sourceRef:
     kind: GitRepository

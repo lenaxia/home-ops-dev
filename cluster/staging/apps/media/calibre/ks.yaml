@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/calibre/server
+  path: ./cluster/staging/apps/media/calibre/server
   prune: true
   sourceRef:
     kind: GitRepository
@@ -35,7 +35,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-storage-longhorn
-  path: ./cluster/apps/media/calibre/web
+  path: ./cluster/staging/apps/media/calibre/web
   prune: true
   sourceRef:
     kind: GitRepository

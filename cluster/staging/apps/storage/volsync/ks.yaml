@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/storage/volsync/app
+  path: ./cluster/staging/apps/storage/volsync/app
   dependsOn:
     - name: cluster-apps-snapshot-controller
   prune: true

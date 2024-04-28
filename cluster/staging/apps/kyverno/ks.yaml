@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/kyverno/app
+  path: ./cluster/staging/apps/kyverno/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -33,7 +33,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-kyverno
-  path: ./cluster/apps/kyverno/policies
+  path: ./cluster/staging/apps/kyverno/policies
   prune: true
   sourceRef:
     kind: GitRepository

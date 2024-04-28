@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/home/magicmirror/app
+  path: ./cluster/staging/apps/home/magicmirror/app
   prune: true
   sourceRef:
     kind: GitRepository

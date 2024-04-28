@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./cluster/apps/networking/external-dns/app
+  path: ./cluster/staging/apps/networking/external-dns/app
   prune: true
   sourceRef:
     kind: GitRepository
