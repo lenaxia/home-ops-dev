@@ -52,11 +52,11 @@ spec:
     
     resources:
       requests:
-        gpu.intel.com/i915: 1
+        nvidia.com/gpu: "1"
         cpu: 200m
         memory: 2000Mi
       limits:
-        gpu.intel.com/i915: 1
+        nvidia.com/gpu: "1"
         memory: 20000Mi
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
@@ -166,19 +166,20 @@ spec:
     
     nodeSelector: 
       node-role.kubernetes.io/worker: 'true'
+      nvidia.com/gpu.present: true
     
     tolerations: []
     
-    affinity:
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-                #- key: app.kubernetes.io/name
-                #  operator: In
-                #  values: [plex]
-                #- key: "app.kubernetes.io/name"
-                #  operator: In
-                #  values:
-                #    - *appname
-            topologyKey: "kubernetes.io/hostname"
+    #affinity:
+    #  podAntiAffinity:
+    #    requiredDuringSchedulingIgnoredDuringExecution:
+    #      - labelSelector:
+    #          matchExpressions:
+    #            #- key: app.kubernetes.io/name
+    #            #  operator: In
+    #            #  values: [plex]
+    #            #- key: "app.kubernetes.io/name"
+    #            #  operator: In
+    #            #  values:
+    #            #    - *appname
+    #        topologyKey: "kubernetes.io/hostname"
