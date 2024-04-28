@@ -28,7 +28,7 @@ spec:
       image:
         repository: localai/localai
         #tag: v2.9.0
-        tag: localai/localai:v2.13.0-cublas-cuda12-ffmpeg
+        tag: v2.13.0-cublas-cuda12-ffmpeg
       env:
         DEBUG: true
         GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
