@@ -165,7 +165,6 @@ spec:
       className: traefik
     
     nodeSelector: 
-      node-role.kubernetes.io/worker: 'true'
       nvidia.com/gpu.present: 'true'
     
     tolerations: []
