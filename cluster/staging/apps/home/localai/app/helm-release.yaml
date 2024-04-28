@@ -1,156 +1,185 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v1beta2
 kind: HelmRelease
 metadata:
   name: &appname localai
   namespace: home
 spec:
-  interval: 30m
+  releaseName: *appname
+  interval: 5m
   chart:
     spec:
-      chart: app-template
-      version: 1.5.1
+      chart: local-ai
+      version: 3.2.0
       interval: 5m
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: go-skynet-charts
         namespace: flux-system
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
+    fullnameOverride: localai
+    replicaCount: 1
 
-    image: 
-      repository: quay.io/go-skynet/local-ai
-      tag: v1.18.0
-
-    env:
-    - name: THREADS
-      value: 6
-    - name: CONTEXT_SIZE
-      value: 512
-    - name: MODELS_PATH
-      value: "/models"
-    - name: IMAGE_PATH
-      value: /tmp
-    - name: BUILD_TYPE
-      value: openblas
-    - name: GO_TAGS
-      value: stablediffusion
-    - name: DEBUG
-      value: "true"
-
-    initContainers:
-      download-model:
-        image: busybox@sha256:ba76950ac9eaa407512c9d859cea48114eeff8a6f12ebaa5d32ce79d4a017dd8
-        command: ["/bin/sh", "-c"]
-        args:
-          - |
-            ## A simpler and more secure way if you have a way of staging an archive with the files you need
-            #wget "https://s3.${SECRET_DEV_DOMAIN}/public/stablediffusion.tar" -P /tmp
-            #tar -xzvf /tmp/stablediffusion.tar -C $MODELS_PATH
-            #rm -rf /tmp/stablediffusion.tar
-
-            ## A more general and less secure way that grab all the files from github
-            ## Details here: https://github.com/go-skynet/LocalAI
-            ## And here: https://github.com/lenaxia/stablediffusion-bins/releases/tag/2023.05.24
-            mkdir $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/AutoencoderKL-256-256-fp16-opt.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/AutoencoderKL-512-512-fp16-opt.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/AutoencoderKL-base-fp16.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/FrozenCLIPEmbedder-fp16.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/UNetModel-256-256-MHA-fp16-opt.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/UNetModel-512-512-MHA-fp16-opt.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/UNetModel-base-MHA-fp16.param" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://github.com/EdVince/Stable-Diffusion-NCNN/raw/main/x86/linux/assets/log_sigmas.bin" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://raw.githubusercontent.com/EdVince/Stable-Diffusion-NCNN/main/x86/linux/assets/vocab.txt" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://github.com/lenaxia/stablediffusion-bins/releases/download/2023.05.24/UNetModel-MHA-fp16.bin" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://github.com/lenaxia/stablediffusion-bins/releases/download/2023.05.24/FrozenCLIPEmbedder-fp16.bin" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://github.com/lenaxia/stablediffusion-bins/releases/download/2023.05.24/AutoencoderKL-fp16.bin" -P $MODELS_PATH/stablediffusion_assets
-            wget "https://github.com/lenaxia/stablediffusion-bins/releases/download/2023.05.24/AutoencoderKL-encoder-512-512-fp16.bin" -P $MODELS_PATH/stablediffusion_assets
-        
-            cat << "EOF" >> $MODELS_PATH/stablediffusion.yaml
-            name: stablediffusion
-            backend: stablediffusion
-            asset_dir: stablediffusion_assets
-            EOF
-
-        env:
-          - name: URL
-            value: "https://gpt4all.io/models/ggml-gpt4all-j.bin"
-          - name: MODELS_PATH
-            value: "/models"
-        volumeMounts:
-          - name: models 
-            mountPath: /models
-        securityContext:
-          runAsUser: 0
-
-    persistence:
-      models:
-        enabled: true
-        storageClass: local-path
-        size: 30Gi
-        type: pvc
-        accessMode: ReadWriteOnce
-
-    service:
-      main:
-        type: LoadBalancer
-        ports:
-          http:
-            port: &port 8080
-
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: eos-icons:ai
-          hajimari.io/info: Local AI
-          hajimari.io/group: home
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
-        hosts:
-        - host: &uri ai.${SECRET_DEV_DOMAIN}
-          paths:
-          - path: /
-            pathType: Prefix
-        tls:
-        - hosts:
-            - *uri
-          secretName: *uri
+    postRenderers:
+    - kustomize:
+        path: ./patches
     
-    nodeSelector:
-      node-role.kubernetes.io/worker: "true"
-
-    probes:
-      liveness: 
-        enabled: false
-        custom: true
-        spec:
-          httpGet:
-            path: /healthz
-            port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 30 
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: 
-        enabled: false
-        custom: true
-        spec:
-          httpGet:
-            path: /readyz
-            port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 30 
-          timeoutSeconds: 1
-          failureThreshold: 3
-      startup:
-        enabled: false
-
+    deployment:
+      image:
+        repository: localai/localai
+        #tag: v2.9.0
+        tag: v2.12.4-ffmpeg
+        #tag: v2.12.4-sycl-f32-ffmpeg
+      env:
+        DEBUG: true
+        GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
+        #GALLERIES: '[{"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
+        #GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}]'
+        PRELOAD_MODELS: '[{"id": "huggingface@thebloke__wizardlm-7b-v1-0-uncensored-superhot-8k-ggml__wizardlm-7b-v1.0-superhot-8k.ggmlv3.q3_k_m.bin","name": "WizardLM-7B-uncensored"}, {"id": "model-gallery@bert-embeddings"}, {"url": "github:go-skynet/model-gallery/stablediffusion.yaml"}]'
+        COMPEL: 0
+        threads: 4
+        context_size: 512
+        GML_SYCL_DEVICE: 0
+      modelsPath: "/models"
+      download_model:
+        # To use cloud provided (eg AWS) image, provide it like: 1234356789.dkr.ecr.us-REGION-X.amazonaws.com/busybox
+        image: busybox
+      prompt_templates:
+        # To use cloud provided (eg AWS) image, provide it like: 1234356789.dkr.ecr.us-REGION-X.amazonaws.com/busybox
+        image: busybox
+      pullPolicy: Always
+      imagePullSecrets: []
+        # - name: secret-names
+    
     resources:
       requests:
+        gpu.intel.com/i915: 1
         cpu: 200m
         memory: 2000Mi
       limits:
-        memory: 40000Mi
+        gpu.intel.com/i915: 1
+        memory: 20000Mi
+      # We usually recommend not to specify default resources and to leave this as a conscious
+      # choice for the user. This also increases chances charts run on environments with little
+      # resources, such as Minikube. If you do want to specify resources, uncomment the following
+      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      # limits:
+      #   cpu: 100m
+      #   memory: 128Mi
+      # requests:
+      #   cpu: 100m
+      #   memory: 128Mi
+    
+    # Prompt templates to include
+    # Note: the keys of this map will be the names of the prompt template files
+    promptTemplates:
+       ggml-gpt4all-j.tmpl: |
+         The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response.
+         ### Prompt:
+         {{.Input}}
+         ### Response:
+       WizardLM-7B-uncensored.Q2_K.tmpl: |
+         The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response.
+         ### Prompt:
+         {{.Input}}
+         ### Response:
+    
+    # Models to download at runtime
+    models:
+      # Whether to force download models even if they already exist
+      forceDownload: false
+    
+      # The list of URLs to download models from
+      # Note: the name of the file will be the name of the loaded model
+      list:
+        - url: "https://gpt4all.io/models/ggml-gpt4all-j.bin"
+          # basicAuth: base64EncodedCredentials
+    
+
+    initContainers: []
+    # Example:
+    # - name: my-init-container
+    #   image: my-init-image
+    #   imagePullPolicy: IfNotPresent
+    #   command: ["/bin/sh", "-c", "echo init"]
+    #   volumeMounts:
+    #     - name: my-volume
+    #       mountPath: /path/to/mount
+    
+    sidecarContainers: []
+    # Example:
+    # - name: my-sidecar-container
+    #   image: my-sidecar-image
+    #   imagePullPolicy: IfNotPresent
+    #   ports:
+    #     - containerPort: 1234
+    
+    # Persistent storage for models and prompt templates.
+    # PVC and HostPath are mutually exclusive. If both are enabled,
+    # PVC configuration takes precedence. If neither are enabled, ephemeral
+    # storage is used.
+    persistence:
+      models: 
+        enabled: true
+        annotations: {}
+        storageClass: longhorn
+        accessModes: ReadWriteMany
+        size: 60Gi
+        globalMount: /models
+      output:
+        enabled: true
+        annotations: {}
+        storageClass: longhorn
+        accessModes: ReadWriteMany
+        size: 5Gi
+        globalMount: /tmp/generated
+    
+    service:
+      type: ClusterIP
+      # If deferring to an internal only load balancer
+      # externalTrafficPolicy: Local
+      port: 8080
+      annotations: {}
+      # If using an AWS load balancer, you'll need to override the default 60s load balancer idle timeout
+      # service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "1200"
+    
+    ingress:
+      enabled: true
+      name: localai
+      annotations:
+        hajimari.io/enable: 'true'
+        hajimari.io/icon: resistor-nodes
+        hajimari.io/appName: LocalAI
+        hajimari.io/group: Home
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.middlewares: networking-chain-authelia@kubernetescrd
+      hosts:
+        - host: &uri ai.${SECRET_DEV_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - *uri
+          secretName: *uri
+      className: traefik
+    
+    nodeSelector: 
+      node-role.kubernetes.io/worker: 'true'
+    
+    tolerations: []
+    
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: [plex]
+                - key: "app.kubernetes.io/name"
+                  operator: In
+                  values:
+                    - *appname
+            topologyKey: "kubernetes.io/hostname"

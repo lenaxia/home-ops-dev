@@ -6,9 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m 
-  dependsOn:
-    - name: infrastructure
-    - name: crds
+#  dependsOn:
+#    - name: crds
   sourceRef:
     kind: GitRepository
     name: home-k3s
