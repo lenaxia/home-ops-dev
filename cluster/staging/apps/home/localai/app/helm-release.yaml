@@ -166,7 +166,7 @@ spec:
     
     nodeSelector: 
       node-role.kubernetes.io/worker: 'true'
-      nvidia.com/gpu.present: true
+      nvidia.com/gpu.present: 'true'
     
     tolerations: []
     
