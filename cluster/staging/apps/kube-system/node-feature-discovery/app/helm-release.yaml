@@ -37,6 +37,7 @@ spec:
             - pci
             - usb
             - kernel
+            - system
         sources:
           usb:
             deviceClassWhitelist:
