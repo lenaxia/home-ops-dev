@@ -32,9 +32,9 @@ spec:
       cleanupCRD: true
       upgradeCRD: true
     nfd:
-      enabled: false
+      enabled: true
     driver:
-      enabled: false
+      enabled: true
     toolkit:
       enabled: true
       env:
