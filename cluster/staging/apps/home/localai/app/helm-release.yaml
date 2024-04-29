@@ -15,6 +15,9 @@ spec:
         kind: HelmRepository
         name: go-skynet-charts
         namespace: flux-system
+  upgrade:
+    remediation:
+      retries: 10
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
     fullnameOverride: localai
