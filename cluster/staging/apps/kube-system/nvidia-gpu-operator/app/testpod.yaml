@@ -6,7 +6,7 @@ spec:
   restartPolicy: OnFailure
   containers:
   - name: cuda-vectoradd
-    image: "nvidia/cuda:12.4.0-runtime-ubuntu20.04"
+    image: "nvidia/cuda:12.4.1-runtime-ubuntu20.04"
     command: ["/bin/sh", "-c"]
     args:
       - >
