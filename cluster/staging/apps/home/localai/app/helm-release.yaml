@@ -124,6 +124,7 @@ spec:
       nvidia:
         enabled: true
         type: hostPath
+        storageClass: local-path
         hostPath: /usr/lib/x86_64-linux-gnu
         accessModes: ReadOnlyMany
         size: 2Gi
