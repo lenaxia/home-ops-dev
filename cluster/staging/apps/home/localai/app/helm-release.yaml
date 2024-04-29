@@ -126,6 +126,7 @@ spec:
         type: hostPath
         hostPath: /usr/lib/x86_64-linux-gnu
         accessModes: ReadOnlyMany
+        size: 2Gi
       models: 
         enabled: true
         annotations: {}
