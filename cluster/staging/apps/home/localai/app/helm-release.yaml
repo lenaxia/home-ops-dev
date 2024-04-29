@@ -34,7 +34,7 @@ spec:
         #tag: v2.13.0-cublas-cuda11-ffmpeg
       env:
         DEBUG: true
-        LD_LIBRARY_PATH: "/usr/local/nvidia/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib/nvidia"
+        LD_LIBRARY_PATH: "/usr/local/cuda-12.1/targets/x86_64-linux/lib/stubs:$LD_LIBRARY_PATH"
         NVIDIA_VISIBLE_DEVICES: "all"
         CUDA_VISIBLE_DEVICES: "all"
         GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
