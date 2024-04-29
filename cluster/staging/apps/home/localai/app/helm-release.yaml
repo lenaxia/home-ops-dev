@@ -30,7 +30,7 @@ spec:
     deployment:
       image:
         repository: localai/localai
-        tag: v2.5.1-cublas-cuda12
+        tag: v2.9.0-cublas-cuda12-ffmpeg
         #tag: v2.13.0-cublas-cuda11-ffmpeg
       env:
         DEBUG: true
