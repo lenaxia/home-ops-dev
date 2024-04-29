@@ -121,13 +121,13 @@ spec:
     # PVC configuration takes precedence. If neither are enabled, ephemeral
     # storage is used.
     persistence:
-      nvidia:
-        enabled: true
-        type: hostPath
-        storageClass: local-path
-        hostPath: /usr/lib/x86_64-linux-gnu
-        accessModes: ReadWriteOnce
-        size: 2Gi
+      #nvidia:
+      #  enabled: true
+      #  type: hostPath
+      #  storageClass: local-path
+      #  hostPath: /usr/lib/x86_64-linux-gnu
+      #  accessModes: ReadWriteOnce
+      #  size: 2Gi
       models: 
         enabled: true
         annotations: {}
