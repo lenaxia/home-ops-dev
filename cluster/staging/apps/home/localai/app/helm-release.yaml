@@ -126,7 +126,7 @@ spec:
         type: hostPath
         storageClass: local-path
         hostPath: /usr/lib/x86_64-linux-gnu
-        accessModes: ReadOnlyMany
+        accessModes: ReadWriteOnce
         size: 2Gi
       models: 
         enabled: true
