@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
   upgrade:
     remediation:
-      retries: 12
+      retries: 13
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
     fullnameOverride: localai
