@@ -6,7 +6,16 @@ spec:
   restartPolicy: OnFailure
   containers:
   - name: cuda-vectoradd
-    image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.7.1-ubuntu20.04"
+    image: "nvidia/cuda:12.4.0-runtime-ubuntu20.04"
+    command: ["/bin/sh", "-c"]
+    args:
+      - >
+        while true;
+        do
+          echo "Running CUDA application...";
+          sleep 1;
+        done
     resources:
       limits:
         nvidia.com/gpu: 1
+
