@@ -1,0 +1,14 @@
+spec:
+  template:
+    spec:
+      volumes:
+        - name: nvidia
+          hostPath:
+            path: /usr/lib/x86_64-linux-gnu
+            type: Directory
+      containers:
+      - name: localai  
+        volumeMounts:
+        - name: nvidia
+          mountPath: /usr/lib/x86_64-linux-gnu
+
