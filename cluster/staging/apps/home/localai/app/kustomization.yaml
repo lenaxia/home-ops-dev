@@ -6,5 +6,3 @@ commonLabels:
   app.kubernetes.io/instance: *app
 resources:
   - helm-release.yaml
-patchesStrategicMerge:
-  - patches/patch-nvidia-runtime.yaml

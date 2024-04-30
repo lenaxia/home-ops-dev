@@ -18,6 +18,9 @@ spec:
   upgrade:
     remediation:
       retries: 15
+  postRenderers:
+  - kustomize:
+      path: ./patches
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
     fullnameOverride: localai
