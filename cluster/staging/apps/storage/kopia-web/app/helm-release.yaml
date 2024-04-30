@@ -24,7 +24,7 @@ spec:
   values:
     initContainers:
       wait-for-repo:
-        image: kopia/kopia:0.17.0@sha256:51784ce0961940846f4f47cab2d4f58e2e0cb467de357f9a80279b149a00c06e
+        image: kopia/kopia:20240429.0.193259@sha256:63f5e14d531910c7abcea5198978605b09b16e324e969a64d44e21990c2eef5a
         command:
           - /bin/bash
           - -c
@@ -38,7 +38,7 @@ spec:
             mountPath: /snapshots
     image:
       repository: kopia/kopia
-      tag: 0.17.0@sha256:51784ce0961940846f4f47cab2d4f58e2e0cb467de357f9a80279b149a00c06e
+      tag: 20240429.0.193259@sha256:63f5e14d531910c7abcea5198978605b09b16e324e969a64d44e21990c2eef5a
       pullPolicy: Always
     env:
       TZ: "${TIMEZONE}"
