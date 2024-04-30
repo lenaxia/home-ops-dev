@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: localai
+  namespace: home
+spec:
+  template:
+    spec:
+      runtimeClassName: nvidia
+
