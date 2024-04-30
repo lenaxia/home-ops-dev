@@ -20,7 +20,15 @@ spec:
       retries: 15
   postRenderers:
   - kustomize:
-      path: ./patches
+      patches:
+        - target:
+            version: v1
+            kind: Deployment
+            name: localai
+          patch: |
+            - op: add
+              path: /spec/template/spec/runtimeClassName
+              value: nvidia
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
     fullnameOverride: localai
