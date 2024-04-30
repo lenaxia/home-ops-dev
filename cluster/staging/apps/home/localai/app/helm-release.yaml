@@ -57,11 +57,11 @@ spec:
     
     resources:
       requests:
-        nvidia.com/gpu: "1"
+        #nvidia.com/gpu: "1"
         cpu: 200m
         memory: 2000Mi
       limits:
-        nvidia.com/gpu: "1"
+        #nvidia.com/gpu: "1"
         memory: 20000Mi
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
@@ -176,8 +176,8 @@ spec:
           secretName: *uri
       className: traefik
     
-    nodeSelector: 
-      nvidia.com/gpu.present: 'true'
+#    nodeSelector: 
+#      nvidia.com/gpu.present: 'true'
     
     tolerations: []
     
