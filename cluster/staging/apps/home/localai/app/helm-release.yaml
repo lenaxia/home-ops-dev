@@ -46,8 +46,9 @@ spec:
       env:
         DEBUG: true
         LD_LIBRARY_PATH: "/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
-        NVIDIA_VISIBLE_DEVICES: "all"
-        CUDA_VISIBLE_DEVICES: "all"
+        NVIDIA_VISIBLE_DEVICES: 0
+        CUDA_VISIBLE_DEVICES: 0
+        NVIDIA_DRIVER_CAPABILITIES: "all"
         GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
         #GALLERIES: '[{"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
         #GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}]'
