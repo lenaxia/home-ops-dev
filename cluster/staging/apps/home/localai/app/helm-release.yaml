@@ -60,6 +60,7 @@ spec:
         NVIDIA_VISIBLE_DEVICES: 0
         CUDA_VISIBLE_DEVICES: 0
         NVIDIA_DRIVER_CAPABILITIES: "all"
+        SINGLE_ACTIVE_BACKEND: true
         GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
         #GALLERIES: '[{"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
         #GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}]'
