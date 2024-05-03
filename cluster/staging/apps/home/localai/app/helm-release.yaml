@@ -158,14 +158,14 @@ spec:
       models: 
         enabled: true
         annotations: {}
-        storageClass: longhorn
+        storageClass: local-path
         accessModes: ReadWriteMany
         size: 60Gi
         globalMount: /models
       output:
         enabled: true
         annotations: {}
-        storageClass: longhorn
+        storageClass: local-path
         accessModes: ReadWriteMany
         size: 5Gi
         globalMount: /tmp/generated
