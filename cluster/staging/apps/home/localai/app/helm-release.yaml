@@ -43,7 +43,7 @@ spec:
                           sleep 5;
                         done;
                         echo "Server is ready. Models endpoint returned 200 OK.";
-                        curl http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{ "model": "llama3-8b-instruct" }'
+                        curl http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{ "model": "llama3-70b-instruct" }'
   # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
   values:
     fullnameOverride: localai
@@ -58,8 +58,10 @@ spec:
         DEBUG: true
         LD_LIBRARY_PATH: "/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
         NVIDIA_VISIBLE_DEVICES: 0
-        CUDA_VISIBLE_DEVICES: 0
         NVIDIA_DRIVER_CAPABILITIES: "all"
+        PYTHON_GRPC_MAX_WORKERS: 2
+        LLAMACPP_PARALLEL: 2
+        LOCALAI_PARALLEL_REQUESTS: true
         SINGLE_ACTIVE_BACKEND: true
         #GALLERIES: '[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
         #GALLERIES: '[{"name":"huggingface", "url": "github:go-skynet/model-gallery/huggingface.yaml"}]'
