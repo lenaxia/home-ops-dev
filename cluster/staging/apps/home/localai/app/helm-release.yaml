@@ -159,14 +159,14 @@ spec:
         enabled: true
         annotations: {}
         storageClass: local-path
-        accessModes: ReadWriteMany
+        accessModes: ReadWriteOnce
         size: 100Gi
         globalMount: /models
       output:
         enabled: true
         annotations: {}
         storageClass: local-path
-        accessModes: ReadWriteMany
+        accessModes: ReadWriteOnce
         size: 5Gi
         globalMount: /tmp/generated
     
