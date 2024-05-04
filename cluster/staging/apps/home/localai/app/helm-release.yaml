@@ -160,7 +160,7 @@ spec:
         annotations: {}
         storageClass: local-path
         accessModes: ReadWriteMany
-        size: 60Gi
+        size: 100Gi
         globalMount: /models
       output:
         enabled: true
