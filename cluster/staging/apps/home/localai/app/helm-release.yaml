@@ -52,8 +52,8 @@ spec:
     deployment:
       image:
         repository: localai/localai
-        tag: v2.9.0-cublas-cuda12-ffmpeg
-        #tag: v2.13.0-cublas-cuda12-ffmpeg
+        #tag: v2.9.0-cublas-cuda12-ffmpeg
+        tag: v2.13.0-cublas-cuda12-ffmpeg
       env:
         DEBUG: true
         LD_LIBRARY_PATH: "/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
