@@ -56,6 +56,7 @@ spec:
     service:
       stable-diffusion-webui:
         controller: stable-diffusion-webui
+        type: LoadBalancer
         ports:
           http:
             port: 7860
