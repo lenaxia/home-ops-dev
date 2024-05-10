@@ -80,7 +80,7 @@ spec:
         globalMounts:
         - path: /app/outputs
     ingress:
-      main:
+      stable-diffusion-webui:
         enabled: true
         annotations:
           hajimari.io/enable: 'true'
