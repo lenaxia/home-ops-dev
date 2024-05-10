@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         namespace: flux-system
-        name: bjw-s
+        name: bjw-s-charts
   interval: 1h
   driftDetection:
     mode: enabled
