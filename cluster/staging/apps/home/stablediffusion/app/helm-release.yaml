@@ -27,9 +27,9 @@ spec:
               repository: ghcr.io/gabe565/stable-diffusion/webui
               tag: 1.9.3@sha256:9b1c652e71787a35b646860a81aa267e3a5774b8133ba18535cf102960100ac4
               pullPolicy: IfNotPresent
-            #args:
+            args:
             #  - --medvram-sdxl
-            #  - --xformers
+              - --xformers
             env:
               TZ: America/Los_Angeles
               IIB_ACCESS_CONTROL_ALLOWED_PATHS: /app/outputs
