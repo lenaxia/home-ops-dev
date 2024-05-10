@@ -96,7 +96,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  identifier: main
+                  identifier: stable-diffusion-webui
                   port: http
         tls:
           - hosts:
