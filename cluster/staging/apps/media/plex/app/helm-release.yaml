@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/plex
-      tag: 1.40.1.8227-c0dd5a73e@sha256:a60bc6352543b4453b117a8f2b89549e458f3ed8960206d2f3501756b6beb519
+      tag: 1.41.3.9292-bc7397402@sha256:9a9196a109437035b9b20c8d368c569555623f14faf2247c3aa0a84cf568242d
     podAnnotations:
       k8s.v1.cni.cncf.io/networks: |
         [{
