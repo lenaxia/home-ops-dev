@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: *name
-      version: v1.0.25
+      version: 2.1.4
       sourceRef:
         kind: HelmRepository
         name: stakater-charts
