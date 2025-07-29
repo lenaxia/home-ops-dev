@@ -34,7 +34,7 @@ spec:
       nameOverride: *app
     image:
       repository: ghcr.io/zwave-js/zwave-js-ui
-      tag: 8.18.0
+      tag: 10.11.0
     env:
       TZ: ${TIMEZONE}
       KEY_S0_Legacy:
