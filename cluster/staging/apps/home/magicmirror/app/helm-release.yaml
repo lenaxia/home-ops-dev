@@ -22,7 +22,7 @@ spec:
 
     image: 
       repository: karsten13/magicmirror
-      tag: v2.24.0
+      tag: v2.33.0
 
     env:
     - name: DEBUG
